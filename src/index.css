@@ -156,3 +156,13 @@ input.field:focus, textarea.field:focus { border-color: var(--violet); }
 .dorm-grid { display: grid; gap: 6px; padding: 10px; border-radius: 22px; background: linear-gradient(#fbe7d4 0 18%, #f6d7b8 18%); border: 3px solid #e9c19c; }
 .dorm-cell { aspect-ratio: 1; border-radius: 12px; background: rgba(255, 255, 255, 0.35); display: grid; place-items: center; font-size: clamp(26px, 7vw, 46px); border: 2px dashed rgba(160, 110, 70, 0.25); }
 .dorm-cell.sel { border: 3px solid var(--violet); background: rgba(124, 92, 255, 0.15); }
+
+.print-only { display: none; }
+@media print {
+  body { background: #fff !important; }
+  .no-print, .bottom-nav, .feedback { display: none !important; }
+  .print-only { display: block; }
+  .page { padding: 0 !important; max-width: none; }
+  .card { box-shadow: none !important; border: 1px solid #ccc !important; break-inside: avoid; }
+  .nb-lines { background: repeating-linear-gradient(transparent 0 33px, #9db4e8 33px 34px); margin-top: 6px; }
+}

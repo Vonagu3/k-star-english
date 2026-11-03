@@ -76,6 +76,10 @@ export const Exercise = z.discriminatedUnion('type', [
     source: z.string(), questions: z.array(Question).min(1) }),
   // Timed speed quiz over these word ids.
   z.object({ ...base, type: z.literal('quiz'), words: z.array(z.string()).min(4), seconds: z.number().int().min(20).max(120).default(45) }),
+  // Notebook mission: the child writes on paper, then photographs the page for the parent.
+  // `steps` are short English instructions; `model` is an example / text to copy; `lines` is the expected amount (lines in the notebook).
+  z.object({ ...base, type: z.literal('notebook'), task: z.string(), ru: z.string().optional(), emoji: z.string().optional(),
+    steps: z.array(z.string()).min(1).max(6), model: z.string().optional(), lines: z.number().int().min(1).max(20).default(5) }),
   // K-Culture corner: simple English text about Korea + a bonus Korean word.
   z.object({ ...base, type: z.literal('kculture'), emoji: z.string(), text: z.array(z.string()).min(1),
     korean: z.object({ ko: z.string(), roman: z.string(), en: z.string() }).optional(),
@@ -113,5 +117,7 @@ export const World = z.object({
   weeks: z.array(Week).min(1),
   showcase: Episode,
   finale: Episode.optional(),
+  /** Bonus worlds sit outside the main path: open from the start, sequential inside. */
+  bonus: z.boolean().optional(),
 });
 export type World = z.infer<typeof World>;

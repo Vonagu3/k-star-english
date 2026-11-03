@@ -57,10 +57,12 @@ export function isUnlocked(
   order: { id: string; worldId: string; kind: EpisodeKind }[],
   stars: Record<string, number>,
   forcedWorlds: string[],
+  bonusWorlds: string[] = [],
 ): boolean {
   if (index === 0) return true;
   const cur = order[index];
   const prev = order[index - 1];
+  if (prev.worldId !== cur.worldId && bonusWorlds.includes(cur.worldId)) return true;
   if ((stars[prev.id] ?? 0) >= 1) return true;
   // First episode of a world opened by the parent.
   if (prev.worldId !== cur.worldId && forcedWorlds.includes(cur.worldId)) return true;
@@ -112,6 +114,7 @@ export const QUEST_POOL = [
   { id: 'dance', text: 'Do a dance practice', ru: 'Потанцуй', goal: 1, metric: 'dance' },
   { id: 'draw', text: 'Draw a picture', ru: 'Нарисуй картинку', goal: 1, metric: 'draw' },
   { id: 'speak', text: 'Say 5 phrases aloud', ru: 'Скажи вслух 5 фраз', goal: 5, metric: 'spoken' },
+  { id: 'notebook', text: 'Do a notebook mission', ru: 'Выполни задание в тетради', goal: 1, metric: 'notebook' },
   { id: 'fans', text: 'Earn 300 fans', ru: 'Набери 300 фанатов', goal: 300, metric: 'fans' },
 ] as const;
 export type QuestMetric = (typeof QUEST_POOL)[number]['metric'];

@@ -2,7 +2,7 @@ import { get as idbGet, set as idbSet } from 'idb-keyval';
 import { supabase } from './supabase';
 
 export type Submission = {
-  id: string; kind: 'draw' | 'audio' | 'text'; lessonId: string; prompt: string;
+  id: string; kind: 'draw' | 'audio' | 'text' | 'photo'; lessonId: string; prompt: string;
   text?: string; url?: string; storagePath?: string; status: 'new' | 'approved' | 'redo';
   comment?: string; bonus?: number; createdAt: number;
 };
@@ -18,7 +18,7 @@ export async function submitWork(userId: string | null, s: { kind: Submission['k
   if (supabase && userId && navigator.onLine) {
     let storage_path: string | null = null;
     if (s.blob) {
-      const ext = s.kind === 'draw' ? 'png' : s.blob.type.includes('mp4') ? 'm4a' : 'webm';
+      const ext = s.kind === 'draw' ? 'png' : s.kind === 'photo' ? 'jpg' : s.blob.type.includes('mp4') ? 'm4a' : 'webm';
       storage_path = `${userId}/${id}.${ext}`;
       const up = await supabase.storage.from('submissions').upload(storage_path, s.blob, { contentType: s.blob.type });
       if (up.error) storage_path = null;

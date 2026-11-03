@@ -4,7 +4,7 @@ import { World, type Episode, type Exercise } from '../src/content/schema';
 
 const files = process.argv.slice(2).length
   ? process.argv.slice(2)
-  : ['world1', 'world2', 'world3'].map((w) => `src/content/stage1/${w}.json`);
+  : ['world1', 'world2', 'world3', 'world-paris'].map((w) => `src/content/stage1/${w}.json`);
 
 const errors: string[] = [];
 const allWords = new Map<string, string>();

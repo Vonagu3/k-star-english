@@ -6,12 +6,13 @@ import { useGame } from '../game/store';
 import TopBar from '../components/TopBar';
 
 const ORDER = EPISODE_ORDER.map((r) => ({ id: r.episode.id, worldId: r.world.id, kind: r.episode.kind }));
+const BONUS = WORLDS.filter((w) => w.bonus).map((w) => w.id);
 
 export function useUnlocked() {
   const progress = useGame((g) => g.s.progress);
   const forced = useGame((g) => g.s.forcedWorlds);
   const stars = useMemo(() => Object.fromEntries(Object.entries(progress).map(([k, v]) => [k, v.stars])), [progress]);
-  return useCallback((i: number) => isUnlocked(i, ORDER, stars, forced), [stars, forced]);
+  return useCallback((i: number) => isUnlocked(i, ORDER, stars, forced, BONUS), [stars, forced]);
 }
 
 export default function MapPage() {
@@ -30,7 +31,7 @@ export default function MapPage() {
             <div className="card row" style={{ background: `linear-gradient(120deg, ${w.color}, ${w.color}aa)`, color: '#fff', borderColor: w.color }}>
               <div style={{ fontSize: 48 }}>{w.emoji}</div>
               <div className="grow">
-                <div className="tiny" style={{ fontWeight: 800, opacity: 0.9 }}>WORLD {w.n} · {w.ru}</div>
+                <div className="tiny" style={{ fontWeight: 800, opacity: 0.9 }}>{w.bonus ? '✨ BONUS WORLD' : `WORLD ${w.n}`} · {w.ru}</div>
                 <h2 className="title-l">{w.title}</h2>
                 <div className="small" style={{ fontWeight: 700 }}>{w.subtitle}</div>
               </div>

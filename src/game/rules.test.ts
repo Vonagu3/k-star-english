@@ -48,6 +48,10 @@ describe('unlocking', () => {
     expect(isUnlocked(1, order, { a: 1 }, [])).toBe(true);
     expect(isUnlocked(2, order, { a: 3 }, [])).toBe(false);
   });
+  it('bonus worlds start open', () => {
+    expect(isUnlocked(2, order, {}, [], ['w2'])).toBe(true);
+    expect(isUnlocked(3, order, {}, [], ['w2'])).toBe(false);
+  });
   it('parent can force a world open', () => {
     expect(isUnlocked(2, order, {}, ['w2'])).toBe(true);
     expect(isUnlocked(3, order, {}, ['w2'])).toBe(false);

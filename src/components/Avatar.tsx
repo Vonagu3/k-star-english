@@ -66,6 +66,8 @@ function outfit(kind: string, c: string, skin: string) {
     case 'jacket': return <g><path d="M62 132 Q100 120 138 132 L140 204 L60 204 Z" fill={c} /><path d="M100 132 L100 204" stroke="#fff" strokeWidth="3" /><path d="M88 130 L100 152 L112 130" fill="#fff" /><circle cx="84" cy="170" r="4" fill="#ffd23f" /><circle cx="116" cy="170" r="4" fill="#ffd23f" /></g>;
     case 'uniform': return <g><path d="M64 132 Q100 122 136 132 L138 200 L62 200 Z" fill="#fff" /><path d="M64 132 L80 132 L76 200 L62 200 Z M136 132 L120 132 L124 200 L138 200 Z" fill={c} /><path d="M94 134 L100 160 L106 134 Z" fill="#ff4d4d" /><path d="M62 184 L138 184 L142 206 L58 206 Z" fill={c} /></g>;
     case 'dress': return <g><path d="M70 132 Q100 124 130 132 L132 168 L150 212 L50 212 L68 168 Z" fill={c} /><path d="M68 168 L132 168" stroke={dark} strokeWidth="4" /><circle cx="100" cy="150" r="5" fill="#fff" /></g>;
+    case 'spots': return <g><path d="M64 132 Q100 122 136 132 L138 204 L62 204 Z" fill={c} /><path d="M100 132 L100 204" stroke="#111" strokeWidth="3" />{[[78, 148], [118, 152], [86, 178], [124, 182], [72, 196], [108, 196]].map(([x, y], i) => <circle key={i} cx={x} cy={y} r="5.5" fill="#111" />)}</g>;
+    case 'cape': return <g><path d="M60 134 L36 214 L164 214 L140 134 Z" fill={c} opacity="0.85" /><path d="M64 132 Q100 122 136 132 L138 204 L62 204 Z" fill="#fff" /><path d="M86 160 l14 -12 14 12 -14 14z" fill={c} /></g>;
     case 'track': return <g><path d="M62 132 Q100 120 138 132 L140 204 L60 204 Z" fill={c} /><path d="M70 134 L70 204 M130 134 L130 204" stroke="#fff" strokeWidth="5" /><path d="M100 134 L100 204" stroke={dark} strokeWidth="3" /></g>;
     default: return <g><path d="M60 134 Q100 118 140 134 L142 206 L58 206 Z" fill={c} /><path d="M78 128 Q100 150 122 128" fill="none" stroke={dark} strokeWidth="6" /><rect x="82" y="176" width="36" height="16" rx="6" fill={dark} /></g>;
   }
@@ -78,6 +80,8 @@ function accessory(kind: string) {
     case 'headphones': return <g><path d="M46 84 Q46 22 100 22 Q154 22 154 84" fill="none" stroke="#333" strokeWidth="8" /><rect x="34" y="76" width="18" height="30" rx="8" fill="#ff5fa2" /><rect x="148" y="76" width="18" height="30" rx="8" fill="#ff5fa2" /></g>;
     case 'cap': return <g><path d="M48 62 Q52 22 100 20 Q148 22 152 62 Z" fill="#7c5cff" /><path d="M48 62 Q20 64 26 72 L100 66 Z" fill="#5a3ee0" /><circle cx="100" cy="22" r="5" fill="#fff" /></g>;
     case 'crown': return <path d="M72 34 L80 10 L92 28 L100 6 L108 28 L120 10 L128 34 Z" fill="#ffd23f" stroke="#e6a800" strokeWidth="2" />;
+    case 'mask': return <g><path d="M58 80 Q60 70 80 72 Q96 74 100 82 Q104 74 120 72 Q140 70 142 80 Q140 98 120 98 Q106 98 100 90 Q94 98 80 98 Q60 98 58 80 Z" fill="var(--mask, #e8283a)" opacity="0.92" /><ellipse cx="80" cy="86" rx="9" ry="8" fill="#fff" opacity="0.85" /><ellipse cx="120" cy="86" rx="9" ry="8" fill="#fff" opacity="0.85" /></g>;
+    case 'beret': return <g><ellipse cx="96" cy="32" rx="52" ry="18" fill="#1f1f3a" /><circle cx="96" cy="14" r="5" fill="#1f1f3a" /></g>;
     case 'mic': return <g><path d="M52 96 Q60 118 82 118" fill="none" stroke="#333" strokeWidth="3" /><circle cx="84" cy="118" r="4" fill="#333" /></g>;
     default: return null;
   }
@@ -103,7 +107,8 @@ export default function Avatar({ look, size = 180, move = 'idle', moveKey = 0, s
         <>
           <defs><linearGradient id={gid} x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor={bg1} /><stop offset="1" stopColor={bg2} /></linearGradient></defs>
           <rect x="0" y="0" width="200" height="260" rx="28" fill={`url(#${gid})`} />
-          {(look.bg === 'night' || look.bg === 'galaxy') && [20, 60, 170, 150, 35].map((x, i) => <circle key={i} cx={x} cy={20 + i * 37} r="2" fill="#fff" opacity="0.8" />)}
+          {look.bg === 'paris' && <path d="M160 250 L172 150 L176 120 L178 96 L180 120 L184 150 L196 250 L188 250 L182 196 L174 196 L168 250 Z M170 170 L190 170" fill="#1d1a45" opacity="0.7" stroke="#1d1a45" strokeWidth="2" />}
+          {(look.bg === 'night' || look.bg === 'galaxy' || look.bg === 'paris') && [20, 60, 170, 150, 35].map((x, i) => <circle key={i} cx={x} cy={20 + i * 37} r="2" fill="#fff" opacity="0.8" />)}
         </>
       )}
       <motion.g key={`b-${move}-${moveKey}`} animate={p.body} style={{ originX: '100px', originY: '200px' }}>
@@ -130,7 +135,8 @@ export default function Avatar({ look, size = 180, move = 'idle', moveKey = 0, s
         <ellipse cx="130" cy="104" rx="9" ry="5" fill="#ff8fb1" opacity="0.55" />
         <path d="M92 108 Q100 116 108 108" stroke="#2b2140" strokeWidth="3.5" fill="none" strokeLinecap="round" />
         {hairFront(look.hair, look.hairColor)}
-        {accessory(look.acc)}
+        <g style={{ ['--mask' as string]: look.outfitColor }}>{accessory(look.acc)}</g>
+        {look.acc === 'mask' && eyes(look.eyes)}
         {p.heart && (
           <motion.text key={`h-${moveKey}`} x="150" y="70" fontSize="30" initial={{ opacity: 0, y: 70 }} animate={{ opacity: [0, 1, 1, 0], y: [70, 40, 20, 0] }} transition={{ duration: 1.2 }}>💗</motion.text>
         )}

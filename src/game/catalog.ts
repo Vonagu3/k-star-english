@@ -22,18 +22,18 @@ export const SHOP: ShopItem[] = [
   s('hairColor', '#f4f1ea', 'Platinum', 100, '🤍'), s('hairColor', '#ff6a3d', 'Sunset', 90, '🧡'),
   s('eyes', 'sparkle', 'Sparkle eyes', 0, '✨'), s('eyes', 'smile', 'Happy eyes', 0, '😊'), s('eyes', 'wink', 'Wink', 40, '😉'), s('eyes', 'star', 'Star eyes', 90, '🤩'),
   s('outfit', 'hoodie', 'Hoodie', 0, '🧥'), s('outfit', 'tee', 'T-shirt', 0, '👕'), s('outfit', 'jacket', 'Stage jacket', 120, '🧥'),
-  s('outfit', 'uniform', 'School uniform', 80, '🎒'), s('outfit', 'dress', 'Party dress', 120, '👗'), s('outfit', 'track', 'Dance tracksuit', 100, '🕺'),
+  s('outfit', 'uniform', 'School uniform', 80, '🎒'), s('outfit', 'dress', 'Party dress', 120, '👗'), s('outfit', 'track', 'Dance tracksuit', 100, '🕺'), s('outfit', 'spots', 'Spotty hero suit', 150, '🐞'), s('outfit', 'cape', 'Hero cape', 130, '🦸'),
   s('outfitColor', '#ff8fc4', 'Pink', 0, '🩷'), s('outfitColor', '#7c5cff', 'Purple', 0, '💜'), s('outfitColor', '#2ec4b6', 'Mint', 30, '💚'),
   s('outfitColor', '#ffd23f', 'Yellow', 30, '💛'), s('outfitColor', '#222244', 'Midnight', 50, '🖤'), s('outfitColor', '#ffffff', 'White', 50, '🤍'), s('outfitColor', '#ff4d4d', 'Red', 40, '❤️'),
   s('acc', 'none', 'Nothing', 0, '➖'), s('acc', 'clip', 'Star clip', 30, '⭐'), s('acc', 'bow', 'Big bow', 50, '🎀'), s('acc', 'headphones', 'Headphones', 90, '🎧'),
-  s('acc', 'cap', 'Cap', 60, '🧢'), s('acc', 'crown', 'Tiny crown', 200, '👑'), s('acc', 'mic', 'Headset mic', 150, '🎙️'),
+  s('acc', 'cap', 'Cap', 60, '🧢'), s('acc', 'crown', 'Tiny crown', 200, '👑'), s('acc', 'mic', 'Headset mic', 150, '🎙️'), s('acc', 'mask', 'Hero mask', 80, '🎭'), s('acc', 'beret', 'Paris beret', 70, '🇫🇷'),
   s('stick', 'heart', 'Heart lightstick', 0, '💗'), s('stick', 'star', 'Star lightstick', 60, '🌟'), s('stick', 'round', 'Round lightstick', 60, '🔮'), s('stick', 'bunny', 'Bunny lightstick', 120, '🐰'),
-  s('bg', 'pink', 'Pink studio', 0, '🩷'), s('bg', 'night', 'Night stage', 80, '🌃'), s('bg', 'sunset', 'Sunset', 80, '🌅'), s('bg', 'galaxy', 'Galaxy', 150, '🌌'), s('bg', 'mint', 'Mint room', 50, '🍃'),
+  s('bg', 'pink', 'Pink studio', 0, '🩷'), s('bg', 'night', 'Night stage', 80, '🌃'), s('bg', 'sunset', 'Sunset', 80, '🌅'), s('bg', 'galaxy', 'Galaxy', 150, '🌌'), s('bg', 'mint', 'Mint room', 50, '🍃'), s('bg', 'paris', 'Paris night', 120, '🗼'),
 ];
 export const FREE_ITEMS = SHOP.filter((i) => i.price === 0).map((i) => i.id);
 
 export const BGS: Record<string, [string, string]> = {
-  pink: ['#ffd6ea', '#ffeaf4'], night: ['#1d1b4b', '#4b2a7a'], sunset: ['#ff9a8b', '#ffd36e'], galaxy: ['#120c3c', '#5a2ca0'], mint: ['#c9f7ea', '#eafff8'],
+  pink: ['#ffd6ea', '#ffeaf4'], night: ['#1d1b4b', '#4b2a7a'], sunset: ['#ff9a8b', '#ffd36e'], galaxy: ['#120c3c', '#5a2ca0'], mint: ['#c9f7ea', '#eafff8'], paris: ['#2b2a6b', '#ff8fa3'],
 };
 
 // ---- Dorm furniture (word ids match world2 vocabulary where possible) ----
@@ -47,6 +47,7 @@ export const FURNITURE: Furniture[] = [
   { id: 'dog', en: 'dog', emoji: '🐕', price: 100 }, { id: 'books', en: 'books', emoji: '📚', price: 25 }, { id: 'ball', en: 'ball', emoji: '⚽', price: 15 },
   { id: 'piano', en: 'piano', emoji: '🎹', price: 120 }, { id: 'headphones', en: 'headphones', emoji: '🎧', price: 45 }, { id: 'cake', en: 'cake', emoji: '🎂', price: 35 },
   { id: 'lightstick', en: 'lightstick', emoji: '🪄', price: 40 }, { id: 'balloon', en: 'balloon', emoji: '🎈', price: 15 }, { id: 'rug', en: 'rug', emoji: '🟪', price: 30 },
+  { id: 'eiffel', en: 'Eiffel Tower model', emoji: '🗼', price: 70 }, { id: 'croissant', en: 'croissant', emoji: '🥐', price: 20 }, { id: 'ladybird', en: 'ladybird toy', emoji: '🐞', price: 50 },
 ];
 export const DORM_COLS = 6;
 export const DORM_ROWS = 4;

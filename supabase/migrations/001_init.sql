@@ -10,7 +10,7 @@ create table if not exists public.kid_state (
 create table if not exists public.submissions (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null default auth.uid() references auth.users (id) on delete cascade,
-  kind text not null check (kind in ('draw', 'audio', 'text')),
+  kind text not null check (kind in ('draw', 'audio', 'text', 'photo')),
   lesson_id text not null,
   prompt text not null,
   text text,

@@ -124,7 +124,7 @@ function Dashboard() {
         </label>
         <label className="row small"><input type="checkbox" checked={s.profile?.settings.muted ?? false} onChange={(e) => update((st) => ({ ...st, profile: { ...st.profile!, settings: { ...st.profile!.settings, muted: e.target.checked } } }))} /> Выключить звуковые эффекты</label>
         <div className="small">Открыть мир вручную (если ребёнок уже знает тему):</div>
-        <div className="row wrap">{WORLDS.slice(1).map((w) => (
+        <div className="row wrap">{WORLDS.slice(1).filter((w) => !w.bonus).map((w) => (
           <button key={w.id} className="btn ghost small" disabled={s.forcedWorlds.includes(w.id)} onClick={() => update((st) => ({ ...st, forcedWorlds: [...st.forcedWorlds, w.id] }))}>
             {s.forcedWorlds.includes(w.id) ? `✅ ${w.title}` : `🔓 ${w.title}`}
           </button>
@@ -134,6 +134,7 @@ function Dashboard() {
           <button className="btn ghost small" disabled={newPin.length < 4} onClick={async () => { const h = await sha256(newPin); update((st) => ({ ...st, profile: { ...st.profile!, pinHash: h } })); setNewPin(''); }}>Сменить PIN</button>
         </div>
         <a href={PROGRAMME_URL} target="_blank" rel="noreferrer">📄 Программа обучения (Claude Doc)</a>
+        <a href="#/notebook">📓 Все задания для тетради (можно распечатать)</a>
         {supabase && <button className="btn ghost small" onClick={() => void supabase!.auth.signOut().then(() => location.reload())}>Выйти из семейного аккаунта на этом устройстве</button>}
       </div>
     </div>
@@ -149,9 +150,9 @@ function ReviewItem({ x, onReview }: { x: Submission; onReview: (x: Submission, 
   const ep = EPISODE_ORDER.find((r) => r.episode.id === x.lessonId);
   return (
     <div className="card col" style={{ boxShadow: 'none', background: x.status === 'new' ? '#fff' : '#fafafa' }}>
-      <div className="tiny muted">{new Date(x.createdAt).toLocaleString('ru-RU')} · {ep?.episode.title ?? x.lessonId} · {x.kind === 'draw' ? 'рисунок' : x.kind === 'audio' ? 'аудио' : 'текст'}</div>
+      <div className="tiny muted">{new Date(x.createdAt).toLocaleString('ru-RU')} · {ep?.episode.title ?? x.lessonId} · {x.kind === 'draw' ? 'рисунок' : x.kind === 'photo' ? 'фото тетради' : x.kind === 'audio' ? 'аудио' : 'текст'}</div>
       <div className="small"><b>Задание:</b> {x.prompt}</div>
-      {x.kind === 'draw' && x.url && <img src={x.url} alt="" style={{ maxWidth: '100%', borderRadius: 12, border: '2px solid var(--line)' }} />}
+      {(x.kind === 'draw' || x.kind === 'photo') && x.url && <img src={x.url} alt="" style={{ maxWidth: '100%', borderRadius: 12, border: '2px solid var(--line)' }} />}
       {x.kind === 'audio' && x.url && <audio controls src={x.url} />}
       {x.kind === 'text' && <div className="card tint-violet" style={{ boxShadow: 'none', whiteSpace: 'pre-wrap' }}>{x.text}</div>}
       {x.status === 'new' ? (

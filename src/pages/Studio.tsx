@@ -29,9 +29,9 @@ export default function Studio() {
     if (owned) {
       sfx.tap();
       update((x) => ({ ...x, profile: { ...x.profile!, look: { ...x.profile!.look, [it.slot]: it.value } } }));
-      setPreview(null); setMsg('');
+      setPreview(preview ? { ...preview, [it.slot]: it.value } : null); setMsg('');
     } else {
-      setPreview({ ...s.profile!.look, [it.slot]: it.value });
+      setPreview({ ...(preview ?? s.profile!.look), [it.slot]: it.value });
       setMsg(`${it.name}: ${it.price} ❤️`);
     }
   };
@@ -39,12 +39,13 @@ export default function Studio() {
     if (buy(it.id, it.price, 'look')) {
       sfx.coin();
       update((x) => ({ ...x, profile: { ...x.profile!, look: { ...x.profile!.look, [it.slot]: it.value } } }));
-      setPreview(null); setMsg(`You got ${it.name}! 🎉`);
+      setPreview(preview ? { ...preview, [it.slot]: it.value } : null); setMsg(`You got ${it.name}! 🎉`);
       setMove('pose'); setMk((k) => k + 1);
     } else { sfx.wrong(); setMsg('Not enough hearts yet — play episodes to earn more! · Пока не хватает сердечек'); }
   };
   const items = SHOP.filter((i) => i.slot === tab);
   const previewing = preview ? items.find((i) => preview[tab] === i.value && !s.inventory.includes(i.id)) : undefined;
+  const trying = preview && SHOP.some((i) => preview[i.slot] === i.value && !s.inventory.includes(i.id));
   return (
     <div className="page col">
       <TopBar />
@@ -58,7 +59,7 @@ export default function Studio() {
         </div>
         <div className="col grow" style={{ minWidth: 260 }}>
           <div className="row wrap" style={{ gap: 6 }}>
-            {TABS.map((t) => <button key={t.slot} className="chip" style={{ borderColor: tab === t.slot ? 'var(--pink)' : undefined, background: tab === t.slot ? 'var(--pink-soft)' : undefined }} onClick={() => { setTab(t.slot); setPreview(null); }}>{t.emoji} {t.label}</button>)}
+            {TABS.map((t) => <button key={t.slot} className="chip" style={{ borderColor: tab === t.slot ? 'var(--pink)' : undefined, background: tab === t.slot ? 'var(--pink-soft)' : undefined }} onClick={() => setTab(t.slot)}>{t.emoji} {t.label}</button>)}
           </div>
           <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(110px, 1fr))' }}>
             {items.map((it) => {
@@ -74,6 +75,7 @@ export default function Studio() {
             })}
           </div>
           {msg && <div className="card tint-sun small" style={{ fontWeight: 800 }}>{msg}</div>}
+          {trying && <button className="btn ghost small" onClick={() => { setPreview(null); setMsg(''); }}>↩️ Take off the try-on</button>}
           {previewing && <button className="btn sun" onClick={() => purchase(previewing)}>Buy {previewing.name} for {previewing.price} ❤️</button>}
         </div>
       </div>

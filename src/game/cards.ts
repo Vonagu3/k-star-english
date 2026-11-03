@@ -19,6 +19,7 @@ const CONCEPTS: { concept: string; rarity: Rarity; bg?: string; line: string }[]
   { concept: 'Dorm life', rarity: 'common', bg: 'sunset', line: 'This is my room.' },
   { concept: 'Practice', rarity: 'rare', bg: 'night', line: 'Practice makes perfect!' },
   { concept: 'Stage', rarity: 'epic', bg: 'galaxy', line: 'Thank you, fans!' },
+  { concept: 'Paris', rarity: 'rare', bg: 'paris', line: 'Bonjour from Paris!' },
 ];
 
 export const CARDS: Card[] = [];

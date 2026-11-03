@@ -1137,6 +1137,20 @@
                   "answer": 1
                 }
               ]
+            },
+            {
+              "type": "notebook",
+              "title": "Notebook Mission",
+              "task": "Copy the rooms of the dorm.",
+              "ru": "Перепиши названия комнат и нарисуй значок к каждой.",
+              "emoji": "🏠",
+              "steps": [
+                "Write the date at the top.",
+                "Copy the room words.",
+                "Draw a small picture next to each word."
+              ],
+              "model": "kitchen, bathroom, bedroom, living room, hall, garden\nThis is the kitchen. This is the bathroom.",
+              "lines": 5
             }
           ]
         },
@@ -1534,6 +1548,21 @@
                 "plant",
                 "flowers"
               ]
+            },
+            {
+              "type": "notebook",
+              "title": "Notebook Mission",
+              "task": "Draw a map of the Star Academy dorm and label it.",
+              "ru": "Нарисуй план общежития и подпиши комнаты и мебель.",
+              "emoji": "🗺️",
+              "steps": [
+                "Draw the rooms.",
+                "Label each room.",
+                "Write two things in each room.",
+                "Write one sentence: There is a… in the kitchen."
+              ],
+              "model": "kitchen: fridge, table\nliving room: sofa, TV\nThere is a sofa in the living room.",
+              "lines": 6
             }
           ]
         },
@@ -1790,6 +1819,20 @@
                   ]
                 }
               ]
+            },
+            {
+              "type": "notebook",
+              "title": "Notebook Mission",
+              "task": "Write a note to Mum about your new dorm.",
+              "ru": "Напиши маме записку о новом общежитии: что там есть.",
+              "emoji": "📝",
+              "steps": [
+                "Start with Dear Mum,",
+                "Write four sentences with There is or There are.",
+                "End with Love, {name}."
+              ],
+              "model": "Dear Mum,\nThe dorm is great! There is a big kitchen.\nThere are two bathrooms. There is a sofa in the living room.\nThere are four bedrooms.\nLove,\n{name}",
+              "lines": 8
             }
           ]
         }
@@ -2119,6 +2162,21 @@
                   ]
                 }
               ]
+            },
+            {
+              "type": "notebook",
+              "title": "Notebook Mission",
+              "task": "Draw your room and label it with in, on and under.",
+              "ru": "Нарисуй свою комнату и подпиши, где лежат вещи: in, on, under.",
+              "emoji": "🛏️",
+              "steps": [
+                "Draw your room.",
+                "Draw three things in it.",
+                "Write a label for each thing.",
+                "Write three sentences."
+              ],
+              "model": "The book is on the desk.\nThe bag is under the bed.\nThe T-shirt is in the wardrobe.",
+              "lines": 5
             }
           ]
         },
@@ -2349,6 +2407,20 @@
                 "There is a … lamp."
               ],
               "minWords": 12
+            },
+            {
+              "type": "notebook",
+              "title": "Notebook Mission",
+              "task": "Write about the colours in your room.",
+              "ru": "Напиши о цветах в своей комнате — 4 предложения.",
+              "emoji": "🎨",
+              "steps": [
+                "Copy the model.",
+                "Write about your room.",
+                "Underline the colours."
+              ],
+              "model": "My room is pink and white.\nMy bed is blue.\nMy desk is brown.\nI've got a yellow lamp.",
+              "lines": 5
             }
           ]
         },
@@ -2779,6 +2851,21 @@
                 "shelf",
                 "bed"
               ]
+            },
+            {
+              "type": "notebook",
+              "title": "Notebook Mission",
+              "task": "Write six sentences: In my room there is… / there are…",
+              "ru": "Напиши 6 предложений о своей комнате с there is / there are.",
+              "emoji": "🌟",
+              "steps": [
+                "Write the title: My Room.",
+                "Write three sentences with there is.",
+                "Write three sentences with there are.",
+                "Add in, on or under."
+              ],
+              "model": "My Room\nIn my room there is a bed.\nThere is a lamp on the desk.\nThere are two posters on the wall.\nThere are books under the bed.",
+              "lines": 8
             }
           ]
         }
@@ -2969,6 +3056,20 @@
                   "ru": "Встань перед зеркалом!"
                 }
               ]
+            },
+            {
+              "type": "notebook",
+              "title": "Notebook Mission",
+              "task": "Write where things are with next to and between.",
+              "ru": "Напиши, где стоят вещи в комнате стажёров: next to, between.",
+              "emoji": "📍",
+              "steps": [
+                "Draw three things in a row.",
+                "Copy the model.",
+                "Write two sentences about your drawing."
+              ],
+              "model": "The lamp is next to the bed.\nThe chair is between the desk and the wardrobe.\nThe guitar is next to the door.",
+              "lines": 5
             }
           ]
         },
@@ -3198,6 +3299,20 @@
               "prompt": "Draw a music room. There is a piano next to the window. There is a guitar between the piano and the door. Put a robot on the piano!",
               "ru": "Нарисуй музыкальную комнату",
               "emoji": "🎸"
+            },
+            {
+              "type": "notebook",
+              "title": "Notebook Mission",
+              "task": "Answer the questions about your room in full sentences.",
+              "ru": "Ответь на вопросы о своей комнате: Yes, there is / No, there isn't.",
+              "emoji": "❓",
+              "steps": [
+                "Copy each question.",
+                "Write a full answer.",
+                "Use Yes, there is. or No, there isn't."
+              ],
+              "model": "Is there a TV in your room?\nNo, there isn't.\nIs there a desk in your room?\nYes, there is. It's next to the window.\nAre there any posters?\nYes, there are.",
+              "lines": 8
             }
           ]
         },
@@ -3827,6 +3942,21 @@
               "prompt": "Draw your trainee desk. There is a microphone on the desk. Your headphones are next to the computer. There is a lightstick between two albums.",
               "ru": "Нарисуй свой стол стажёра",
               "emoji": "🎤"
+            },
+            {
+              "type": "notebook",
+              "title": "Notebook Mission",
+              "task": "Write a note: Where is Jun's lightstick?",
+              "ru": "Напиши Джуну записку: где его лайтстик и другие вещи.",
+              "emoji": "🔦",
+              "steps": [
+                "Start with Hi Jun,",
+                "Write where three things are.",
+                "Use in, on, under, next to.",
+                "End with your name."
+              ],
+              "model": "Hi Jun,\nYour lightstick is under the sofa!\nYour cap is on the chair.\nYour headphones are next to the TV.\nSee you,\n{name}",
+              "lines": 7
             }
           ]
         }
@@ -4286,6 +4416,20 @@
                   "answer": 0
                 }
               ]
+            },
+            {
+              "type": "notebook",
+              "title": "Notebook Mission",
+              "task": "Write the tens from 10 to 100 as words.",
+              "ru": "Напиши десятки от 10 до 100 словами и три своих числа.",
+              "emoji": "💯",
+              "steps": [
+                "Copy the tens.",
+                "Write three more numbers as words.",
+                "Circle the hardest word."
+              ],
+              "model": "10 ten, 20 twenty, 30 thirty, 40 forty, 50 fifty,\n60 sixty, 70 seventy, 80 eighty, 90 ninety, 100 a hundred\n45 forty-five",
+              "lines": 5
             }
           ]
         },
@@ -4577,6 +4721,21 @@
                   "ru": "Поставь лампу на стол!"
                 }
               ]
+            },
+            {
+              "type": "notebook",
+              "title": "Notebook Mission",
+              "task": "Draw and label your dream room.",
+              "ru": "Нарисуй комнату мечты и напиши о ней 5 предложений.",
+              "emoji": "🏰",
+              "steps": [
+                "Draw your dream room.",
+                "Label six things.",
+                "Write five sentences.",
+                "Use big, small and colours."
+              ],
+              "model": "My dream room is big.\nThere is a pink bed next to the window.\nThere are three guitars on the wall.\nThere is a small TV.\nThere are lots of posters.",
+              "lines": 8
             }
           ]
         },
@@ -4826,6 +4985,22 @@
                 "lamp",
                 "Stars"
               ]
+            },
+            {
+              "type": "notebook",
+              "title": "Notebook Mission",
+              "task": "Write an email to Sora about your dream room.",
+              "ru": "Напиши Соре письмо о своей комнате мечты.",
+              "emoji": "📧",
+              "steps": [
+                "Start with Hi Sora!",
+                "Write five or six sentences.",
+                "Use there is, there are and prepositions.",
+                "Ask Sora one question.",
+                "End with Bye, {name}."
+              ],
+              "model": "Hi Sora!\nMy dream room is big and purple. There is a big bed under the window.\nThere are two desks. There are lots of books on the shelves.\nThere is a dance mirror next to the door.\nWhat is your dream room like?\nBye,\n{name}",
+              "lines": 10
             }
           ]
         }

@@ -14,6 +14,7 @@ import Cards from './pages/Cards';
 import Parent from './pages/Parent';
 import Onboarding from './pages/Onboarding';
 import Login from './pages/Login';
+import NotebookBook from './pages/NotebookBook';
 
 function LessonRoute() {
   const { id } = useParams();
@@ -92,6 +93,7 @@ export default function App() {
         <Route path="/dorm" element={<Dorm />} />
         <Route path="/cards" element={<Cards />} />
         <Route path="/parent" element={<Parent />} />
+        <Route path="/notebook" element={<NotebookBook />} />
         <Route path="*" element={<Home />} />
       </Routes>
       <Nav />

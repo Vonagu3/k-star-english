@@ -1,0 +1,2985 @@
+{
+  "id": "paris",
+  "n": 4,
+  "bonus": true,
+  "title": "Paris Hero Mission",
+  "subtitle": "A secret hero in Paris",
+  "ru": "Тайный герой в Париже",
+  "emoji": "🐞",
+  "color": "#ff3b4e",
+  "grammar": [
+    "can / can't for abilities: I can fly. I can't swim. Can you jump? Yes, I can. / No, I can't.",
+    "Hero costumes: colours & clothes — My mask is red. My boots are black. spots / stripes",
+    "Places in a city + there is / there are (recycled)",
+    "Directions: turn left, turn right, go straight on; next to, opposite, between, behind, in front of",
+    "Imperatives for missions: Look at the map! Go to the park!",
+    "Present Simple recycled: Luc makes croissants every morning."
+  ],
+  "words": [
+    {
+      "id": "hero",
+      "en": "hero",
+      "ru": "герой",
+      "emoji": "🦸‍♀️",
+      "level": "extra"
+    },
+    {
+      "id": "trainee",
+      "en": "trainee",
+      "ru": "стажёр",
+      "emoji": "⭐",
+      "level": "extra"
+    },
+    {
+      "id": "ladybird",
+      "en": "ladybird",
+      "ru": "божья коровка",
+      "emoji": "🐞",
+      "level": "extra"
+    },
+    {
+      "id": "secret",
+      "en": "secret",
+      "ru": "секрет, тайный",
+      "emoji": "🤫",
+      "level": "extra"
+    },
+    {
+      "id": "mission",
+      "en": "mission",
+      "ru": "миссия, задание",
+      "emoji": "🎯",
+      "level": "extra"
+    },
+    {
+      "id": "paris",
+      "en": "Paris",
+      "ru": "Париж",
+      "emoji": "🇫🇷",
+      "level": "extra"
+    },
+    {
+      "id": "spots",
+      "en": "spots",
+      "ru": "пятнышки, горошек",
+      "emoji": "🔴",
+      "level": "extra"
+    },
+    {
+      "id": "stripes",
+      "en": "stripes",
+      "ru": "полоски",
+      "emoji": "🦓",
+      "level": "movers"
+    },
+    {
+      "id": "mask",
+      "en": "mask",
+      "ru": "маска",
+      "emoji": "🎭",
+      "level": "extra"
+    },
+    {
+      "id": "cape",
+      "en": "cape",
+      "ru": "плащ",
+      "emoji": "🦸",
+      "level": "extra"
+    },
+    {
+      "id": "boots",
+      "en": "boots",
+      "ru": "сапоги, ботинки",
+      "emoji": "👢",
+      "level": "starters"
+    },
+    {
+      "id": "gloves",
+      "en": "gloves",
+      "ru": "перчатки",
+      "emoji": "🧤",
+      "level": "movers"
+    },
+    {
+      "id": "belt",
+      "en": "belt",
+      "ru": "пояс, ремень",
+      "emoji": "🥋",
+      "level": "extra"
+    },
+    {
+      "id": "hat",
+      "en": "hat",
+      "ru": "шляпа, шапка",
+      "emoji": "🎩",
+      "level": "starters"
+    },
+    {
+      "id": "t-shirt",
+      "en": "T-shirt",
+      "ru": "футболка",
+      "emoji": "👕",
+      "level": "starters"
+    },
+    {
+      "id": "fly",
+      "en": "fly",
+      "ru": "летать",
+      "emoji": "🕊️",
+      "level": "starters"
+    },
+    {
+      "id": "jump",
+      "en": "jump",
+      "ru": "прыгать",
+      "emoji": "🤸",
+      "level": "starters"
+    },
+    {
+      "id": "run",
+      "en": "run",
+      "ru": "бегать",
+      "emoji": "🏃‍♀️",
+      "level": "starters"
+    },
+    {
+      "id": "swim",
+      "en": "swim",
+      "ru": "плавать",
+      "emoji": "🏊‍♀️",
+      "level": "starters"
+    },
+    {
+      "id": "climb",
+      "en": "climb",
+      "ru": "лазать, взбираться",
+      "emoji": "🧗‍♀️",
+      "level": "movers"
+    },
+    {
+      "id": "can",
+      "en": "can",
+      "ru": "могу, умею",
+      "emoji": "✅",
+      "level": "starters"
+    },
+    {
+      "id": "cant",
+      "en": "can't",
+      "ru": "не могу, не умею",
+      "emoji": "❌",
+      "level": "starters"
+    },
+    {
+      "id": "help",
+      "en": "help",
+      "ru": "помогать",
+      "emoji": "🤝",
+      "level": "movers"
+    },
+    {
+      "id": "save",
+      "en": "save",
+      "ru": "спасать",
+      "emoji": "🛟",
+      "level": "extra"
+    },
+    {
+      "id": "fast",
+      "en": "fast",
+      "ru": "быстро, быстрый",
+      "emoji": "⚡",
+      "level": "movers"
+    },
+    {
+      "id": "strong",
+      "en": "strong",
+      "ru": "сильный",
+      "emoji": "💪",
+      "level": "movers"
+    },
+    {
+      "id": "high",
+      "en": "high",
+      "ru": "высоко",
+      "emoji": "⬆️",
+      "level": "movers"
+    },
+    {
+      "id": "brave",
+      "en": "brave",
+      "ru": "смелый",
+      "emoji": "🦁",
+      "level": "flyers"
+    },
+    {
+      "id": "team",
+      "en": "team",
+      "ru": "команда",
+      "emoji": "👫",
+      "level": "movers"
+    },
+    {
+      "id": "power",
+      "en": "power",
+      "ru": "суперсила",
+      "emoji": "✨",
+      "level": "extra"
+    },
+    {
+      "id": "baker",
+      "en": "baker",
+      "ru": "пекарь",
+      "emoji": "👨‍🍳",
+      "level": "extra"
+    },
+    {
+      "id": "artist",
+      "en": "artist",
+      "ru": "художник",
+      "emoji": "🎨",
+      "level": "movers"
+    },
+    {
+      "id": "coach",
+      "en": "coach",
+      "ru": "тренер",
+      "emoji": "📣",
+      "level": "extra"
+    },
+    {
+      "id": "croissant",
+      "en": "croissant",
+      "ru": "круассан",
+      "emoji": "🥐",
+      "level": "extra"
+    },
+    {
+      "id": "red",
+      "en": "red",
+      "ru": "красный",
+      "emoji": "🔴",
+      "level": "starters"
+    },
+    {
+      "id": "black",
+      "en": "black",
+      "ru": "чёрный",
+      "emoji": "⚫",
+      "level": "starters"
+    },
+    {
+      "id": "blue",
+      "en": "blue",
+      "ru": "синий, голубой",
+      "emoji": "🔵",
+      "level": "starters"
+    },
+    {
+      "id": "green",
+      "en": "green",
+      "ru": "зелёный",
+      "emoji": "🟢",
+      "level": "starters"
+    },
+    {
+      "id": "yellow",
+      "en": "yellow",
+      "ru": "жёлтый",
+      "emoji": "🟡",
+      "level": "starters"
+    },
+    {
+      "id": "pink",
+      "en": "pink",
+      "ru": "розовый",
+      "emoji": "🩷",
+      "level": "starters"
+    },
+    {
+      "id": "purple",
+      "en": "purple",
+      "ru": "фиолетовый",
+      "emoji": "🟣",
+      "level": "starters"
+    },
+    {
+      "id": "white",
+      "en": "white",
+      "ru": "белый",
+      "emoji": "⚪",
+      "level": "starters"
+    },
+    {
+      "id": "dance",
+      "en": "dance",
+      "ru": "танцевать",
+      "emoji": "💃",
+      "level": "starters"
+    },
+    {
+      "id": "sing",
+      "en": "sing",
+      "ru": "петь",
+      "emoji": "🎤",
+      "level": "starters"
+    },
+    {
+      "id": "draw",
+      "en": "draw",
+      "ru": "рисовать",
+      "emoji": "✏️",
+      "level": "starters"
+    },
+    {
+      "id": "city",
+      "en": "city",
+      "ru": "город",
+      "emoji": "🏙️",
+      "level": "movers"
+    },
+    {
+      "id": "street",
+      "en": "street",
+      "ru": "улица",
+      "emoji": "🛣️",
+      "level": "starters"
+    },
+    {
+      "id": "park",
+      "en": "park",
+      "ru": "парк",
+      "emoji": "🌳",
+      "level": "starters"
+    },
+    {
+      "id": "cafe",
+      "en": "café",
+      "ru": "кафе",
+      "emoji": "☕",
+      "level": "movers"
+    },
+    {
+      "id": "bakery",
+      "en": "bakery",
+      "ru": "пекарня",
+      "emoji": "🥖",
+      "level": "extra"
+    },
+    {
+      "id": "shop",
+      "en": "shop",
+      "ru": "магазин",
+      "emoji": "🏪",
+      "level": "starters"
+    },
+    {
+      "id": "museum",
+      "en": "museum",
+      "ru": "музей",
+      "emoji": "🏛️",
+      "level": "movers"
+    },
+    {
+      "id": "bridge",
+      "en": "bridge",
+      "ru": "мост",
+      "emoji": "🌉",
+      "level": "movers"
+    },
+    {
+      "id": "river",
+      "en": "river",
+      "ru": "река",
+      "emoji": "🏞️",
+      "level": "movers"
+    },
+    {
+      "id": "tower",
+      "en": "tower",
+      "ru": "башня",
+      "emoji": "🗼",
+      "level": "extra"
+    },
+    {
+      "id": "eiffel-tower",
+      "en": "Eiffel Tower",
+      "ru": "Эйфелева башня",
+      "emoji": "🗼",
+      "level": "extra"
+    },
+    {
+      "id": "map",
+      "en": "map",
+      "ru": "карта",
+      "emoji": "🗺️",
+      "level": "movers"
+    },
+    {
+      "id": "left",
+      "en": "left",
+      "ru": "лево, налево",
+      "emoji": "⬅️",
+      "level": "movers"
+    },
+    {
+      "id": "right",
+      "en": "right",
+      "ru": "право, направо",
+      "emoji": "➡️",
+      "level": "movers"
+    },
+    {
+      "id": "turn-left",
+      "en": "turn left",
+      "ru": "поверни налево",
+      "emoji": "↩️",
+      "level": "movers"
+    },
+    {
+      "id": "turn-right",
+      "en": "turn right",
+      "ru": "поверни направо",
+      "emoji": "↪️",
+      "level": "movers"
+    },
+    {
+      "id": "go-straight-on",
+      "en": "go straight on",
+      "ru": "иди прямо",
+      "emoji": "⬆️",
+      "level": "movers"
+    },
+    {
+      "id": "next-to",
+      "en": "next to",
+      "ru": "рядом с",
+      "emoji": "👭",
+      "level": "starters"
+    },
+    {
+      "id": "opposite",
+      "en": "opposite",
+      "ru": "напротив",
+      "emoji": "↔️",
+      "level": "movers"
+    },
+    {
+      "id": "between",
+      "en": "between",
+      "ru": "между",
+      "emoji": "↕️",
+      "level": "starters"
+    },
+    {
+      "id": "behind",
+      "en": "behind",
+      "ru": "позади, за",
+      "emoji": "🙈",
+      "level": "starters"
+    },
+    {
+      "id": "in-front-of",
+      "en": "in front of",
+      "ru": "перед",
+      "emoji": "👀",
+      "level": "starters"
+    },
+    {
+      "id": "street-lamp",
+      "en": "street lamp",
+      "ru": "уличный фонарь",
+      "emoji": "💡",
+      "level": "extra"
+    },
+    {
+      "id": "painting",
+      "en": "painting",
+      "ru": "картина",
+      "emoji": "🖼️",
+      "level": "movers"
+    },
+    {
+      "id": "kite",
+      "en": "kite",
+      "ru": "воздушный змей",
+      "emoji": "🪁",
+      "level": "starters"
+    },
+    {
+      "id": "puppy",
+      "en": "puppy",
+      "ru": "щенок",
+      "emoji": "🐶",
+      "level": "movers"
+    },
+    {
+      "id": "postcard",
+      "en": "postcard",
+      "ru": "открытка",
+      "emoji": "💌",
+      "level": "movers"
+    },
+    {
+      "id": "boat",
+      "en": "boat",
+      "ru": "лодка, кораблик",
+      "emoji": "⛵",
+      "level": "starters"
+    },
+    {
+      "id": "bus",
+      "en": "bus",
+      "ru": "автобус",
+      "emoji": "🚌",
+      "level": "starters"
+    },
+    {
+      "id": "square",
+      "en": "square",
+      "ru": "площадь",
+      "emoji": "⛲",
+      "level": "movers"
+    },
+    {
+      "id": "tree",
+      "en": "tree",
+      "ru": "дерево",
+      "emoji": "🌳",
+      "level": "starters"
+    },
+    {
+      "id": "bench",
+      "en": "bench",
+      "ru": "скамейка",
+      "emoji": "🪑",
+      "level": "extra"
+    },
+    {
+      "id": "friend",
+      "en": "friend",
+      "ru": "друг, подруга",
+      "emoji": "🤗",
+      "level": "starters"
+    },
+    {
+      "id": "cat",
+      "en": "cat",
+      "ru": "кошка",
+      "emoji": "🐱",
+      "level": "starters"
+    },
+    {
+      "id": "dog",
+      "en": "dog",
+      "ru": "собака",
+      "emoji": "🐕",
+      "level": "starters"
+    },
+    {
+      "id": "mum",
+      "en": "mum",
+      "ru": "мама",
+      "emoji": "👩",
+      "level": "starters"
+    }
+  ],
+  "weeks": [
+    {
+      "n": 1,
+      "title": "Hero training",
+      "episodes": [
+        {
+          "id": "p-e01",
+          "title": "Meet Pip",
+          "emoji": "🐞",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "words": [
+                "hero",
+                "trainee",
+                "ladybird",
+                "secret",
+                "mission",
+                "paris",
+                "spots"
+              ]
+            },
+            {
+              "type": "listen",
+              "items": [
+                {
+                  "say": "a ladybird",
+                  "options": [
+                    {
+                      "emoji": "🐶"
+                    },
+                    {
+                      "emoji": "🐞"
+                    },
+                    {
+                      "emoji": "🗼"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "a secret",
+                  "options": [
+                    {
+                      "emoji": "🤫"
+                    },
+                    {
+                      "emoji": "🥐"
+                    },
+                    {
+                      "emoji": "🎨"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "Paris",
+                  "options": [
+                    {
+                      "emoji": "🇰🇷"
+                    },
+                    {
+                      "emoji": "🇬🇧"
+                    },
+                    {
+                      "emoji": "🇫🇷"
+                    }
+                  ],
+                  "answer": 2
+                },
+                {
+                  "say": "red spots",
+                  "options": [
+                    {
+                      "emoji": "🦓"
+                    },
+                    {
+                      "emoji": "🔴"
+                    },
+                    {
+                      "emoji": "🟢"
+                    }
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "read",
+              "story": {
+                "title": "A Tiny Red Friend",
+                "emoji": "🐞",
+                "paragraphs": [
+                  "{name} is in Paris with her mum. She is in a park. There is a big green tree.",
+                  "On the tree there is a tiny red ladybird with black spots. \"Hello, {name}!\" says the ladybird. \"My name is Pip. I can talk!\"",
+                  "\"Wow!\" says {name}. Pip smiles. \"You are kind and brave. Do you want to be a secret hero? You can help people in Paris.\" \"Yes, please!\" says {name}. Now she is a hero trainee. Shh! It's a secret!"
+                ]
+              },
+              "questions": [
+                {
+                  "q": "Where is {name}?",
+                  "options": [
+                    "in a café",
+                    "in a park",
+                    "in a museum"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "What colour is Pip?",
+                  "options": [
+                    "red and black",
+                    "blue and white",
+                    "green"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "What is {name} now?",
+                  "options": [
+                    "a baker",
+                    "a teacher",
+                    "a hero trainee"
+                  ],
+                  "answer": 2
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "items": [
+                {
+                  "text": "Hello, Pip!",
+                  "ru": "Привет, Пип!"
+                },
+                {
+                  "text": "I am a hero trainee.",
+                  "ru": "Я — стажёр-герой."
+                },
+                {
+                  "text": "It's a secret!",
+                  "ru": "Это секрет!"
+                },
+                {
+                  "text": "I am in Paris.",
+                  "ru": "Я в Париже."
+                }
+              ]
+            },
+            {
+              "type": "chant",
+              "title": "Spots On, Mission On!",
+              "bpm": 108,
+              "lines": [
+                "Red and black, spots on my back!",
+                "Tiny Pip is on the track!",
+                "Spots on! Mission on!",
+                "Secret hero, come along!",
+                "Paris, Paris, here I am!",
+                "Hero trainee, yes I can!"
+              ],
+              "blanks": [
+                "spots",
+                "Mission",
+                "Secret",
+                "Paris"
+              ]
+            },
+            {
+              "type": "draw",
+              "prompt": "Draw Pip the ladybird on a green leaf. Pip is red with five black spots. Draw a big smile!",
+              "ru": "Нарисуй божью коровку Пип на зелёном листике: красная, пять чёрных пятнышек и улыбка.",
+              "emoji": "🐞"
+            }
+          ]
+        },
+        {
+          "id": "p-e02",
+          "title": "I Can Fly!",
+          "emoji": "🕊️",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "words": [
+                "fly",
+                "jump",
+                "run",
+                "swim",
+                "climb",
+                "can",
+                "cant"
+              ]
+            },
+            {
+              "type": "listen",
+              "items": [
+                {
+                  "say": "I can fly.",
+                  "options": [
+                    {
+                      "emoji": "🕊️"
+                    },
+                    {
+                      "emoji": "🏊‍♀️"
+                    },
+                    {
+                      "emoji": "🧗‍♀️"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "I can swim.",
+                  "options": [
+                    {
+                      "emoji": "🏃‍♀️"
+                    },
+                    {
+                      "emoji": "🏊‍♀️"
+                    },
+                    {
+                      "emoji": "🤸"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "I can climb.",
+                  "options": [
+                    {
+                      "emoji": "🕊️"
+                    },
+                    {
+                      "emoji": "🤸"
+                    },
+                    {
+                      "emoji": "🧗‍♀️"
+                    }
+                  ],
+                  "answer": 2
+                },
+                {
+                  "say": "I can jump.",
+                  "options": [
+                    {
+                      "emoji": "🤸"
+                    },
+                    {
+                      "emoji": "🏊‍♀️"
+                    },
+                    {
+                      "emoji": "🏃‍♀️"
+                    }
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "gap",
+              "items": [
+                {
+                  "text": "I ___ fly. ✅",
+                  "options": [
+                    "can",
+                    "can't"
+                  ],
+                  "answer": 0,
+                  "ru": "Я умею летать."
+                },
+                {
+                  "text": "I ___ swim. ❌",
+                  "options": [
+                    "can",
+                    "can't"
+                  ],
+                  "answer": 1,
+                  "ru": "Я не умею плавать."
+                },
+                {
+                  "text": "Pip can ___. 🕊️",
+                  "options": [
+                    "swim",
+                    "fly",
+                    "run"
+                  ],
+                  "answer": 1,
+                  "ru": "Пип умеет летать."
+                },
+                {
+                  "text": "I can ___ fast. 🏃‍♀️",
+                  "options": [
+                    "run",
+                    "fly",
+                    "climb"
+                  ],
+                  "answer": 0,
+                  "ru": "Я умею быстро бегать."
+                }
+              ]
+            },
+            {
+              "type": "sentence",
+              "items": [
+                {
+                  "sentence": "I can jump very high.",
+                  "ru": "Я умею прыгать очень высоко."
+                },
+                {
+                  "sentence": "Pip can't swim.",
+                  "ru": "Пип не умеет плавать."
+                },
+                {
+                  "sentence": "I can run fast.",
+                  "ru": "Я умею быстро бегать."
+                }
+              ]
+            },
+            {
+              "type": "dance",
+              "title": "Hero Power Moves",
+              "items": [
+                {
+                  "text": "I can fly! Hands up and spin!",
+                  "moves": [
+                    "hands-up",
+                    "spin"
+                  ]
+                },
+                {
+                  "text": "I can jump! Jump and clap!",
+                  "moves": [
+                    "jump",
+                    "clap"
+                  ]
+                },
+                {
+                  "text": "I can run! Step left, step right!",
+                  "moves": [
+                    "step-left",
+                    "step-right"
+                  ]
+                },
+                {
+                  "text": "Hero pose!",
+                  "moves": [
+                    "hands-down",
+                    "pose"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "notebook",
+              "title": "My Hero Powers",
+              "task": "Write what you can and can't do.",
+              "ru": "Напиши в тетради, что ты умеешь и чего не умеешь делать.",
+              "emoji": "📓",
+              "steps": [
+                "Write the title: My Powers.",
+                "Write 3 sentences with I can.",
+                "Write 2 sentences with I can't.",
+                "Draw a ✅ or ❌ next to each sentence."
+              ],
+              "model": "My Powers\nI can run fast. I can jump high. I can dance.\nI can't fly. I can't swim very well.",
+              "lines": 6
+            }
+          ]
+        },
+        {
+          "id": "p-e03",
+          "title": "My Hero Costume",
+          "emoji": "🎭",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "words": [
+                "mask",
+                "cape",
+                "boots",
+                "gloves",
+                "belt",
+                "stripes"
+              ]
+            },
+            {
+              "type": "memory",
+              "words": [
+                "mask",
+                "cape",
+                "boots",
+                "gloves",
+                "belt",
+                "stripes"
+              ]
+            },
+            {
+              "type": "gap",
+              "items": [
+                {
+                  "text": "My ___ is red with black spots. 🎭",
+                  "options": [
+                    "mask",
+                    "boots",
+                    "river"
+                  ],
+                  "answer": 0,
+                  "ru": "Моя маска красная с чёрными пятнышками."
+                },
+                {
+                  "text": "My cape ___ purple.",
+                  "options": [
+                    "is",
+                    "are",
+                    "can"
+                  ],
+                  "answer": 0,
+                  "ru": "Мой плащ фиолетовый."
+                },
+                {
+                  "text": "My boots ___ pink.",
+                  "options": [
+                    "is",
+                    "are",
+                    "am"
+                  ],
+                  "answer": 1,
+                  "ru": "Мои сапоги розовые."
+                },
+                {
+                  "text": "I've got blue and white ___. 🦓",
+                  "options": [
+                    "stripes",
+                    "spots",
+                    "cape"
+                  ],
+                  "answer": 0,
+                  "ru": "У меня сине-белые полоски."
+                }
+              ]
+            },
+            {
+              "type": "spell",
+              "words": [
+                "mask",
+                "cape",
+                "boots",
+                "spots"
+              ]
+            },
+            {
+              "type": "read",
+              "story": {
+                "title": "Pip's Costume Box",
+                "emoji": "🎁",
+                "paragraphs": [
+                  "Pip has got a secret box. \"Open it, {name}!\" In the box there is a red mask with black spots. There is a long black cape, too.",
+                  "There are red boots and black gloves. There is a yellow belt with a little star. {name} puts on the costume. She looks in the mirror.",
+                  "\"I'm a hero!\" she says. \"Not yet,\" says Pip. \"First, training!\""
+                ]
+              },
+              "questions": [
+                {
+                  "q": "What colour is the mask?",
+                  "options": [
+                    "red with black spots",
+                    "blue with stripes",
+                    "green"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "What colour are the boots?",
+                  "options": [
+                    "black",
+                    "red",
+                    "white"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "What is on the belt?",
+                  "options": [
+                    "a star",
+                    "a ladybird",
+                    "a heart"
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "notebook",
+              "title": "Design Your Costume",
+              "task": "Draw your hero costume and write about it.",
+              "ru": "Нарисуй свой костюм героя и напиши 4 предложения о нём.",
+              "emoji": "🦸‍♀️",
+              "steps": [
+                "Draw yourself in your hero costume.",
+                "Colour it in.",
+                "Write 4 sentences: My mask is…, My cape is…, My boots are…",
+                "Add one sentence about spots or stripes."
+              ],
+              "model": "My mask is red. My cape is purple. My boots are pink. My gloves are black. My cape has got white stars.",
+              "lines": 6
+            }
+          ]
+        },
+        {
+          "id": "p-e04",
+          "title": "Can You…?",
+          "emoji": "💪",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "words": [
+                "fast",
+                "strong",
+                "high",
+                "brave",
+                "help",
+                "save"
+              ]
+            },
+            {
+              "type": "listen",
+              "items": [
+                {
+                  "say": "Can you swim? Yes, I can.",
+                  "options": [
+                    {
+                      "text": "✅ Yes, I can."
+                    },
+                    {
+                      "text": "❌ No, I can't."
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "Can you fly? No, I can't.",
+                  "options": [
+                    {
+                      "text": "✅ Yes, I can."
+                    },
+                    {
+                      "text": "❌ No, I can't."
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "She is strong.",
+                  "options": [
+                    {
+                      "emoji": "💪"
+                    },
+                    {
+                      "emoji": "🦁"
+                    },
+                    {
+                      "emoji": "⚡"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "He can run fast.",
+                  "options": [
+                    {
+                      "emoji": "🕊️"
+                    },
+                    {
+                      "emoji": "⚡"
+                    },
+                    {
+                      "emoji": "🧗‍♀️"
+                    }
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "items": [
+                {
+                  "text": "Can you fly?",
+                  "ru": "Ты умеешь летать?"
+                },
+                {
+                  "text": "Yes, I can.",
+                  "ru": "Да, умею."
+                },
+                {
+                  "text": "No, I can't.",
+                  "ru": "Нет, не умею."
+                },
+                {
+                  "text": "I can help!",
+                  "ru": "Я могу помочь!"
+                },
+                {
+                  "text": "I am brave and strong.",
+                  "ru": "Я смелая и сильная."
+                }
+              ]
+            },
+            {
+              "type": "quiz",
+              "words": [
+                "fly",
+                "jump",
+                "run",
+                "swim",
+                "climb",
+                "fast",
+                "strong",
+                "brave"
+              ],
+              "seconds": 45
+            },
+            {
+              "type": "chant",
+              "title": "Can You? Yes, I Can!",
+              "bpm": 112,
+              "lines": [
+                "Can you jump? Yes, I can!",
+                "Can you run? Yes, I can!",
+                "Can you fly? No, I can't!",
+                "But I can help! Yes, I can!",
+                "Brave and strong, fast and high,",
+                "Little hero, touch the sky!"
+              ],
+              "blanks": [
+                "jump",
+                "run",
+                "help",
+                "strong",
+                "high"
+              ]
+            },
+            {
+              "type": "draw",
+              "prompt": "Draw a superhero with a super power. Is she fast? Is she strong? Can she fly? Write \"She can …\" under your picture.",
+              "ru": "Нарисуй героя с суперсилой и подпиши: She can …",
+              "emoji": "⚡"
+            }
+          ]
+        },
+        {
+          "id": "p-e05",
+          "title": "The Hero Team",
+          "emoji": "👫",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "words": [
+                "team",
+                "power",
+                "baker",
+                "artist",
+                "coach",
+                "croissant",
+                "friend"
+              ]
+            },
+            {
+              "type": "read",
+              "story": {
+                "title": "Meet the Team",
+                "emoji": "👫",
+                "paragraphs": [
+                  "Pip has got a hero team in Paris. Luc is a baker's son. He makes croissants every morning. His power: he can run very fast.",
+                  "Zoé is a street artist. She draws on big walls. She can climb high. Mina is a coach from Star Academy. She is in Paris for one week. She can jump very high.",
+                  "\"And you, {name}?\" asks Pip. \"I can dance and sing!\" says {name}. \"Great!\" says Mina. \"Welcome to the team!\""
+                ]
+              },
+              "questions": [
+                {
+                  "q": "Who makes croissants?",
+                  "options": [
+                    "Zoé",
+                    "Luc",
+                    "Mina"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "What can Zoé do?",
+                  "options": [
+                    "She can climb high.",
+                    "She can fly.",
+                    "She can swim."
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "Where is Mina from?",
+                  "options": [
+                    "the bakery",
+                    "Star Academy",
+                    "the museum"
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "sentence",
+              "items": [
+                {
+                  "sentence": "Luc can run very fast.",
+                  "ru": "Люк умеет бегать очень быстро."
+                },
+                {
+                  "sentence": "Zoé is a street artist.",
+                  "ru": "Зоэ — уличная художница."
+                },
+                {
+                  "sentence": "Welcome to the team!",
+                  "ru": "Добро пожаловать в команду!"
+                }
+              ]
+            },
+            {
+              "type": "watch",
+              "videoTitle": "Open the grammar videos and find a video about \"can\". Watch it.",
+              "url": "https://learnenglishkids.britishcouncil.org/grammar-vocabulary/grammar-videos",
+              "source": "British Council LearnEnglish Kids",
+              "questions": [
+                {
+                  "q": "We use \"can\" for…",
+                  "options": [
+                    "things we are able to do",
+                    "colours",
+                    "numbers"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "What is the short form of \"cannot\"?",
+                  "options": [
+                    "can't",
+                    "don't",
+                    "isn't"
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "write",
+              "prompt": "Write about one friend in the hero team.",
+              "ru": "Напиши о ком-то из команды героев.",
+              "starters": [
+                "This is…",
+                "He/She can…",
+                "He/She can't…"
+              ],
+              "minWords": 12
+            },
+            {
+              "type": "notebook",
+              "title": "Hero ID Card",
+              "task": "Make a secret hero ID card.",
+              "ru": "Сделай в тетради секретное удостоверение героя.",
+              "emoji": "🪪",
+              "steps": [
+                "Draw a box. Draw your hero face with a mask.",
+                "Write: Hero name, Colours, Powers.",
+                "Write 2 sentences with I can."
+              ],
+              "model": "Hero name: Star Spots\nColours: pink and black\nPowers: I can jump very high. I can sing very well.",
+              "lines": 6
+            }
+          ]
+        },
+        {
+          "id": "p-weekly1",
+          "title": "Hero Training Test",
+          "emoji": "🏅",
+          "kind": "weekly",
+          "exercises": [
+            {
+              "type": "memory",
+              "words": [
+                "fly",
+                "swim",
+                "climb",
+                "mask",
+                "cape",
+                "boots",
+                "ladybird",
+                "croissant"
+              ]
+            },
+            {
+              "type": "listen",
+              "items": [
+                {
+                  "say": "a cape",
+                  "options": [
+                    {
+                      "emoji": "🦸"
+                    },
+                    {
+                      "emoji": "👢"
+                    },
+                    {
+                      "emoji": "🎭"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "Can you climb?",
+                  "options": [
+                    {
+                      "emoji": "🧗‍♀️"
+                    },
+                    {
+                      "emoji": "🏊‍♀️"
+                    },
+                    {
+                      "emoji": "🕊️"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "black gloves",
+                  "options": [
+                    {
+                      "emoji": "👢"
+                    },
+                    {
+                      "emoji": "🧤"
+                    },
+                    {
+                      "emoji": "🎩"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "a baker",
+                  "options": [
+                    {
+                      "emoji": "🎨"
+                    },
+                    {
+                      "emoji": "📣"
+                    },
+                    {
+                      "emoji": "👨‍🍳"
+                    }
+                  ],
+                  "answer": 2
+                }
+              ]
+            },
+            {
+              "type": "gap",
+              "items": [
+                {
+                  "text": "___ you fly?",
+                  "options": [
+                    "Can",
+                    "Are",
+                    "Is"
+                  ],
+                  "answer": 0,
+                  "ru": "Ты умеешь летать?"
+                },
+                {
+                  "text": "No, I ___.",
+                  "options": [
+                    "can't",
+                    "can",
+                    "am"
+                  ],
+                  "answer": 0,
+                  "ru": "Нет, не умею."
+                },
+                {
+                  "text": "My gloves ___ black.",
+                  "options": [
+                    "is",
+                    "are",
+                    "can"
+                  ],
+                  "answer": 1,
+                  "ru": "Мои перчатки чёрные."
+                },
+                {
+                  "text": "Zoé can ___ high. 🧗‍♀️",
+                  "options": [
+                    "climb",
+                    "swim",
+                    "bake"
+                  ],
+                  "answer": 0,
+                  "ru": "Зоэ умеет высоко лазать."
+                }
+              ]
+            },
+            {
+              "type": "sentence",
+              "items": [
+                {
+                  "sentence": "Can you jump high?",
+                  "ru": "Ты умеешь высоко прыгать?"
+                },
+                {
+                  "sentence": "My mask has got black spots.",
+                  "ru": "На моей маске чёрные пятнышки."
+                },
+                {
+                  "sentence": "I can't fly, but I can run.",
+                  "ru": "Я не умею летать, но умею бегать."
+                }
+              ]
+            },
+            {
+              "type": "spell",
+              "words": [
+                "hero",
+                "fly",
+                "swim",
+                "boots",
+                "team"
+              ]
+            },
+            {
+              "type": "quiz",
+              "words": [
+                "hero",
+                "mask",
+                "cape",
+                "boots",
+                "gloves",
+                "belt",
+                "spots",
+                "stripes",
+                "team",
+                "brave"
+              ],
+              "seconds": 60
+            },
+            {
+              "type": "speak",
+              "items": [
+                {
+                  "text": "I can jump very high.",
+                  "ru": "Я умею прыгать очень высоко."
+                },
+                {
+                  "text": "Can you help me?",
+                  "ru": "Ты можешь мне помочь?"
+                },
+                {
+                  "text": "My cape is red.",
+                  "ru": "Мой плащ красный."
+                }
+              ]
+            },
+            {
+              "type": "dance",
+              "title": "Training Routine",
+              "items": [
+                {
+                  "text": "Wave to Pip!",
+                  "moves": [
+                    "wave"
+                  ]
+                },
+                {
+                  "text": "Turn left, turn right!",
+                  "moves": [
+                    "turn-left",
+                    "turn-right"
+                  ]
+                },
+                {
+                  "text": "Jump, jump, clap!",
+                  "moves": [
+                    "jump",
+                    "jump",
+                    "clap"
+                  ]
+                },
+                {
+                  "text": "Finger heart and pose!",
+                  "moves": [
+                    "finger-heart",
+                    "pose"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "draw",
+              "prompt": "Draw the whole hero team: Luc, Zoé, Mina, Pip and you. Give everybody a costume colour.",
+              "ru": "Нарисуй всю команду героев в костюмах.",
+              "emoji": "🎨"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "title": "Missions in Paris",
+      "episodes": [
+        {
+          "id": "p-e06",
+          "title": "Welcome to Paris",
+          "emoji": "🇫🇷",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "words": [
+                "city",
+                "street",
+                "cafe",
+                "bakery",
+                "shop",
+                "museum",
+                "park"
+              ]
+            },
+            {
+              "type": "listen",
+              "items": [
+                {
+                  "say": "a café",
+                  "options": [
+                    {
+                      "emoji": "☕"
+                    },
+                    {
+                      "emoji": "🏛️"
+                    },
+                    {
+                      "emoji": "🌳"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "a museum",
+                  "options": [
+                    {
+                      "emoji": "🏪"
+                    },
+                    {
+                      "emoji": "🏛️"
+                    },
+                    {
+                      "emoji": "🥖"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "a bakery",
+                  "options": [
+                    {
+                      "emoji": "🌳"
+                    },
+                    {
+                      "emoji": "☕"
+                    },
+                    {
+                      "emoji": "🥖"
+                    }
+                  ],
+                  "answer": 2
+                },
+                {
+                  "say": "a park",
+                  "options": [
+                    {
+                      "emoji": "🌳"
+                    },
+                    {
+                      "emoji": "🏪"
+                    },
+                    {
+                      "emoji": "🏙️"
+                    }
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "memory",
+              "words": [
+                "city",
+                "street",
+                "cafe",
+                "bakery",
+                "shop",
+                "museum",
+                "park"
+              ]
+            },
+            {
+              "type": "gap",
+              "items": [
+                {
+                  "text": "There ___ a café in my street.",
+                  "options": [
+                    "is",
+                    "are"
+                  ],
+                  "answer": 0,
+                  "ru": "На моей улице есть кафе."
+                },
+                {
+                  "text": "There ___ two shops.",
+                  "options": [
+                    "is",
+                    "are"
+                  ],
+                  "answer": 1,
+                  "ru": "Там два магазина."
+                },
+                {
+                  "text": "There is a ___ with croissants. 🥖",
+                  "options": [
+                    "bakery",
+                    "river",
+                    "park"
+                  ],
+                  "answer": 0,
+                  "ru": "Там пекарня с круассанами."
+                },
+                {
+                  "text": "There are lots of trees in the ___. 🌳",
+                  "options": [
+                    "café",
+                    "park",
+                    "museum"
+                  ],
+                  "answer": 1,
+                  "ru": "В парке много деревьев."
+                }
+              ]
+            },
+            {
+              "type": "chant",
+              "title": "Paris Street Song",
+              "bpm": 104,
+              "lines": [
+                "In the city, on my street,",
+                "There's a bakery, something sweet!",
+                "There's a café, there's a shop,",
+                "There's a museum, stop, stop, stop!",
+                "There are trees in the park,",
+                "Hero Paris, light and dark!"
+              ],
+              "blanks": [
+                "street",
+                "bakery",
+                "café",
+                "museum",
+                "park"
+              ]
+            },
+            {
+              "type": "draw",
+              "prompt": "Draw a street in Paris. There is a bakery, a café and a shop. There are two trees. Write the names on the buildings.",
+              "ru": "Нарисуй парижскую улицу: пекарня, кафе, магазин и два дерева. Подпиши здания.",
+              "emoji": "🏙️"
+            }
+          ]
+        },
+        {
+          "id": "p-e07",
+          "title": "Turn Left, Turn Right",
+          "emoji": "🗺️",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "words": [
+                "map",
+                "left",
+                "right",
+                "turn-left",
+                "turn-right",
+                "go-straight-on"
+              ]
+            },
+            {
+              "type": "listen",
+              "items": [
+                {
+                  "say": "Turn left.",
+                  "options": [
+                    {
+                      "emoji": "↩️"
+                    },
+                    {
+                      "emoji": "↪️"
+                    },
+                    {
+                      "emoji": "⬆️"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "Go straight on.",
+                  "options": [
+                    {
+                      "emoji": "↪️"
+                    },
+                    {
+                      "emoji": "⬆️"
+                    },
+                    {
+                      "emoji": "↩️"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "Turn right.",
+                  "options": [
+                    {
+                      "emoji": "↩️"
+                    },
+                    {
+                      "emoji": "⬆️"
+                    },
+                    {
+                      "emoji": "↪️"
+                    }
+                  ],
+                  "answer": 2
+                },
+                {
+                  "say": "Look at the map.",
+                  "options": [
+                    {
+                      "emoji": "🗺️"
+                    },
+                    {
+                      "emoji": "🎨"
+                    },
+                    {
+                      "emoji": "🥐"
+                    }
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "dance",
+              "title": "Follow the Map!",
+              "items": [
+                {
+                  "text": "Turn left!",
+                  "moves": [
+                    "turn-left"
+                  ]
+                },
+                {
+                  "text": "Turn right!",
+                  "moves": [
+                    "turn-right"
+                  ]
+                },
+                {
+                  "text": "Go straight on: step, step!",
+                  "moves": [
+                    "step-left",
+                    "step-right"
+                  ]
+                },
+                {
+                  "text": "You are there! Jump and pose!",
+                  "moves": [
+                    "jump",
+                    "pose"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "sentence",
+              "items": [
+                {
+                  "sentence": "Turn left at the café.",
+                  "ru": "Поверни налево у кафе."
+                },
+                {
+                  "sentence": "Go straight on to the park.",
+                  "ru": "Иди прямо до парка."
+                },
+                {
+                  "sentence": "Turn right at the bakery.",
+                  "ru": "Поверни направо у пекарни."
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "items": [
+                {
+                  "text": "Turn left.",
+                  "ru": "Поверни налево."
+                },
+                {
+                  "text": "Turn right.",
+                  "ru": "Поверни направо."
+                },
+                {
+                  "text": "Go straight on.",
+                  "ru": "Иди прямо."
+                },
+                {
+                  "text": "Where is the museum?",
+                  "ru": "Где музей?"
+                }
+              ]
+            },
+            {
+              "type": "notebook",
+              "title": "My Mission Map",
+              "task": "Draw a map and write directions.",
+              "ru": "Нарисуй карту и напиши, как дойти до цели.",
+              "emoji": "🗺️",
+              "steps": [
+                "Draw a small map: your home, a park, a bakery and a café.",
+                "Draw a red line from your home to the park.",
+                "Write 3 directions: Go straight on… Turn left… Turn right…"
+              ],
+              "model": "Go out of my house. Go straight on. Turn left at the bakery. Turn right at the café. The park is there!",
+              "lines": 6
+            }
+          ]
+        },
+        {
+          "id": "p-e08",
+          "title": "The Lost Puppy",
+          "emoji": "🐶",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "words": [
+                "next-to",
+                "opposite",
+                "between",
+                "behind",
+                "in-front-of",
+                "puppy",
+                "bench"
+              ]
+            },
+            {
+              "type": "gap",
+              "items": [
+                {
+                  "text": "The puppy is ___ the bench. 🙈",
+                  "options": [
+                    "behind",
+                    "opposite",
+                    "fly"
+                  ],
+                  "answer": 0,
+                  "ru": "Щенок за скамейкой."
+                },
+                {
+                  "text": "The café is ___ the park. ↔️",
+                  "options": [
+                    "opposite",
+                    "under",
+                    "can"
+                  ],
+                  "answer": 0,
+                  "ru": "Кафе напротив парка."
+                },
+                {
+                  "text": "The bakery is ___ the shop and the café.",
+                  "options": [
+                    "between",
+                    "next",
+                    "on"
+                  ],
+                  "answer": 0,
+                  "ru": "Пекарня между магазином и кафе."
+                },
+                {
+                  "text": "Pip is ___ to {name}.",
+                  "options": [
+                    "next",
+                    "opposite",
+                    "between"
+                  ],
+                  "answer": 0,
+                  "ru": "Пип рядом с {name}."
+                }
+              ]
+            },
+            {
+              "type": "read",
+              "story": {
+                "title": "Mission: The Lost Puppy",
+                "emoji": "🐶",
+                "paragraphs": [
+                  "Pip has got a mission. \"A little girl is sad. Her puppy is lost in the park. It's small and brown with a white ear.\"",
+                  "{name} goes to the park. There is a café opposite the park. She looks in front of the café. No puppy. She looks next to the big tree. No puppy.",
+                  "Then she hears a little sound. The puppy is behind a green bench! {name} gives the puppy to the girl. \"Thank you!\" says the girl. Mission complete!"
+                ]
+              },
+              "questions": [
+                {
+                  "q": "What colour is the puppy?",
+                  "options": [
+                    "black",
+                    "brown and white",
+                    "yellow"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "What is opposite the park?",
+                  "options": [
+                    "a café",
+                    "a museum",
+                    "a bridge"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "Where is the puppy?",
+                  "options": [
+                    "next to the tree",
+                    "behind a bench",
+                    "in the café"
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "spell",
+              "words": [
+                "puppy",
+                "park",
+                "bench",
+                "map"
+              ]
+            },
+            {
+              "type": "notebook",
+              "title": "Copy the Mission Message",
+              "task": "Copy Pip's secret mission message neatly.",
+              "ru": "Аккуратно перепиши секретное сообщение от Пип.",
+              "emoji": "✉️",
+              "steps": [
+                "Copy the message in your best handwriting.",
+                "Underline next to, opposite and behind.",
+                "Draw a small puppy at the end."
+              ],
+              "model": "Secret mission! A little puppy is lost. Look in the park. The park is opposite the café. Look behind the bench and next to the big tree. Good luck, hero!",
+              "lines": 6
+            }
+          ]
+        },
+        {
+          "id": "p-e09",
+          "title": "Kite on the Eiffel Tower",
+          "emoji": "🗼",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "words": [
+                "eiffel-tower",
+                "tower",
+                "bridge",
+                "river",
+                "boat",
+                "kite"
+              ]
+            },
+            {
+              "type": "read",
+              "story": {
+                "title": "The Kite Mission",
+                "emoji": "🪁",
+                "paragraphs": [
+                  "It is a windy day in Paris. A boy has got a beautiful blue kite. Oh no! The wind takes the kite. Now it is on the Eiffel Tower!",
+                  "\"I can help!\" says {name}. Zoé can climb high, and {name} can jump very high. They run over the bridge. Under the bridge there is a river with boats.",
+                  "{name} jumps and Zoé climbs. Zoé takes the kite. They give it to the boy. He is very happy. \"You are heroes!\" he says."
+                ]
+              },
+              "questions": [
+                {
+                  "q": "What colour is the kite?",
+                  "options": [
+                    "red",
+                    "blue",
+                    "green"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "Where is the kite?",
+                  "options": [
+                    "on the Eiffel Tower",
+                    "in the river",
+                    "in the café"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "What is under the bridge?",
+                  "options": [
+                    "a park",
+                    "a river",
+                    "a bakery"
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "listen",
+              "items": [
+                {
+                  "say": "the Eiffel Tower",
+                  "options": [
+                    {
+                      "emoji": "🗼"
+                    },
+                    {
+                      "emoji": "🌉"
+                    },
+                    {
+                      "emoji": "⛵"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "a bridge",
+                  "options": [
+                    {
+                      "emoji": "⛵"
+                    },
+                    {
+                      "emoji": "🌉"
+                    },
+                    {
+                      "emoji": "🪁"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "a boat on the river",
+                  "options": [
+                    {
+                      "emoji": "🪁"
+                    },
+                    {
+                      "emoji": "🗼"
+                    },
+                    {
+                      "emoji": "⛵"
+                    }
+                  ],
+                  "answer": 2
+                },
+                {
+                  "say": "a kite",
+                  "options": [
+                    {
+                      "emoji": "🪁"
+                    },
+                    {
+                      "emoji": "🌉"
+                    },
+                    {
+                      "emoji": "🥐"
+                    }
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "sentence",
+              "items": [
+                {
+                  "sentence": "The kite is on the tower.",
+                  "ru": "Змей на башне."
+                },
+                {
+                  "sentence": "There are boats on the river.",
+                  "ru": "На реке есть лодки."
+                },
+                {
+                  "sentence": "We can climb high!",
+                  "ru": "Мы можем высоко забраться!"
+                }
+              ]
+            },
+            {
+              "type": "chant",
+              "title": "Up, Up, Eiffel Tower!",
+              "bpm": 116,
+              "lines": [
+                "Up, up, the Eiffel Tower,",
+                "Hero team with hero power!",
+                "Over the bridge, over the river,",
+                "Save the kite, never shiver!",
+                "Spots on! Mission on!",
+                "Hero team is never gone!"
+              ],
+              "blanks": [
+                "Eiffel Tower",
+                "power",
+                "bridge",
+                "river",
+                "kite"
+              ]
+            },
+            {
+              "type": "draw",
+              "prompt": "Draw the Eiffel Tower, a river and a bridge. Draw a blue kite at the top of the tower and two heroes!",
+              "ru": "Нарисуй Эйфелеву башню, реку, мост и синего змея наверху башни.",
+              "emoji": "🗼"
+            }
+          ]
+        },
+        {
+          "id": "p-e10",
+          "title": "Helping People",
+          "emoji": "🤝",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "words": [
+                "help",
+                "street-lamp",
+                "painting",
+                "postcard",
+                "square",
+                "bus"
+              ]
+            },
+            {
+              "type": "watch",
+              "videoTitle": "Open short stories. Find a story about a city or a town and watch it.",
+              "url": "https://learnenglishkids.britishcouncil.org/listen-watch/short-stories",
+              "source": "British Council LearnEnglish Kids",
+              "questions": [
+                {
+                  "q": "Was the story in a city?",
+                  "options": [
+                    "yes",
+                    "no"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "Did you like the story?",
+                  "options": [
+                    "yes, a lot",
+                    "it was OK",
+                    "no"
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "items": [
+                {
+                  "text": "Can I help you?",
+                  "ru": "Можно тебе помочь?"
+                },
+                {
+                  "text": "The street lamp is broken.",
+                  "ru": "Уличный фонарь сломан."
+                },
+                {
+                  "text": "Where is the painting?",
+                  "ru": "Где картина?"
+                },
+                {
+                  "text": "Thank you, hero!",
+                  "ru": "Спасибо, герой!"
+                }
+              ]
+            },
+            {
+              "type": "dance",
+              "title": "Thank You Dance",
+              "items": [
+                {
+                  "text": "Wave hello!",
+                  "moves": [
+                    "wave"
+                  ]
+                },
+                {
+                  "text": "Clap, clap, help!",
+                  "moves": [
+                    "clap",
+                    "clap"
+                  ]
+                },
+                {
+                  "text": "Spin and send a heart!",
+                  "moves": [
+                    "spin",
+                    "finger-heart"
+                  ]
+                },
+                {
+                  "text": "Hands up, hero pose!",
+                  "moves": [
+                    "hands-up",
+                    "pose"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "gap",
+              "items": [
+                {
+                  "text": "Can I ___ you?",
+                  "options": [
+                    "help",
+                    "fly",
+                    "swim"
+                  ],
+                  "answer": 0,
+                  "ru": "Можно тебе помочь?"
+                },
+                {
+                  "text": "The ___ is in the museum. 🖼️",
+                  "options": [
+                    "painting",
+                    "kite",
+                    "boat"
+                  ],
+                  "answer": 0,
+                  "ru": "Картина в музее."
+                },
+                {
+                  "text": "Let's fix the street ___! 💡",
+                  "options": [
+                    "lamp",
+                    "bus",
+                    "cape"
+                  ],
+                  "answer": 0,
+                  "ru": "Давай починим уличный фонарь!"
+                }
+              ]
+            },
+            {
+              "type": "notebook",
+              "title": "A Postcard from Paris",
+              "task": "Write a postcard to Mum from Paris.",
+              "ru": "Напиши в тетради открытку маме из Парижа.",
+              "emoji": "💌",
+              "steps": [
+                "Draw a rectangle for the postcard. Draw Paris on the left.",
+                "Write Dear Mum,",
+                "Write 3–4 sentences: where you are, what there is, what you can do.",
+                "Finish with Love, and your name."
+              ],
+              "model": "Dear Mum,\nI'm in Paris! There is a big tower and a long river. I can see boats. I help people every day. It's fun!\nLove, {name}",
+              "lines": 8
+            }
+          ]
+        },
+        {
+          "id": "p-weekly2",
+          "title": "Mission Report",
+          "emoji": "📋",
+          "kind": "weekly",
+          "exercises": [
+            {
+              "type": "memory",
+              "words": [
+                "cafe",
+                "bakery",
+                "museum",
+                "bridge",
+                "river",
+                "eiffel-tower",
+                "map",
+                "kite"
+              ]
+            },
+            {
+              "type": "listen",
+              "items": [
+                {
+                  "say": "Turn right at the bridge.",
+                  "options": [
+                    {
+                      "emoji": "↩️"
+                    },
+                    {
+                      "emoji": "↪️"
+                    },
+                    {
+                      "emoji": "⬆️"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "The puppy is behind the tree.",
+                  "options": [
+                    {
+                      "emoji": "🐶"
+                    },
+                    {
+                      "emoji": "🐱"
+                    },
+                    {
+                      "emoji": "🪁"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "There is a boat on the river.",
+                  "options": [
+                    {
+                      "emoji": "🚌"
+                    },
+                    {
+                      "emoji": "🥐"
+                    },
+                    {
+                      "emoji": "⛵"
+                    }
+                  ],
+                  "answer": 2
+                },
+                {
+                  "say": "opposite",
+                  "options": [
+                    {
+                      "emoji": "↔️"
+                    },
+                    {
+                      "emoji": "↕️"
+                    },
+                    {
+                      "emoji": "⬆️"
+                    }
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "gap",
+              "items": [
+                {
+                  "text": "There ___ three bridges.",
+                  "options": [
+                    "is",
+                    "are"
+                  ],
+                  "answer": 1,
+                  "ru": "Там три моста."
+                },
+                {
+                  "text": "The museum is ___ the café. ↔️",
+                  "options": [
+                    "opposite",
+                    "can",
+                    "fly"
+                  ],
+                  "answer": 0,
+                  "ru": "Музей напротив кафе."
+                },
+                {
+                  "text": "Go ___ on to the square.",
+                  "options": [
+                    "straight",
+                    "left",
+                    "right"
+                  ],
+                  "answer": 0,
+                  "ru": "Иди прямо до площади."
+                },
+                {
+                  "text": "Turn ___ at the bakery. ↩️",
+                  "options": [
+                    "left",
+                    "right",
+                    "up"
+                  ],
+                  "answer": 0,
+                  "ru": "Поверни налево у пекарни."
+                }
+              ]
+            },
+            {
+              "type": "sentence",
+              "items": [
+                {
+                  "sentence": "There is a café next to the park.",
+                  "ru": "Рядом с парком есть кафе."
+                },
+                {
+                  "sentence": "Turn left at the museum.",
+                  "ru": "Поверни налево у музея."
+                },
+                {
+                  "sentence": "The bakery is opposite the shop.",
+                  "ru": "Пекарня напротив магазина."
+                }
+              ]
+            },
+            {
+              "type": "quiz",
+              "words": [
+                "city",
+                "street",
+                "park",
+                "cafe",
+                "bakery",
+                "shop",
+                "museum",
+                "bridge",
+                "river",
+                "square",
+                "map",
+                "bus"
+              ],
+              "seconds": 60
+            },
+            {
+              "type": "read",
+              "story": {
+                "title": "Mission: The Street Lamp",
+                "emoji": "💡",
+                "paragraphs": [
+                  "It is evening. Luc is sad. \"The street lamp next to our bakery is broken. The street is very dark!\"",
+                  "Pip looks at the map. \"Go straight on. Turn right at the café. The lamp is between the bakery and the shop.\"",
+                  "{name} and Luc run there. {name} climbs up and fixes the lamp. Now the street is bright! Luc gives {name} a warm croissant. \"Thank you, hero!\""
+                ]
+              },
+              "questions": [
+                {
+                  "q": "Where is the lamp?",
+                  "options": [
+                    "between the bakery and the shop",
+                    "on the bridge",
+                    "in the park"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "Who fixes the lamp?",
+                  "options": [
+                    "Pip",
+                    "Luc",
+                    "{name}"
+                  ],
+                  "answer": 2
+                },
+                {
+                  "q": "What does Luc give {name}?",
+                  "options": [
+                    "a kite",
+                    "a croissant",
+                    "a postcard"
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "items": [
+                {
+                  "text": "Go straight on and turn left.",
+                  "ru": "Иди прямо и поверни налево."
+                },
+                {
+                  "text": "There is a bakery opposite the park.",
+                  "ru": "Напротив парка есть пекарня."
+                },
+                {
+                  "text": "Mission complete!",
+                  "ru": "Миссия выполнена!"
+                }
+              ]
+            },
+            {
+              "type": "chant",
+              "title": "Left and Right",
+              "bpm": 100,
+              "lines": [
+                "Turn left, turn right,",
+                "Paris streets are shining bright!",
+                "Go straight on, don't be late,",
+                "Next to the café, by the gate!",
+                "Opposite the park we meet,",
+                "Hero team on every street!"
+              ],
+              "blanks": [
+                "left",
+                "right",
+                "straight",
+                "café",
+                "Opposite"
+              ]
+            },
+            {
+              "type": "notebook",
+              "title": "Mission Report",
+              "task": "Write a report about your best mission.",
+              "ru": "Напиши отчёт о своей лучшей миссии.",
+              "emoji": "📋",
+              "steps": [
+                "Write the title: Mission Report.",
+                "Write where the mission was.",
+                "Write 3 sentences: what the problem was and how you helped.",
+                "Draw a small picture."
+              ],
+              "model": "Mission Report\nPlace: the park.\nA little puppy was lost. I looked behind the bench. I found it and I helped the girl. Mission complete!",
+              "lines": 8
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "showcase": {
+    "id": "p-showcase",
+    "title": "Hero of Paris",
+    "emoji": "🏆",
+    "kind": "showcase",
+    "exercises": [
+      {
+        "type": "memory",
+        "words": [
+          "hero",
+          "mask",
+          "cape",
+          "ladybird",
+          "eiffel-tower",
+          "croissant",
+          "bridge",
+          "kite"
+        ]
+      },
+      {
+        "type": "listen",
+        "items": [
+          {
+            "say": "I can fly over the river.",
+            "options": [
+              {
+                "emoji": "🕊️"
+              },
+              {
+                "emoji": "🏊‍♀️"
+              },
+              {
+                "emoji": "🧗‍♀️"
+              }
+            ],
+            "answer": 0
+          },
+          {
+            "say": "The bakery is next to the café.",
+            "options": [
+              {
+                "emoji": "🗼"
+              },
+              {
+                "emoji": "🥖"
+              },
+              {
+                "emoji": "🌉"
+              }
+            ],
+            "answer": 1
+          },
+          {
+            "say": "I can't swim.",
+            "options": [
+              {
+                "text": "✅ I can swim."
+              },
+              {
+                "text": "❌ I can't swim."
+              }
+            ],
+            "answer": 1
+          },
+          {
+            "say": "Turn left.",
+            "options": [
+              {
+                "emoji": "↪️"
+              },
+              {
+                "emoji": "⬆️"
+              },
+              {
+                "emoji": "↩️"
+              }
+            ],
+            "answer": 2
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "words": [
+          "hero",
+          "mask",
+          "cape",
+          "spots",
+          "fly",
+          "climb",
+          "save",
+          "museum",
+          "bridge",
+          "opposite",
+          "map",
+          "puppy"
+        ],
+        "seconds": 60
+      },
+      {
+        "type": "gap",
+        "items": [
+          {
+            "text": "___ you climb? Yes, I can.",
+            "options": [
+              "Can",
+              "Is",
+              "Are"
+            ],
+            "answer": 0,
+            "ru": "Ты умеешь лазать? Да."
+          },
+          {
+            "text": "There ___ a lot of boats on the river.",
+            "options": [
+              "is",
+              "are"
+            ],
+            "answer": 1,
+            "ru": "На реке много лодок."
+          },
+          {
+            "text": "My boots ___ red.",
+            "options": [
+              "is",
+              "are"
+            ],
+            "answer": 1,
+            "ru": "Мои сапоги красные."
+          },
+          {
+            "text": "The museum is ___ the bridge.",
+            "options": [
+              "opposite",
+              "can",
+              "fast"
+            ],
+            "answer": 0,
+            "ru": "Музей напротив моста."
+          }
+        ]
+      },
+      {
+        "type": "sentence",
+        "items": [
+          {
+            "sentence": "I am a secret hero in Paris.",
+            "ru": "Я тайный герой в Париже."
+          },
+          {
+            "sentence": "I can jump very high.",
+            "ru": "Я умею прыгать очень высоко."
+          },
+          {
+            "sentence": "Turn right at the Eiffel Tower.",
+            "ru": "Поверни направо у Эйфелевой башни."
+          }
+        ]
+      },
+      {
+        "type": "spell",
+        "words": [
+          "hero",
+          "mask",
+          "bridge",
+          "river",
+          "museum"
+        ]
+      },
+      {
+        "type": "read",
+        "story": {
+          "title": "The Painting in the Museum",
+          "emoji": "🖼️",
+          "paragraphs": [
+            "Pip has got the last mission. \"A painting is lost in the museum! It is a picture of a yellow flower.\"",
+            "The hero team goes to the museum. It is opposite the river. Zoé knows paintings. She looks in the big room. Luc runs fast up the stairs. Mina looks behind the door.",
+            "{name} sees something next to a window: the yellow flower painting! \"Here it is!\" The museum man is very happy. Pip says: \"{name}, you are a real hero of Paris!\""
+          ]
+        },
+        "questions": [
+          {
+            "q": "What is in the painting?",
+            "options": [
+              "a yellow flower",
+              "a red kite",
+              "a puppy"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Where is the museum?",
+            "options": [
+              "opposite the river",
+              "next to the bakery",
+              "in the park"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Who finds the painting?",
+            "options": [
+              "Luc",
+              "Mina",
+              "{name}"
+            ],
+            "answer": 2
+          }
+        ]
+      },
+      {
+        "type": "watch",
+        "videoTitle": "Open the songs page. Find a song about moving or actions and sing along.",
+        "url": "https://learnenglishkids.britishcouncil.org/listen-watch/songs",
+        "source": "British Council LearnEnglish Kids",
+        "questions": [
+          {
+            "q": "Did you sing along?",
+            "options": [
+              "yes",
+              "a little",
+              "no"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Can you dance to the song?",
+            "options": [
+              "Yes, I can!",
+              "No, I can't."
+            ],
+            "answer": 0
+          }
+        ]
+      },
+      {
+        "type": "speak",
+        "items": [
+          {
+            "text": "I am a hero of Paris!",
+            "ru": "Я герой Парижа!"
+          },
+          {
+            "text": "I can help people.",
+            "ru": "Я могу помогать людям."
+          },
+          {
+            "text": "There is a big tower in Paris.",
+            "ru": "В Париже есть большая башня."
+          },
+          {
+            "text": "Thank you, Pip!",
+            "ru": "Спасибо, Пип!"
+          }
+        ]
+      },
+      {
+        "type": "chant",
+        "title": "Hero of Paris",
+        "bpm": 120,
+        "lines": [
+          "Spots on! Mission on!",
+          "Hero of Paris, sing this song!",
+          "I can jump and I can run,",
+          "Helping people is so fun!",
+          "Turn left, turn right, go straight on,",
+          "Paris hero, shine on, shine on!"
+        ],
+        "blanks": [
+          "Mission",
+          "jump",
+          "run",
+          "Helping",
+          "straight"
+        ]
+      },
+      {
+        "type": "dance",
+        "title": "Hero Finale",
+        "items": [
+          {
+            "text": "Hands up high!",
+            "moves": [
+              "hands-up"
+            ]
+          },
+          {
+            "text": "Spin and jump!",
+            "moves": [
+              "spin",
+              "jump"
+            ]
+          },
+          {
+            "text": "Step left, step right, clap!",
+            "moves": [
+              "step-left",
+              "step-right",
+              "clap"
+            ]
+          },
+          {
+            "text": "Finger heart, hero pose!",
+            "moves": [
+              "finger-heart",
+              "pose"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "write",
+        "prompt": "Write about you as a hero of Paris.",
+        "ru": "Напиши о себе как о герое Парижа.",
+        "starters": [
+          "I am…",
+          "My costume is…",
+          "I can…",
+          "In Paris there is…"
+        ],
+        "minWords": 20
+      },
+      {
+        "type": "notebook",
+        "title": "My Hero Story",
+        "task": "Write a short hero story and draw it.",
+        "ru": "Напиши короткую историю о своей миссии и нарисуй её.",
+        "emoji": "📖",
+        "steps": [
+          "Draw yourself in Paris in your costume.",
+          "Write 4–5 sentences: where you are, what you can do, how you help.",
+          "Read your story to your family."
+        ],
+        "model": "I am a secret hero in Paris. My mask is red with black spots. I can jump very high. Today I save a kite on the Eiffel Tower. The boy is very happy!",
+        "lines": 10
+      }
+    ]
+  }
+}

@@ -5,7 +5,7 @@ import confetti from 'canvas-confetti';
 import TopBar from '../components/TopBar';
 import { useGame } from '../game/store';
 import { questsForDay, srsDue, QUEST_REWARD, QUEST_CHEST } from '../game/rules';
-import { EPISODE_ORDER } from '../content';
+import { EPISODE_ORDER, WORLDS } from '../content';
 import { useUnlocked } from './Map';
 import { sfx } from '../lib/sfx';
 import { markFeedbackSeen, unseenFeedback, type Submission } from '../lib/submissions';
@@ -22,7 +22,8 @@ export default function Home() {
 
   const quests = questsForDay(s.daily.day);
   const due = srsDue(s.srs, Date.now()).length;
-  const nextRef = EPISODE_ORDER.find((r, i) => unlocked(i) && !(s.progress[r.episode.id]?.stars));
+  const nextRef = EPISODE_ORDER.find((r, i) => !r.world.bonus && unlocked(i) && !(s.progress[r.episode.id]?.stars))
+    ?? EPISODE_ORDER.find((r, i) => unlocked(i) && !(s.progress[r.episode.id]?.stars));
   const hour = new Date().getHours();
   const hello = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening';
 
@@ -86,6 +87,29 @@ export default function Home() {
           {s.daily.chest ? '🎁 Chest opened!' : `🎁 Open the bonus chest (+${QUEST_CHEST} ❤️)`}
         </button>
       </div>
+
+      {WORLDS.filter((w) => w.bonus).map((w) => {
+        const eps = EPISODE_ORDER.filter((r) => r.world.id === w.id);
+        const done = eps.filter((r) => (s.progress[r.episode.id]?.stars ?? 0) > 0).length;
+        const nextBonus = eps.find((r) => unlocked(r.index) && !(s.progress[r.episode.id]?.stars));
+        return (
+          <button key={w.id} className="card row" style={{ background: `linear-gradient(120deg, ${w.color}, #ff8fa3)`, color: '#fff', borderColor: w.color, textAlign: 'left' }}
+            onClick={() => nav(nextBonus ? `/lesson/${nextBonus.episode.id}` : '/map')}>
+            <div style={{ fontSize: 44 }}>{w.emoji}</div>
+            <div className="grow">
+              <div className="tiny" style={{ fontWeight: 800, opacity: 0.9 }}>✨ BONUS WORLD · {done}/{eps.length}</div>
+              <div style={{ fontFamily: 'var(--font-title)', fontWeight: 800, fontSize: 21 }}>{w.title}</div>
+              <div className="small" style={{ fontWeight: 700 }}>{nextBonus ? `Next mission: ${nextBonus.episode.title}` : w.subtitle}</div>
+            </div>
+          </button>
+        );
+      })}
+
+      <Link to="/notebook" className="card tint-sun row" style={{ textDecoration: 'none', color: 'inherit' }}>
+        <div style={{ fontSize: 40 }}>📓</div>
+        <div className="grow"><b>My Notebook</b><div className="tiny muted">Задания для тетради · print & write</div></div>
+        <span className="btn sun small">Open</span>
+      </Link>
 
       <div className="grid grid-3">
         <Link to="/studio" className="card center" style={{ textDecoration: 'none', color: 'inherit' }}><div style={{ fontSize: 40 }}>👗</div><b>Style Studio</b><div className="tiny muted">Аватар и магазин</div></Link>

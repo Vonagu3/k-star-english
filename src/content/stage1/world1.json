@@ -1509,6 +1509,21 @@
                   "emoji": "⭐"
                 }
               ]
+            },
+            {
+              "type": "notebook",
+              "title": "Notebook Mission",
+              "task": "Write the numbers 1 to 20 as words.",
+              "ru": "Напиши числа от 1 до 20 словами — красиво и аккуратно.",
+              "emoji": "🔢",
+              "steps": [
+                "Write the date at the top.",
+                "Write each number and its word.",
+                "Write slowly and neatly.",
+                "Circle your age."
+              ],
+              "model": "1 one, 2 two, 3 three, 4 four, 5 five, 6 six, 7 seven, 8 eight, 9 nine, 10 ten,\n11 eleven, 12 twelve, 13 thirteen, 14 fourteen, 15 fifteen, 16 sixteen, 17 seventeen, 18 eighteen, 19 nineteen, 20 twenty",
+              "lines": 7
             }
           ]
         },
@@ -1679,6 +1694,21 @@
                 "I'm a trainee at…"
               ],
               "minWords": 8
+            },
+            {
+              "type": "notebook",
+              "title": "Notebook Mission",
+              "task": "Copy the alphabet in capital and small letters.",
+              "ru": "Перепиши алфавит большими и маленькими буквами, потом напиши своё имя по буквам.",
+              "emoji": "🔤",
+              "steps": [
+                "Write the date at the top.",
+                "Copy the capital letters.",
+                "Copy the small letters.",
+                "Write your name in capitals and small letters."
+              ],
+              "model": "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z\na b c d e f g h i j k l m n o p q r s t u v w x y z\n{name} — ",
+              "lines": 6
             }
           ]
         },
@@ -1950,6 +1980,21 @@
                   ]
                 }
               ]
+            },
+            {
+              "type": "notebook",
+              "title": "Notebook Mission",
+              "task": "Make your Star Academy trainee ID card.",
+              "ru": "Нарисуй свою карточку стажёра и напиши о себе по образцу.",
+              "emoji": "🪪",
+              "steps": [
+                "Draw a box and your face in it.",
+                "Copy the model.",
+                "Change the words to your answers.",
+                "Colour your card."
+              ],
+              "model": "STAR ACADEMY TRAINEE\nHello! My name is {name}.\nI'm ten years old.\nI'm from Russia.\nI'm a trainee at Star Academy.",
+              "lines": 5
             }
           ]
         }
@@ -2159,6 +2204,21 @@
                   "answer": 1
                 }
               ]
+            },
+            {
+              "type": "notebook",
+              "title": "Notebook Mission",
+              "task": "Draw your family and label the people.",
+              "ru": "Нарисуй свою семью и подпиши, кто есть кто.",
+              "emoji": "👨‍👩‍👧",
+              "steps": [
+                "Draw your family.",
+                "Write a label under each person.",
+                "Use: mum, dad, brother, sister, me.",
+                "Write the title: My Family."
+              ],
+              "model": "My Family\nmum — dad — sister — brother — me",
+              "lines": 4
             }
           ]
         },
@@ -2701,6 +2761,20 @@
                   "emoji": "👧"
                 }
               ]
+            },
+            {
+              "type": "notebook",
+              "title": "Notebook Mission",
+              "task": "Write about your family: This is my mum. She's…",
+              "ru": "Напиши 4 предложения о своей семье по образцу.",
+              "emoji": "💖",
+              "steps": [
+                "Copy the model.",
+                "Write about two more people.",
+                "Underline he's, she's, his and her."
+              ],
+              "model": "This is my mum. She's kind. Her name is Olga.\nThis is my dad. He's funny. His name is Ivan.",
+              "lines": 6
             }
           ]
         },
@@ -3059,6 +3133,21 @@
                   "emoji": "🏢"
                 }
               ]
+            },
+            {
+              "type": "notebook",
+              "title": "Notebook Mission",
+              "task": "Make a family poster for your dorm door.",
+              "ru": "Сделай постер о своей семье для двери в общежитии Star Academy.",
+              "emoji": "🖼️",
+              "steps": [
+                "Write the title: My Family.",
+                "Draw three people.",
+                "Write two sentences about each person.",
+                "Check your capital letters."
+              ],
+              "model": "This is my grandma. Her name is Anna. She's sixty-eight.\nThis is my brother. His name is Max. He's seven.\nThis is me. I'm {name}. I'm ten.",
+              "lines": 8
             }
           ]
         }
@@ -3429,6 +3518,20 @@
                   "emoji": "🔵"
                 }
               ]
+            },
+            {
+              "type": "notebook",
+              "title": "Notebook Mission",
+              "task": "Write the colour words in their colours.",
+              "ru": "Напиши названия цветов цветными карандашами.",
+              "emoji": "🌈",
+              "steps": [
+                "Write the date at the top.",
+                "Write each colour word with that pencil.",
+                "Draw a small heart next to your favourite colour."
+              ],
+              "model": "red, blue, yellow, green, pink, purple, orange, black, white, brown, grey",
+              "lines": 4
             }
           ]
         },
@@ -3806,6 +3909,21 @@
                   "emoji": "📓"
                 }
               ]
+            },
+            {
+              "type": "notebook",
+              "title": "Notebook Mission",
+              "task": "Draw your trainee bag and write what you've got.",
+              "ru": "Нарисуй свою сумку стажёра и напиши, что в ней есть.",
+              "emoji": "🎒",
+              "steps": [
+                "Draw your bag and five things.",
+                "Copy the model.",
+                "Write about your things.",
+                "Underline the colours."
+              ],
+              "model": "I've got a pink pencil case.\nI've got a blue water bottle.\nI've got two black pens.\nI haven't got a phone.",
+              "lines": 6
             }
           ]
         },
@@ -4202,6 +4320,21 @@
                   "emoji": "📱"
                 }
               ]
+            },
+            {
+              "type": "notebook",
+              "title": "Notebook Mission",
+              "task": "Answer the questions in full sentences.",
+              "ru": "Ответь на вопросы полными предложениями: Yes, I have / No, I haven't.",
+              "emoji": "✏️",
+              "steps": [
+                "Copy each question.",
+                "Write a full answer under it.",
+                "Use Yes, I have. or No, I haven't.",
+                "Add one more sentence."
+              ],
+              "model": "Have you got a pet?\nYes, I have. I've got a white cat.\nHave you got a brother?\nNo, I haven't. I've got a sister.\nHas your mum got a car?\nYes, she has. It's red.",
+              "lines": 8
             }
           ]
         }
@@ -4575,6 +4708,21 @@
                   ]
                 }
               ]
+            },
+            {
+              "type": "notebook",
+              "title": "Notebook Mission",
+              "task": "Write four sentences about your best friend.",
+              "ru": "Напиши 4 предложения о своей лучшей подруге или друге.",
+              "emoji": "🤝",
+              "steps": [
+                "Draw your friend.",
+                "Copy the model.",
+                "Change the words for your friend.",
+                "Underline the describing words."
+              ],
+              "model": "My best friend is Katya.\nShe's tall and funny.\nShe's got long brown hair and blue eyes.\nShe's very kind.",
+              "lines": 5
             }
           ]
         },
@@ -5118,6 +5266,21 @@
                 "I like… I don't like…"
               ],
               "minWords": 18
+            },
+            {
+              "type": "notebook",
+              "title": "Notebook Mission",
+              "task": "Write a fan letter to Hana.",
+              "ru": "Напиши письмо-фанатку стажёрке Хане: о себе и вопросы к ней.",
+              "emoji": "💌",
+              "steps": [
+                "Start with Dear Hana,",
+                "Write about you: name, age, country.",
+                "Ask Hana two questions.",
+                "End with Love, {name}."
+              ],
+              "model": "Dear Hana,\nMy name is {name}. I'm ten. I'm from Russia.\nI like K-pop and dancing!\nWhere are you from? Have you got a pet?\nLove,\n{name}",
+              "lines": 8
             }
           ]
         },
@@ -5381,6 +5544,21 @@
                   "emoji": "🎶"
                 }
               ]
+            },
+            {
+              "type": "notebook",
+              "title": "Notebook Mission",
+              "task": "Make a poster: My Friends and Me.",
+              "ru": "Сделай постер о себе и двух друзьях — 6 предложений.",
+              "emoji": "⭐",
+              "steps": [
+                "Draw you and two friends.",
+                "Write two sentences about you.",
+                "Write two sentences about each friend.",
+                "Use like, has got, is."
+              ],
+              "model": "This is me. I'm {name}. I've got long hair. I like K-pop.\nThis is Leo. He's short and funny. He's got green eyes.\nThis is Sora. She's from Japan. She likes music.",
+              "lines": 10
             }
           ]
         }
