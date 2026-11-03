@@ -1,0 +1,5796 @@
+{
+  "id": "world1",
+  "n": 1,
+  "title": "Seoul Studio",
+  "subtitle": "Me, my family & friends",
+  "ru": "Я, семья и друзья",
+  "emoji": "🎤",
+  "color": "#ff5fa2",
+  "grammar": [
+    "to be: I'm / you're / he's / she's / it's",
+    "to be: questions & short answers (Are you…? Yes, I am. / No, I'm not. Is he…? Yes, he is. / No, he isn't.)",
+    "possessive adjectives: my, your, his, her",
+    "have got / has got (I've got…, She's got…, Have you got…? Yes, I have. / No, I haven't.)",
+    "questions: What's your name? How old are you? Where are you from?",
+    "numbers 1–20",
+    "colours",
+    "the alphabet & spelling a name",
+    "I like… / I don't like…"
+  ],
+  "words": [
+    {
+      "id": "hello",
+      "en": "hello",
+      "ru": "привет",
+      "emoji": "👋",
+      "level": "starters"
+    },
+    {
+      "id": "goodbye",
+      "en": "goodbye",
+      "ru": "до свидания",
+      "emoji": "🙋",
+      "level": "starters"
+    },
+    {
+      "id": "yes",
+      "en": "yes",
+      "ru": "да",
+      "emoji": "✅",
+      "level": "starters"
+    },
+    {
+      "id": "no",
+      "en": "no",
+      "ru": "нет",
+      "emoji": "❌",
+      "level": "starters"
+    },
+    {
+      "id": "please",
+      "en": "please",
+      "ru": "пожалуйста",
+      "emoji": "🙏",
+      "level": "starters"
+    },
+    {
+      "id": "thank-you",
+      "en": "thank you",
+      "ru": "спасибо",
+      "emoji": "💐",
+      "level": "starters"
+    },
+    {
+      "id": "name",
+      "en": "name",
+      "ru": "имя",
+      "emoji": "📛",
+      "level": "starters"
+    },
+    {
+      "id": "trainee",
+      "en": "trainee",
+      "ru": "стажёр (ученик агентства)",
+      "emoji": "🌟",
+      "level": "extra"
+    },
+    {
+      "id": "one",
+      "en": "one",
+      "ru": "один",
+      "emoji": "1️⃣",
+      "level": "starters"
+    },
+    {
+      "id": "two",
+      "en": "two",
+      "ru": "два",
+      "emoji": "2️⃣",
+      "level": "starters"
+    },
+    {
+      "id": "three",
+      "en": "three",
+      "ru": "три",
+      "emoji": "3️⃣",
+      "level": "starters"
+    },
+    {
+      "id": "four",
+      "en": "four",
+      "ru": "четыре",
+      "emoji": "4️⃣",
+      "level": "starters"
+    },
+    {
+      "id": "five",
+      "en": "five",
+      "ru": "пять",
+      "emoji": "5️⃣",
+      "level": "starters"
+    },
+    {
+      "id": "six",
+      "en": "six",
+      "ru": "шесть",
+      "emoji": "6️⃣",
+      "level": "starters"
+    },
+    {
+      "id": "seven",
+      "en": "seven",
+      "ru": "семь",
+      "emoji": "7️⃣",
+      "level": "starters"
+    },
+    {
+      "id": "eight",
+      "en": "eight",
+      "ru": "восемь",
+      "emoji": "8️⃣",
+      "level": "starters"
+    },
+    {
+      "id": "nine",
+      "en": "nine",
+      "ru": "девять",
+      "emoji": "9️⃣",
+      "level": "starters"
+    },
+    {
+      "id": "ten",
+      "en": "ten",
+      "ru": "десять",
+      "emoji": "🔟",
+      "level": "starters"
+    },
+    {
+      "id": "eleven",
+      "en": "eleven",
+      "ru": "одиннадцать",
+      "emoji": "🕚",
+      "level": "starters"
+    },
+    {
+      "id": "twelve",
+      "en": "twelve",
+      "ru": "двенадцать",
+      "emoji": "🕛",
+      "level": "starters"
+    },
+    {
+      "id": "thirteen",
+      "en": "thirteen",
+      "ru": "тринадцать",
+      "emoji": "🎂",
+      "level": "starters"
+    },
+    {
+      "id": "fourteen",
+      "en": "fourteen",
+      "ru": "четырнадцать",
+      "emoji": "🎈",
+      "level": "starters"
+    },
+    {
+      "id": "fifteen",
+      "en": "fifteen",
+      "ru": "пятнадцать",
+      "emoji": "🎁",
+      "level": "starters"
+    },
+    {
+      "id": "sixteen",
+      "en": "sixteen",
+      "ru": "шестнадцать",
+      "emoji": "🎉",
+      "level": "starters"
+    },
+    {
+      "id": "seventeen",
+      "en": "seventeen",
+      "ru": "семнадцать",
+      "emoji": "🎊",
+      "level": "starters"
+    },
+    {
+      "id": "eighteen",
+      "en": "eighteen",
+      "ru": "восемнадцать",
+      "emoji": "🎀",
+      "level": "starters"
+    },
+    {
+      "id": "nineteen",
+      "en": "nineteen",
+      "ru": "девятнадцать",
+      "emoji": "🧮",
+      "level": "starters"
+    },
+    {
+      "id": "twenty",
+      "en": "twenty",
+      "ru": "двадцать",
+      "emoji": "🔢",
+      "level": "starters"
+    },
+    {
+      "id": "number",
+      "en": "number",
+      "ru": "число, номер",
+      "emoji": "🔢",
+      "level": "starters"
+    },
+    {
+      "id": "letter",
+      "en": "letter",
+      "ru": "буква",
+      "emoji": "🔤",
+      "level": "starters"
+    },
+    {
+      "id": "boy",
+      "en": "boy",
+      "ru": "мальчик",
+      "emoji": "👦",
+      "level": "starters"
+    },
+    {
+      "id": "girl",
+      "en": "girl",
+      "ru": "девочка",
+      "emoji": "👧",
+      "level": "starters"
+    },
+    {
+      "id": "star",
+      "en": "star",
+      "ru": "звезда",
+      "emoji": "⭐",
+      "level": "starters"
+    },
+    {
+      "id": "family",
+      "en": "family",
+      "ru": "семья",
+      "emoji": "👨‍👩‍👧‍👦",
+      "level": "starters"
+    },
+    {
+      "id": "mum",
+      "en": "mum",
+      "ru": "мама",
+      "emoji": "👩",
+      "level": "starters"
+    },
+    {
+      "id": "dad",
+      "en": "dad",
+      "ru": "папа",
+      "emoji": "👨",
+      "level": "starters"
+    },
+    {
+      "id": "brother",
+      "en": "brother",
+      "ru": "брат",
+      "emoji": "👦",
+      "level": "starters"
+    },
+    {
+      "id": "sister",
+      "en": "sister",
+      "ru": "сестра",
+      "emoji": "👧",
+      "level": "starters"
+    },
+    {
+      "id": "grandma",
+      "en": "grandma",
+      "ru": "бабушка",
+      "emoji": "👵",
+      "level": "starters"
+    },
+    {
+      "id": "grandpa",
+      "en": "grandpa",
+      "ru": "дедушка",
+      "emoji": "👴",
+      "level": "starters"
+    },
+    {
+      "id": "baby",
+      "en": "baby",
+      "ru": "малыш",
+      "emoji": "👶",
+      "level": "starters"
+    },
+    {
+      "id": "child",
+      "en": "child",
+      "ru": "ребёнок",
+      "emoji": "🧒",
+      "level": "starters"
+    },
+    {
+      "id": "aunt",
+      "en": "aunt",
+      "ru": "тётя",
+      "emoji": "👩‍🦰",
+      "level": "movers"
+    },
+    {
+      "id": "uncle",
+      "en": "uncle",
+      "ru": "дядя",
+      "emoji": "🧔",
+      "level": "movers"
+    },
+    {
+      "id": "cousin",
+      "en": "cousin",
+      "ru": "двоюродный брат / сестра",
+      "emoji": "🧑",
+      "level": "movers"
+    },
+    {
+      "id": "parent",
+      "en": "parent",
+      "ru": "родитель",
+      "emoji": "👪",
+      "level": "movers"
+    },
+    {
+      "id": "man",
+      "en": "man",
+      "ru": "мужчина",
+      "emoji": "🧑‍💼",
+      "level": "starters"
+    },
+    {
+      "id": "woman",
+      "en": "woman",
+      "ru": "женщина",
+      "emoji": "👩‍💼",
+      "level": "starters"
+    },
+    {
+      "id": "son",
+      "en": "son",
+      "ru": "сын",
+      "emoji": "👦",
+      "level": "movers"
+    },
+    {
+      "id": "daughter",
+      "en": "daughter",
+      "ru": "дочь",
+      "emoji": "👧",
+      "level": "movers"
+    },
+    {
+      "id": "home",
+      "en": "home",
+      "ru": "дом (родной)",
+      "emoji": "🏡",
+      "level": "starters"
+    },
+    {
+      "id": "flat",
+      "en": "flat",
+      "ru": "квартира",
+      "emoji": "🏢",
+      "level": "starters"
+    },
+    {
+      "id": "house",
+      "en": "house",
+      "ru": "дом (здание)",
+      "emoji": "🏠",
+      "level": "starters"
+    },
+    {
+      "id": "garden",
+      "en": "garden",
+      "ru": "сад",
+      "emoji": "🌷",
+      "level": "starters"
+    },
+    {
+      "id": "dog",
+      "en": "dog",
+      "ru": "собака",
+      "emoji": "🐶",
+      "level": "starters"
+    },
+    {
+      "id": "cat",
+      "en": "cat",
+      "ru": "кошка",
+      "emoji": "🐱",
+      "level": "starters"
+    },
+    {
+      "id": "fish",
+      "en": "fish",
+      "ru": "рыбка",
+      "emoji": "🐟",
+      "level": "starters"
+    },
+    {
+      "id": "bird",
+      "en": "bird",
+      "ru": "птица",
+      "emoji": "🐦",
+      "level": "starters"
+    },
+    {
+      "id": "rabbit",
+      "en": "rabbit",
+      "ru": "кролик",
+      "emoji": "🐰",
+      "level": "movers"
+    },
+    {
+      "id": "mouse",
+      "en": "mouse",
+      "ru": "мышка",
+      "emoji": "🐭",
+      "level": "starters"
+    },
+    {
+      "id": "colour",
+      "en": "colour",
+      "ru": "цвет",
+      "emoji": "🎨",
+      "level": "starters"
+    },
+    {
+      "id": "red",
+      "en": "red",
+      "ru": "красный",
+      "emoji": "🔴",
+      "level": "starters"
+    },
+    {
+      "id": "blue",
+      "en": "blue",
+      "ru": "синий",
+      "emoji": "🔵",
+      "level": "starters"
+    },
+    {
+      "id": "green",
+      "en": "green",
+      "ru": "зелёный",
+      "emoji": "🟢",
+      "level": "starters"
+    },
+    {
+      "id": "yellow",
+      "en": "yellow",
+      "ru": "жёлтый",
+      "emoji": "🟡",
+      "level": "starters"
+    },
+    {
+      "id": "pink",
+      "en": "pink",
+      "ru": "розовый",
+      "emoji": "🩷",
+      "level": "starters"
+    },
+    {
+      "id": "purple",
+      "en": "purple",
+      "ru": "фиолетовый",
+      "emoji": "🟣",
+      "level": "starters"
+    },
+    {
+      "id": "orange",
+      "en": "orange",
+      "ru": "оранжевый",
+      "emoji": "🟠",
+      "level": "starters"
+    },
+    {
+      "id": "black",
+      "en": "black",
+      "ru": "чёрный",
+      "emoji": "⚫",
+      "level": "starters"
+    },
+    {
+      "id": "white",
+      "en": "white",
+      "ru": "белый",
+      "emoji": "⚪",
+      "level": "starters"
+    },
+    {
+      "id": "brown",
+      "en": "brown",
+      "ru": "коричневый",
+      "emoji": "🟤",
+      "level": "starters"
+    },
+    {
+      "id": "grey",
+      "en": "grey",
+      "ru": "серый",
+      "emoji": "🩶",
+      "level": "starters"
+    },
+    {
+      "id": "lightstick",
+      "en": "lightstick",
+      "ru": "лайтстик (фанатский фонарик)",
+      "emoji": "🪄",
+      "level": "extra"
+    },
+    {
+      "id": "bag",
+      "en": "bag",
+      "ru": "сумка",
+      "emoji": "👜",
+      "level": "starters"
+    },
+    {
+      "id": "phone",
+      "en": "phone",
+      "ru": "телефон",
+      "emoji": "📱",
+      "level": "starters"
+    },
+    {
+      "id": "notebook",
+      "en": "notebook",
+      "ru": "тетрадь, блокнот",
+      "emoji": "📓",
+      "level": "extra"
+    },
+    {
+      "id": "pen",
+      "en": "pen",
+      "ru": "ручка",
+      "emoji": "🖊️",
+      "level": "starters"
+    },
+    {
+      "id": "pencil",
+      "en": "pencil",
+      "ru": "карандаш",
+      "emoji": "✏️",
+      "level": "starters"
+    },
+    {
+      "id": "book",
+      "en": "book",
+      "ru": "книга",
+      "emoji": "📕",
+      "level": "starters"
+    },
+    {
+      "id": "rubber",
+      "en": "rubber",
+      "ru": "ластик",
+      "emoji": "🧽",
+      "level": "starters"
+    },
+    {
+      "id": "camera",
+      "en": "camera",
+      "ru": "фотоаппарат",
+      "emoji": "📷",
+      "level": "movers"
+    },
+    {
+      "id": "poster",
+      "en": "poster",
+      "ru": "постер",
+      "emoji": "🖼️",
+      "level": "extra"
+    },
+    {
+      "id": "headphones",
+      "en": "headphones",
+      "ru": "наушники",
+      "emoji": "🎧",
+      "level": "extra"
+    },
+    {
+      "id": "friend",
+      "en": "friend",
+      "ru": "друг, подруга",
+      "emoji": "🧑‍🤝‍🧑",
+      "level": "starters"
+    },
+    {
+      "id": "tall",
+      "en": "tall",
+      "ru": "высокий",
+      "emoji": "🦒",
+      "level": "movers"
+    },
+    {
+      "id": "short",
+      "en": "short",
+      "ru": "низкий, короткий",
+      "emoji": "🐭",
+      "level": "movers"
+    },
+    {
+      "id": "young",
+      "en": "young",
+      "ru": "молодой",
+      "emoji": "👶",
+      "level": "starters"
+    },
+    {
+      "id": "old",
+      "en": "old",
+      "ru": "старый, пожилой",
+      "emoji": "👴",
+      "level": "starters"
+    },
+    {
+      "id": "happy",
+      "en": "happy",
+      "ru": "счастливый, радостный",
+      "emoji": "😊",
+      "level": "starters"
+    },
+    {
+      "id": "sad",
+      "en": "sad",
+      "ru": "грустный",
+      "emoji": "😢",
+      "level": "starters"
+    },
+    {
+      "id": "funny",
+      "en": "funny",
+      "ru": "смешной, весёлый",
+      "emoji": "🤪",
+      "level": "starters"
+    },
+    {
+      "id": "kind",
+      "en": "kind",
+      "ru": "добрый",
+      "emoji": "💖",
+      "level": "movers"
+    },
+    {
+      "id": "hair",
+      "en": "hair",
+      "ru": "волосы",
+      "emoji": "💇‍♀️",
+      "level": "starters"
+    },
+    {
+      "id": "eyes",
+      "en": "eyes",
+      "ru": "глаза",
+      "emoji": "👀",
+      "level": "starters"
+    },
+    {
+      "id": "long",
+      "en": "long",
+      "ru": "длинный",
+      "emoji": "📏",
+      "level": "starters"
+    },
+    {
+      "id": "curly",
+      "en": "curly",
+      "ru": "кудрявый",
+      "emoji": "👩‍🦱",
+      "level": "movers"
+    },
+    {
+      "id": "like",
+      "en": "like",
+      "ru": "нравиться, любить",
+      "emoji": "👍",
+      "level": "starters"
+    },
+    {
+      "id": "dance",
+      "en": "dance",
+      "ru": "танцевать",
+      "emoji": "💃",
+      "level": "starters"
+    },
+    {
+      "id": "sing",
+      "en": "sing",
+      "ru": "петь",
+      "emoji": "🎤",
+      "level": "starters"
+    },
+    {
+      "id": "draw",
+      "en": "draw",
+      "ru": "рисовать",
+      "emoji": "🖍️",
+      "level": "starters"
+    },
+    {
+      "id": "music",
+      "en": "music",
+      "ru": "музыка",
+      "emoji": "🎵",
+      "level": "starters"
+    },
+    {
+      "id": "k-pop",
+      "en": "K-pop",
+      "ru": "кей-поп",
+      "emoji": "🎶",
+      "level": "extra"
+    },
+    {
+      "id": "korea",
+      "en": "Korea",
+      "ru": "Корея",
+      "emoji": "🇰🇷",
+      "level": "extra"
+    },
+    {
+      "id": "russia",
+      "en": "Russia",
+      "ru": "Россия",
+      "emoji": "🇷🇺",
+      "level": "extra"
+    },
+    {
+      "id": "the-uk",
+      "en": "the UK",
+      "ru": "Великобритания",
+      "emoji": "🇬🇧",
+      "level": "extra"
+    },
+    {
+      "id": "country",
+      "en": "country",
+      "ru": "страна",
+      "emoji": "🗺️",
+      "level": "movers"
+    }
+  ],
+  "weeks": [
+    {
+      "n": 1,
+      "title": "Hello, trainee!",
+      "episodes": [
+        {
+          "id": "w1-e01",
+          "title": "Annyeong! Hello!",
+          "emoji": "👋",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "hello",
+                "goodbye",
+                "yes",
+                "no",
+                "please",
+                "thank-you",
+                "name",
+                "trainee"
+              ]
+            },
+            {
+              "type": "listen",
+              "title": "Listen and tap!",
+              "items": [
+                {
+                  "say": "hello",
+                  "options": [
+                    {
+                      "emoji": "🙋"
+                    },
+                    {
+                      "emoji": "👋"
+                    },
+                    {
+                      "emoji": "❌"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "thank you",
+                  "options": [
+                    {
+                      "emoji": "💐"
+                    },
+                    {
+                      "emoji": "✅"
+                    },
+                    {
+                      "emoji": "📛"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "no",
+                  "options": [
+                    {
+                      "emoji": "✅"
+                    },
+                    {
+                      "emoji": "🙏"
+                    },
+                    {
+                      "emoji": "❌"
+                    }
+                  ],
+                  "answer": 2
+                },
+                {
+                  "say": "name",
+                  "options": [
+                    {
+                      "emoji": "👋"
+                    },
+                    {
+                      "emoji": "📛"
+                    },
+                    {
+                      "emoji": "🌟"
+                    }
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "title": "Say it!",
+              "items": [
+                {
+                  "text": "Hello! I'm a trainee.",
+                  "ru": "Привет! Я стажёр.",
+                  "emoji": "🌟"
+                },
+                {
+                  "text": "My name is {name}.",
+                  "ru": "Меня зовут Марго.",
+                  "emoji": "📛"
+                },
+                {
+                  "text": "What's your name?",
+                  "ru": "Как тебя зовут?",
+                  "emoji": "❓"
+                },
+                {
+                  "text": "Thank you, Coach Mina!",
+                  "ru": "Спасибо, коуч Мина!",
+                  "emoji": "💐"
+                }
+              ]
+            },
+            {
+              "type": "sentence",
+              "title": "Make a sentence!",
+              "items": [
+                {
+                  "sentence": "Hello, I'm Hana.",
+                  "ru": "Привет, я Хана.",
+                  "emoji": "👋"
+                },
+                {
+                  "sentence": "What's your name?",
+                  "ru": "Как тебя зовут?",
+                  "emoji": "📛"
+                },
+                {
+                  "sentence": "My name is Jun.",
+                  "ru": "Меня зовут Джун.",
+                  "emoji": "👦"
+                }
+              ]
+            },
+            {
+              "type": "kculture",
+              "title": "K-Culture corner",
+              "emoji": "🙇",
+              "text": [
+                "In Korea, people say \"Annyeong!\" to friends.",
+                "People bow to say hello.",
+                "Trainees bow to their coach."
+              ],
+              "korean": {
+                "ko": "안녕",
+                "roman": "annyeong",
+                "en": "hi / bye"
+              },
+              "questions": [
+                {
+                  "q": "How do people say hello in Korea?",
+                  "options": [
+                    "Annyeong!",
+                    "Goodbye!",
+                    "Thank you!"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "Trainees bow to their...",
+                  "options": [
+                    "cat",
+                    "coach",
+                    "bag"
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "chant",
+              "title": "Sing the chant!",
+              "bpm": 100,
+              "lines": [
+                "Hello, hello! What's your name?",
+                "Hello, hello! My name is Hana!",
+                "Hello, hello! What's your name?",
+                "Hello, hello! My name is Jun!",
+                "Star trainees, yes, yes, yes!",
+                "Thank you, Coach! Goodbye, goodbye!"
+              ],
+              "blanks": [
+                "hello",
+                "name",
+                "yes",
+                "goodbye"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "w1-e02",
+          "title": "One, Two, Three, Go!",
+          "emoji": "🔢",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "one",
+                "two",
+                "three",
+                "four",
+                "five",
+                "six",
+                "seven",
+                "eight"
+              ]
+            },
+            {
+              "type": "listen",
+              "title": "Listen and tap!",
+              "items": [
+                {
+                  "say": "three",
+                  "options": [
+                    {
+                      "text": "2"
+                    },
+                    {
+                      "text": "3"
+                    },
+                    {
+                      "text": "8"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "seven",
+                  "options": [
+                    {
+                      "text": "7"
+                    },
+                    {
+                      "text": "1"
+                    },
+                    {
+                      "text": "4"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "five",
+                  "options": [
+                    {
+                      "text": "6"
+                    },
+                    {
+                      "text": "4"
+                    },
+                    {
+                      "text": "5"
+                    }
+                  ],
+                  "answer": 2
+                },
+                {
+                  "say": "eight",
+                  "options": [
+                    {
+                      "text": "3"
+                    },
+                    {
+                      "text": "8"
+                    },
+                    {
+                      "text": "6"
+                    }
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "memory",
+              "title": "Find the pairs!",
+              "words": [
+                "one",
+                "two",
+                "three",
+                "four",
+                "five",
+                "six"
+              ]
+            },
+            {
+              "type": "chant",
+              "title": "Sing the chant!",
+              "bpm": 110,
+              "lines": [
+                "One, two, three, four!",
+                "Trainees on the dance floor!",
+                "Five, six, seven, eight!",
+                "K-pop stars, we're never late!",
+                "One, two, three, four!",
+                "Clap your hands and dance some more!"
+              ],
+              "blanks": [
+                "one",
+                "four",
+                "eight",
+                "stars",
+                "dance"
+              ]
+            },
+            {
+              "type": "dance",
+              "title": "Dance time!",
+              "items": [
+                {
+                  "text": "Clap two times!",
+                  "moves": [
+                    "clap",
+                    "clap"
+                  ]
+                },
+                {
+                  "text": "Jump three times!",
+                  "moves": [
+                    "jump",
+                    "jump",
+                    "jump"
+                  ]
+                },
+                {
+                  "text": "Wave one time and spin!",
+                  "moves": [
+                    "wave",
+                    "spin"
+                  ]
+                },
+                {
+                  "text": "Step left, step right, clap, pose!",
+                  "moves": [
+                    "step-left",
+                    "step-right",
+                    "clap",
+                    "pose"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "title": "Say it!",
+              "items": [
+                {
+                  "text": "One, two, three, four, five.",
+                  "ru": "Один, два, три, четыре, пять.",
+                  "emoji": "🖐️"
+                },
+                {
+                  "text": "Six, seven, eight!",
+                  "ru": "Шесть, семь, восемь!",
+                  "emoji": "💃"
+                },
+                {
+                  "text": "I'm eight? No, I'm ten!",
+                  "ru": "Мне восемь? Нет, мне десять!",
+                  "emoji": "🎂"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "w1-e03",
+          "title": "How Old Are You?",
+          "emoji": "🎂",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "nine",
+                "ten",
+                "eleven",
+                "twelve",
+                "thirteen",
+                "fourteen",
+                "fifteen",
+                "sixteen"
+              ]
+            },
+            {
+              "type": "listen",
+              "title": "Listen and tap!",
+              "items": [
+                {
+                  "say": "twelve",
+                  "options": [
+                    {
+                      "text": "12"
+                    },
+                    {
+                      "text": "20"
+                    },
+                    {
+                      "text": "2"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "fifteen",
+                  "options": [
+                    {
+                      "text": "50"
+                    },
+                    {
+                      "text": "5"
+                    },
+                    {
+                      "text": "15"
+                    }
+                  ],
+                  "answer": 2
+                },
+                {
+                  "say": "I'm ten.",
+                  "options": [
+                    {
+                      "text": "10"
+                    },
+                    {
+                      "text": "9"
+                    },
+                    {
+                      "text": "11"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "thirteen",
+                  "options": [
+                    {
+                      "text": "30"
+                    },
+                    {
+                      "text": "13"
+                    },
+                    {
+                      "text": "3"
+                    }
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "gap",
+              "title": "Fill the gap!",
+              "items": [
+                {
+                  "text": "How ___ are you?",
+                  "options": [
+                    "old",
+                    "name",
+                    "hello"
+                  ],
+                  "answer": 0,
+                  "ru": "Сколько тебе лет?",
+                  "emoji": "🎂"
+                },
+                {
+                  "text": "I'm ___. (10)",
+                  "options": [
+                    "nine",
+                    "ten",
+                    "twelve"
+                  ],
+                  "answer": 1,
+                  "emoji": "🔟"
+                },
+                {
+                  "text": "Hana is ___. (11)",
+                  "options": [
+                    "eleven",
+                    "seven",
+                    "sixteen"
+                  ],
+                  "answer": 0,
+                  "emoji": "👧"
+                },
+                {
+                  "text": "Jun is ___. (12)",
+                  "options": [
+                    "two",
+                    "twenty",
+                    "twelve"
+                  ],
+                  "answer": 2,
+                  "emoji": "👦"
+                }
+              ]
+            },
+            {
+              "type": "sentence",
+              "title": "Make a sentence!",
+              "items": [
+                {
+                  "sentence": "How old are you?",
+                  "ru": "Сколько тебе лет?",
+                  "emoji": "❓"
+                },
+                {
+                  "sentence": "I'm ten years old.",
+                  "ru": "Мне десять лет.",
+                  "emoji": "🎂"
+                },
+                {
+                  "sentence": "She's eleven.",
+                  "ru": "Ей одиннадцать.",
+                  "emoji": "👧"
+                }
+              ]
+            },
+            {
+              "type": "dance",
+              "title": "Dance time!",
+              "items": [
+                {
+                  "text": "Jump two times and clap!",
+                  "moves": [
+                    "jump",
+                    "jump",
+                    "clap"
+                  ]
+                },
+                {
+                  "text": "Turn left and turn right!",
+                  "moves": [
+                    "turn-left",
+                    "turn-right"
+                  ]
+                },
+                {
+                  "text": "Hands up, hands down, jump!",
+                  "moves": [
+                    "hands-up",
+                    "hands-down",
+                    "jump"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "title": "Say it!",
+              "items": [
+                {
+                  "text": "How old are you?",
+                  "ru": "Сколько тебе лет?",
+                  "emoji": "❓"
+                },
+                {
+                  "text": "I'm ten.",
+                  "ru": "Мне десять.",
+                  "emoji": "🔟"
+                },
+                {
+                  "text": "Are you eleven? No, I'm not.",
+                  "ru": "Тебе одиннадцать? Нет.",
+                  "emoji": "🙅‍♀️"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "w1-e04",
+          "title": "Count to Twenty!",
+          "emoji": "🧮",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "seventeen",
+                "eighteen",
+                "nineteen",
+                "twenty",
+                "number"
+              ]
+            },
+            {
+              "type": "listen",
+              "title": "Listen and tap!",
+              "items": [
+                {
+                  "say": "nineteen",
+                  "options": [
+                    {
+                      "text": "90"
+                    },
+                    {
+                      "text": "19"
+                    },
+                    {
+                      "text": "9"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "twenty",
+                  "options": [
+                    {
+                      "text": "20"
+                    },
+                    {
+                      "text": "12"
+                    },
+                    {
+                      "text": "2"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "eighteen",
+                  "options": [
+                    {
+                      "text": "8"
+                    },
+                    {
+                      "text": "80"
+                    },
+                    {
+                      "text": "18"
+                    }
+                  ],
+                  "answer": 2
+                },
+                {
+                  "say": "seventeen",
+                  "options": [
+                    {
+                      "text": "17"
+                    },
+                    {
+                      "text": "70"
+                    },
+                    {
+                      "text": "7"
+                    }
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "spell",
+              "title": "Spell it!",
+              "words": [
+                "ten",
+                "six",
+                "two",
+                "nine"
+              ]
+            },
+            {
+              "type": "read",
+              "title": "Read the story!",
+              "story": {
+                "title": "Hana's First Day",
+                "emoji": "🏢",
+                "paragraphs": [
+                  "This is Hana. She's eleven. She's from Seoul. Today is her first day at Star Academy.",
+                  "Coach Mina says, \"Hello! What's your name?\" \"My name is Hana,\" she says. \"How old are you?\" \"I'm eleven.\"",
+                  "There are twenty trainees. Hana is number nineteen. She is happy!"
+                ]
+              },
+              "questions": [
+                {
+                  "q": "How old is Hana?",
+                  "options": [
+                    "ten",
+                    "eleven",
+                    "twelve"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "How many trainees are there?",
+                  "options": [
+                    "twelve",
+                    "nineteen",
+                    "twenty"
+                  ],
+                  "answer": 2
+                },
+                {
+                  "q": "Hana is number...",
+                  "options": [
+                    "nineteen",
+                    "nine",
+                    "seventeen"
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "quiz",
+              "title": "Speed quiz!",
+              "words": [
+                "one",
+                "three",
+                "five",
+                "eight",
+                "ten",
+                "twelve",
+                "fifteen",
+                "twenty"
+              ],
+              "seconds": 45
+            },
+            {
+              "type": "speak",
+              "title": "Say it!",
+              "items": [
+                {
+                  "text": "Eleven, twelve, thirteen, fourteen, fifteen!",
+                  "ru": "Одиннадцать… пятнадцать!",
+                  "emoji": "🔢"
+                },
+                {
+                  "text": "Sixteen, seventeen, eighteen, nineteen, twenty!",
+                  "ru": "Шестнадцать… двадцать!",
+                  "emoji": "🎉"
+                },
+                {
+                  "text": "I'm number twenty!",
+                  "ru": "Я номер двадцать!",
+                  "emoji": "⭐"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "w1-e05",
+          "title": "A, B, C — Spell It!",
+          "emoji": "🔤",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "letter",
+                "boy",
+                "girl",
+                "star"
+              ]
+            },
+            {
+              "type": "listen",
+              "title": "Listen to the letters!",
+              "items": [
+                {
+                  "say": "H, A, N, A",
+                  "options": [
+                    {
+                      "text": "Hana"
+                    },
+                    {
+                      "text": "Sora"
+                    },
+                    {
+                      "text": "Max"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "J, U, N",
+                  "options": [
+                    {
+                      "text": "Leo"
+                    },
+                    {
+                      "text": "Jun"
+                    },
+                    {
+                      "text": "Max"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "S, O, R, A",
+                  "options": [
+                    {
+                      "text": "Hana"
+                    },
+                    {
+                      "text": "Leo"
+                    },
+                    {
+                      "text": "Sora"
+                    }
+                  ],
+                  "answer": 2
+                },
+                {
+                  "say": "L, E, O",
+                  "options": [
+                    {
+                      "text": "Leo"
+                    },
+                    {
+                      "text": "Jun"
+                    },
+                    {
+                      "text": "Hana"
+                    }
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "spell",
+              "title": "Spell it!",
+              "words": [
+                "star",
+                "boy",
+                "girl",
+                "name"
+              ]
+            },
+            {
+              "type": "watch",
+              "title": "Watch and answer!",
+              "videoTitle": "Choose an Alphablocks video and watch it",
+              "url": "https://learningblocks.tv/alphablocks",
+              "source": "Alphablocks (Learning Blocks)",
+              "questions": [
+                {
+                  "q": "How many letters are in the English alphabet?",
+                  "options": [
+                    "twenty",
+                    "twenty-six",
+                    "ten"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "Which is a letter?",
+                  "options": [
+                    "B",
+                    "7",
+                    "🌟"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "Which word starts with the letter S?",
+                  "options": [
+                    "star",
+                    "boy",
+                    "girl"
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "title": "Say it!",
+              "items": [
+                {
+                  "text": "How do you spell your name?",
+                  "ru": "Как пишется твоё имя?",
+                  "emoji": "🔤"
+                },
+                {
+                  "text": "M, A, R, G, O.",
+                  "ru": "М, А, Р, Г, О.",
+                  "emoji": "📛"
+                },
+                {
+                  "text": "Is she a girl? Yes, she is.",
+                  "ru": "Она девочка? Да.",
+                  "emoji": "👧"
+                }
+              ]
+            },
+            {
+              "type": "draw",
+              "title": "Draw it!",
+              "prompt": "Draw your name in big letters. Draw a star on every letter!",
+              "ru": "Имя большими буквами",
+              "emoji": "⭐"
+            },
+            {
+              "type": "write",
+              "title": "Write!",
+              "prompt": "Write about you: your name and your age.",
+              "ru": "Напиши о себе",
+              "starters": [
+                "My name is…",
+                "I'm … years old.",
+                "I'm a trainee at…"
+              ],
+              "minWords": 8
+            }
+          ]
+        },
+        {
+          "id": "w1-weekly1",
+          "title": "Boss Stage: Hello!",
+          "emoji": "🏆",
+          "kind": "weekly",
+          "exercises": [
+            {
+              "type": "memory",
+              "title": "Find the pairs!",
+              "words": [
+                "hello",
+                "goodbye",
+                "thank-you",
+                "star",
+                "boy",
+                "girl"
+              ]
+            },
+            {
+              "type": "listen",
+              "title": "Listen and tap!",
+              "items": [
+                {
+                  "say": "fourteen",
+                  "options": [
+                    {
+                      "text": "40"
+                    },
+                    {
+                      "text": "14"
+                    },
+                    {
+                      "text": "4"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "goodbye",
+                  "options": [
+                    {
+                      "emoji": "🙋"
+                    },
+                    {
+                      "emoji": "👋"
+                    },
+                    {
+                      "emoji": "🙏"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "sixteen",
+                  "options": [
+                    {
+                      "text": "16"
+                    },
+                    {
+                      "text": "60"
+                    },
+                    {
+                      "text": "6"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "girl",
+                  "options": [
+                    {
+                      "emoji": "👦"
+                    },
+                    {
+                      "emoji": "⭐"
+                    },
+                    {
+                      "emoji": "👧"
+                    }
+                  ],
+                  "answer": 2
+                }
+              ]
+            },
+            {
+              "type": "gap",
+              "title": "Fill the gap!",
+              "items": [
+                {
+                  "text": "What's your ___?",
+                  "options": [
+                    "name",
+                    "old",
+                    "star"
+                  ],
+                  "answer": 0,
+                  "ru": "Как тебя зовут?"
+                },
+                {
+                  "text": "How old ___ you?",
+                  "options": [
+                    "is",
+                    "am",
+                    "are"
+                  ],
+                  "answer": 2
+                },
+                {
+                  "text": "I ___ ten.",
+                  "options": [
+                    "am",
+                    "is",
+                    "are"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "text": "She ___ eleven.",
+                  "options": [
+                    "am",
+                    "are",
+                    "is"
+                  ],
+                  "answer": 2
+                }
+              ]
+            },
+            {
+              "type": "sentence",
+              "title": "Make a sentence!",
+              "items": [
+                {
+                  "sentence": "My name is Sora.",
+                  "ru": "Меня зовут Сора.",
+                  "emoji": "📛"
+                },
+                {
+                  "sentence": "I'm twelve years old.",
+                  "ru": "Мне двенадцать лет.",
+                  "emoji": "🎂"
+                },
+                {
+                  "sentence": "Is he a trainee?",
+                  "ru": "Он стажёр?",
+                  "emoji": "🌟"
+                }
+              ]
+            },
+            {
+              "type": "spell",
+              "title": "Spell it!",
+              "words": [
+                "hello",
+                "yes",
+                "seven",
+                "letter"
+              ]
+            },
+            {
+              "type": "read",
+              "title": "Read the story!",
+              "story": {
+                "title": "Max Says Hello",
+                "emoji": "👦",
+                "paragraphs": [
+                  "Hello! I'm Max. I'm a boy. I'm twelve. I'm a trainee at Star Academy.",
+                  "My friend is Leo. He's ten. We count, \"One, two, three, four!\" and we dance.",
+                  "Coach Mina says, \"Good job, boys!\" We say, \"Thank you!\""
+                ]
+              },
+              "questions": [
+                {
+                  "q": "How old is Max?",
+                  "options": [
+                    "ten",
+                    "twelve",
+                    "eleven"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "Who is ten?",
+                  "options": [
+                    "Leo",
+                    "Max",
+                    "Coach Mina"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "What do the boys say?",
+                  "options": [
+                    "Goodbye!",
+                    "No!",
+                    "Thank you!"
+                  ],
+                  "answer": 2
+                }
+              ]
+            },
+            {
+              "type": "quiz",
+              "title": "Speed quiz!",
+              "words": [
+                "hello",
+                "goodbye",
+                "yes",
+                "no",
+                "please",
+                "thank-you",
+                "eleven",
+                "thirteen",
+                "seventeen",
+                "nineteen",
+                "boy",
+                "girl"
+              ],
+              "seconds": 60
+            },
+            {
+              "type": "speak",
+              "title": "Say it!",
+              "items": [
+                {
+                  "text": "Hello! My name is {name}.",
+                  "ru": "Привет! Меня зовут Марго.",
+                  "emoji": "👋"
+                },
+                {
+                  "text": "I'm ten years old.",
+                  "ru": "Мне десять лет.",
+                  "emoji": "🎂"
+                },
+                {
+                  "text": "Goodbye, Coach Mina!",
+                  "ru": "До свидания, коуч Мина!",
+                  "emoji": "🙋"
+                }
+              ]
+            },
+            {
+              "type": "dance",
+              "title": "Dance time!",
+              "items": [
+                {
+                  "text": "Wave hello and clap two times!",
+                  "moves": [
+                    "wave",
+                    "clap",
+                    "clap"
+                  ]
+                },
+                {
+                  "text": "Spin and make a finger heart!",
+                  "moves": [
+                    "spin",
+                    "finger-heart"
+                  ]
+                },
+                {
+                  "text": "Jump, jump, pose!",
+                  "moves": [
+                    "jump",
+                    "jump",
+                    "pose"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "title": "My family",
+      "episodes": [
+        {
+          "id": "w1-e06",
+          "title": "Meet My Family",
+          "emoji": "👨‍👩‍👧",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "family",
+                "mum",
+                "dad",
+                "brother",
+                "sister"
+              ]
+            },
+            {
+              "type": "listen",
+              "title": "Listen and tap!",
+              "items": [
+                {
+                  "say": "mum",
+                  "options": [
+                    {
+                      "emoji": "👨"
+                    },
+                    {
+                      "emoji": "👩"
+                    },
+                    {
+                      "emoji": "👦"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "brother",
+                  "options": [
+                    {
+                      "emoji": "👦"
+                    },
+                    {
+                      "emoji": "👧"
+                    },
+                    {
+                      "emoji": "👩"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "dad",
+                  "options": [
+                    {
+                      "emoji": "👧"
+                    },
+                    {
+                      "emoji": "👩"
+                    },
+                    {
+                      "emoji": "👨"
+                    }
+                  ],
+                  "answer": 2
+                },
+                {
+                  "say": "family",
+                  "options": [
+                    {
+                      "emoji": "👨‍👩‍👧‍👦"
+                    },
+                    {
+                      "emoji": "🙋"
+                    },
+                    {
+                      "emoji": "🔢"
+                    }
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "gap",
+              "title": "Fill the gap!",
+              "items": [
+                {
+                  "text": "This is my mum. ___ is kind.",
+                  "options": [
+                    "He",
+                    "She",
+                    "It"
+                  ],
+                  "answer": 1,
+                  "ru": "Это моя мама. Она добрая.",
+                  "emoji": "👩"
+                },
+                {
+                  "text": "This is my dad. ___ is tall.",
+                  "options": [
+                    "He",
+                    "She",
+                    "I"
+                  ],
+                  "answer": 0,
+                  "emoji": "👨"
+                },
+                {
+                  "text": "This is my sister. ___ name is Sora.",
+                  "options": [
+                    "His",
+                    "Her",
+                    "My"
+                  ],
+                  "answer": 1,
+                  "ru": "Её зовут Сора.",
+                  "emoji": "👧"
+                }
+              ]
+            },
+            {
+              "type": "chant",
+              "title": "Sing the chant!",
+              "bpm": 96,
+              "lines": [
+                "Mum and dad, sister, brother,",
+                "We are a family, love each other!",
+                "He's my brother, she's my sister,",
+                "Mum and dad — a star family!"
+              ],
+              "blanks": [
+                "mum",
+                "dad",
+                "sister",
+                "brother",
+                "family"
+              ]
+            },
+            {
+              "type": "kculture",
+              "title": "K-Culture corner",
+              "emoji": "👪",
+              "text": [
+                "In Korea, \"eomma\" means mum.",
+                "\"Appa\" means dad.",
+                "Korean families often eat dinner together."
+              ],
+              "korean": {
+                "ko": "엄마",
+                "roman": "eomma",
+                "en": "mum"
+              },
+              "questions": [
+                {
+                  "q": "What is \"appa\"?",
+                  "options": [
+                    "mum",
+                    "dad",
+                    "sister"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "What is \"eomma\"?",
+                  "options": [
+                    "mum",
+                    "brother",
+                    "dad"
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "watch",
+              "title": "Watch and answer!",
+              "videoTitle": "Choose a song about family and watch it",
+              "url": "https://learnenglishkids.britishcouncil.org/listen-watch/songs",
+              "source": "British Council LearnEnglish Kids",
+              "questions": [
+                {
+                  "q": "Which word is a family member?",
+                  "options": [
+                    "sister",
+                    "star",
+                    "number"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "\"Mum\" is a...",
+                  "options": [
+                    "man",
+                    "woman",
+                    "boy"
+                  ],
+                  "answer": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "w1-e07",
+          "title": "Grandma & Grandpa",
+          "emoji": "👵",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "grandma",
+                "grandpa",
+                "baby",
+                "child"
+              ]
+            },
+            {
+              "type": "memory",
+              "title": "Find the pairs!",
+              "words": [
+                "mum",
+                "dad",
+                "brother",
+                "sister",
+                "grandma",
+                "grandpa"
+              ]
+            },
+            {
+              "type": "sentence",
+              "title": "Make a sentence!",
+              "items": [
+                {
+                  "sentence": "This is my grandma.",
+                  "ru": "Это моя бабушка.",
+                  "emoji": "👵"
+                },
+                {
+                  "sentence": "He's my grandpa.",
+                  "ru": "Он мой дедушка.",
+                  "emoji": "👴"
+                },
+                {
+                  "sentence": "She's a baby.",
+                  "ru": "Она малышка.",
+                  "emoji": "👶"
+                }
+              ]
+            },
+            {
+              "type": "read",
+              "title": "Read the story!",
+              "story": {
+                "title": "Jun's Family",
+                "emoji": "👴",
+                "paragraphs": [
+                  "This is Jun. He's twelve. His family is big.",
+                  "His mum is a doctor. His dad is a cook. His sister is a baby. Her name is Mia.",
+                  "Jun's grandma and grandpa are in Busan. Jun loves his family!"
+                ]
+              },
+              "questions": [
+                {
+                  "q": "Who is a baby?",
+                  "options": [
+                    "Jun",
+                    "Mia",
+                    "grandma"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "Where are grandma and grandpa?",
+                  "options": [
+                    "in Seoul",
+                    "in Busan",
+                    "at Star Academy"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "His dad is a...",
+                  "options": [
+                    "cook",
+                    "doctor",
+                    "trainee"
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "draw",
+              "title": "Draw it!",
+              "prompt": "Draw your grandma and grandpa. Your grandma has got a red bag.",
+              "ru": "Бабушка и дедушка",
+              "emoji": "👵"
+            },
+            {
+              "type": "speak",
+              "title": "Say it!",
+              "items": [
+                {
+                  "text": "This is my grandma.",
+                  "ru": "Это моя бабушка.",
+                  "emoji": "👵"
+                },
+                {
+                  "text": "He's my grandpa. His name is Ivan.",
+                  "ru": "Это мой дедушка. Его зовут Иван.",
+                  "emoji": "👴"
+                },
+                {
+                  "text": "Is she a baby? Yes, she is.",
+                  "ru": "Она малышка? Да.",
+                  "emoji": "👶"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "w1-e08",
+          "title": "Aunts, Uncles, Cousins",
+          "emoji": "🧑‍🤝‍🧑",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "aunt",
+                "uncle",
+                "cousin",
+                "parent"
+              ]
+            },
+            {
+              "type": "listen",
+              "title": "Listen and tap!",
+              "items": [
+                {
+                  "say": "uncle",
+                  "options": [
+                    {
+                      "emoji": "👩‍🦰"
+                    },
+                    {
+                      "emoji": "🧔"
+                    },
+                    {
+                      "emoji": "👶"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "aunt",
+                  "options": [
+                    {
+                      "emoji": "👩‍🦰"
+                    },
+                    {
+                      "emoji": "👴"
+                    },
+                    {
+                      "emoji": "🧔"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "Is he your cousin? Yes, he is.",
+                  "options": [
+                    {
+                      "emoji": "✅"
+                    },
+                    {
+                      "emoji": "❌"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "Is she your aunt? No, she isn't.",
+                  "options": [
+                    {
+                      "emoji": "✅"
+                    },
+                    {
+                      "emoji": "❌"
+                    }
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "gap",
+              "title": "Fill the gap!",
+              "items": [
+                {
+                  "text": "My uncle is funny. ___ name is Pavel.",
+                  "options": [
+                    "Her",
+                    "His",
+                    "Your"
+                  ],
+                  "answer": 1,
+                  "ru": "Моего дядю зовут Павел."
+                },
+                {
+                  "text": "My aunt is kind. ___ name is Olga.",
+                  "options": [
+                    "Her",
+                    "His",
+                    "My"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "text": "Is he your cousin? Yes, he ___.",
+                  "options": [
+                    "is",
+                    "are",
+                    "am"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "text": "Are you Leo? No, I'm ___.",
+                  "options": [
+                    "isn't",
+                    "not",
+                    "no"
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "sentence",
+              "title": "Make a sentence!",
+              "items": [
+                {
+                  "sentence": "Is she your aunt?",
+                  "ru": "Она твоя тётя?",
+                  "emoji": "👩‍🦰"
+                },
+                {
+                  "sentence": "Yes, she is.",
+                  "ru": "Да.",
+                  "emoji": "✅"
+                },
+                {
+                  "sentence": "No, he isn't.",
+                  "ru": "Нет.",
+                  "emoji": "❌"
+                }
+              ]
+            },
+            {
+              "type": "dance",
+              "title": "Dance time!",
+              "items": [
+                {
+                  "text": "Wave to your aunt!",
+                  "moves": [
+                    "wave"
+                  ]
+                },
+                {
+                  "text": "Clap for your uncle two times!",
+                  "moves": [
+                    "clap",
+                    "clap"
+                  ]
+                },
+                {
+                  "text": "Make a finger heart for your cousin!",
+                  "moves": [
+                    "finger-heart"
+                  ]
+                },
+                {
+                  "text": "Step right, step left, jump, pose!",
+                  "moves": [
+                    "step-right",
+                    "step-left",
+                    "jump",
+                    "pose"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "title": "Say it!",
+              "items": [
+                {
+                  "text": "Is he your uncle? Yes, he is.",
+                  "ru": "Он твой дядя? Да.",
+                  "emoji": "🧔"
+                },
+                {
+                  "text": "Is she your cousin? No, she isn't.",
+                  "ru": "Она твоя кузина? Нет.",
+                  "emoji": "🧑"
+                },
+                {
+                  "text": "My parents are kind.",
+                  "ru": "Мои родители добрые.",
+                  "emoji": "👪"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "w1-e09",
+          "title": "He's, She's, His, Her",
+          "emoji": "👫",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "man",
+                "woman",
+                "son",
+                "daughter"
+              ]
+            },
+            {
+              "type": "listen",
+              "title": "Listen and tap!",
+              "items": [
+                {
+                  "say": "woman",
+                  "options": [
+                    {
+                      "emoji": "🧑‍💼"
+                    },
+                    {
+                      "emoji": "👩‍💼"
+                    },
+                    {
+                      "emoji": "👶"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "He's a man.",
+                  "options": [
+                    {
+                      "emoji": "👩‍💼"
+                    },
+                    {
+                      "emoji": "👧"
+                    },
+                    {
+                      "emoji": "🧑‍💼"
+                    }
+                  ],
+                  "answer": 2
+                },
+                {
+                  "say": "She's his daughter.",
+                  "options": [
+                    {
+                      "emoji": "👧"
+                    },
+                    {
+                      "emoji": "👦"
+                    },
+                    {
+                      "emoji": "👴"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "He's her son.",
+                  "options": [
+                    {
+                      "emoji": "👧"
+                    },
+                    {
+                      "emoji": "👦"
+                    },
+                    {
+                      "emoji": "👵"
+                    }
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "gap",
+              "title": "He or she? His or her?",
+              "items": [
+                {
+                  "text": "Leo is a boy. ___ ten.",
+                  "options": [
+                    "He's",
+                    "She's",
+                    "It's"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "text": "Sora is a girl. ___ eleven.",
+                  "options": [
+                    "He's",
+                    "She's",
+                    "I'm"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "text": "Coach Mina is a woman. ___ name is Mina.",
+                  "options": [
+                    "His",
+                    "Her",
+                    "Its"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "text": "Max is my friend. ___ dad is tall.",
+                  "options": [
+                    "His",
+                    "Her",
+                    "I"
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "read",
+              "title": "Read the story!",
+              "story": {
+                "title": "Coach Mina's Family",
+                "emoji": "👩‍🏫",
+                "paragraphs": [
+                  "Coach Mina is a dance teacher. She's thirty. Her husband is a singer.",
+                  "They have got a son and a daughter. Their son is seven. His name is Dan. Their daughter is four. Her name is Yuna.",
+                  "Dan and Yuna dance with their mum!"
+                ]
+              },
+              "questions": [
+                {
+                  "q": "What is Coach Mina?",
+                  "options": [
+                    "a dance teacher",
+                    "a doctor",
+                    "a baby"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "How old is Dan?",
+                  "options": [
+                    "four",
+                    "seven",
+                    "thirty"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "Yuna is Mina's...",
+                  "options": [
+                    "son",
+                    "daughter",
+                    "sister"
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "kculture",
+              "title": "K-Culture corner",
+              "emoji": "👘",
+              "text": [
+                "Hanbok is Korean clothes.",
+                "A hanbok is very colourful: pink, red, blue and yellow.",
+                "Families wear hanbok on special days."
+              ],
+              "korean": {
+                "ko": "한복",
+                "roman": "hanbok",
+                "en": "Korean clothes"
+              },
+              "questions": [
+                {
+                  "q": "What is a hanbok?",
+                  "options": [
+                    "Korean clothes",
+                    "a Korean dog",
+                    "a K-pop song"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "Who wears hanbok on special days?",
+                  "options": [
+                    "families",
+                    "fish",
+                    "phones"
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "title": "Say it!",
+              "items": [
+                {
+                  "text": "He's my dad. His name is Sergey.",
+                  "ru": "Это мой папа. Его зовут Сергей.",
+                  "emoji": "👨"
+                },
+                {
+                  "text": "She's my mum. Her name is Anna.",
+                  "ru": "Это моя мама. Её зовут Анна.",
+                  "emoji": "👩"
+                },
+                {
+                  "text": "I'm her daughter.",
+                  "ru": "Я её дочь.",
+                  "emoji": "👧"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "w1-e10",
+          "title": "Home Sweet Home",
+          "emoji": "🏡",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "home",
+                "flat",
+                "house",
+                "garden"
+              ]
+            },
+            {
+              "type": "memory",
+              "title": "Find the pairs!",
+              "words": [
+                "home",
+                "flat",
+                "house",
+                "garden",
+                "family",
+                "baby"
+              ]
+            },
+            {
+              "type": "sentence",
+              "title": "Make a sentence!",
+              "items": [
+                {
+                  "sentence": "We live in a flat.",
+                  "ru": "Мы живём в квартире.",
+                  "emoji": "🏢"
+                },
+                {
+                  "sentence": "My grandma's house is big.",
+                  "ru": "Бабушкин дом большой.",
+                  "emoji": "🏠"
+                },
+                {
+                  "sentence": "Her garden is beautiful.",
+                  "ru": "Её сад красивый.",
+                  "emoji": "🌷"
+                }
+              ]
+            },
+            {
+              "type": "watch",
+              "title": "Watch and answer!",
+              "videoTitle": "Choose a listening activity about family or home and do it",
+              "url": "https://learnenglishkids.britishcouncil.org/listen-watch/listening-practice",
+              "source": "British Council LearnEnglish Kids",
+              "questions": [
+                {
+                  "q": "Which word is a place to live?",
+                  "options": [
+                    "flat",
+                    "uncle",
+                    "pen"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "Which word is a family member?",
+                  "options": [
+                    "garden",
+                    "cousin",
+                    "house"
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "draw",
+              "title": "Draw it!",
+              "prompt": "Draw your family at home. Write their names. Your dad is tall and your mum is happy.",
+              "ru": "Семья дома",
+              "emoji": "🏡"
+            },
+            {
+              "type": "write",
+              "title": "Write!",
+              "prompt": "Write about your family.",
+              "ru": "Напиши о своей семье",
+              "starters": [
+                "This is my mum. Her name is…",
+                "This is my dad. His name is…",
+                "I've got a brother / sister…",
+                "We live in a…"
+              ],
+              "minWords": 12
+            }
+          ]
+        },
+        {
+          "id": "w1-weekly2",
+          "title": "Boss Stage: Family",
+          "emoji": "🏆",
+          "kind": "weekly",
+          "exercises": [
+            {
+              "type": "memory",
+              "title": "Find the pairs!",
+              "words": [
+                "mum",
+                "dad",
+                "grandma",
+                "grandpa",
+                "aunt",
+                "uncle",
+                "baby",
+                "cousin"
+              ]
+            },
+            {
+              "type": "listen",
+              "title": "Listen and tap!",
+              "items": [
+                {
+                  "say": "sister",
+                  "options": [
+                    {
+                      "emoji": "👦"
+                    },
+                    {
+                      "emoji": "👧"
+                    },
+                    {
+                      "emoji": "👴"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "grandpa",
+                  "options": [
+                    {
+                      "emoji": "👴"
+                    },
+                    {
+                      "emoji": "👵"
+                    },
+                    {
+                      "emoji": "👶"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "She's my aunt.",
+                  "options": [
+                    {
+                      "emoji": "🧔"
+                    },
+                    {
+                      "emoji": "👴"
+                    },
+                    {
+                      "emoji": "👩‍🦰"
+                    }
+                  ],
+                  "answer": 2
+                },
+                {
+                  "say": "house",
+                  "options": [
+                    {
+                      "emoji": "🏢"
+                    },
+                    {
+                      "emoji": "🏠"
+                    },
+                    {
+                      "emoji": "🌷"
+                    }
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "gap",
+              "title": "Fill the gap!",
+              "items": [
+                {
+                  "text": "This is my brother. ___ is ten.",
+                  "options": [
+                    "He",
+                    "She",
+                    "It"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "text": "This is my sister. ___ name is Ksenia.",
+                  "options": [
+                    "His",
+                    "Her",
+                    "Your"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "text": "Is he your dad? Yes, he ___.",
+                  "options": [
+                    "is",
+                    "isn't",
+                    "are"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "text": "Is she your mum? No, she ___.",
+                  "options": [
+                    "is",
+                    "isn't",
+                    "not"
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "spell",
+              "title": "Spell it!",
+              "words": [
+                "mum",
+                "dad",
+                "baby",
+                "family"
+              ]
+            },
+            {
+              "type": "sentence",
+              "title": "Make a sentence!",
+              "items": [
+                {
+                  "sentence": "This is my family.",
+                  "ru": "Это моя семья.",
+                  "emoji": "👨‍👩‍👧‍👦"
+                },
+                {
+                  "sentence": "Her name is Hana.",
+                  "ru": "Её зовут Хана.",
+                  "emoji": "👧"
+                },
+                {
+                  "sentence": "Is he your brother?",
+                  "ru": "Он твой брат?",
+                  "emoji": "👦"
+                }
+              ]
+            },
+            {
+              "type": "read",
+              "title": "Read the story!",
+              "story": {
+                "title": "Sora's Big Family",
+                "emoji": "👨‍👩‍👧‍👦",
+                "paragraphs": [
+                  "Hi! I'm Sora. I'm eleven. My family lives in a flat in Seoul.",
+                  "My mum is a singer. My dad is a teacher. My brother is fifteen. His name is Min.",
+                  "My grandma lives in a house with a garden. Her garden is green and beautiful."
+                ]
+              },
+              "questions": [
+                {
+                  "q": "Where does Sora live?",
+                  "options": [
+                    "in a house",
+                    "in a flat",
+                    "in a garden"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "Who is fifteen?",
+                  "options": [
+                    "Min",
+                    "Sora",
+                    "grandma"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "What is Sora's mum?",
+                  "options": [
+                    "a teacher",
+                    "a cook",
+                    "a singer"
+                  ],
+                  "answer": 2
+                }
+              ]
+            },
+            {
+              "type": "quiz",
+              "title": "Speed quiz!",
+              "words": [
+                "family",
+                "mum",
+                "dad",
+                "brother",
+                "sister",
+                "grandma",
+                "grandpa",
+                "aunt",
+                "uncle",
+                "cousin",
+                "flat",
+                "house"
+              ],
+              "seconds": 60
+            },
+            {
+              "type": "chant",
+              "title": "Sing the chant!",
+              "bpm": 104,
+              "lines": [
+                "Who is he? He's my dad!",
+                "Who is she? She's my mum!",
+                "His name, her name, what's the name?",
+                "Family, family — we're the same!"
+              ],
+              "blanks": [
+                "dad",
+                "mum",
+                "name",
+                "family"
+              ]
+            },
+            {
+              "type": "speak",
+              "title": "Say it!",
+              "items": [
+                {
+                  "text": "This is my mum. She's kind.",
+                  "ru": "Это моя мама. Она добрая.",
+                  "emoji": "👩"
+                },
+                {
+                  "text": "He's my brother. His name is Max.",
+                  "ru": "Он мой брат. Его зовут Макс.",
+                  "emoji": "👦"
+                },
+                {
+                  "text": "I live in a flat.",
+                  "ru": "Я живу в квартире.",
+                  "emoji": "🏢"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "title": "Have you got…?",
+      "episodes": [
+        {
+          "id": "w1-e11",
+          "title": "Have You Got a Pet?",
+          "emoji": "🐶",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "dog",
+                "cat",
+                "fish",
+                "bird",
+                "rabbit",
+                "mouse"
+              ]
+            },
+            {
+              "type": "listen",
+              "title": "Listen and tap!",
+              "items": [
+                {
+                  "say": "cat",
+                  "options": [
+                    {
+                      "emoji": "🐶"
+                    },
+                    {
+                      "emoji": "🐱"
+                    },
+                    {
+                      "emoji": "🐭"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "rabbit",
+                  "options": [
+                    {
+                      "emoji": "🐰"
+                    },
+                    {
+                      "emoji": "🐦"
+                    },
+                    {
+                      "emoji": "🐟"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "I've got a fish.",
+                  "options": [
+                    {
+                      "emoji": "🐦"
+                    },
+                    {
+                      "emoji": "🐭"
+                    },
+                    {
+                      "emoji": "🐟"
+                    }
+                  ],
+                  "answer": 2
+                },
+                {
+                  "say": "Have you got a bird? Yes, I have.",
+                  "options": [
+                    {
+                      "emoji": "✅"
+                    },
+                    {
+                      "emoji": "❌"
+                    }
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "gap",
+              "title": "Fill the gap!",
+              "items": [
+                {
+                  "text": "I ___ got a dog.",
+                  "options": [
+                    "have",
+                    "has",
+                    "am"
+                  ],
+                  "answer": 0,
+                  "ru": "У меня есть собака.",
+                  "emoji": "🐶"
+                },
+                {
+                  "text": "Hana ___ got a cat.",
+                  "options": [
+                    "have",
+                    "has",
+                    "is"
+                  ],
+                  "answer": 1,
+                  "ru": "У Ханы есть кошка.",
+                  "emoji": "🐱"
+                },
+                {
+                  "text": "Have you got a rabbit? No, I ___.",
+                  "options": [
+                    "haven't",
+                    "hasn't",
+                    "isn't"
+                  ],
+                  "answer": 0,
+                  "emoji": "🐰"
+                }
+              ]
+            },
+            {
+              "type": "chant",
+              "title": "Sing the chant!",
+              "bpm": 112,
+              "lines": [
+                "Have you got a dog? Yes, I have!",
+                "Have you got a cat? Yes, I have!",
+                "Have you got a fish? No, I haven't!",
+                "Woof, meow, splash — clap, clap, clap!"
+              ],
+              "blanks": [
+                "dog",
+                "cat",
+                "fish",
+                "have",
+                "haven't"
+              ]
+            },
+            {
+              "type": "speak",
+              "title": "Say it!",
+              "items": [
+                {
+                  "text": "Have you got a pet?",
+                  "ru": "У тебя есть питомец?",
+                  "emoji": "🐾"
+                },
+                {
+                  "text": "Yes, I have. I've got a cat.",
+                  "ru": "Да. У меня есть кошка.",
+                  "emoji": "🐱"
+                },
+                {
+                  "text": "No, I haven't.",
+                  "ru": "Нет.",
+                  "emoji": "❌"
+                }
+              ]
+            },
+            {
+              "type": "spell",
+              "title": "Spell it!",
+              "words": [
+                "dog",
+                "cat",
+                "fish",
+                "bird"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "w1-e12",
+          "title": "Colour Party 1",
+          "emoji": "🌈",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "colour",
+                "red",
+                "blue",
+                "green",
+                "yellow",
+                "pink"
+              ]
+            },
+            {
+              "type": "listen",
+              "title": "Listen and tap!",
+              "items": [
+                {
+                  "say": "red",
+                  "options": [
+                    {
+                      "emoji": "🔵"
+                    },
+                    {
+                      "emoji": "🔴"
+                    },
+                    {
+                      "emoji": "🟢"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "yellow",
+                  "options": [
+                    {
+                      "emoji": "🟡"
+                    },
+                    {
+                      "emoji": "🩷"
+                    },
+                    {
+                      "emoji": "🔵"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "pink",
+                  "options": [
+                    {
+                      "emoji": "🔴"
+                    },
+                    {
+                      "emoji": "🟢"
+                    },
+                    {
+                      "emoji": "🩷"
+                    }
+                  ],
+                  "answer": 2
+                },
+                {
+                  "say": "What colour is it? It's green.",
+                  "options": [
+                    {
+                      "emoji": "🟢"
+                    },
+                    {
+                      "emoji": "🟡"
+                    },
+                    {
+                      "emoji": "🔴"
+                    }
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "memory",
+              "title": "Find the pairs!",
+              "words": [
+                "red",
+                "blue",
+                "green",
+                "yellow",
+                "pink",
+                "colour"
+              ]
+            },
+            {
+              "type": "read",
+              "title": "Read the story!",
+              "story": {
+                "title": "Leo's Blue Bag",
+                "emoji": "🎒",
+                "paragraphs": [
+                  "Leo has got a bag. It's blue. In his bag, he's got a red pen and a green book.",
+                  "\"What colour is your bag, Hana?\" asks Leo. \"It's pink!\" says Hana.",
+                  "Hana's favourite colour is pink. Leo's favourite colour is blue."
+                ]
+              },
+              "questions": [
+                {
+                  "q": "What colour is Leo's bag?",
+                  "options": [
+                    "pink",
+                    "blue",
+                    "red"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "Leo's pen is...",
+                  "options": [
+                    "red",
+                    "green",
+                    "yellow"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "What is Hana's favourite colour?",
+                  "options": [
+                    "blue",
+                    "green",
+                    "pink"
+                  ],
+                  "answer": 2
+                }
+              ]
+            },
+            {
+              "type": "dance",
+              "title": "Dance time!",
+              "items": [
+                {
+                  "text": "Hands up for red!",
+                  "moves": [
+                    "hands-up"
+                  ]
+                },
+                {
+                  "text": "Jump for yellow two times!",
+                  "moves": [
+                    "jump",
+                    "jump"
+                  ]
+                },
+                {
+                  "text": "Turn right for blue and clap!",
+                  "moves": [
+                    "turn-right",
+                    "clap"
+                  ]
+                },
+                {
+                  "text": "Spin for pink and pose!",
+                  "moves": [
+                    "spin",
+                    "pose"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "title": "Say it!",
+              "items": [
+                {
+                  "text": "What colour is it?",
+                  "ru": "Какого это цвета?",
+                  "emoji": "🎨"
+                },
+                {
+                  "text": "It's pink!",
+                  "ru": "Он розовый!",
+                  "emoji": "🩷"
+                },
+                {
+                  "text": "My favourite colour is blue.",
+                  "ru": "Мой любимый цвет — синий.",
+                  "emoji": "🔵"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "w1-e13",
+          "title": "Colour Party 2",
+          "emoji": "🎨",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "purple",
+                "orange",
+                "black",
+                "white",
+                "brown",
+                "grey"
+              ]
+            },
+            {
+              "type": "listen",
+              "title": "Listen and tap!",
+              "items": [
+                {
+                  "say": "purple",
+                  "options": [
+                    {
+                      "emoji": "🟣"
+                    },
+                    {
+                      "emoji": "🟠"
+                    },
+                    {
+                      "emoji": "⚫"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "brown",
+                  "options": [
+                    {
+                      "emoji": "⚪"
+                    },
+                    {
+                      "emoji": "🟤"
+                    },
+                    {
+                      "emoji": "🩶"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "grey",
+                  "options": [
+                    {
+                      "emoji": "🟠"
+                    },
+                    {
+                      "emoji": "⚫"
+                    },
+                    {
+                      "emoji": "🩶"
+                    }
+                  ],
+                  "answer": 2
+                },
+                {
+                  "say": "white",
+                  "options": [
+                    {
+                      "emoji": "⚫"
+                    },
+                    {
+                      "emoji": "⚪"
+                    },
+                    {
+                      "emoji": "🟣"
+                    }
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "chant",
+              "title": "Sing the chant!",
+              "bpm": 100,
+              "lines": [
+                "Red and blue and yellow too,",
+                "Purple, pink — I like you!",
+                "Black and white and orange, green,",
+                "Star trainees on the big screen!"
+              ],
+              "blanks": [
+                "red",
+                "blue",
+                "purple",
+                "white",
+                "green"
+              ]
+            },
+            {
+              "type": "watch",
+              "title": "Watch and answer!",
+              "videoTitle": "Choose a song about colours and watch it",
+              "url": "https://learnenglishkids.britishcouncil.org/listen-watch/songs",
+              "source": "British Council LearnEnglish Kids",
+              "questions": [
+                {
+                  "q": "Which word is a colour?",
+                  "options": [
+                    "orange",
+                    "uncle",
+                    "dog"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "What colour is the sky?",
+                  "options": [
+                    "brown",
+                    "blue",
+                    "black"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "What colour is snow?",
+                  "options": [
+                    "white",
+                    "red",
+                    "green"
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "draw",
+              "title": "Draw it!",
+              "prompt": "Draw a stage. The stage is purple. Draw five orange stars and a black microphone.",
+              "ru": "Сцена",
+              "emoji": "🎤"
+            },
+            {
+              "type": "spell",
+              "title": "Spell it!",
+              "words": [
+                "red",
+                "pink",
+                "grey",
+                "brown"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "w1-e14",
+          "title": "My Trainee Bag",
+          "emoji": "👜",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "lightstick",
+                "bag",
+                "phone",
+                "notebook",
+                "pen",
+                "pencil"
+              ]
+            },
+            {
+              "type": "listen",
+              "title": "Listen and tap!",
+              "items": [
+                {
+                  "say": "phone",
+                  "options": [
+                    {
+                      "emoji": "📓"
+                    },
+                    {
+                      "emoji": "📱"
+                    },
+                    {
+                      "emoji": "🖊️"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "lightstick",
+                  "options": [
+                    {
+                      "emoji": "🪄"
+                    },
+                    {
+                      "emoji": "✏️"
+                    },
+                    {
+                      "emoji": "👜"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "She's got a pencil.",
+                  "options": [
+                    {
+                      "emoji": "🖊️"
+                    },
+                    {
+                      "emoji": "📱"
+                    },
+                    {
+                      "emoji": "✏️"
+                    }
+                  ],
+                  "answer": 2
+                },
+                {
+                  "say": "notebook",
+                  "options": [
+                    {
+                      "emoji": "📓"
+                    },
+                    {
+                      "emoji": "👜"
+                    },
+                    {
+                      "emoji": "📱"
+                    }
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "gap",
+              "title": "Fill the gap!",
+              "items": [
+                {
+                  "text": "I've ___ a pink phone.",
+                  "options": [
+                    "got",
+                    "get",
+                    "has"
+                  ],
+                  "answer": 0,
+                  "ru": "У меня есть розовый телефон."
+                },
+                {
+                  "text": "Has Jun got a pen? Yes, he ___.",
+                  "options": [
+                    "have",
+                    "has",
+                    "is"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "text": "Has Sora got a bag? No, she ___.",
+                  "options": [
+                    "haven't",
+                    "hasn't",
+                    "isn't"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "text": "___ you got a notebook?",
+                  "options": [
+                    "Has",
+                    "Have",
+                    "Are"
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "kculture",
+              "title": "K-Culture corner",
+              "emoji": "🪄",
+              "text": [
+                "K-pop fans have got lightsticks.",
+                "Every group has got a different lightstick.",
+                "At a concert, fans wave their lightsticks. It's beautiful!"
+              ],
+              "korean": {
+                "ko": "응원봉",
+                "roman": "eungwonbong",
+                "en": "lightstick"
+              },
+              "questions": [
+                {
+                  "q": "What do fans wave at a concert?",
+                  "options": [
+                    "lightsticks",
+                    "pencils",
+                    "fish"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "Is every lightstick the same?",
+                  "options": [
+                    "Yes, it is.",
+                    "No, it isn't."
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "dance",
+              "title": "Dance time!",
+              "items": [
+                {
+                  "text": "Hands up and wave your lightstick!",
+                  "moves": [
+                    "hands-up",
+                    "wave"
+                  ]
+                },
+                {
+                  "text": "Wave your lightstick and spin!",
+                  "moves": [
+                    "wave",
+                    "spin"
+                  ]
+                },
+                {
+                  "text": "Step left, step left, clap!",
+                  "moves": [
+                    "step-left",
+                    "step-left",
+                    "clap"
+                  ]
+                },
+                {
+                  "text": "Turn left, jump and make a finger heart!",
+                  "moves": [
+                    "turn-left",
+                    "jump",
+                    "finger-heart"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "title": "Say it!",
+              "items": [
+                {
+                  "text": "Have you got a lightstick?",
+                  "ru": "У тебя есть лайтстик?",
+                  "emoji": "🪄"
+                },
+                {
+                  "text": "Yes, I have. It's purple.",
+                  "ru": "Да. Он фиолетовый.",
+                  "emoji": "🟣"
+                },
+                {
+                  "text": "I've got a notebook and a pen.",
+                  "ru": "У меня есть блокнот и ручка.",
+                  "emoji": "📓"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "w1-e15",
+          "title": "What's in Your Bag?",
+          "emoji": "🎒",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "book",
+                "rubber",
+                "camera",
+                "poster",
+                "headphones"
+              ]
+            },
+            {
+              "type": "memory",
+              "title": "Find the pairs!",
+              "words": [
+                "book",
+                "rubber",
+                "camera",
+                "poster",
+                "headphones",
+                "phone"
+              ]
+            },
+            {
+              "type": "sentence",
+              "title": "Make a sentence!",
+              "items": [
+                {
+                  "sentence": "I've got a black camera.",
+                  "ru": "У меня есть чёрный фотоаппарат.",
+                  "emoji": "📷"
+                },
+                {
+                  "sentence": "Have you got a rubber?",
+                  "ru": "У тебя есть ластик?",
+                  "emoji": "🧽"
+                },
+                {
+                  "sentence": "He hasn't got headphones.",
+                  "ru": "У него нет наушников.",
+                  "emoji": "🎧"
+                }
+              ]
+            },
+            {
+              "type": "read",
+              "title": "Read the story!",
+              "story": {
+                "title": "Max's Messy Bag",
+                "emoji": "🎒",
+                "paragraphs": [
+                  "Max has got a big grey bag. What's in it?",
+                  "He's got two books, a pencil and a rubber. He's got white headphones and an orange camera.",
+                  "He's got a poster of a K-pop star too. But he hasn't got his phone! \"Where's my phone?\" says Max."
+                ]
+              },
+              "questions": [
+                {
+                  "q": "What colour is Max's bag?",
+                  "options": [
+                    "grey",
+                    "black",
+                    "orange"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "How many books has he got?",
+                  "options": [
+                    "one",
+                    "two",
+                    "three"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "What hasn't Max got?",
+                  "options": [
+                    "his camera",
+                    "his phone",
+                    "his rubber"
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "write",
+              "title": "Write!",
+              "prompt": "What's in your bag? Write about your things and their colours.",
+              "ru": "Что у тебя в сумке?",
+              "starters": [
+                "I've got a…",
+                "It's…",
+                "I haven't got a…"
+              ],
+              "minWords": 12
+            },
+            {
+              "type": "chant",
+              "title": "Sing the chant!",
+              "bpm": 108,
+              "lines": [
+                "What's in my bag? What's in my bag?",
+                "A pen, a book, a phone — tag!",
+                "Have you got a camera? Yes, I have!",
+                "Headphones on — let's dance and laugh!"
+              ],
+              "blanks": [
+                "bag",
+                "pen",
+                "book",
+                "camera",
+                "headphones"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "w1-weekly3",
+          "title": "Boss Stage: Have You Got…?",
+          "emoji": "🏆",
+          "kind": "weekly",
+          "exercises": [
+            {
+              "type": "memory",
+              "title": "Find the pairs!",
+              "words": [
+                "dog",
+                "cat",
+                "rabbit",
+                "lightstick",
+                "camera",
+                "headphones"
+              ]
+            },
+            {
+              "type": "listen",
+              "title": "Listen and tap!",
+              "items": [
+                {
+                  "say": "orange",
+                  "options": [
+                    {
+                      "emoji": "🟣"
+                    },
+                    {
+                      "emoji": "🟠"
+                    },
+                    {
+                      "emoji": "🟤"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "mouse",
+                  "options": [
+                    {
+                      "emoji": "🐭"
+                    },
+                    {
+                      "emoji": "🐰"
+                    },
+                    {
+                      "emoji": "🐱"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "Has she got a bag? Yes, she has.",
+                  "options": [
+                    {
+                      "emoji": "✅"
+                    },
+                    {
+                      "emoji": "❌"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "I haven't got a dog.",
+                  "options": [
+                    {
+                      "emoji": "✅"
+                    },
+                    {
+                      "emoji": "❌"
+                    }
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "gap",
+              "title": "Fill the gap!",
+              "items": [
+                {
+                  "text": "She ___ got a white cat.",
+                  "options": [
+                    "have",
+                    "has",
+                    "is"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "text": "We ___ got a fish.",
+                  "options": [
+                    "has",
+                    "have",
+                    "are"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "text": "Have you got a pen? Yes, I ___.",
+                  "options": [
+                    "have",
+                    "has",
+                    "am"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "text": "What colour ___ your phone?",
+                  "options": [
+                    "are",
+                    "is",
+                    "am"
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "spell",
+              "title": "Spell it!",
+              "words": [
+                "pen",
+                "bag",
+                "phone",
+                "pink",
+                "green"
+              ]
+            },
+            {
+              "type": "sentence",
+              "title": "Make a sentence!",
+              "items": [
+                {
+                  "sentence": "Have you got a pet?",
+                  "ru": "У тебя есть питомец?",
+                  "emoji": "🐾"
+                },
+                {
+                  "sentence": "She's got a yellow bird.",
+                  "ru": "У неё есть жёлтая птица.",
+                  "emoji": "🐦"
+                },
+                {
+                  "sentence": "My lightstick is purple.",
+                  "ru": "Мой лайтстик фиолетовый.",
+                  "emoji": "🪄"
+                }
+              ]
+            },
+            {
+              "type": "read",
+              "title": "Read the story!",
+              "story": {
+                "title": "Hana's Pets",
+                "emoji": "🐰",
+                "paragraphs": [
+                  "Hana has got two pets. She's got a white rabbit and a grey mouse.",
+                  "Her rabbit is called Bori. Bori has got long ears. Her mouse is very small.",
+                  "Hana hasn't got a dog. She wants a brown dog!"
+                ]
+              },
+              "questions": [
+                {
+                  "q": "How many pets has Hana got?",
+                  "options": [
+                    "one",
+                    "two",
+                    "three"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "What colour is the rabbit?",
+                  "options": [
+                    "white",
+                    "grey",
+                    "brown"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "Has Hana got a dog?",
+                  "options": [
+                    "Yes, she has.",
+                    "No, she hasn't."
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "quiz",
+              "title": "Speed quiz!",
+              "words": [
+                "dog",
+                "cat",
+                "fish",
+                "bird",
+                "red",
+                "blue",
+                "yellow",
+                "black",
+                "lightstick",
+                "bag",
+                "pencil",
+                "notebook",
+                "camera",
+                "poster"
+              ],
+              "seconds": 60
+            },
+            {
+              "type": "dance",
+              "title": "Dance time!",
+              "items": [
+                {
+                  "text": "Hands up for your cat!",
+                  "moves": [
+                    "hands-up"
+                  ]
+                },
+                {
+                  "text": "Jump like a rabbit three times!",
+                  "moves": [
+                    "jump",
+                    "jump",
+                    "jump"
+                  ]
+                },
+                {
+                  "text": "Wave your lightstick and turn right!",
+                  "moves": [
+                    "wave",
+                    "turn-right"
+                  ]
+                },
+                {
+                  "text": "Clap, spin, pose!",
+                  "moves": [
+                    "clap",
+                    "spin",
+                    "pose"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "title": "Say it!",
+              "items": [
+                {
+                  "text": "Have you got a pet? Yes, I have.",
+                  "ru": "У тебя есть питомец? Да.",
+                  "emoji": "🐱"
+                },
+                {
+                  "text": "I've got a pink bag.",
+                  "ru": "У меня есть розовая сумка.",
+                  "emoji": "🩷"
+                },
+                {
+                  "text": "She hasn't got a phone.",
+                  "ru": "У неё нет телефона.",
+                  "emoji": "📱"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "title": "My friends & me",
+      "episodes": [
+        {
+          "id": "w1-e16",
+          "title": "Tall, Short, Young, Old",
+          "emoji": "🦒",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "friend",
+                "tall",
+                "short",
+                "young",
+                "old"
+              ]
+            },
+            {
+              "type": "listen",
+              "title": "Listen and tap!",
+              "items": [
+                {
+                  "say": "tall",
+                  "options": [
+                    {
+                      "emoji": "🐭"
+                    },
+                    {
+                      "emoji": "🦒"
+                    },
+                    {
+                      "emoji": "👶"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "old",
+                  "options": [
+                    {
+                      "emoji": "👴"
+                    },
+                    {
+                      "emoji": "👶"
+                    },
+                    {
+                      "emoji": "🦒"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "She's young.",
+                  "options": [
+                    {
+                      "emoji": "👴"
+                    },
+                    {
+                      "emoji": "👵"
+                    },
+                    {
+                      "emoji": "👶"
+                    }
+                  ],
+                  "answer": 2
+                },
+                {
+                  "say": "He's my friend.",
+                  "options": [
+                    {
+                      "emoji": "🧑‍🤝‍🧑"
+                    },
+                    {
+                      "emoji": "👴"
+                    },
+                    {
+                      "emoji": "🐟"
+                    }
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "gap",
+              "title": "Fill the gap!",
+              "items": [
+                {
+                  "text": "My grandpa is ___.",
+                  "options": [
+                    "young",
+                    "old",
+                    "baby"
+                  ],
+                  "answer": 1,
+                  "emoji": "👴"
+                },
+                {
+                  "text": "Leo is ___. He's 160 cm!",
+                  "options": [
+                    "short",
+                    "tall",
+                    "old"
+                  ],
+                  "answer": 1,
+                  "emoji": "🦒"
+                },
+                {
+                  "text": "The baby is ___.",
+                  "options": [
+                    "young",
+                    "old",
+                    "tall"
+                  ],
+                  "answer": 0,
+                  "emoji": "👶"
+                }
+              ]
+            },
+            {
+              "type": "chant",
+              "title": "Sing the chant!",
+              "bpm": 98,
+              "lines": [
+                "Tall, tall, my friend is tall!",
+                "Short, short, my cat is small!",
+                "Young and old, we all can sing,",
+                "Friends together — everything!"
+              ],
+              "blanks": [
+                "tall",
+                "short",
+                "young",
+                "old",
+                "friends"
+              ]
+            },
+            {
+              "type": "speak",
+              "title": "Say it!",
+              "items": [
+                {
+                  "text": "My friend is tall.",
+                  "ru": "Мой друг высокий.",
+                  "emoji": "🦒"
+                },
+                {
+                  "text": "I'm short and young.",
+                  "ru": "Я невысокая и молодая.",
+                  "emoji": "🧒"
+                },
+                {
+                  "text": "Is he old? No, he isn't.",
+                  "ru": "Он старый? Нет.",
+                  "emoji": "🙅"
+                }
+              ]
+            },
+            {
+              "type": "memory",
+              "title": "Find the pairs!",
+              "words": [
+                "tall",
+                "short",
+                "young",
+                "old",
+                "friend",
+                "baby"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "w1-e17",
+          "title": "Happy, Funny, Kind",
+          "emoji": "😊",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "happy",
+                "sad",
+                "funny",
+                "kind"
+              ]
+            },
+            {
+              "type": "listen",
+              "title": "Listen and tap!",
+              "items": [
+                {
+                  "say": "happy",
+                  "options": [
+                    {
+                      "emoji": "😢"
+                    },
+                    {
+                      "emoji": "😊"
+                    },
+                    {
+                      "emoji": "🤪"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "sad",
+                  "options": [
+                    {
+                      "emoji": "😢"
+                    },
+                    {
+                      "emoji": "😊"
+                    },
+                    {
+                      "emoji": "💖"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "He's funny.",
+                  "options": [
+                    {
+                      "emoji": "😢"
+                    },
+                    {
+                      "emoji": "💖"
+                    },
+                    {
+                      "emoji": "🤪"
+                    }
+                  ],
+                  "answer": 2
+                },
+                {
+                  "say": "She's kind.",
+                  "options": [
+                    {
+                      "emoji": "💖"
+                    },
+                    {
+                      "emoji": "😢"
+                    },
+                    {
+                      "emoji": "🦒"
+                    }
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "sentence",
+              "title": "Make a sentence!",
+              "items": [
+                {
+                  "sentence": "Jun is very funny.",
+                  "ru": "Джун очень смешной.",
+                  "emoji": "🤪"
+                },
+                {
+                  "sentence": "Coach Mina is kind.",
+                  "ru": "Коуч Мина добрая.",
+                  "emoji": "💖"
+                },
+                {
+                  "sentence": "Are you happy today?",
+                  "ru": "Ты сегодня радостная?",
+                  "emoji": "😊"
+                }
+              ]
+            },
+            {
+              "type": "read",
+              "title": "Read the story!",
+              "story": {
+                "title": "A Sad Day",
+                "emoji": "😢",
+                "paragraphs": [
+                  "Today Sora is sad. Her dance is not good.",
+                  "Jun is funny. He makes a funny face. Hana is kind. She gives Sora a pink lightstick.",
+                  "Now Sora is happy! \"Thank you, friends!\" she says."
+                ]
+              },
+              "questions": [
+                {
+                  "q": "Why is Sora sad?",
+                  "options": [
+                    "Her dance is not good.",
+                    "She hasn't got a cat.",
+                    "She is old."
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "Who is funny?",
+                  "options": [
+                    "Hana",
+                    "Jun",
+                    "Coach Mina"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "What colour is the lightstick?",
+                  "options": [
+                    "blue",
+                    "green",
+                    "pink"
+                  ],
+                  "answer": 2
+                }
+              ]
+            },
+            {
+              "type": "write",
+              "title": "Write!",
+              "prompt": "Write about your friend.",
+              "ru": "Напиши о друге",
+              "starters": [
+                "My friend's name is…",
+                "She's / He's…",
+                "She's / He's got…",
+                "She's / He's very…"
+              ],
+              "minWords": 15
+            },
+            {
+              "type": "dance",
+              "title": "Dance time!",
+              "items": [
+                {
+                  "text": "Happy jump! Jump two times!",
+                  "moves": [
+                    "jump",
+                    "jump"
+                  ]
+                },
+                {
+                  "text": "Funny spin and pose!",
+                  "moves": [
+                    "spin",
+                    "pose"
+                  ]
+                },
+                {
+                  "text": "Be kind: make a finger heart for your friend!",
+                  "moves": [
+                    "finger-heart"
+                  ]
+                },
+                {
+                  "text": "Wave, clap, turn left, turn right!",
+                  "moves": [
+                    "wave",
+                    "clap",
+                    "turn-left",
+                    "turn-right"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "w1-e18",
+          "title": "Hair and Eyes",
+          "emoji": "👀",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "hair",
+                "eyes",
+                "long",
+                "curly"
+              ]
+            },
+            {
+              "type": "listen",
+              "title": "Listen and tap!",
+              "items": [
+                {
+                  "say": "She's got curly hair.",
+                  "options": [
+                    {
+                      "emoji": "👩‍🦱"
+                    },
+                    {
+                      "emoji": "👱‍♀️"
+                    },
+                    {
+                      "emoji": "👨‍🦲"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "eyes",
+                  "options": [
+                    {
+                      "emoji": "💇‍♀️"
+                    },
+                    {
+                      "emoji": "👀"
+                    },
+                    {
+                      "emoji": "📏"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "He's got short hair.",
+                  "options": [
+                    {
+                      "emoji": "👩‍🦱"
+                    },
+                    {
+                      "emoji": "👸"
+                    },
+                    {
+                      "emoji": "👦"
+                    }
+                  ],
+                  "answer": 2
+                },
+                {
+                  "say": "long",
+                  "options": [
+                    {
+                      "emoji": "📏"
+                    },
+                    {
+                      "emoji": "🐭"
+                    },
+                    {
+                      "emoji": "👀"
+                    }
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "gap",
+              "title": "Fill the gap!",
+              "items": [
+                {
+                  "text": "She's got long black ___.",
+                  "options": [
+                    "eyes",
+                    "hair",
+                    "hand"
+                  ],
+                  "answer": 1,
+                  "ru": "У неё длинные чёрные волосы."
+                },
+                {
+                  "text": "He's got blue ___.",
+                  "options": [
+                    "eyes",
+                    "hair",
+                    "bag"
+                  ],
+                  "answer": 0,
+                  "ru": "У него голубые глаза."
+                },
+                {
+                  "text": "Hana ___ got brown eyes.",
+                  "options": [
+                    "have",
+                    "has",
+                    "is"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "text": "I've got ___ hair.",
+                  "options": [
+                    "curly",
+                    "happy",
+                    "funny"
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "draw",
+              "title": "Draw it!",
+              "prompt": "Draw a new trainee. She's got long pink hair and big brown eyes. She's happy!",
+              "ru": "Новая стажёрка",
+              "emoji": "👩‍🎤"
+            },
+            {
+              "type": "speak",
+              "title": "Say it!",
+              "items": [
+                {
+                  "text": "I've got long brown hair.",
+                  "ru": "У меня длинные каштановые волосы.",
+                  "emoji": "💇‍♀️"
+                },
+                {
+                  "text": "I've got green eyes.",
+                  "ru": "У меня зелёные глаза.",
+                  "emoji": "👀"
+                },
+                {
+                  "text": "Has he got curly hair? Yes, he has.",
+                  "ru": "У него кудрявые волосы? Да.",
+                  "emoji": "👩‍🦱"
+                }
+              ]
+            },
+            {
+              "type": "dance",
+              "title": "Dance time!",
+              "items": [
+                {
+                  "text": "Touch your hair: hands up!",
+                  "moves": [
+                    "hands-up"
+                  ]
+                },
+                {
+                  "text": "Hands down and clap two times!",
+                  "moves": [
+                    "hands-down",
+                    "clap",
+                    "clap"
+                  ]
+                },
+                {
+                  "text": "Step right, step left, spin, pose!",
+                  "moves": [
+                    "step-right",
+                    "step-left",
+                    "spin",
+                    "pose"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "w1-e19",
+          "title": "I Like K-pop!",
+          "emoji": "🎶",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "like",
+                "dance",
+                "sing",
+                "draw",
+                "music",
+                "k-pop"
+              ]
+            },
+            {
+              "type": "listen",
+              "title": "Listen and tap!",
+              "items": [
+                {
+                  "say": "I like dancing.",
+                  "options": [
+                    {
+                      "emoji": "🎤"
+                    },
+                    {
+                      "emoji": "💃"
+                    },
+                    {
+                      "emoji": "🖍️"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "I don't like cats.",
+                  "options": [
+                    {
+                      "emoji": "👍"
+                    },
+                    {
+                      "emoji": "👎"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "I like music.",
+                  "options": [
+                    {
+                      "emoji": "🎵"
+                    },
+                    {
+                      "emoji": "🐟"
+                    },
+                    {
+                      "emoji": "📏"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "sing",
+                  "options": [
+                    {
+                      "emoji": "🖍️"
+                    },
+                    {
+                      "emoji": "💃"
+                    },
+                    {
+                      "emoji": "🎤"
+                    }
+                  ],
+                  "answer": 2
+                }
+              ]
+            },
+            {
+              "type": "gap",
+              "title": "Fill the gap!",
+              "items": [
+                {
+                  "text": "I ___ K-pop!",
+                  "options": [
+                    "like",
+                    "likes",
+                    "am"
+                  ],
+                  "answer": 0,
+                  "ru": "Я люблю кей-поп!",
+                  "emoji": "🎶"
+                },
+                {
+                  "text": "I ___ like rabbits. 👎",
+                  "options": [
+                    "do",
+                    "don't",
+                    "am"
+                  ],
+                  "answer": 1,
+                  "ru": "Мне не нравятся кролики."
+                },
+                {
+                  "text": "Do you like ___? Yes, I do.",
+                  "options": [
+                    "music",
+                    "eight",
+                    "uncle"
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "chant",
+              "title": "Sing the chant!",
+              "bpm": 118,
+              "lines": [
+                "I like music, I like to sing!",
+                "I like K-pop — it's my thing!",
+                "I like to dance, I like to draw,",
+                "Do you like it? Yes! Encore!"
+              ],
+              "blanks": [
+                "like",
+                "music",
+                "sing",
+                "dance",
+                "draw"
+              ]
+            },
+            {
+              "type": "watch",
+              "title": "Watch and answer!",
+              "videoTitle": "Choose a short story about friends and watch it",
+              "url": "https://learnenglishkids.britishcouncil.org/listen-watch/short-stories",
+              "source": "British Council LearnEnglish Kids",
+              "questions": [
+                {
+                  "q": "Which word is about music?",
+                  "options": [
+                    "sing",
+                    "grey",
+                    "flat"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "\"I don't like\" means...",
+                  "options": [
+                    "👍",
+                    "👎"
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "title": "Say it!",
+              "items": [
+                {
+                  "text": "I like K-pop.",
+                  "ru": "Я люблю кей-поп.",
+                  "emoji": "🎶"
+                },
+                {
+                  "text": "I don't like cold pizza!",
+                  "ru": "Мне не нравится плохая музыка!",
+                  "emoji": "👎"
+                },
+                {
+                  "text": "Do you like dancing? Yes, I do!",
+                  "ru": "Ты любишь танцевать? Да!",
+                  "emoji": "💃"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "w1-e20",
+          "title": "Where Are You From?",
+          "emoji": "🌏",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "korea",
+                "russia",
+                "the-uk",
+                "country"
+              ]
+            },
+            {
+              "type": "listen",
+              "title": "Listen and tap!",
+              "items": [
+                {
+                  "say": "I'm from Korea.",
+                  "options": [
+                    {
+                      "emoji": "🇷🇺"
+                    },
+                    {
+                      "emoji": "🇰🇷"
+                    },
+                    {
+                      "emoji": "🇬🇧"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "She's from the UK.",
+                  "options": [
+                    {
+                      "emoji": "🇬🇧"
+                    },
+                    {
+                      "emoji": "🇰🇷"
+                    },
+                    {
+                      "emoji": "🇷🇺"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "Where are you from? I'm from Russia.",
+                  "options": [
+                    {
+                      "emoji": "🇰🇷"
+                    },
+                    {
+                      "emoji": "🇬🇧"
+                    },
+                    {
+                      "emoji": "🇷🇺"
+                    }
+                  ],
+                  "answer": 2
+                }
+              ]
+            },
+            {
+              "type": "read",
+              "title": "Read the story!",
+              "story": {
+                "title": "New Friends at Star Academy",
+                "emoji": "🌏",
+                "paragraphs": [
+                  "Star Academy is in Seoul. The trainees are from many countries.",
+                  "Hana and Jun are from Korea. Leo is from the UK. He's tall and funny. Max is from the UK too.",
+                  "The new trainee is from Russia. Her name is {name}. She's ten. She likes K-pop and drawing. Everyone says, \"Welcome, {name}!\""
+                ]
+              },
+              "questions": [
+                {
+                  "q": "Where is Star Academy?",
+                  "options": [
+                    "in Seoul",
+                    "in Russia",
+                    "in the UK"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "Where is Leo from?",
+                  "options": [
+                    "Korea",
+                    "the UK",
+                    "Russia"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "What does {name} like?",
+                  "options": [
+                    "fish",
+                    "K-pop and drawing",
+                    "grey bags"
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "kculture",
+              "title": "K-Culture corner",
+              "emoji": "🏙️",
+              "text": [
+                "Seoul is the capital of Korea.",
+                "Seoul is very big. It has got a tall tower: N Seoul Tower.",
+                "Many K-pop trainees live in Seoul."
+              ],
+              "korean": {
+                "ko": "서울",
+                "roman": "Seoul",
+                "en": "Seoul (the capital of Korea)"
+              },
+              "questions": [
+                {
+                  "q": "What is the capital of Korea?",
+                  "options": [
+                    "Seoul",
+                    "London",
+                    "Moscow"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "Is Seoul small?",
+                  "options": [
+                    "Yes, it is.",
+                    "No, it isn't."
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "Where do many K-pop trainees live?",
+                  "options": [
+                    "in Seoul",
+                    "in a garden",
+                    "in a bag"
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "draw",
+              "title": "Draw it!",
+              "prompt": "Draw three flags: Korea, Russia and the UK. Draw you next to the Russian flag!",
+              "ru": "Три флага",
+              "emoji": "🚩"
+            },
+            {
+              "type": "write",
+              "title": "Write!",
+              "prompt": "Write about you for Star Academy.",
+              "ru": "Анкета для Star Academy",
+              "starters": [
+                "My name is…",
+                "I'm from…",
+                "I'm … years old.",
+                "I like… I don't like…"
+              ],
+              "minWords": 18
+            }
+          ]
+        },
+        {
+          "id": "w1-weekly4",
+          "title": "Boss Stage: Friends",
+          "emoji": "🏆",
+          "kind": "weekly",
+          "exercises": [
+            {
+              "type": "memory",
+              "title": "Find the pairs!",
+              "words": [
+                "tall",
+                "short",
+                "happy",
+                "sad",
+                "funny",
+                "curly",
+                "korea",
+                "the-uk"
+              ]
+            },
+            {
+              "type": "listen",
+              "title": "Listen and tap!",
+              "items": [
+                {
+                  "say": "He's got curly hair.",
+                  "options": [
+                    {
+                      "emoji": "👦"
+                    },
+                    {
+                      "emoji": "👨‍🦱"
+                    },
+                    {
+                      "emoji": "👱"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "I'm happy!",
+                  "options": [
+                    {
+                      "emoji": "😊"
+                    },
+                    {
+                      "emoji": "😢"
+                    },
+                    {
+                      "emoji": "😴"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "She likes singing.",
+                  "options": [
+                    {
+                      "emoji": "💃"
+                    },
+                    {
+                      "emoji": "🖍️"
+                    },
+                    {
+                      "emoji": "🎤"
+                    }
+                  ],
+                  "answer": 2
+                },
+                {
+                  "say": "He's from Korea.",
+                  "options": [
+                    {
+                      "emoji": "🇰🇷"
+                    },
+                    {
+                      "emoji": "🇬🇧"
+                    },
+                    {
+                      "emoji": "🇷🇺"
+                    }
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "gap",
+              "title": "Fill the gap!",
+              "items": [
+                {
+                  "text": "Where ___ you from?",
+                  "options": [
+                    "is",
+                    "are",
+                    "am"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "text": "I'm ___ Russia.",
+                  "options": [
+                    "from",
+                    "of",
+                    "in"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "text": "She ___ got long hair.",
+                  "options": [
+                    "have",
+                    "has",
+                    "is"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "text": "I don't ___ fish.",
+                  "options": [
+                    "like",
+                    "likes",
+                    "am"
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "sentence",
+              "title": "Make a sentence!",
+              "items": [
+                {
+                  "sentence": "Where are you from?",
+                  "ru": "Откуда ты?",
+                  "emoji": "🌏"
+                },
+                {
+                  "sentence": "My friend is very kind.",
+                  "ru": "Мой друг очень добрый.",
+                  "emoji": "💖"
+                },
+                {
+                  "sentence": "I like singing and dancing.",
+                  "ru": "Я люблю петь и танцевать.",
+                  "emoji": "🎤"
+                }
+              ]
+            },
+            {
+              "type": "spell",
+              "title": "Spell it!",
+              "words": [
+                "tall",
+                "happy",
+                "hair",
+                "eyes",
+                "sing"
+              ]
+            },
+            {
+              "type": "read",
+              "title": "Read the story!",
+              "story": {
+                "title": "Leo and His Friend",
+                "emoji": "🧑‍🤝‍🧑",
+                "paragraphs": [
+                  "Leo is from the UK. He's twelve. He's tall and he's got short brown hair.",
+                  "His best friend is Jun. Jun is from Korea. He's short and funny. He's got black hair and brown eyes.",
+                  "Leo likes singing. Jun likes dancing. They don't like rainy days!"
+                ]
+              },
+              "questions": [
+                {
+                  "q": "Where is Jun from?",
+                  "options": [
+                    "the UK",
+                    "Korea",
+                    "Russia"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "Leo has got...",
+                  "options": [
+                    "short brown hair",
+                    "long black hair",
+                    "curly hair"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "What does Jun like?",
+                  "options": [
+                    "singing",
+                    "drawing",
+                    "dancing"
+                  ],
+                  "answer": 2
+                }
+              ]
+            },
+            {
+              "type": "quiz",
+              "title": "Speed quiz!",
+              "words": [
+                "friend",
+                "tall",
+                "short",
+                "young",
+                "old",
+                "happy",
+                "sad",
+                "funny",
+                "kind",
+                "hair",
+                "eyes",
+                "korea",
+                "russia",
+                "the-uk"
+              ],
+              "seconds": 60
+            },
+            {
+              "type": "chant",
+              "title": "Sing the chant!",
+              "bpm": 116,
+              "lines": [
+                "Where are you from? I'm from Russia!",
+                "Where are you from? I'm from Korea!",
+                "Where are you from? I'm from the UK!",
+                "Friends from every country — hey, hey, hey!"
+              ],
+              "blanks": [
+                "Russia",
+                "Korea",
+                "UK",
+                "friends"
+              ]
+            },
+            {
+              "type": "speak",
+              "title": "Say it!",
+              "items": [
+                {
+                  "text": "I'm from Russia.",
+                  "ru": "Я из России.",
+                  "emoji": "🇷🇺"
+                },
+                {
+                  "text": "My friend is funny and kind.",
+                  "ru": "Мой друг весёлый и добрый.",
+                  "emoji": "🤪"
+                },
+                {
+                  "text": "I like K-pop. I don't like rain.",
+                  "ru": "Я люблю кей-поп. Я не люблю дождь.",
+                  "emoji": "🎶"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "showcase": {
+    "id": "w1-showcase",
+    "title": "Showcase: My First Stage!",
+    "emoji": "🎤",
+    "kind": "showcase",
+    "exercises": [
+      {
+        "type": "listen",
+        "title": "Part 1: Listen and tap!",
+        "items": [
+          {
+            "say": "Hana is eleven.",
+            "options": [
+              {
+                "text": "11"
+              },
+              {
+                "text": "7"
+              },
+              {
+                "text": "17"
+              }
+            ],
+            "answer": 0
+          },
+          {
+            "say": "He's got a black dog.",
+            "options": [
+              {
+                "emoji": "🐱"
+              },
+              {
+                "emoji": "🐶"
+              },
+              {
+                "emoji": "🐟"
+              }
+            ],
+            "answer": 1
+          },
+          {
+            "say": "This is my grandma.",
+            "options": [
+              {
+                "emoji": "👴"
+              },
+              {
+                "emoji": "👶"
+              },
+              {
+                "emoji": "👵"
+              }
+            ],
+            "answer": 2
+          },
+          {
+            "say": "Her bag is pink.",
+            "options": [
+              {
+                "emoji": "🩷"
+              },
+              {
+                "emoji": "🔵"
+              },
+              {
+                "emoji": "🟢"
+              }
+            ],
+            "answer": 0
+          },
+          {
+            "say": "I'm from the UK.",
+            "options": [
+              {
+                "emoji": "🇷🇺"
+              },
+              {
+                "emoji": "🇬🇧"
+              },
+              {
+                "emoji": "🇰🇷"
+              }
+            ],
+            "answer": 1
+          }
+        ]
+      },
+      {
+        "type": "listen",
+        "title": "Part 2: Names and numbers",
+        "items": [
+          {
+            "say": "J, U, N",
+            "options": [
+              {
+                "text": "Jun"
+              },
+              {
+                "text": "Max"
+              },
+              {
+                "text": "Leo"
+              }
+            ],
+            "answer": 0
+          },
+          {
+            "say": "Fourteen",
+            "options": [
+              {
+                "text": "40"
+              },
+              {
+                "text": "14"
+              },
+              {
+                "text": "4"
+              }
+            ],
+            "answer": 1
+          },
+          {
+            "say": "M, A, X",
+            "options": [
+              {
+                "text": "Mia"
+              },
+              {
+                "text": "Sora"
+              },
+              {
+                "text": "Max"
+              }
+            ],
+            "answer": 2
+          }
+        ]
+      },
+      {
+        "type": "memory",
+        "title": "Find the pairs!",
+        "words": [
+          "brother",
+          "sister",
+          "rabbit",
+          "camera",
+          "curly",
+          "lightstick"
+        ]
+      },
+      {
+        "type": "gap",
+        "title": "Part 3: Read and choose",
+        "items": [
+          {
+            "text": "What's ___ name? My name is Sora.",
+            "options": [
+              "your",
+              "his",
+              "her"
+            ],
+            "answer": 0
+          },
+          {
+            "text": "This is Leo. ___ is from the UK.",
+            "options": [
+              "She",
+              "He",
+              "It"
+            ],
+            "answer": 1
+          },
+          {
+            "text": "Have you got a cat? No, I ___.",
+            "options": [
+              "haven't",
+              "hasn't",
+              "don't"
+            ],
+            "answer": 0
+          },
+          {
+            "text": "Jun ___ got black hair.",
+            "options": [
+              "have",
+              "has",
+              "are"
+            ],
+            "answer": 1
+          },
+          {
+            "text": "I'm ten years ___.",
+            "options": [
+              "old",
+              "young",
+              "name"
+            ],
+            "answer": 0
+          }
+        ]
+      },
+      {
+        "type": "read",
+        "title": "Read the story!",
+        "story": {
+          "title": "The Star Academy Show",
+          "emoji": "🌟",
+          "paragraphs": [
+            "Today is the Star Academy show! Coach Mina is happy.",
+            "Hana sings with her pink lightstick. Jun and Max dance. Leo has got a camera.",
+            "{name} is the new trainee. She's from Russia. She's ten. She's got long brown hair. She dances and sings. Her mum and dad are at the show. They clap and say, \"Our star!\""
+          ]
+        },
+        "questions": [
+          {
+            "q": "Who has got a camera?",
+            "options": [
+              "Leo",
+              "Hana",
+              "Jun"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "What colour is Hana's lightstick?",
+            "options": [
+              "purple",
+              "pink",
+              "blue"
+            ],
+            "answer": 1
+          },
+          {
+            "q": "Where is {name} from?",
+            "options": [
+              "Korea",
+              "the UK",
+              "Russia"
+            ],
+            "answer": 2
+          },
+          {
+            "q": "Who is at the show?",
+            "options": [
+              "{name}'s mum and dad",
+              "{name}'s dog",
+              "{name}'s cousin"
+            ],
+            "answer": 0
+          }
+        ]
+      },
+      {
+        "type": "sentence",
+        "title": "Part 4: Make sentences",
+        "items": [
+          {
+            "sentence": "How old are you?",
+            "ru": "Сколько тебе лет?",
+            "emoji": "🎂"
+          },
+          {
+            "sentence": "She's got blue eyes.",
+            "ru": "У неё голубые глаза.",
+            "emoji": "👀"
+          },
+          {
+            "sentence": "I don't like grey.",
+            "ru": "Мне не нравится серый.",
+            "emoji": "🩶"
+          },
+          {
+            "sentence": "Is he your uncle?",
+            "ru": "Он твой дядя?",
+            "emoji": "🧔"
+          }
+        ]
+      },
+      {
+        "type": "spell",
+        "title": "Spell it!",
+        "words": [
+          "seven",
+          "family",
+          "phone",
+          "friend",
+          "yellow"
+        ]
+      },
+      {
+        "type": "quiz",
+        "title": "Speed quiz!",
+        "words": [
+          "twelve",
+          "twenty",
+          "mum",
+          "grandpa",
+          "cousin",
+          "fish",
+          "purple",
+          "notebook",
+          "headphones",
+          "young",
+          "funny",
+          "music",
+          "country",
+          "korea"
+        ],
+        "seconds": 60
+      },
+      {
+        "type": "speak",
+        "title": "Part 5: Talk to Coach Mina",
+        "items": [
+          {
+            "text": "Hello! My name is {name}. M, A, R, G, O.",
+            "ru": "Привет! Меня зовут Марго. М-А-Р-Г-О.",
+            "emoji": "📛"
+          },
+          {
+            "text": "I'm ten. I'm from Russia.",
+            "ru": "Мне десять. Я из России.",
+            "emoji": "🇷🇺"
+          },
+          {
+            "text": "I've got a mum, a dad and a cat.",
+            "ru": "У меня есть мама, папа и кошка.",
+            "emoji": "👨‍👩‍👧"
+          },
+          {
+            "text": "I like K-pop and dancing!",
+            "ru": "Я люблю кей-поп и танцы!",
+            "emoji": "💃"
+          }
+        ]
+      },
+      {
+        "type": "write",
+        "title": "Write!",
+        "prompt": "Write your trainee profile for the show.",
+        "ru": "Твоя анкета для шоу",
+        "starters": [
+          "Hello! My name is…",
+          "I'm … years old. I'm from…",
+          "I've got… (hair / eyes / a pet)",
+          "My favourite colour is…",
+          "I like… I don't like…"
+        ],
+        "minWords": 25
+      },
+      {
+        "type": "chant",
+        "title": "Sing the chant!",
+        "bpm": 110,
+        "lines": [
+          "I'm a trainee, I'm a star!",
+          "Hello, everyone — here we are!",
+          "My name, my age, my family too,",
+          "Thank you, Star Academy — I love you!"
+        ],
+        "blanks": [
+          "trainee",
+          "star",
+          "hello",
+          "family",
+          "thank you"
+        ]
+      },
+      {
+        "type": "dance",
+        "title": "Final dance!",
+        "items": [
+          {
+            "text": "Wave hello to everyone!",
+            "moves": [
+              "wave"
+            ]
+          },
+          {
+            "text": "Clap three times and jump!",
+            "moves": [
+              "clap",
+              "clap",
+              "clap",
+              "jump"
+            ]
+          },
+          {
+            "text": "Turn left, turn right, spin!",
+            "moves": [
+              "turn-left",
+              "turn-right",
+              "spin"
+            ]
+          },
+          {
+            "text": "Make a finger heart for your family and pose!",
+            "moves": [
+              "finger-heart",
+              "pose"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

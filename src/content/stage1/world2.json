@@ -1,0 +1,5212 @@
+{
+  "id": "world2",
+  "n": 2,
+  "title": "Trainee Dorm",
+  "subtitle": "My home & my room",
+  "ru": "Дом и моя комната",
+  "emoji": "🏠",
+  "color": "#7c5cff",
+  "grammar": [
+    "there is / there are",
+    "Is there…? Are there…? Yes, there is. / No, there isn't.",
+    "prepositions of place: in, on, under, next to, behind, in front of, between",
+    "this / that / these / those",
+    "plurals (-s, -es)",
+    "a / an / some",
+    "recycle: be, have got, colours, numbers 20–100"
+  ],
+  "words": [
+    {
+      "id": "dorm",
+      "en": "dorm",
+      "ru": "общежитие",
+      "emoji": "🏢",
+      "level": "extra"
+    },
+    {
+      "id": "house",
+      "en": "house",
+      "ru": "дом",
+      "emoji": "🏠",
+      "level": "starters"
+    },
+    {
+      "id": "flat",
+      "en": "flat",
+      "ru": "квартира",
+      "emoji": "🏬",
+      "level": "movers"
+    },
+    {
+      "id": "bedroom",
+      "en": "bedroom",
+      "ru": "спальня",
+      "emoji": "🛏️",
+      "level": "starters"
+    },
+    {
+      "id": "bathroom",
+      "en": "bathroom",
+      "ru": "ванная комната",
+      "emoji": "🛁",
+      "level": "starters"
+    },
+    {
+      "id": "kitchen",
+      "en": "kitchen",
+      "ru": "кухня",
+      "emoji": "🍳",
+      "level": "starters"
+    },
+    {
+      "id": "living-room",
+      "en": "living room",
+      "ru": "гостиная",
+      "emoji": "🛋️",
+      "level": "starters"
+    },
+    {
+      "id": "hall",
+      "en": "hall",
+      "ru": "прихожая, холл",
+      "emoji": "🚪",
+      "level": "starters"
+    },
+    {
+      "id": "garden",
+      "en": "garden",
+      "ru": "сад",
+      "emoji": "🌳",
+      "level": "starters"
+    },
+    {
+      "id": "upstairs",
+      "en": "upstairs",
+      "ru": "наверху, наверх",
+      "emoji": "⬆️",
+      "level": "movers"
+    },
+    {
+      "id": "downstairs",
+      "en": "downstairs",
+      "ru": "внизу, вниз",
+      "emoji": "⬇️",
+      "level": "movers"
+    },
+    {
+      "id": "stairs",
+      "en": "stairs",
+      "ru": "лестница",
+      "emoji": "🪜",
+      "level": "movers"
+    },
+    {
+      "id": "room",
+      "en": "room",
+      "ru": "комната",
+      "emoji": "🏘️",
+      "level": "starters"
+    },
+    {
+      "id": "floor",
+      "en": "floor",
+      "ru": "пол; этаж",
+      "emoji": "🟫",
+      "level": "movers"
+    },
+    {
+      "id": "wall",
+      "en": "wall",
+      "ru": "стена",
+      "emoji": "🧱",
+      "level": "movers"
+    },
+    {
+      "id": "picture",
+      "en": "picture",
+      "ru": "картина, картинка",
+      "emoji": "🖼️",
+      "level": "starters"
+    },
+    {
+      "id": "plant",
+      "en": "plant",
+      "ru": "растение",
+      "emoji": "🪴",
+      "level": "movers"
+    },
+    {
+      "id": "flower",
+      "en": "flower",
+      "ru": "цветок",
+      "emoji": "🌸",
+      "level": "starters"
+    },
+    {
+      "id": "sofa",
+      "en": "sofa",
+      "ru": "диван",
+      "emoji": "🛋️",
+      "level": "starters"
+    },
+    {
+      "id": "table",
+      "en": "table",
+      "ru": "стол",
+      "emoji": "🍽️",
+      "level": "starters"
+    },
+    {
+      "id": "tv",
+      "en": "TV",
+      "ru": "телевизор",
+      "emoji": "📺",
+      "level": "starters"
+    },
+    {
+      "id": "bath",
+      "en": "bath",
+      "ru": "ванна",
+      "emoji": "🛁",
+      "level": "movers"
+    },
+    {
+      "id": "shower",
+      "en": "shower",
+      "ru": "душ",
+      "emoji": "🚿",
+      "level": "movers"
+    },
+    {
+      "id": "cooker",
+      "en": "cooker",
+      "ru": "плита",
+      "emoji": "🍲",
+      "level": "extra"
+    },
+    {
+      "id": "fridge",
+      "en": "fridge",
+      "ru": "холодильник",
+      "emoji": "🧊",
+      "level": "extra"
+    },
+    {
+      "id": "sink",
+      "en": "sink",
+      "ru": "раковина",
+      "emoji": "🚰",
+      "level": "extra"
+    },
+    {
+      "id": "cupboard",
+      "en": "cupboard",
+      "ru": "шкафчик",
+      "emoji": "🗄️",
+      "level": "movers"
+    },
+    {
+      "id": "window",
+      "en": "window",
+      "ru": "окно",
+      "emoji": "🪟",
+      "level": "starters"
+    },
+    {
+      "id": "door",
+      "en": "door",
+      "ru": "дверь",
+      "emoji": "🚪",
+      "level": "starters"
+    },
+    {
+      "id": "bed",
+      "en": "bed",
+      "ru": "кровать",
+      "emoji": "🛏️",
+      "level": "starters"
+    },
+    {
+      "id": "desk",
+      "en": "desk",
+      "ru": "письменный стол",
+      "emoji": "📝",
+      "level": "starters"
+    },
+    {
+      "id": "chair",
+      "en": "chair",
+      "ru": "стул",
+      "emoji": "🪑",
+      "level": "starters"
+    },
+    {
+      "id": "lamp",
+      "en": "lamp",
+      "ru": "лампа",
+      "emoji": "💡",
+      "level": "starters"
+    },
+    {
+      "id": "clock",
+      "en": "clock",
+      "ru": "часы (настенные)",
+      "emoji": "⏰",
+      "level": "starters"
+    },
+    {
+      "id": "computer",
+      "en": "computer",
+      "ru": "компьютер",
+      "emoji": "💻",
+      "level": "starters"
+    },
+    {
+      "id": "in",
+      "en": "in",
+      "ru": "в, внутри",
+      "emoji": "📥",
+      "level": "starters"
+    },
+    {
+      "id": "on",
+      "en": "on",
+      "ru": "на",
+      "emoji": "🔝",
+      "level": "starters"
+    },
+    {
+      "id": "under",
+      "en": "under",
+      "ru": "под",
+      "emoji": "👇",
+      "level": "starters"
+    },
+    {
+      "id": "box",
+      "en": "box",
+      "ru": "коробка",
+      "emoji": "📦",
+      "level": "starters"
+    },
+    {
+      "id": "bag",
+      "en": "bag",
+      "ru": "сумка",
+      "emoji": "👜",
+      "level": "starters"
+    },
+    {
+      "id": "book",
+      "en": "book",
+      "ru": "книга",
+      "emoji": "📕",
+      "level": "starters"
+    },
+    {
+      "id": "wardrobe",
+      "en": "wardrobe",
+      "ru": "шкаф для одежды",
+      "emoji": "👗",
+      "level": "movers"
+    },
+    {
+      "id": "shelf",
+      "en": "shelf",
+      "ru": "полка",
+      "emoji": "🗃️",
+      "level": "movers"
+    },
+    {
+      "id": "mirror",
+      "en": "mirror",
+      "ru": "зеркало",
+      "emoji": "🪞",
+      "level": "starters"
+    },
+    {
+      "id": "rug",
+      "en": "rug",
+      "ru": "коврик",
+      "emoji": "🧶",
+      "level": "extra"
+    },
+    {
+      "id": "poster",
+      "en": "poster",
+      "ru": "постер",
+      "emoji": "📜",
+      "level": "extra"
+    },
+    {
+      "id": "bookcase",
+      "en": "bookcase",
+      "ru": "книжный шкаф",
+      "emoji": "📚",
+      "level": "starters"
+    },
+    {
+      "id": "red",
+      "en": "red",
+      "ru": "красный",
+      "emoji": "🔴",
+      "level": "starters"
+    },
+    {
+      "id": "blue",
+      "en": "blue",
+      "ru": "синий",
+      "emoji": "🔵",
+      "level": "starters"
+    },
+    {
+      "id": "green",
+      "en": "green",
+      "ru": "зелёный",
+      "emoji": "🟢",
+      "level": "starters"
+    },
+    {
+      "id": "yellow",
+      "en": "yellow",
+      "ru": "жёлтый",
+      "emoji": "🟡",
+      "level": "starters"
+    },
+    {
+      "id": "pink",
+      "en": "pink",
+      "ru": "розовый",
+      "emoji": "🩷",
+      "level": "starters"
+    },
+    {
+      "id": "purple",
+      "en": "purple",
+      "ru": "фиолетовый",
+      "emoji": "🟣",
+      "level": "starters"
+    },
+    {
+      "id": "white",
+      "en": "white",
+      "ru": "белый",
+      "emoji": "⚪",
+      "level": "starters"
+    },
+    {
+      "id": "black",
+      "en": "black",
+      "ru": "чёрный",
+      "emoji": "⚫",
+      "level": "starters"
+    },
+    {
+      "id": "orange",
+      "en": "orange",
+      "ru": "оранжевый",
+      "emoji": "🟠",
+      "level": "starters"
+    },
+    {
+      "id": "brown",
+      "en": "brown",
+      "ru": "коричневый",
+      "emoji": "🟤",
+      "level": "starters"
+    },
+    {
+      "id": "grey",
+      "en": "grey",
+      "ru": "серый",
+      "emoji": "🩶",
+      "level": "starters"
+    },
+    {
+      "id": "this",
+      "en": "this",
+      "ru": "этот, эта (близко)",
+      "emoji": "👇",
+      "level": "starters"
+    },
+    {
+      "id": "that",
+      "en": "that",
+      "ru": "тот, та (далеко)",
+      "emoji": "👉",
+      "level": "starters"
+    },
+    {
+      "id": "these",
+      "en": "these",
+      "ru": "эти (близко)",
+      "emoji": "🫳",
+      "level": "starters"
+    },
+    {
+      "id": "those",
+      "en": "those",
+      "ru": "те (далеко)",
+      "emoji": "🫴",
+      "level": "starters"
+    },
+    {
+      "id": "cat",
+      "en": "cat",
+      "ru": "кошка",
+      "emoji": "🐱",
+      "level": "starters"
+    },
+    {
+      "id": "dog",
+      "en": "dog",
+      "ru": "собака",
+      "emoji": "🐶",
+      "level": "starters"
+    },
+    {
+      "id": "next-to",
+      "en": "next to",
+      "ru": "рядом с",
+      "emoji": "👫",
+      "level": "starters"
+    },
+    {
+      "id": "behind",
+      "en": "behind",
+      "ru": "за, позади",
+      "emoji": "🙈",
+      "level": "starters"
+    },
+    {
+      "id": "in-front-of",
+      "en": "in front of",
+      "ru": "перед",
+      "emoji": "🧍",
+      "level": "starters"
+    },
+    {
+      "id": "between",
+      "en": "between",
+      "ru": "между",
+      "emoji": "🥪",
+      "level": "starters"
+    },
+    {
+      "id": "ball",
+      "en": "ball",
+      "ru": "мяч",
+      "emoji": "⚽",
+      "level": "starters"
+    },
+    {
+      "id": "teddy",
+      "en": "teddy",
+      "ru": "плюшевый мишка",
+      "emoji": "🧸",
+      "level": "starters"
+    },
+    {
+      "id": "lightstick",
+      "en": "lightstick",
+      "ru": "лайтстик (светящаяся палочка фанатов)",
+      "emoji": "🪄",
+      "level": "extra"
+    },
+    {
+      "id": "headphones",
+      "en": "headphones",
+      "ru": "наушники",
+      "emoji": "🎧",
+      "level": "extra"
+    },
+    {
+      "id": "microphone",
+      "en": "microphone",
+      "ru": "микрофон",
+      "emoji": "🎤",
+      "level": "extra"
+    },
+    {
+      "id": "photocard",
+      "en": "photocard",
+      "ru": "фотокарточка",
+      "emoji": "🃏",
+      "level": "extra"
+    },
+    {
+      "id": "album",
+      "en": "album",
+      "ru": "альбом",
+      "emoji": "💿",
+      "level": "extra"
+    },
+    {
+      "id": "camera",
+      "en": "camera",
+      "ru": "фотоаппарат",
+      "emoji": "📷",
+      "level": "starters"
+    },
+    {
+      "id": "guitar",
+      "en": "guitar",
+      "ru": "гитара",
+      "emoji": "🎸",
+      "level": "starters"
+    },
+    {
+      "id": "piano",
+      "en": "piano",
+      "ru": "пианино",
+      "emoji": "🎹",
+      "level": "starters"
+    },
+    {
+      "id": "phone",
+      "en": "phone",
+      "ru": "телефон",
+      "emoji": "📱",
+      "level": "starters"
+    },
+    {
+      "id": "doll",
+      "en": "doll",
+      "ru": "кукла",
+      "emoji": "🪆",
+      "level": "starters"
+    },
+    {
+      "id": "robot",
+      "en": "robot",
+      "ru": "робот",
+      "emoji": "🤖",
+      "level": "starters"
+    },
+    {
+      "id": "game",
+      "en": "game",
+      "ru": "игра",
+      "emoji": "🎮",
+      "level": "starters"
+    },
+    {
+      "id": "pen",
+      "en": "pen",
+      "ru": "ручка",
+      "emoji": "🖊️",
+      "level": "starters"
+    },
+    {
+      "id": "pencil",
+      "en": "pencil",
+      "ru": "карандаш",
+      "emoji": "✏️",
+      "level": "starters"
+    },
+    {
+      "id": "pillow",
+      "en": "pillow",
+      "ru": "подушка",
+      "emoji": "🛌",
+      "level": "extra"
+    },
+    {
+      "id": "toy",
+      "en": "toy",
+      "ru": "игрушка",
+      "emoji": "🪀",
+      "level": "starters"
+    },
+    {
+      "id": "kite",
+      "en": "kite",
+      "ru": "воздушный змей",
+      "emoji": "🪁",
+      "level": "starters"
+    },
+    {
+      "id": "car",
+      "en": "car",
+      "ru": "машинка, машина",
+      "emoji": "🚗",
+      "level": "starters"
+    },
+    {
+      "id": "big",
+      "en": "big",
+      "ru": "большой",
+      "emoji": "🐘",
+      "level": "starters"
+    },
+    {
+      "id": "small",
+      "en": "small",
+      "ru": "маленький",
+      "emoji": "🐭",
+      "level": "starters"
+    },
+    {
+      "id": "new",
+      "en": "new",
+      "ru": "новый",
+      "emoji": "✨",
+      "level": "starters"
+    },
+    {
+      "id": "old",
+      "en": "old",
+      "ru": "старый",
+      "emoji": "🏚️",
+      "level": "starters"
+    },
+    {
+      "id": "nice",
+      "en": "nice",
+      "ru": "милый, хороший",
+      "emoji": "😊",
+      "level": "starters"
+    },
+    {
+      "id": "clean",
+      "en": "clean",
+      "ru": "чистый",
+      "emoji": "🧼",
+      "level": "movers"
+    },
+    {
+      "id": "messy",
+      "en": "messy",
+      "ru": "неубранный, грязный",
+      "emoji": "🌪️",
+      "level": "extra"
+    },
+    {
+      "id": "beautiful",
+      "en": "beautiful",
+      "ru": "красивый",
+      "emoji": "💖",
+      "level": "starters"
+    },
+    {
+      "id": "ten",
+      "en": "ten",
+      "ru": "десять",
+      "emoji": "🔟",
+      "level": "starters"
+    },
+    {
+      "id": "twenty",
+      "en": "twenty",
+      "ru": "двадцать",
+      "emoji": "2️⃣0️⃣",
+      "level": "starters"
+    },
+    {
+      "id": "thirty",
+      "en": "thirty",
+      "ru": "тридцать",
+      "emoji": "3️⃣0️⃣",
+      "level": "movers"
+    },
+    {
+      "id": "forty",
+      "en": "forty",
+      "ru": "сорок",
+      "emoji": "4️⃣0️⃣",
+      "level": "movers"
+    },
+    {
+      "id": "fifty",
+      "en": "fifty",
+      "ru": "пятьдесят",
+      "emoji": "5️⃣0️⃣",
+      "level": "movers"
+    },
+    {
+      "id": "sixty",
+      "en": "sixty",
+      "ru": "шестьдесят",
+      "emoji": "6️⃣0️⃣",
+      "level": "movers"
+    },
+    {
+      "id": "seventy",
+      "en": "seventy",
+      "ru": "семьдесят",
+      "emoji": "7️⃣0️⃣",
+      "level": "movers"
+    },
+    {
+      "id": "eighty",
+      "en": "eighty",
+      "ru": "восемьдесят",
+      "emoji": "8️⃣0️⃣",
+      "level": "movers"
+    },
+    {
+      "id": "ninety",
+      "en": "ninety",
+      "ru": "девяносто",
+      "emoji": "9️⃣0️⃣",
+      "level": "movers"
+    },
+    {
+      "id": "one-hundred",
+      "en": "one hundred",
+      "ru": "сто",
+      "emoji": "💯",
+      "level": "movers"
+    },
+    {
+      "id": "lift",
+      "en": "lift",
+      "ru": "лифт",
+      "emoji": "🛗",
+      "level": "movers"
+    },
+    {
+      "id": "dream",
+      "en": "dream",
+      "ru": "мечта",
+      "emoji": "💭",
+      "level": "movers"
+    },
+    {
+      "id": "star",
+      "en": "star",
+      "ru": "звезда",
+      "emoji": "⭐",
+      "level": "starters"
+    },
+    {
+      "id": "heart",
+      "en": "heart",
+      "ru": "сердце",
+      "emoji": "❤️",
+      "level": "extra"
+    }
+  ],
+  "weeks": [
+    {
+      "n": 1,
+      "title": "Welcome to the dorm",
+      "episodes": [
+        {
+          "id": "w2-e01",
+          "title": "Hello, Dorm!",
+          "emoji": "🏠",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "dorm",
+                "house",
+                "flat",
+                "bedroom",
+                "bathroom",
+                "kitchen"
+              ]
+            },
+            {
+              "type": "listen",
+              "title": "Listen and tap!",
+              "items": [
+                {
+                  "say": "kitchen",
+                  "options": [
+                    {
+                      "emoji": "🛁",
+                      "text": "bathroom"
+                    },
+                    {
+                      "emoji": "🍳",
+                      "text": "kitchen"
+                    },
+                    {
+                      "emoji": "🛏️",
+                      "text": "bedroom"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "bedroom",
+                  "options": [
+                    {
+                      "emoji": "🛏️",
+                      "text": "bedroom"
+                    },
+                    {
+                      "emoji": "🏠",
+                      "text": "house"
+                    },
+                    {
+                      "emoji": "🍳",
+                      "text": "kitchen"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "This is the trainee dorm.",
+                  "options": [
+                    {
+                      "emoji": "🏠",
+                      "text": "house"
+                    },
+                    {
+                      "emoji": "🏬",
+                      "text": "flat"
+                    },
+                    {
+                      "emoji": "🏢",
+                      "text": "dorm"
+                    }
+                  ],
+                  "answer": 2
+                },
+                {
+                  "say": "bathroom",
+                  "options": [
+                    {
+                      "emoji": "🍳",
+                      "text": "kitchen"
+                    },
+                    {
+                      "emoji": "🛁",
+                      "text": "bathroom"
+                    },
+                    {
+                      "emoji": "🏬",
+                      "text": "flat"
+                    }
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "memory",
+              "title": "Find the pairs!",
+              "words": [
+                "dorm",
+                "house",
+                "flat",
+                "bedroom",
+                "bathroom",
+                "kitchen"
+              ]
+            },
+            {
+              "type": "chant",
+              "title": "Chant time!",
+              "bpm": 100,
+              "lines": [
+                "Welcome, welcome, to the dorm!",
+                "There's a kitchen, there's a bedroom.",
+                "Welcome, welcome, to the dorm!",
+                "There's a bathroom, come on in!",
+                "Dorm, dorm, my new home!"
+              ],
+              "blanks": [
+                "kitchen",
+                "bedroom",
+                "bathroom",
+                "dorm"
+              ]
+            },
+            {
+              "type": "speak",
+              "title": "Say it!",
+              "items": [
+                {
+                  "text": "Welcome to the dorm!",
+                  "ru": "Добро пожаловать в общежитие!"
+                },
+                {
+                  "text": "This is my bedroom.",
+                  "ru": "Это моя спальня."
+                },
+                {
+                  "text": "There is a kitchen.",
+                  "ru": "Там есть кухня."
+                },
+                {
+                  "text": "I'm a trainee at Star Academy.",
+                  "ru": "Я стажёр в Star Academy."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "w2-e02",
+          "title": "Room Tour",
+          "emoji": "🚪",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "living-room",
+                "hall",
+                "garden",
+                "upstairs",
+                "downstairs",
+                "stairs"
+              ]
+            },
+            {
+              "type": "listen",
+              "title": "Listen and tap!",
+              "items": [
+                {
+                  "say": "garden",
+                  "options": [
+                    {
+                      "emoji": "🛋️",
+                      "text": "living room"
+                    },
+                    {
+                      "emoji": "🚪",
+                      "text": "hall"
+                    },
+                    {
+                      "emoji": "🌳",
+                      "text": "garden"
+                    }
+                  ],
+                  "answer": 2
+                },
+                {
+                  "say": "The bedrooms are upstairs.",
+                  "options": [
+                    {
+                      "emoji": "⬆️",
+                      "text": "upstairs"
+                    },
+                    {
+                      "emoji": "⬇️",
+                      "text": "downstairs"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "living room",
+                  "options": [
+                    {
+                      "emoji": "🛋️",
+                      "text": "living room"
+                    },
+                    {
+                      "emoji": "🌳",
+                      "text": "garden"
+                    },
+                    {
+                      "emoji": "🪜",
+                      "text": "stairs"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "The kitchen is downstairs.",
+                  "options": [
+                    {
+                      "emoji": "⬆️",
+                      "text": "upstairs"
+                    },
+                    {
+                      "emoji": "⬇️",
+                      "text": "downstairs"
+                    }
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "gap",
+              "title": "There is or there are?",
+              "items": [
+                {
+                  "text": "There ___ a garden.",
+                  "options": [
+                    "is",
+                    "are"
+                  ],
+                  "answer": 0,
+                  "ru": "Там есть сад."
+                },
+                {
+                  "text": "There ___ two bedrooms upstairs.",
+                  "options": [
+                    "is",
+                    "are"
+                  ],
+                  "answer": 1,
+                  "ru": "Наверху две спальни."
+                },
+                {
+                  "text": "There ___ a hall downstairs.",
+                  "options": [
+                    "are",
+                    "is"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "text": "There ___ stairs in the hall.",
+                  "options": [
+                    "are",
+                    "is"
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "dance",
+              "title": "Dance practice!",
+              "items": [
+                {
+                  "text": "Walk upstairs! Hands up and jump!",
+                  "moves": [
+                    "hands-up",
+                    "jump"
+                  ]
+                },
+                {
+                  "text": "Go downstairs! Hands down and clap!",
+                  "moves": [
+                    "hands-down",
+                    "clap"
+                  ]
+                },
+                {
+                  "text": "Step left to the kitchen, step right to the garden!",
+                  "moves": [
+                    "step-left",
+                    "step-right"
+                  ]
+                },
+                {
+                  "text": "Wave hello in the hall and pose!",
+                  "moves": [
+                    "wave",
+                    "pose"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "kculture",
+              "title": "K-Culture corner",
+              "emoji": "👟",
+              "text": [
+                "In Korea, people take their shoes off at home.",
+                "They put the shoes in the hall, next to the door.",
+                "Inside, they wear slippers or socks."
+              ],
+              "korean": {
+                "ko": "집",
+                "roman": "jip",
+                "en": "house, home"
+              },
+              "questions": [
+                {
+                  "q": "Where do Korean people take off their shoes?",
+                  "options": [
+                    "In the garden",
+                    "At home, in the hall",
+                    "In the kitchen"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "Do they wear shoes in the living room?",
+                  "options": [
+                    "Yes",
+                    "No"
+                  ],
+                  "answer": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "w2-e03",
+          "title": "There Is a Sofa!",
+          "emoji": "🛋️",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "sofa",
+                "table",
+                "tv",
+                "bath",
+                "shower"
+              ]
+            },
+            {
+              "type": "sentence",
+              "title": "Make a sentence!",
+              "items": [
+                {
+                  "sentence": "There is a sofa.",
+                  "ru": "Там есть диван."
+                },
+                {
+                  "sentence": "There is a TV in the living room.",
+                  "ru": "В гостиной есть телевизор."
+                },
+                {
+                  "sentence": "There are two showers upstairs.",
+                  "ru": "Наверху два душа."
+                },
+                {
+                  "sentence": "The bath is in the bathroom.",
+                  "ru": "Ванна в ванной комнате."
+                }
+              ]
+            },
+            {
+              "type": "gap",
+              "title": "Fill the gap!",
+              "items": [
+                {
+                  "text": "There is a ___ in the bathroom.",
+                  "options": [
+                    "sofa",
+                    "shower",
+                    "TV"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "text": "There is a ___ in the living room.",
+                  "options": [
+                    "bath",
+                    "sofa",
+                    "shower"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "text": "There are four chairs and a ___ in the kitchen.",
+                  "options": [
+                    "table",
+                    "bath",
+                    "garden"
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "read",
+              "title": "Read and answer!",
+              "story": {
+                "title": "Welcome, Leo!",
+                "emoji": "🏢",
+                "paragraphs": [
+                  "Leo is a new trainee. Coach Mina shows him the dorm.",
+                  "\"This is the living room. There is a big sofa and there is a TV. Downstairs there is a kitchen. Upstairs there are four bedrooms and two bathrooms. There is a bath and there is a shower.\"",
+                  "\"Wow!\" says Leo. \"I like the dorm!\""
+                ]
+              },
+              "questions": [
+                {
+                  "q": "Who is new?",
+                  "options": [
+                    "Jun",
+                    "Leo",
+                    "Hana"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "What is in the living room?",
+                  "options": [
+                    "A bath and a bed",
+                    "A sofa and a TV",
+                    "A shower"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "How many bedrooms are there?",
+                  "options": [
+                    "Two",
+                    "Three",
+                    "Four"
+                  ],
+                  "answer": 2
+                },
+                {
+                  "q": "Where are the bedrooms?",
+                  "options": [
+                    "Upstairs",
+                    "Downstairs",
+                    "In the garden"
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "title": "Say it!",
+              "items": [
+                {
+                  "text": "There is a sofa.",
+                  "ru": "Там есть диван."
+                },
+                {
+                  "text": "There is a TV.",
+                  "ru": "Там есть телевизор."
+                },
+                {
+                  "text": "There are two bathrooms.",
+                  "ru": "Там две ванные комнаты."
+                },
+                {
+                  "text": "I like the living room.",
+                  "ru": "Мне нравится гостиная."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "w2-e04",
+          "title": "Kitchen Party",
+          "emoji": "🍳",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "cooker",
+                "fridge",
+                "sink",
+                "cupboard",
+                "window",
+                "door"
+              ]
+            },
+            {
+              "type": "spell",
+              "title": "Spell it!",
+              "words": [
+                "door",
+                "sink",
+                "fridge",
+                "window"
+              ]
+            },
+            {
+              "type": "listen",
+              "title": "Listen and tap!",
+              "items": [
+                {
+                  "say": "fridge",
+                  "options": [
+                    {
+                      "emoji": "🍲",
+                      "text": "cooker"
+                    },
+                    {
+                      "emoji": "🧊",
+                      "text": "fridge"
+                    },
+                    {
+                      "emoji": "🚰",
+                      "text": "sink"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "cupboard",
+                  "options": [
+                    {
+                      "emoji": "🪟",
+                      "text": "window"
+                    },
+                    {
+                      "emoji": "🚪",
+                      "text": "door"
+                    },
+                    {
+                      "emoji": "🗄️",
+                      "text": "cupboard"
+                    }
+                  ],
+                  "answer": 2
+                },
+                {
+                  "say": "There is a big window in the kitchen.",
+                  "options": [
+                    {
+                      "emoji": "🪟",
+                      "text": "window"
+                    },
+                    {
+                      "emoji": "🚪",
+                      "text": "door"
+                    },
+                    {
+                      "emoji": "🧊",
+                      "text": "fridge"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "The cooker is new.",
+                  "options": [
+                    {
+                      "emoji": "🚰",
+                      "text": "sink"
+                    },
+                    {
+                      "emoji": "🍲",
+                      "text": "cooker"
+                    },
+                    {
+                      "emoji": "🗄️",
+                      "text": "cupboard"
+                    }
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "draw",
+              "title": "Draw it!",
+              "prompt": "Draw the dorm kitchen. There is a fridge, a cooker and a sink. There is a window. Draw a cupboard, too!",
+              "ru": "Нарисуй кухню",
+              "emoji": "🍳"
+            },
+            {
+              "type": "watch",
+              "title": "Watch and check!",
+              "videoTitle": "Find a short story about a house or a home and watch it",
+              "url": "https://learnenglishkids.britishcouncil.org/listen-watch/short-stories",
+              "source": "British Council LearnEnglish Kids",
+              "questions": [
+                {
+                  "q": "Was there a kitchen in the story?",
+                  "options": [
+                    "Yes",
+                    "No",
+                    "I don't know"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "Can you say three rooms in English?",
+                  "options": [
+                    "Yes!",
+                    "Not yet"
+                  ],
+                  "answer": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "w2-e05",
+          "title": "Dorm Map",
+          "emoji": "🗺️",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "room",
+                "floor",
+                "wall",
+                "picture",
+                "plant",
+                "flower"
+              ]
+            },
+            {
+              "type": "quiz",
+              "title": "Speed quiz!",
+              "words": [
+                "room",
+                "floor",
+                "wall",
+                "picture",
+                "plant",
+                "flower",
+                "kitchen",
+                "bedroom",
+                "bathroom",
+                "garden",
+                "sofa",
+                "fridge"
+              ],
+              "seconds": 50
+            },
+            {
+              "type": "read",
+              "title": "Read and answer!",
+              "story": {
+                "title": "Hana's Floor",
+                "emoji": "🌸",
+                "paragraphs": [
+                  "Hana lives on the second floor of the dorm. There are three rooms on her floor. There is a picture on the wall. It's a picture of a star!",
+                  "There are flowers in the hall. They are pink and yellow. There is a big green plant next to the window. Hana likes her floor."
+                ]
+              },
+              "questions": [
+                {
+                  "q": "Where does Hana live?",
+                  "options": [
+                    "On the first floor",
+                    "On the second floor",
+                    "In the garden"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "What is on the wall?",
+                  "options": [
+                    "A plant",
+                    "A picture",
+                    "A flower"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "What colour are the flowers?",
+                  "options": [
+                    "Pink and yellow",
+                    "Red and blue",
+                    "Green"
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "write",
+              "title": "Write it!",
+              "prompt": "Write about your home.",
+              "ru": "Напиши о своём доме.",
+              "starters": [
+                "My home is a house / a flat.",
+                "There is a…",
+                "There are…"
+              ],
+              "minWords": 10
+            },
+            {
+              "type": "chant",
+              "title": "Chant time!",
+              "bpm": 110,
+              "lines": [
+                "Floor, wall, window, door!",
+                "There's a picture, there's a plant.",
+                "Floor, wall, window, door!",
+                "There are flowers in my room!"
+              ],
+              "blanks": [
+                "wall",
+                "picture",
+                "plant",
+                "flowers"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "w2-weekly1",
+          "title": "Week 1 Check: Dorm Tour",
+          "emoji": "🏆",
+          "kind": "weekly",
+          "exercises": [
+            {
+              "type": "listen",
+              "title": "Listen and tap!",
+              "items": [
+                {
+                  "say": "living room",
+                  "options": [
+                    {
+                      "emoji": "🛋️",
+                      "text": "living room"
+                    },
+                    {
+                      "emoji": "🍳",
+                      "text": "kitchen"
+                    },
+                    {
+                      "emoji": "🛁",
+                      "text": "bathroom"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "There is a fridge in the kitchen.",
+                  "options": [
+                    {
+                      "emoji": "🧊",
+                      "text": "fridge"
+                    },
+                    {
+                      "emoji": "📺",
+                      "text": "TV"
+                    },
+                    {
+                      "emoji": "🌸",
+                      "text": "flower"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "The garden is beautiful.",
+                  "options": [
+                    {
+                      "emoji": "🚪",
+                      "text": "hall"
+                    },
+                    {
+                      "emoji": "🌳",
+                      "text": "garden"
+                    },
+                    {
+                      "emoji": "🪜",
+                      "text": "stairs"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "There are two showers.",
+                  "options": [
+                    {
+                      "emoji": "🚿",
+                      "text": "one shower"
+                    },
+                    {
+                      "emoji": "🚿🚿",
+                      "text": "two showers"
+                    }
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "memory",
+              "title": "Find the pairs!",
+              "words": [
+                "kitchen",
+                "bedroom",
+                "bathroom",
+                "garden",
+                "sofa",
+                "fridge"
+              ]
+            },
+            {
+              "type": "spell",
+              "title": "Spell it!",
+              "words": [
+                "hall",
+                "bath",
+                "sofa",
+                "garden",
+                "flower"
+              ]
+            },
+            {
+              "type": "gap",
+              "title": "Fill the gap!",
+              "items": [
+                {
+                  "text": "There ___ a TV in the living room.",
+                  "options": [
+                    "is",
+                    "are"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "text": "There ___ three bedrooms.",
+                  "options": [
+                    "is",
+                    "are"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "text": "The bedrooms are ___. Go up the stairs!",
+                  "options": [
+                    "downstairs",
+                    "upstairs"
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "sentence",
+              "title": "Make a sentence!",
+              "items": [
+                {
+                  "sentence": "There is a garden.",
+                  "ru": "Там есть сад."
+                },
+                {
+                  "sentence": "There are two bathrooms upstairs.",
+                  "ru": "Наверху две ванные."
+                },
+                {
+                  "sentence": "The kitchen is downstairs.",
+                  "ru": "Кухня внизу."
+                }
+              ]
+            },
+            {
+              "type": "read",
+              "title": "Read and answer!",
+              "story": {
+                "title": "Max's Home",
+                "emoji": "🏬",
+                "paragraphs": [
+                  "Max is a trainee. His family lives in a flat. There is a small kitchen and a living room. There are two bedrooms. There isn't a garden, but there are lots of plants!"
+                ]
+              },
+              "questions": [
+                {
+                  "q": "Where does Max's family live?",
+                  "options": [
+                    "In a house",
+                    "In a flat",
+                    "In the dorm"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "How many bedrooms are there?",
+                  "options": [
+                    "One",
+                    "Two",
+                    "Three"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "Is there a garden?",
+                  "options": [
+                    "Yes, there is.",
+                    "No, there isn't."
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "title": "Say it!",
+              "items": [
+                {
+                  "text": "There is a kitchen downstairs.",
+                  "ru": "Внизу есть кухня."
+                },
+                {
+                  "text": "There are three bedrooms upstairs.",
+                  "ru": "Наверху три спальни."
+                },
+                {
+                  "text": "This is the living room.",
+                  "ru": "Это гостиная."
+                }
+              ]
+            },
+            {
+              "type": "quiz",
+              "title": "Speed quiz!",
+              "words": [
+                "dorm",
+                "house",
+                "flat",
+                "hall",
+                "stairs",
+                "cooker",
+                "sink",
+                "cupboard",
+                "window",
+                "door",
+                "wall",
+                "plant"
+              ],
+              "seconds": 55
+            },
+            {
+              "type": "dance",
+              "title": "Dance practice!",
+              "items": [
+                {
+                  "text": "Run upstairs: hands up and jump!",
+                  "moves": [
+                    "hands-up",
+                    "jump"
+                  ]
+                },
+                {
+                  "text": "Turn left to the kitchen and clap!",
+                  "moves": [
+                    "turn-left",
+                    "clap"
+                  ]
+                },
+                {
+                  "text": "Spin in the living room and pose!",
+                  "moves": [
+                    "spin",
+                    "pose"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "title": "My room",
+      "episodes": [
+        {
+          "id": "w2-e06",
+          "title": "My Bed, My Desk",
+          "emoji": "🛏️",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "bed",
+                "desk",
+                "chair",
+                "lamp",
+                "clock",
+                "computer"
+              ]
+            },
+            {
+              "type": "listen",
+              "title": "Listen and tap!",
+              "items": [
+                {
+                  "say": "lamp",
+                  "options": [
+                    {
+                      "emoji": "💡",
+                      "text": "lamp"
+                    },
+                    {
+                      "emoji": "⏰",
+                      "text": "clock"
+                    },
+                    {
+                      "emoji": "🪑",
+                      "text": "chair"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "There is a computer on my desk.",
+                  "options": [
+                    {
+                      "emoji": "🛏️",
+                      "text": "bed"
+                    },
+                    {
+                      "emoji": "💻",
+                      "text": "computer"
+                    },
+                    {
+                      "emoji": "🪑",
+                      "text": "chair"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "clock",
+                  "options": [
+                    {
+                      "emoji": "📝",
+                      "text": "desk"
+                    },
+                    {
+                      "emoji": "💡",
+                      "text": "lamp"
+                    },
+                    {
+                      "emoji": "⏰",
+                      "text": "clock"
+                    }
+                  ],
+                  "answer": 2
+                },
+                {
+                  "say": "My bed is blue.",
+                  "options": [
+                    {
+                      "emoji": "🛏️",
+                      "text": "bed"
+                    },
+                    {
+                      "emoji": "💡",
+                      "text": "lamp"
+                    },
+                    {
+                      "emoji": "🪑",
+                      "text": "chair"
+                    }
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "memory",
+              "title": "Find the pairs!",
+              "words": [
+                "bed",
+                "desk",
+                "chair",
+                "lamp",
+                "clock",
+                "computer"
+              ]
+            },
+            {
+              "type": "chant",
+              "title": "Chant time!",
+              "bpm": 105,
+              "lines": [
+                "Bed, desk, chair, lamp!",
+                "There's a clock, tick-tock, tick-tock!",
+                "Bed, desk, chair, lamp!",
+                "There's a computer on my desk!",
+                "My room, my room, I love my room!"
+              ],
+              "blanks": [
+                "desk",
+                "chair",
+                "lamp",
+                "clock",
+                "computer"
+              ]
+            },
+            {
+              "type": "speak",
+              "title": "Say it!",
+              "items": [
+                {
+                  "text": "This is my bed.",
+                  "ru": "Это моя кровать."
+                },
+                {
+                  "text": "There is a lamp.",
+                  "ru": "Там есть лампа."
+                },
+                {
+                  "text": "There is a computer on my desk.",
+                  "ru": "На моём столе компьютер."
+                },
+                {
+                  "text": "I've got a clock.",
+                  "ru": "У меня есть часы."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "w2-e07",
+          "title": "In, On, Under",
+          "emoji": "📦",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "in",
+                "on",
+                "under",
+                "box",
+                "bag",
+                "book"
+              ]
+            },
+            {
+              "type": "listen",
+              "title": "Where is it?",
+              "items": [
+                {
+                  "say": "The book is on the bed.",
+                  "options": [
+                    {
+                      "text": "in"
+                    },
+                    {
+                      "text": "on"
+                    },
+                    {
+                      "text": "under"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "The cat is under the bed.",
+                  "options": [
+                    {
+                      "text": "in"
+                    },
+                    {
+                      "text": "on"
+                    },
+                    {
+                      "text": "under"
+                    }
+                  ],
+                  "answer": 2
+                },
+                {
+                  "say": "The ball is in the box.",
+                  "options": [
+                    {
+                      "text": "in"
+                    },
+                    {
+                      "text": "on"
+                    },
+                    {
+                      "text": "under"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "The bag is under the chair.",
+                  "options": [
+                    {
+                      "emoji": "👜🪑",
+                      "text": "bag under the chair"
+                    },
+                    {
+                      "emoji": "👜📝",
+                      "text": "bag on the desk"
+                    },
+                    {
+                      "emoji": "👜📦",
+                      "text": "bag in the box"
+                    }
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "gap",
+              "title": "Fill the gap!",
+              "items": [
+                {
+                  "text": "The book is ___ the desk.",
+                  "options": [
+                    "on",
+                    "under"
+                  ],
+                  "answer": 0,
+                  "ru": "Книга на столе."
+                },
+                {
+                  "text": "The teddy is ___ the box.",
+                  "options": [
+                    "in",
+                    "on"
+                  ],
+                  "answer": 0,
+                  "ru": "Мишка в коробке."
+                },
+                {
+                  "text": "My bag is ___ the bed.",
+                  "options": [
+                    "under",
+                    "in"
+                  ],
+                  "answer": 0,
+                  "ru": "Сумка под кроватью."
+                },
+                {
+                  "text": "Put the lamp ___ the desk!",
+                  "options": [
+                    "under",
+                    "on",
+                    "in"
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "draw",
+              "title": "Draw it!",
+              "prompt": "Draw a bed. Put a teddy on the bed and a ball under the bed. Draw a box. There are three books in the box.",
+              "ru": "Нарисуй кровать и игрушки",
+              "emoji": "🛏️"
+            },
+            {
+              "type": "dance",
+              "title": "Dance practice!",
+              "items": [
+                {
+                  "text": "Hands up: on! Hands down: under!",
+                  "moves": [
+                    "hands-up",
+                    "hands-down"
+                  ]
+                },
+                {
+                  "text": "Jump in the box and clap!",
+                  "moves": [
+                    "jump",
+                    "clap"
+                  ]
+                },
+                {
+                  "text": "Hands down, under the table! Then spin!",
+                  "moves": [
+                    "hands-down",
+                    "spin"
+                  ]
+                },
+                {
+                  "text": "Hands up on the stage and make a finger heart!",
+                  "moves": [
+                    "hands-up",
+                    "finger-heart"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "w2-e08",
+          "title": "Wardrobe Time",
+          "emoji": "👗",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "wardrobe",
+                "shelf",
+                "mirror",
+                "rug",
+                "poster",
+                "bookcase"
+              ]
+            },
+            {
+              "type": "spell",
+              "title": "Spell it!",
+              "words": [
+                "rug",
+                "shelf",
+                "mirror",
+                "poster"
+              ]
+            },
+            {
+              "type": "sentence",
+              "title": "Make a sentence!",
+              "items": [
+                {
+                  "sentence": "There is a mirror on the wardrobe.",
+                  "ru": "На шкафу зеркало."
+                },
+                {
+                  "sentence": "My books are on the shelf.",
+                  "ru": "Мои книги на полке."
+                },
+                {
+                  "sentence": "There is a rug on the floor.",
+                  "ru": "На полу коврик."
+                },
+                {
+                  "sentence": "There are posters on the wall.",
+                  "ru": "На стене постеры."
+                }
+              ]
+            },
+            {
+              "type": "read",
+              "title": "Read and answer!",
+              "story": {
+                "title": "Sora's Room",
+                "emoji": "🪞",
+                "paragraphs": [
+                  "Sora's room is small, but it's nice. There is a white wardrobe and a big mirror. There is a purple rug on the floor.",
+                  "There are three posters on the wall. They are posters of the Star Academy dancers! There is a bookcase, too. Sora's books are on the shelves."
+                ]
+              },
+              "questions": [
+                {
+                  "q": "What colour is the wardrobe?",
+                  "options": [
+                    "Purple",
+                    "White",
+                    "Black"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "What is on the floor?",
+                  "options": [
+                    "A rug",
+                    "A mirror",
+                    "A bookcase"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "How many posters are there?",
+                  "options": [
+                    "Two",
+                    "Three",
+                    "Four"
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "kculture",
+              "title": "K-Culture corner",
+              "emoji": "🛌",
+              "text": [
+                "In Korea, the floor is warm. This is called ondol.",
+                "Some people sleep on the floor on a soft mattress. It is called a yo.",
+                "In the morning, they put the yo in the wardrobe."
+              ],
+              "korean": {
+                "ko": "이불",
+                "roman": "ibul",
+                "en": "blanket"
+              },
+              "questions": [
+                {
+                  "q": "Is the floor warm or cold in a Korean home?",
+                  "options": [
+                    "Warm",
+                    "Cold"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "What is a yo?",
+                  "options": [
+                    "A chair",
+                    "A soft mattress",
+                    "A TV"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "Where do they put the yo in the morning?",
+                  "options": [
+                    "In the wardrobe",
+                    "In the garden",
+                    "In the fridge"
+                  ],
+                  "answer": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "w2-e09",
+          "title": "Colour My Room",
+          "emoji": "🎨",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "red",
+                "blue",
+                "green",
+                "yellow",
+                "pink",
+                "purple",
+                "white",
+                "black"
+              ]
+            },
+            {
+              "type": "memory",
+              "title": "Find the pairs!",
+              "words": [
+                "red",
+                "blue",
+                "green",
+                "yellow",
+                "pink",
+                "purple"
+              ]
+            },
+            {
+              "type": "gap",
+              "title": "Fill the gap!",
+              "items": [
+                {
+                  "text": "My bed is ___. 🩷",
+                  "options": [
+                    "pink",
+                    "green",
+                    "black"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "text": "The lamp is ___. 🟡",
+                  "options": [
+                    "blue",
+                    "yellow",
+                    "red"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "text": "There is a ___ rug on the floor. 🟣",
+                  "options": [
+                    "white",
+                    "green",
+                    "purple"
+                  ],
+                  "answer": 2
+                },
+                {
+                  "text": "The chair is ___. ⚫",
+                  "options": [
+                    "black",
+                    "white"
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "draw",
+              "title": "Draw it!",
+              "prompt": "Draw your dream bed. It's pink and purple. Put a white pillow on the bed. Put a black and white cat under the bed. Colour the walls blue!",
+              "ru": "Нарисуй и раскрась",
+              "emoji": "🎨"
+            },
+            {
+              "type": "write",
+              "title": "Write it!",
+              "prompt": "Write about the colours in your room.",
+              "ru": "Напиши, какого цвета вещи в твоей комнате.",
+              "starters": [
+                "My bed is…",
+                "My walls are…",
+                "There is a … lamp."
+              ],
+              "minWords": 12
+            }
+          ]
+        },
+        {
+          "id": "w2-e10",
+          "title": "Decorate It!",
+          "emoji": "✨",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "this",
+                "that",
+                "these",
+                "those"
+              ]
+            },
+            {
+              "type": "listen",
+              "title": "Listen and tap!",
+              "items": [
+                {
+                  "say": "This is my lamp.",
+                  "options": [
+                    {
+                      "emoji": "👇💡",
+                      "text": "this lamp (here)"
+                    },
+                    {
+                      "emoji": "👉💡",
+                      "text": "that lamp (there)"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "Those are my posters.",
+                  "options": [
+                    {
+                      "emoji": "👇📜📜",
+                      "text": "these posters (here)"
+                    },
+                    {
+                      "emoji": "👉📜📜",
+                      "text": "those posters (there)"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "That is a big wardrobe.",
+                  "options": [
+                    {
+                      "emoji": "👇👗",
+                      "text": "this wardrobe (here)"
+                    },
+                    {
+                      "emoji": "👉👗",
+                      "text": "that wardrobe (there)"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "These are my books.",
+                  "options": [
+                    {
+                      "emoji": "👇📕📕",
+                      "text": "these books (here)"
+                    },
+                    {
+                      "emoji": "👉📕📕",
+                      "text": "those books (there)"
+                    }
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "sentence",
+              "title": "Make a sentence!",
+              "items": [
+                {
+                  "sentence": "This is my desk.",
+                  "ru": "Это мой стол."
+                },
+                {
+                  "sentence": "That is a nice poster.",
+                  "ru": "Это (вон там) красивый постер."
+                },
+                {
+                  "sentence": "These books are new.",
+                  "ru": "Эти книги новые."
+                },
+                {
+                  "sentence": "Those chairs are blue.",
+                  "ru": "Те стулья синие."
+                }
+              ]
+            },
+            {
+              "type": "read",
+              "title": "Read and answer!",
+              "story": {
+                "title": "Jun Decorates",
+                "emoji": "🛠️",
+                "paragraphs": [
+                  "Jun has got a new room in the dorm. He is decorating it. \"Put this lamp on the desk!\" says Hana. \"And put those posters on the wall!\"",
+                  "Jun puts a green rug on the floor. He puts these books on the shelf. \"Wow, Jun! Your room is cool!\" says Hana."
+                ]
+              },
+              "questions": [
+                {
+                  "q": "Who is decorating?",
+                  "options": [
+                    "Hana",
+                    "Jun",
+                    "Coach Mina"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "Where does the lamp go?",
+                  "options": [
+                    "On the desk",
+                    "Under the bed",
+                    "In the box"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "What colour is the rug?",
+                  "options": [
+                    "Red",
+                    "Green",
+                    "Blue"
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "title": "Say it!",
+              "items": [
+                {
+                  "text": "Put this lamp on the desk!",
+                  "ru": "Поставь эту лампу на стол!"
+                },
+                {
+                  "text": "Put those posters on the wall!",
+                  "ru": "Повесь те постеры на стену!"
+                },
+                {
+                  "text": "These are my books.",
+                  "ru": "Это мои книги."
+                },
+                {
+                  "text": "That is my bed.",
+                  "ru": "Вон то — моя кровать."
+                }
+              ]
+            },
+            {
+              "type": "quiz",
+              "title": "Speed quiz!",
+              "words": [
+                "bed",
+                "desk",
+                "chair",
+                "lamp",
+                "clock",
+                "computer",
+                "wardrobe",
+                "shelf",
+                "mirror",
+                "rug",
+                "poster",
+                "bookcase"
+              ],
+              "seconds": 50
+            }
+          ]
+        },
+        {
+          "id": "w2-weekly2",
+          "title": "Week 2 Check: My Room",
+          "emoji": "🏆",
+          "kind": "weekly",
+          "exercises": [
+            {
+              "type": "listen",
+              "title": "Listen and tap!",
+              "items": [
+                {
+                  "say": "The clock is on the wall.",
+                  "options": [
+                    {
+                      "text": "in"
+                    },
+                    {
+                      "text": "on"
+                    },
+                    {
+                      "text": "under"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "The shoes are under the bed.",
+                  "options": [
+                    {
+                      "text": "in"
+                    },
+                    {
+                      "text": "on"
+                    },
+                    {
+                      "text": "under"
+                    }
+                  ],
+                  "answer": 2
+                },
+                {
+                  "say": "mirror",
+                  "options": [
+                    {
+                      "emoji": "🪞",
+                      "text": "mirror"
+                    },
+                    {
+                      "emoji": "🗃️",
+                      "text": "shelf"
+                    },
+                    {
+                      "emoji": "🧶",
+                      "text": "rug"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "Those are my books.",
+                  "options": [
+                    {
+                      "emoji": "👇📕📕",
+                      "text": "these books"
+                    },
+                    {
+                      "emoji": "👉📕📕",
+                      "text": "those books"
+                    }
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "memory",
+              "title": "Find the pairs!",
+              "words": [
+                "wardrobe",
+                "mirror",
+                "lamp",
+                "clock",
+                "rug",
+                "computer"
+              ]
+            },
+            {
+              "type": "spell",
+              "title": "Spell it!",
+              "words": [
+                "bed",
+                "desk",
+                "lamp",
+                "chair",
+                "clock"
+              ]
+            },
+            {
+              "type": "gap",
+              "title": "Fill the gap!",
+              "items": [
+                {
+                  "text": "The computer is ___ the desk.",
+                  "options": [
+                    "on",
+                    "under"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "text": "___ are my posters. (here)",
+                  "options": [
+                    "These",
+                    "Those"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "text": "There is a ___ rug. 🔴",
+                  "options": [
+                    "red",
+                    "green",
+                    "blue"
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "sentence",
+              "title": "Make a sentence!",
+              "items": [
+                {
+                  "sentence": "The books are on the shelf.",
+                  "ru": "Книги на полке."
+                },
+                {
+                  "sentence": "There is a ball under the bed.",
+                  "ru": "Под кроватью мяч."
+                },
+                {
+                  "sentence": "This is my pink lamp.",
+                  "ru": "Это моя розовая лампа."
+                }
+              ]
+            },
+            {
+              "type": "read",
+              "title": "Read and answer!",
+              "story": {
+                "title": "Coach Mina's Room Check",
+                "emoji": "📋",
+                "paragraphs": [
+                  "Coach Mina looks in Leo's room. \"Leo! There are socks on the floor! There is a book under the bed!\"",
+                  "Leo puts the socks in the wardrobe. He puts the book on the shelf. \"Thank you, Leo. Nice room!\" says Coach Mina."
+                ]
+              },
+              "questions": [
+                {
+                  "q": "Where are the socks?",
+                  "options": [
+                    "On the floor",
+                    "On the desk",
+                    "In the box"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "Where is the book?",
+                  "options": [
+                    "On the bed",
+                    "Under the bed",
+                    "In the fridge"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "Where does Leo put the book?",
+                  "options": [
+                    "On the shelf",
+                    "In the wardrobe",
+                    "Under the chair"
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "title": "Say it!",
+              "items": [
+                {
+                  "text": "The lamp is on the desk.",
+                  "ru": "Лампа на столе."
+                },
+                {
+                  "text": "My bag is under the chair.",
+                  "ru": "Сумка под стулом."
+                },
+                {
+                  "text": "These are my posters.",
+                  "ru": "Это мои постеры."
+                }
+              ]
+            },
+            {
+              "type": "quiz",
+              "title": "Speed quiz!",
+              "words": [
+                "red",
+                "blue",
+                "green",
+                "yellow",
+                "pink",
+                "purple",
+                "white",
+                "black",
+                "in",
+                "on",
+                "under",
+                "box",
+                "bag",
+                "book"
+              ],
+              "seconds": 55
+            },
+            {
+              "type": "chant",
+              "title": "Chant time!",
+              "bpm": 100,
+              "lines": [
+                "In, on, under, where is my book?",
+                "On the shelf! On the shelf!",
+                "In, on, under, where is my bag?",
+                "Under the bed! Under the bed!"
+              ],
+              "blanks": [
+                "in",
+                "on",
+                "under",
+                "shelf",
+                "bed"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "title": "Where is it?",
+      "episodes": [
+        {
+          "id": "w2-e11",
+          "title": "Next to Me",
+          "emoji": "👯",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "next-to",
+                "behind",
+                "in-front-of",
+                "between",
+                "ball",
+                "teddy"
+              ]
+            },
+            {
+              "type": "listen",
+              "title": "Where is it?",
+              "items": [
+                {
+                  "say": "The ball is behind the chair.",
+                  "options": [
+                    {
+                      "text": "next to"
+                    },
+                    {
+                      "text": "behind"
+                    },
+                    {
+                      "text": "in front of"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "The teddy is between the lamp and the clock.",
+                  "options": [
+                    {
+                      "text": "next to"
+                    },
+                    {
+                      "text": "between"
+                    },
+                    {
+                      "text": "under"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "Hana is in front of the mirror.",
+                  "options": [
+                    {
+                      "text": "behind"
+                    },
+                    {
+                      "text": "in front of"
+                    },
+                    {
+                      "text": "on"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "The ball is next to the teddy.",
+                  "options": [
+                    {
+                      "text": "next to"
+                    },
+                    {
+                      "text": "between"
+                    },
+                    {
+                      "text": "in"
+                    }
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "gap",
+              "title": "Fill the gap!",
+              "items": [
+                {
+                  "text": "The ball is ___ the bed and the desk.",
+                  "options": [
+                    "between",
+                    "behind"
+                  ],
+                  "answer": 0,
+                  "ru": "Мяч между кроватью и столом."
+                },
+                {
+                  "text": "Jun is ___ the door. I can't see him!",
+                  "options": [
+                    "in front of",
+                    "behind"
+                  ],
+                  "answer": 1,
+                  "ru": "Джун за дверью."
+                },
+                {
+                  "text": "My bed is ___ the window.",
+                  "options": [
+                    "next to",
+                    "between"
+                  ],
+                  "answer": 0,
+                  "ru": "Кровать рядом с окном."
+                },
+                {
+                  "text": "Sora stands ___ the mirror and sings.",
+                  "options": [
+                    "under",
+                    "in front of",
+                    "in"
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "dance",
+              "title": "Dance practice!",
+              "items": [
+                {
+                  "text": "Step left, next to your friend, and wave!",
+                  "moves": [
+                    "step-left",
+                    "wave"
+                  ]
+                },
+                {
+                  "text": "Turn right: now you're behind! Clap!",
+                  "moves": [
+                    "turn-right",
+                    "clap"
+                  ]
+                },
+                {
+                  "text": "Step right, in front of the mirror, and pose!",
+                  "moves": [
+                    "step-right",
+                    "pose"
+                  ]
+                },
+                {
+                  "text": "Jump between two friends and make a finger heart!",
+                  "moves": [
+                    "jump",
+                    "finger-heart"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "title": "Say it!",
+              "items": [
+                {
+                  "text": "The ball is behind the sofa.",
+                  "ru": "Мяч за диваном."
+                },
+                {
+                  "text": "My teddy is next to my pillow.",
+                  "ru": "Мой мишка рядом с подушкой."
+                },
+                {
+                  "text": "I'm between Hana and Jun.",
+                  "ru": "Я между Ханой и Джуном."
+                },
+                {
+                  "text": "Stand in front of the mirror!",
+                  "ru": "Встань перед зеркалом!"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "w2-e12",
+          "title": "Trainee Stuff",
+          "emoji": "🎤",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "lightstick",
+                "headphones",
+                "microphone",
+                "photocard",
+                "album",
+                "camera"
+              ]
+            },
+            {
+              "type": "memory",
+              "title": "Find the pairs!",
+              "words": [
+                "lightstick",
+                "headphones",
+                "microphone",
+                "photocard",
+                "album",
+                "camera"
+              ]
+            },
+            {
+              "type": "spell",
+              "title": "Spell it!",
+              "words": [
+                "album",
+                "camera",
+                "microphone"
+              ]
+            },
+            {
+              "type": "chant",
+              "title": "Chant time!",
+              "bpm": 115,
+              "lines": [
+                "Lightstick up! Shine, shine, shine!",
+                "Headphones on, the music's mine!",
+                "Microphone, microphone, sing with me!",
+                "Photocards, albums, one, two, three!"
+              ],
+              "blanks": [
+                "Lightstick",
+                "Headphones",
+                "Microphone",
+                "albums"
+              ]
+            },
+            {
+              "type": "kculture",
+              "title": "K-Culture corner",
+              "emoji": "🏢",
+              "text": [
+                "In Korea, many trainees live together in a dorm.",
+                "They share rooms, have dinner together and practise every day.",
+                "Their dorm is often in a big apartment building."
+              ],
+              "korean": {
+                "ko": "숙소",
+                "roman": "suk-so",
+                "en": "dorm, place to stay"
+              },
+              "questions": [
+                {
+                  "q": "Where do many trainees live?",
+                  "options": [
+                    "In a dorm",
+                    "In a shop",
+                    "In a school"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "Do they practise every day?",
+                  "options": [
+                    "Yes",
+                    "No"
+                  ],
+                  "answer": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "w2-e13",
+          "title": "Is There a Guitar?",
+          "emoji": "🎸",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "guitar",
+                "piano",
+                "phone",
+                "doll",
+                "robot",
+                "game"
+              ]
+            },
+            {
+              "type": "gap",
+              "title": "Is there…? Are there…?",
+              "items": [
+                {
+                  "text": "___ there a guitar in the room? – Yes, there is.",
+                  "options": [
+                    "Is",
+                    "Are"
+                  ],
+                  "answer": 0,
+                  "ru": "В комнате есть гитара?"
+                },
+                {
+                  "text": "___ there any dolls on the shelf? – No, there aren't.",
+                  "options": [
+                    "Is",
+                    "Are"
+                  ],
+                  "answer": 1,
+                  "ru": "На полке есть куклы?"
+                },
+                {
+                  "text": "Is there a piano? – No, there ___.",
+                  "options": [
+                    "isn't",
+                    "aren't"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "text": "Are there two robots? – Yes, there ___.",
+                  "options": [
+                    "is",
+                    "are"
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "sentence",
+              "title": "Make a sentence!",
+              "items": [
+                {
+                  "sentence": "Is there a piano?",
+                  "ru": "Там есть пианино?"
+                },
+                {
+                  "sentence": "Yes, there is.",
+                  "ru": "Да, есть."
+                },
+                {
+                  "sentence": "Are there any games?",
+                  "ru": "Там есть игры?"
+                },
+                {
+                  "sentence": "No, there aren't.",
+                  "ru": "Нет, нету."
+                }
+              ]
+            },
+            {
+              "type": "read",
+              "title": "Read and answer!",
+              "story": {
+                "title": "The Music Room",
+                "emoji": "🎹",
+                "paragraphs": [
+                  "There is a music room in the dorm. There is a big black piano next to the window. There are two guitars behind the piano.",
+                  "Is there a TV? No, there isn't. Are there any games? Yes, there are! There is a robot on the shelf, too. It's Max's robot. Its name is Bip!"
+                ]
+              },
+              "questions": [
+                {
+                  "q": "Is there a piano?",
+                  "options": [
+                    "Yes, there is.",
+                    "No, there isn't."
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "Where are the guitars?",
+                  "options": [
+                    "Behind the piano",
+                    "Under the bed",
+                    "In the box"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "Is there a TV?",
+                  "options": [
+                    "Yes, there is.",
+                    "No, there isn't."
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "Whose robot is it?",
+                  "options": [
+                    "Hana's",
+                    "Leo's",
+                    "Max's"
+                  ],
+                  "answer": 2
+                }
+              ]
+            },
+            {
+              "type": "draw",
+              "title": "Draw it!",
+              "prompt": "Draw a music room. There is a piano next to the window. There is a guitar between the piano and the door. Put a robot on the piano!",
+              "ru": "Нарисуй музыкальную комнату",
+              "emoji": "🎸"
+            }
+          ]
+        },
+        {
+          "id": "w2-e14",
+          "title": "Lost Lightstick",
+          "emoji": "🔦",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "pen",
+                "pencil",
+                "orange",
+                "brown",
+                "grey"
+              ]
+            },
+            {
+              "type": "listen",
+              "title": "Listen and tap!",
+              "items": [
+                {
+                  "say": "The pencil is orange.",
+                  "options": [
+                    {
+                      "emoji": "🟠✏️",
+                      "text": "orange pencil"
+                    },
+                    {
+                      "emoji": "🟤✏️",
+                      "text": "brown pencil"
+                    },
+                    {
+                      "emoji": "🩶✏️",
+                      "text": "grey pencil"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "Is there a pen on the desk? Yes, there is.",
+                  "options": [
+                    {
+                      "emoji": "🖊️📝",
+                      "text": "pen on the desk"
+                    },
+                    {
+                      "emoji": "🖊️📦",
+                      "text": "pen in the box"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "The grey cat is behind the sofa.",
+                  "options": [
+                    {
+                      "emoji": "🩶🐱🛋️",
+                      "text": "behind the sofa"
+                    },
+                    {
+                      "emoji": "🩶🐱🛏️",
+                      "text": "on the bed"
+                    },
+                    {
+                      "emoji": "🩶🐱📦",
+                      "text": "in the box"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "brown",
+                  "options": [
+                    {
+                      "emoji": "🟠",
+                      "text": "orange"
+                    },
+                    {
+                      "emoji": "🩶",
+                      "text": "grey"
+                    },
+                    {
+                      "emoji": "🟤",
+                      "text": "brown"
+                    }
+                  ],
+                  "answer": 2
+                }
+              ]
+            },
+            {
+              "type": "read",
+              "title": "Read and answer!",
+              "story": {
+                "title": "Where Is My Lightstick?",
+                "emoji": "🪄",
+                "paragraphs": [
+                  "It's concert day! Hana can't find her lightstick. \"Is it in my bag? No, it isn't. Is it under the bed? No, it isn't!\"",
+                  "Sora looks in the room. There are pens and pencils on the desk. There is a grey box between the desk and the wardrobe. \"Look, Hana! Your lightstick is in the box!\""
+                ]
+              },
+              "questions": [
+                {
+                  "q": "What can't Hana find?",
+                  "options": [
+                    "Her pen",
+                    "Her lightstick",
+                    "Her bag"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "What is on the desk?",
+                  "options": [
+                    "Pens and pencils",
+                    "A cat",
+                    "A piano"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "What colour is the box?",
+                  "options": [
+                    "Orange",
+                    "Brown",
+                    "Grey"
+                  ],
+                  "answer": 2
+                },
+                {
+                  "q": "Where is the lightstick?",
+                  "options": [
+                    "In the box",
+                    "Under the bed",
+                    "In the bag"
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "write",
+              "title": "Write it!",
+              "prompt": "Where are your things? Write about three things in your room.",
+              "ru": "Где твои вещи? Напиши про три вещи.",
+              "starters": [
+                "My pencils are in…",
+                "My bag is under…",
+                "My … is next to…"
+              ],
+              "minWords": 15
+            },
+            {
+              "type": "watch",
+              "title": "Watch and check!",
+              "videoTitle": "Find a grammar video about prepositions (in, on, under, next to) and watch it",
+              "url": "https://learnenglishkids.britishcouncil.org/grammar-vocabulary/grammar-videos",
+              "source": "British Council LearnEnglish Kids",
+              "questions": [
+                {
+                  "q": "The ball is ON the box. Is it in the box?",
+                  "options": [
+                    "Yes",
+                    "No"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "Which word means 'под'?",
+                  "options": [
+                    "under",
+                    "on",
+                    "behind"
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "title": "Say it!",
+              "items": [
+                {
+                  "text": "Where is my lightstick?",
+                  "ru": "Где мой лайтстик?"
+                },
+                {
+                  "text": "Is it in my bag?",
+                  "ru": "Он в моей сумке?"
+                },
+                {
+                  "text": "No, it isn't.",
+                  "ru": "Нет."
+                },
+                {
+                  "text": "It's in the grey box!",
+                  "ru": "Он в серой коробке!"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "w2-e15",
+          "title": "Hide and Seek",
+          "emoji": "🙈",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "toy",
+                "kite",
+                "car",
+                "cat",
+                "dog"
+              ]
+            },
+            {
+              "type": "listen",
+              "title": "Listen and tap!",
+              "items": [
+                {
+                  "say": "The dog is behind the door.",
+                  "options": [
+                    {
+                      "emoji": "🐶🚪",
+                      "text": "behind the door"
+                    },
+                    {
+                      "emoji": "🐶🛋️",
+                      "text": "on the sofa"
+                    },
+                    {
+                      "emoji": "🐶🪟",
+                      "text": "in front of the window"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "The cat is between the toys.",
+                  "options": [
+                    {
+                      "emoji": "🐱",
+                      "text": "between the toys"
+                    },
+                    {
+                      "emoji": "🐱📦",
+                      "text": "in the box"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "There is a kite in the garden.",
+                  "options": [
+                    {
+                      "emoji": "🪁🌳",
+                      "text": "kite in the garden"
+                    },
+                    {
+                      "emoji": "🪁🛏️",
+                      "text": "kite on the bed"
+                    },
+                    {
+                      "emoji": "🚗🌳",
+                      "text": "car in the garden"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "The car is under the chair.",
+                  "options": [
+                    {
+                      "emoji": "🚗📝",
+                      "text": "on the desk"
+                    },
+                    {
+                      "emoji": "🚗🪑",
+                      "text": "under the chair"
+                    },
+                    {
+                      "emoji": "🚗📦",
+                      "text": "in the box"
+                    }
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "gap",
+              "title": "Fill the gap!",
+              "items": [
+                {
+                  "text": "The dog is ___ the sofa. I can't see it!",
+                  "options": [
+                    "behind",
+                    "on"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "text": "There ___ three toy cars in the box.",
+                  "options": [
+                    "is",
+                    "are"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "text": "Is there a cat in the garden? – Yes, there ___.",
+                  "options": [
+                    "is",
+                    "are"
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "dance",
+              "title": "Dance practice!",
+              "items": [
+                {
+                  "text": "Hide behind the door! Hands down!",
+                  "moves": [
+                    "hands-down",
+                    "turn-left"
+                  ]
+                },
+                {
+                  "text": "Find the cat! Jump and clap!",
+                  "moves": [
+                    "jump",
+                    "clap"
+                  ]
+                },
+                {
+                  "text": "Step right, step left, spin!",
+                  "moves": [
+                    "step-right",
+                    "step-left",
+                    "spin"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "chant",
+              "title": "Chant time!",
+              "bpm": 95,
+              "lines": [
+                "Where's the cat? Where's the cat?",
+                "Behind the sofa! Behind the sofa!",
+                "Where's the dog? Where's the dog?",
+                "Next to the door! Next to the door!",
+                "Hide and seek, hide and seek!"
+              ],
+              "blanks": [
+                "cat",
+                "sofa",
+                "dog",
+                "door",
+                "seek"
+              ]
+            },
+            {
+              "type": "quiz",
+              "title": "Speed quiz!",
+              "words": [
+                "next-to",
+                "behind",
+                "in-front-of",
+                "between",
+                "ball",
+                "teddy",
+                "guitar",
+                "piano",
+                "phone",
+                "doll",
+                "robot",
+                "toy",
+                "kite",
+                "car"
+              ],
+              "seconds": 55
+            }
+          ]
+        },
+        {
+          "id": "w2-weekly3",
+          "title": "Week 3 Check: Where Is It?",
+          "emoji": "🏆",
+          "kind": "weekly",
+          "exercises": [
+            {
+              "type": "listen",
+              "title": "Listen and tap!",
+              "items": [
+                {
+                  "say": "The microphone is between the lamp and the clock.",
+                  "options": [
+                    {
+                      "text": "next to"
+                    },
+                    {
+                      "text": "between"
+                    },
+                    {
+                      "text": "behind"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "headphones",
+                  "options": [
+                    {
+                      "emoji": "🎧",
+                      "text": "headphones"
+                    },
+                    {
+                      "emoji": "🎤",
+                      "text": "microphone"
+                    },
+                    {
+                      "emoji": "📷",
+                      "text": "camera"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "Is there a guitar? No, there isn't.",
+                  "options": [
+                    {
+                      "emoji": "✅🎸",
+                      "text": "Yes, there is."
+                    },
+                    {
+                      "emoji": "❌🎸",
+                      "text": "No, there isn't."
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "The teddy is in front of the bookcase.",
+                  "options": [
+                    {
+                      "text": "behind"
+                    },
+                    {
+                      "text": "in front of"
+                    },
+                    {
+                      "text": "under"
+                    }
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "memory",
+              "title": "Find the pairs!",
+              "words": [
+                "photocard",
+                "album",
+                "guitar",
+                "robot",
+                "doll",
+                "kite"
+              ]
+            },
+            {
+              "type": "spell",
+              "title": "Spell it!",
+              "words": [
+                "doll",
+                "robot",
+                "guitar",
+                "teddy"
+              ]
+            },
+            {
+              "type": "gap",
+              "title": "Fill the gap!",
+              "items": [
+                {
+                  "text": "___ there a phone on the desk?",
+                  "options": [
+                    "Is",
+                    "Are"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "text": "Are there any photocards? – Yes, there ___.",
+                  "options": [
+                    "is",
+                    "are"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "text": "The cat is ___ the box and the bed.",
+                  "options": [
+                    "between",
+                    "in front"
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "sentence",
+              "title": "Make a sentence!",
+              "items": [
+                {
+                  "sentence": "Is there a camera?",
+                  "ru": "Там есть фотоаппарат?"
+                },
+                {
+                  "sentence": "The dog is behind the door.",
+                  "ru": "Собака за дверью."
+                },
+                {
+                  "sentence": "My album is next to my headphones.",
+                  "ru": "Мой альбом рядом с наушниками."
+                }
+              ]
+            },
+            {
+              "type": "read",
+              "title": "Read and answer!",
+              "story": {
+                "title": "Jun's Photocards",
+                "emoji": "🃏",
+                "paragraphs": [
+                  "Jun has got twenty photocards. They are in a small album. The album is on his desk, next to his headphones.",
+                  "Is there a photocard of Coach Mina? Yes, there is! It's Jun's favourite."
+                ]
+              },
+              "questions": [
+                {
+                  "q": "How many photocards has Jun got?",
+                  "options": [
+                    "Ten",
+                    "Twenty",
+                    "Thirty"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "Where is the album?",
+                  "options": [
+                    "On the desk",
+                    "Under the bed",
+                    "In the kitchen"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "Is there a photocard of Coach Mina?",
+                  "options": [
+                    "Yes, there is.",
+                    "No, there isn't."
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "title": "Say it!",
+              "items": [
+                {
+                  "text": "Is there a lightstick?",
+                  "ru": "Есть ли лайтстик?"
+                },
+                {
+                  "text": "Yes, there is.",
+                  "ru": "Да, есть."
+                },
+                {
+                  "text": "Are there any games?",
+                  "ru": "Есть ли игры?"
+                },
+                {
+                  "text": "No, there aren't.",
+                  "ru": "Нет."
+                }
+              ]
+            },
+            {
+              "type": "quiz",
+              "title": "Speed quiz!",
+              "words": [
+                "lightstick",
+                "headphones",
+                "microphone",
+                "photocard",
+                "album",
+                "camera",
+                "pen",
+                "pencil",
+                "orange",
+                "brown",
+                "grey",
+                "cat",
+                "dog"
+              ],
+              "seconds": 55
+            },
+            {
+              "type": "draw",
+              "title": "Draw it!",
+              "prompt": "Draw your trainee desk. There is a microphone on the desk. Your headphones are next to the computer. There is a lightstick between two albums.",
+              "ru": "Нарисуй свой стол стажёра",
+              "emoji": "🎤"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "title": "Dream room",
+      "episodes": [
+        {
+          "id": "w2-e16",
+          "title": "Big and Small",
+          "emoji": "🐘",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "big",
+                "small",
+                "new",
+                "old"
+              ]
+            },
+            {
+              "type": "listen",
+              "title": "Listen and tap!",
+              "items": [
+                {
+                  "say": "a big bed",
+                  "options": [
+                    {
+                      "emoji": "🛏️",
+                      "text": "big bed"
+                    },
+                    {
+                      "emoji": "🐭",
+                      "text": "small mouse"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "The lamp is old.",
+                  "options": [
+                    {
+                      "emoji": "✨💡",
+                      "text": "new lamp"
+                    },
+                    {
+                      "emoji": "🏚️💡",
+                      "text": "old lamp"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "There is a small mirror.",
+                  "options": [
+                    {
+                      "emoji": "🪞",
+                      "text": "big mirror"
+                    },
+                    {
+                      "emoji": "🔍",
+                      "text": "small mirror"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "My computer is new.",
+                  "options": [
+                    {
+                      "emoji": "🏚️💻",
+                      "text": "old computer"
+                    },
+                    {
+                      "emoji": "✨💻",
+                      "text": "new computer"
+                    }
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "memory",
+              "title": "Find the pairs!",
+              "words": [
+                "big",
+                "small",
+                "new",
+                "old",
+                "bed",
+                "lamp"
+              ]
+            },
+            {
+              "type": "gap",
+              "title": "Fill the gap!",
+              "items": [
+                {
+                  "text": "An elephant is ___. 🐘",
+                  "options": [
+                    "big",
+                    "small"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "text": "My phone is ___. It's from 2010! 📱",
+                  "options": [
+                    "new",
+                    "old"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "text": "There is a ___ wardrobe. It's very tall!",
+                  "options": [
+                    "small",
+                    "big"
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "chant",
+              "title": "Chant time!",
+              "bpm": 105,
+              "lines": [
+                "Big bed, small bed, which one is mine?",
+                "New lamp, old lamp, shine, shine, shine!",
+                "Big room, small room, I don't mind,",
+                "My room is cool, my room is fine!"
+              ],
+              "blanks": [
+                "Big",
+                "small",
+                "New",
+                "old",
+                "room"
+              ]
+            },
+            {
+              "type": "speak",
+              "title": "Say it!",
+              "items": [
+                {
+                  "text": "My bed is big.",
+                  "ru": "Моя кровать большая."
+                },
+                {
+                  "text": "This lamp is old.",
+                  "ru": "Эта лампа старая."
+                },
+                {
+                  "text": "I've got a new desk.",
+                  "ru": "У меня новый стол."
+                },
+                {
+                  "text": "The dorm is big.",
+                  "ru": "Общежитие большое."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "w2-e17",
+          "title": "Clean or Messy?",
+          "emoji": "🧹",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "clean",
+                "messy",
+                "beautiful",
+                "nice"
+              ]
+            },
+            {
+              "type": "read",
+              "title": "Read and answer!",
+              "story": {
+                "title": "Two Rooms",
+                "emoji": "🌪️",
+                "paragraphs": [
+                  "Leo's room is very messy. There are clothes on the floor. There are books under the bed and there is a ball on the desk!",
+                  "Hana's room is clean and beautiful. There are flowers next to the window. Her books are on the shelf. \"Leo, come and see my room!\" says Hana. \"Oh, it's nice!\" says Leo."
+                ]
+              },
+              "questions": [
+                {
+                  "q": "Whose room is messy?",
+                  "options": [
+                    "Hana's",
+                    "Leo's"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "Where are Leo's books?",
+                  "options": [
+                    "On the shelf",
+                    "Under the bed",
+                    "In the bag"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "Where are the flowers?",
+                  "options": [
+                    "Next to the window",
+                    "On the floor",
+                    "In the kitchen"
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "sentence",
+              "title": "Make a sentence!",
+              "items": [
+                {
+                  "sentence": "My room is clean.",
+                  "ru": "Моя комната чистая."
+                },
+                {
+                  "sentence": "Leo's room is very messy.",
+                  "ru": "Комната Лео очень неубранная."
+                },
+                {
+                  "sentence": "What a beautiful room!",
+                  "ru": "Какая красивая комната!"
+                },
+                {
+                  "sentence": "There are clothes on the floor.",
+                  "ru": "На полу одежда."
+                }
+              ]
+            },
+            {
+              "type": "dance",
+              "title": "Dance practice!",
+              "items": [
+                {
+                  "text": "Clean up! Step left, step right!",
+                  "moves": [
+                    "step-left",
+                    "step-right"
+                  ]
+                },
+                {
+                  "text": "Messy room? Hands up and turn left!",
+                  "moves": [
+                    "hands-up",
+                    "turn-left"
+                  ]
+                },
+                {
+                  "text": "Now it's clean! Clap and pose!",
+                  "moves": [
+                    "clap",
+                    "pose"
+                  ]
+                },
+                {
+                  "text": "Beautiful! Spin and finger heart!",
+                  "moves": [
+                    "spin",
+                    "finger-heart"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "draw",
+              "title": "Draw it!",
+              "prompt": "Draw two rooms. Room 1 is messy: there are books on the floor and a ball on the bed. Room 2 is clean and beautiful: there are flowers on the desk.",
+              "ru": "Нарисуй неубранную и чистую комнату",
+              "emoji": "🧹"
+            }
+          ]
+        },
+        {
+          "id": "w2-e18",
+          "title": "Count to 100",
+          "emoji": "💯",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "twenty",
+                "thirty",
+                "forty",
+                "fifty",
+                "sixty",
+                "seventy",
+                "eighty",
+                "ninety"
+              ]
+            },
+            {
+              "type": "listen",
+              "title": "Listen and tap the number!",
+              "items": [
+                {
+                  "say": "thirty",
+                  "options": [
+                    {
+                      "text": "13"
+                    },
+                    {
+                      "text": "30"
+                    },
+                    {
+                      "text": "3"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "seventy",
+                  "options": [
+                    {
+                      "text": "70"
+                    },
+                    {
+                      "text": "17"
+                    },
+                    {
+                      "text": "60"
+                    }
+                  ],
+                  "answer": 0
+                },
+                {
+                  "say": "There are fifty stairs.",
+                  "options": [
+                    {
+                      "text": "15"
+                    },
+                    {
+                      "text": "50"
+                    },
+                    {
+                      "text": "40"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "ninety",
+                  "options": [
+                    {
+                      "text": "19"
+                    },
+                    {
+                      "text": "80"
+                    },
+                    {
+                      "text": "90"
+                    }
+                  ],
+                  "answer": 2
+                }
+              ]
+            },
+            {
+              "type": "spell",
+              "title": "Spell it!",
+              "words": [
+                "twenty",
+                "forty",
+                "sixty",
+                "eighty"
+              ]
+            },
+            {
+              "type": "quiz",
+              "title": "Speed quiz!",
+              "words": [
+                "twenty",
+                "thirty",
+                "forty",
+                "fifty",
+                "sixty",
+                "seventy",
+                "eighty",
+                "ninety",
+                "big",
+                "small",
+                "new",
+                "old"
+              ],
+              "seconds": 45
+            },
+            {
+              "type": "chant",
+              "title": "Chant time!",
+              "bpm": 120,
+              "lines": [
+                "Ten, twenty, thirty, forty!",
+                "Fifty, sixty, let's go, party!",
+                "Seventy, eighty, ninety, wow!",
+                "One hundred trainees, take a bow!"
+              ],
+              "blanks": [
+                "twenty",
+                "forty",
+                "sixty",
+                "eighty",
+                "hundred"
+              ]
+            },
+            {
+              "type": "kculture",
+              "title": "K-Culture corner",
+              "emoji": "🏙️",
+              "text": [
+                "Many Korean families live in flats.",
+                "The buildings are very tall. Some have got thirty or forty floors!",
+                "People go up and down in a lift."
+              ],
+              "korean": {
+                "ko": "아파트",
+                "roman": "a-pa-teu",
+                "en": "flat, apartment"
+              },
+              "questions": [
+                {
+                  "q": "Where do many Korean families live?",
+                  "options": [
+                    "In flats",
+                    "In tents",
+                    "On boats"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "How do people go up to the thirtieth floor?",
+                  "options": [
+                    "In a lift",
+                    "On a bike",
+                    "On a kite"
+                  ],
+                  "answer": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "w2-e19",
+          "title": "Plural Party",
+          "emoji": "🎉",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "one-hundred",
+                "ten",
+                "lift",
+                "pillow"
+              ]
+            },
+            {
+              "type": "gap",
+              "title": "One or many?",
+              "items": [
+                {
+                  "text": "There are two ___ on my bed.",
+                  "options": [
+                    "pillow",
+                    "pillows"
+                  ],
+                  "answer": 1,
+                  "ru": "Две подушки."
+                },
+                {
+                  "text": "There is ___ apple in the kitchen.",
+                  "options": [
+                    "a",
+                    "an"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "text": "There are ___ books on the shelf.",
+                  "options": [
+                    "a",
+                    "some"
+                  ],
+                  "answer": 1,
+                  "ru": "Несколько книг."
+                },
+                {
+                  "text": "There is ___ lift in the dorm.",
+                  "options": [
+                    "a",
+                    "an",
+                    "some"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "text": "There are three ___ in the dorm.",
+                  "options": [
+                    "box",
+                    "boxes"
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "sentence",
+              "title": "Make a sentence!",
+              "items": [
+                {
+                  "sentence": "There are ten pillows.",
+                  "ru": "Там десять подушек."
+                },
+                {
+                  "sentence": "There is a lift in the dorm.",
+                  "ru": "В общежитии есть лифт."
+                },
+                {
+                  "sentence": "There are some boxes in the hall.",
+                  "ru": "В прихожей несколько коробок."
+                },
+                {
+                  "sentence": "We've got one hundred photocards!",
+                  "ru": "У нас сто фотокарточек!"
+                }
+              ]
+            },
+            {
+              "type": "read",
+              "title": "Read and answer!",
+              "story": {
+                "title": "Pillow Party",
+                "emoji": "🛌",
+                "paragraphs": [
+                  "It's Saturday. The trainees have got a pillow party in the living room! There are ten pillows on the floor. There are some sweets and an apple on the table.",
+                  "Max has got a camera. \"Smile!\" he says. There are one hundred photos on his camera now! Then Coach Mina comes in the lift. \"Bedtime, trainees!\""
+                ]
+              },
+              "questions": [
+                {
+                  "q": "Where is the party?",
+                  "options": [
+                    "In the kitchen",
+                    "In the living room",
+                    "In the garden"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "How many pillows are there?",
+                  "options": [
+                    "Ten",
+                    "Twenty",
+                    "One hundred"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "Who has got a camera?",
+                  "options": [
+                    "Max",
+                    "Sora",
+                    "Jun"
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "write",
+              "title": "Write it!",
+              "prompt": "Count the things in your room! Write about them.",
+              "ru": "Посчитай вещи в комнате и напиши.",
+              "starters": [
+                "There are … books.",
+                "There are … pillows on my bed.",
+                "There is a/an…"
+              ],
+              "minWords": 20
+            },
+            {
+              "type": "speak",
+              "title": "Say it!",
+              "items": [
+                {
+                  "text": "There are two pillows.",
+                  "ru": "Там две подушки."
+                },
+                {
+                  "text": "There are some books.",
+                  "ru": "Там есть несколько книг."
+                },
+                {
+                  "text": "There is an apple.",
+                  "ru": "Там есть яблоко."
+                },
+                {
+                  "text": "One hundred!",
+                  "ru": "Сто!"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "w2-e20",
+          "title": "My Dream Room",
+          "emoji": "🌈",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "title": "New words!",
+              "words": [
+                "dream",
+                "star",
+                "heart",
+                "beautiful"
+              ]
+            },
+            {
+              "type": "watch",
+              "title": "Watch and check!",
+              "videoTitle": "Find a song about a house or a room and watch it. Sing along!",
+              "url": "https://learnenglishkids.britishcouncil.org/listen-watch/songs",
+              "source": "British Council LearnEnglish Kids",
+              "questions": [
+                {
+                  "q": "Was there a bedroom in the song?",
+                  "options": [
+                    "Yes",
+                    "No",
+                    "I don't know"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "Can you say five things in a room in English?",
+                  "options": [
+                    "Yes!",
+                    "Not yet"
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "read",
+              "title": "Read and answer!",
+              "story": {
+                "title": "Sora's Dream Room",
+                "emoji": "🌈",
+                "paragraphs": [
+                  "This is Sora's dream room. It's big and beautiful. The walls are purple and there are stars on the ceiling.",
+                  "There is a big pink bed with heart pillows. There is a microphone in front of a big mirror. Sora sings there every day! Next to the window there is a desk with a new computer."
+                ]
+              },
+              "questions": [
+                {
+                  "q": "What colour are the walls?",
+                  "options": [
+                    "Pink",
+                    "Purple",
+                    "Blue"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "What is on the pillows?",
+                  "options": [
+                    "Stars",
+                    "Hearts",
+                    "Flowers"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "Where is the microphone?",
+                  "options": [
+                    "In front of the mirror",
+                    "Under the bed",
+                    "In the lift"
+                  ],
+                  "answer": 0
+                }
+              ]
+            },
+            {
+              "type": "draw",
+              "title": "Draw it!",
+              "prompt": "Draw your dream room! Put a big bed, a desk, a lamp and lots of stars. Where is your microphone? Where are your posters?",
+              "ru": "Нарисуй комнату мечты",
+              "emoji": "🌈"
+            },
+            {
+              "type": "write",
+              "title": "Write it!",
+              "prompt": "Describe your dream room.",
+              "ru": "Опиши комнату своей мечты.",
+              "starters": [
+                "My dream room is big / small…",
+                "There is a…",
+                "There are…",
+                "My bed is next to…"
+              ],
+              "minWords": 30
+            },
+            {
+              "type": "speak",
+              "title": "Say it!",
+              "items": [
+                {
+                  "text": "This is my dream room.",
+                  "ru": "Это комната моей мечты."
+                },
+                {
+                  "text": "It's big and beautiful.",
+                  "ru": "Она большая и красивая."
+                },
+                {
+                  "text": "There are stars on the walls.",
+                  "ru": "На стенах звёзды."
+                },
+                {
+                  "text": "Put the lamp on the desk!",
+                  "ru": "Поставь лампу на стол!"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "w2-weekly4",
+          "title": "Week 4 Check: Dream Room",
+          "emoji": "🏆",
+          "kind": "weekly",
+          "exercises": [
+            {
+              "type": "listen",
+              "title": "Listen and tap!",
+              "items": [
+                {
+                  "say": "forty",
+                  "options": [
+                    {
+                      "text": "14"
+                    },
+                    {
+                      "text": "40"
+                    },
+                    {
+                      "text": "4"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "The room is messy.",
+                  "options": [
+                    {
+                      "emoji": "🧼",
+                      "text": "clean"
+                    },
+                    {
+                      "emoji": "🌪️",
+                      "text": "messy"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "eighty",
+                  "options": [
+                    {
+                      "text": "18"
+                    },
+                    {
+                      "text": "80"
+                    },
+                    {
+                      "text": "90"
+                    }
+                  ],
+                  "answer": 1
+                },
+                {
+                  "say": "There are two pillows.",
+                  "options": [
+                    {
+                      "emoji": "🛌",
+                      "text": "one pillow"
+                    },
+                    {
+                      "emoji": "🛌🛌",
+                      "text": "two pillows"
+                    }
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "memory",
+              "title": "Find the pairs!",
+              "words": [
+                "big",
+                "small",
+                "clean",
+                "messy",
+                "star",
+                "heart"
+              ]
+            },
+            {
+              "type": "spell",
+              "title": "Spell it!",
+              "words": [
+                "star",
+                "clean",
+                "lift",
+                "dream"
+              ]
+            },
+            {
+              "type": "gap",
+              "title": "Fill the gap!",
+              "items": [
+                {
+                  "text": "There are three ___ in the box.",
+                  "options": [
+                    "ball",
+                    "balls"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "text": "Hana's room is ___. Everything is on the shelf!",
+                  "options": [
+                    "messy",
+                    "clean"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "text": "There is ___ old lamp.",
+                  "options": [
+                    "a",
+                    "an"
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "sentence",
+              "title": "Make a sentence!",
+              "items": [
+                {
+                  "sentence": "My dream room is beautiful.",
+                  "ru": "Моя комната мечты красивая."
+                },
+                {
+                  "sentence": "There are fifty stars.",
+                  "ru": "Там пятьдесят звёзд."
+                },
+                {
+                  "sentence": "The lift is next to the stairs.",
+                  "ru": "Лифт рядом с лестницей."
+                }
+              ]
+            },
+            {
+              "type": "read",
+              "title": "Read and answer!",
+              "story": {
+                "title": "The New Dorm Room",
+                "emoji": "🏢",
+                "paragraphs": [
+                  "Coach Mina has got a surprise. There is a new room in the dorm! It is big and clean. There are two beds, two desks and some shelves.",
+                  "Hana and Sora decorate it. They put a purple rug between the beds. They put twenty stars on the wall. \"Our dream room!\" they say."
+                ]
+              },
+              "questions": [
+                {
+                  "q": "Is the new room big or small?",
+                  "options": [
+                    "Big",
+                    "Small"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "How many beds are there?",
+                  "options": [
+                    "One",
+                    "Two",
+                    "Three"
+                  ],
+                  "answer": 1
+                },
+                {
+                  "q": "Where is the rug?",
+                  "options": [
+                    "Between the beds",
+                    "Under the desk",
+                    "In the lift"
+                  ],
+                  "answer": 0
+                },
+                {
+                  "q": "How many stars are on the wall?",
+                  "options": [
+                    "Twelve",
+                    "Twenty",
+                    "Thirty"
+                  ],
+                  "answer": 1
+                }
+              ]
+            },
+            {
+              "type": "speak",
+              "title": "Say it!",
+              "items": [
+                {
+                  "text": "My room is clean.",
+                  "ru": "Моя комната чистая."
+                },
+                {
+                  "text": "There are ninety stairs!",
+                  "ru": "Там девяносто ступенек!"
+                },
+                {
+                  "text": "I've got a dream room.",
+                  "ru": "У меня есть комната мечты."
+                }
+              ]
+            },
+            {
+              "type": "quiz",
+              "title": "Speed quiz!",
+              "words": [
+                "twenty",
+                "thirty",
+                "forty",
+                "fifty",
+                "sixty",
+                "seventy",
+                "eighty",
+                "ninety",
+                "one-hundred",
+                "clean",
+                "messy",
+                "beautiful",
+                "nice",
+                "pillow",
+                "lift"
+              ],
+              "seconds": 60
+            },
+            {
+              "type": "chant",
+              "title": "Chant time!",
+              "bpm": 110,
+              "lines": [
+                "Clean room, messy room, what do you see?",
+                "A big bed, a small lamp, a teddy for me!",
+                "Clean room, messy room, decorate with me!",
+                "Stars on the wall, one, two, three!"
+              ],
+              "blanks": [
+                "Clean",
+                "messy",
+                "bed",
+                "lamp",
+                "Stars"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "showcase": {
+    "id": "w2-showcase",
+    "title": "Dorm Showcase",
+    "emoji": "🌟",
+    "kind": "showcase",
+    "exercises": [
+      {
+        "type": "listen",
+        "title": "Part 1: Listen",
+        "items": [
+          {
+            "say": "The teddy is on the bed.",
+            "options": [
+              {
+                "emoji": "🧸🛏️",
+                "text": "on the bed"
+              },
+              {
+                "emoji": "🧸👇🛏️",
+                "text": "under the bed"
+              },
+              {
+                "emoji": "🧸📦",
+                "text": "in the box"
+              }
+            ],
+            "answer": 0
+          },
+          {
+            "say": "There are three chairs in the kitchen.",
+            "options": [
+              {
+                "text": "2"
+              },
+              {
+                "text": "3"
+              },
+              {
+                "text": "4"
+              }
+            ],
+            "answer": 1
+          },
+          {
+            "say": "The microphone is between the lamp and the computer.",
+            "options": [
+              {
+                "text": "next to"
+              },
+              {
+                "text": "behind"
+              },
+              {
+                "text": "between"
+              }
+            ],
+            "answer": 2
+          },
+          {
+            "say": "sixty",
+            "options": [
+              {
+                "text": "16"
+              },
+              {
+                "text": "60"
+              },
+              {
+                "text": "70"
+              }
+            ],
+            "answer": 1
+          }
+        ]
+      },
+      {
+        "type": "listen",
+        "title": "Part 2: Yes or no?",
+        "items": [
+          {
+            "say": "Is there a lamp on the desk? Yes, there is.",
+            "options": [
+              {
+                "emoji": "✅",
+                "text": "Yes"
+              },
+              {
+                "emoji": "❌",
+                "text": "No"
+              }
+            ],
+            "answer": 0
+          },
+          {
+            "say": "Are there any posters on the wall? No, there aren't.",
+            "options": [
+              {
+                "emoji": "✅",
+                "text": "Yes"
+              },
+              {
+                "emoji": "❌",
+                "text": "No"
+              }
+            ],
+            "answer": 1
+          },
+          {
+            "say": "The dog is in front of the door.",
+            "options": [
+              {
+                "emoji": "🐶🚪",
+                "text": "in front of the door"
+              },
+              {
+                "emoji": "🚪🐶",
+                "text": "behind the door"
+              }
+            ],
+            "answer": 0
+          }
+        ]
+      },
+      {
+        "type": "read",
+        "title": "Read and answer!",
+        "story": {
+          "title": "Look at the Room",
+          "emoji": "🛏️",
+          "paragraphs": [
+            "This is Jun's room. There is a big bed next to the window. There is a teddy on the bed and a ball under the bed. There is a desk with a computer and a lamp on it.",
+            "There are two posters on the wall. There isn't a TV. The room is clean today!"
+          ]
+        },
+        "questions": [
+          {
+            "q": "Is there a lamp on the desk?",
+            "options": [
+              "Yes",
+              "No"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Is the ball on the bed?",
+            "options": [
+              "Yes",
+              "No"
+            ],
+            "answer": 1
+          },
+          {
+            "q": "Is there a TV?",
+            "options": [
+              "Yes",
+              "No"
+            ],
+            "answer": 1
+          },
+          {
+            "q": "How many posters are there?",
+            "options": [
+              "One",
+              "Two",
+              "Three"
+            ],
+            "answer": 1
+          }
+        ]
+      },
+      {
+        "type": "gap",
+        "title": "Part 3: Read and choose",
+        "items": [
+          {
+            "text": "There ___ a sofa in the living room.",
+            "options": [
+              "is",
+              "are"
+            ],
+            "answer": 0
+          },
+          {
+            "text": "___ there any books on the shelf?",
+            "options": [
+              "Is",
+              "Are"
+            ],
+            "answer": 1
+          },
+          {
+            "text": "The cat is ___ the bed. 👇",
+            "options": [
+              "on",
+              "under"
+            ],
+            "answer": 1
+          },
+          {
+            "text": "___ is my lamp. (here)",
+            "options": [
+              "This",
+              "That"
+            ],
+            "answer": 0
+          },
+          {
+            "text": "There are two ___ upstairs.",
+            "options": [
+              "bathroom",
+              "bathrooms"
+            ],
+            "answer": 1
+          }
+        ]
+      },
+      {
+        "type": "sentence",
+        "title": "Make a sentence!",
+        "items": [
+          {
+            "sentence": "There is a mirror in the hall.",
+            "ru": "В прихожей зеркало."
+          },
+          {
+            "sentence": "Are there any pillows?",
+            "ru": "Там есть подушки?"
+          },
+          {
+            "sentence": "My desk is next to the window.",
+            "ru": "Мой стол рядом с окном."
+          },
+          {
+            "sentence": "These are my photocards.",
+            "ru": "Это мои фотокарточки."
+          }
+        ]
+      },
+      {
+        "type": "spell",
+        "title": "Spell it!",
+        "words": [
+          "kitchen",
+          "wardrobe",
+          "between",
+          "fifty",
+          "headphones"
+        ]
+      },
+      {
+        "type": "memory",
+        "title": "Find the pairs!",
+        "words": [
+          "bedroom",
+          "bathroom",
+          "wardrobe",
+          "mirror",
+          "lightstick",
+          "microphone"
+        ]
+      },
+      {
+        "type": "quiz",
+        "title": "Speed quiz!",
+        "words": [
+          "bedroom",
+          "kitchen",
+          "living-room",
+          "garden",
+          "bed",
+          "desk",
+          "lamp",
+          "wardrobe",
+          "next-to",
+          "behind",
+          "between",
+          "lightstick",
+          "headphones",
+          "forty",
+          "messy",
+          "clean"
+        ],
+        "seconds": 60
+      },
+      {
+        "type": "write",
+        "title": "Write it!",
+        "prompt": "Write about your room for Coach Mina.",
+        "ru": "Напиши о своей комнате для тренера Мины.",
+        "starters": [
+          "My room is…",
+          "There is a … next to…",
+          "There are…",
+          "My favourite thing is…"
+        ],
+        "minWords": 25
+      },
+      {
+        "type": "draw",
+        "title": "Draw it!",
+        "prompt": "Coach Mina's task: Draw a room. There is a bed between the window and the wardrobe. There is a lamp on the desk and a cat under the chair. There are three posters on the wall.",
+        "ru": "Нарисуй комнату по описанию",
+        "emoji": "🖍️"
+      },
+      {
+        "type": "speak",
+        "title": "Say it!",
+        "items": [
+          {
+            "text": "Welcome to my room!",
+            "ru": "Добро пожаловать в мою комнату!"
+          },
+          {
+            "text": "There is a big bed.",
+            "ru": "Там большая кровать."
+          },
+          {
+            "text": "My lamp is on the desk.",
+            "ru": "Моя лампа на столе."
+          },
+          {
+            "text": "Is there a TV? No, there isn't.",
+            "ru": "Есть телевизор? Нет."
+          },
+          {
+            "text": "I love my dream room!",
+            "ru": "Я люблю свою комнату мечты!"
+          }
+        ]
+      },
+      {
+        "type": "watch",
+        "title": "Watch and check!",
+        "videoTitle": "Find a listening practice about a house or a room. Listen and do the task",
+        "url": "https://learnenglishkids.britishcouncil.org/listen-watch/listening-practice",
+        "source": "British Council LearnEnglish Kids",
+        "questions": [
+          {
+            "q": "Did you understand the rooms?",
+            "options": [
+              "Yes!",
+              "A little",
+              "Not yet"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "Which word is a room?",
+            "options": [
+              "kitchen",
+              "lamp",
+              "teddy"
+            ],
+            "answer": 0
+          }
+        ]
+      },
+      {
+        "type": "chant",
+        "title": "Chant time!",
+        "bpm": 110,
+        "lines": [
+          "Welcome, welcome, to my room!",
+          "There's a bed, and there's a lamp,",
+          "Posters on the wall, a teddy on the bed,",
+          "Star Academy, the dorm is best!"
+        ],
+        "blanks": [
+          "room",
+          "bed",
+          "lamp",
+          "wall",
+          "teddy"
+        ]
+      }
+    ]
+  }
+}
