@@ -80,41 +80,49 @@ function checkLetters(T: string[], heard: string[]): SpeechCheck | null {
 
 export type SpeechCheck = { ok: boolean; score: number; matched: boolean[]; words: string[] };
 
+/** Aligns one transcript with the target (fuzzy longest common subsequence, in order). */
+function scoreOne(T: string[], h: string, names: Set<string>, nameWildcard: boolean): SpeechCheck {
+  const H = normalise(h).split(' ').filter(Boolean);
+  if (!H.length) return { ok: false, score: 0, matched: T.map(() => false), words: T };
+  const eq = (t: string, x: string) => (names.has(t) ? nameWildcard || sim(t, x) >= 0.5 : sim(t, x) >= (t.length <= 4 ? 1 : 0.8));
+  const L = Array.from({ length: T.length + 1 }, () => Array(H.length + 1).fill(0));
+  for (let i = T.length - 1; i >= 0; i--) for (let j = H.length - 1; j >= 0; j--) {
+    L[i][j] = eq(T[i], H[j]) ? L[i + 1][j + 1] + 1 : Math.max(L[i + 1][j], L[i][j + 1]);
+  }
+  const matched = T.map(() => false);
+  for (let i = 0, j = 0; i < T.length && j < H.length;) {
+    if (eq(T[i], H[j]) && L[i][j] === L[i + 1][j + 1] + 1) { matched[i] = true; i++; j++; }
+    else if (L[i + 1][j] >= L[i][j + 1]) i++; else j++;
+  }
+  const m = L[0][0];
+  const recall = m / T.length;
+  const precision = m / H.length;
+  const ok = (T.length <= 4 ? m === T.length : recall >= 0.85) && precision >= 0.6;
+  return { ok, score: recall * Math.min(1, precision / 0.6), matched, words: T };
+}
+
 /**
- * Compares what was heard with the target phrase, in order (fuzzy longest common subsequence).
+ * Compares what was heard with the target phrase, in order.
  * Short phrases (≤ 4 words) need every word; longer ones ≥ 85%. Extra unrelated words also fail it.
- * `nameWords` (the child's name) are matched more leniently because recognisers often misspell names.
+ * Only the recogniser's top transcript (heard[0]) is judged: its other guesses are biased towards
+ * common phrases and would accept wrong answers ("what's his name" → "what's your name").
+ * The one exception is the child's name (`nameWords`), which recognisers often misspell:
+ * if everything except the name matches in the top transcript, another guess may supply the name.
  */
 export function checkSpeech(target: string, heard: string[], nameWords: string[] = []): SpeechCheck {
   const T = normalise(target).split(' ').filter(Boolean);
   const names = new Set(nameWords.flatMap((n) => normalise(n).split(' ')).filter(Boolean));
-  const empty: SpeechCheck = { ok: false, score: 0, matched: T.map(() => false), words: T };
-  if (!T.length) return empty;
-  const letters = checkLetters(T, heard);
+  if (!T.length || !heard.length) return { ok: false, score: 0, matched: T.map(() => false), words: T };
+  const letters = checkLetters(T, heard.slice(0, 1));
   if (letters) return letters;
-  let best = empty;
-  for (const h of heard) {
-    const H = normalise(h).split(' ').filter(Boolean);
-    if (!H.length) continue;
-    const eq = (t: string, x: string) => sim(t, x) >= (names.has(t) ? 0.5 : t.length <= 3 ? 1 : 0.75);
-    // LCS table
-    const L = Array.from({ length: T.length + 1 }, () => Array(H.length + 1).fill(0));
-    for (let i = T.length - 1; i >= 0; i--) for (let j = H.length - 1; j >= 0; j--) {
-      L[i][j] = eq(T[i], H[j]) ? L[i + 1][j + 1] + 1 : Math.max(L[i + 1][j], L[i][j + 1]);
-    }
-    const matched = T.map(() => false);
-    for (let i = 0, j = 0; i < T.length && j < H.length;) {
-      if (eq(T[i], H[j]) && L[i][j] === L[i + 1][j + 1] + 1) { matched[i] = true; i++; j++; }
-      else if (L[i + 1][j] >= L[i][j + 1]) i++; else j++;
-    }
-    const m = L[0][0];
-    const recall = m / T.length;
-    const precision = m / H.length;
-    const ok = (T.length <= 4 ? m === T.length : recall >= 0.85) && precision >= 0.6;
-    const score = recall * Math.min(1, precision / 0.6);
-    if (ok && !best.ok || (ok === best.ok && score > best.score)) best = { ok, score, matched, words: T };
+  const top = scoreOne(T, heard[0], names, false);
+  if (top.ok || !T.some((t) => names.has(t))) return top;
+  if (!scoreOne(T, heard[0], names, true).ok) return top;
+  for (const alt of heard.slice(1)) {
+    const r = scoreOne(T, alt, names, false);
+    if (r.ok) return r;
   }
-  return best;
+  return top;
 }
 
 /** Back-compat: share of the phrase heard (0..1). */
