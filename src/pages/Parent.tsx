@@ -146,6 +146,7 @@ function Dashboard() {
         <a href={PROGRAMME_URL} target="_blank" rel="noreferrer">📄 Программа обучения (Claude Doc)</a>
         <a href="#/notebook">📓 Все задания для тетради (можно распечатать)</a>
         <ResetBlock />
+        <div className="tiny muted">Версия портала: {__BUILD__}</div>
         {supabase && <button className="btn ghost small" onClick={() => void supabase!.auth.signOut().then(() => location.reload())}>Выйти из семейного аккаунта на этом устройстве</button>}
       </div>
     </div>
