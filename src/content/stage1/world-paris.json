@@ -27,7 +27,7 @@
       "id": "trainee",
       "en": "trainee",
       "ru": "стажёр",
-      "emoji": "⭐",
+      "emoji": "🌟",
       "level": "extra"
     },
     {
@@ -62,7 +62,7 @@
       "id": "spots",
       "en": "spots",
       "ru": "пятнышки, горошек",
-      "emoji": "🔴",
+      "emoji": "🔴⚫",
       "level": "extra"
     },
     {
@@ -132,7 +132,7 @@
       "id": "jump",
       "en": "jump",
       "ru": "прыгать",
-      "emoji": "🤸",
+      "emoji": "🦘",
       "level": "starters"
     },
     {
@@ -146,7 +146,7 @@
       "id": "swim",
       "en": "swim",
       "ru": "плавать",
-      "emoji": "🏊‍♀️",
+      "emoji": "🏊",
       "level": "starters"
     },
     {
@@ -160,14 +160,14 @@
       "id": "can",
       "en": "can",
       "ru": "могу, умею",
-      "emoji": "✅",
+      "emoji": "🙆‍♀️",
       "level": "starters"
     },
     {
       "id": "cant",
       "en": "can't",
       "ru": "не могу, не умею",
-      "emoji": "❌",
+      "emoji": "🙅‍♀️",
       "level": "starters"
     },
     {
@@ -195,14 +195,14 @@
       "id": "strong",
       "en": "strong",
       "ru": "сильный",
-      "emoji": "💪",
+      "emoji": "🏋️‍♀️",
       "level": "movers"
     },
     {
       "id": "high",
       "en": "high",
       "ru": "высоко",
-      "emoji": "⬆️",
+      "emoji": "🏔️",
       "level": "movers"
     },
     {
@@ -216,14 +216,14 @@
       "id": "team",
       "en": "team",
       "ru": "команда",
-      "emoji": "👫",
+      "emoji": "🙌",
       "level": "movers"
     },
     {
       "id": "power",
       "en": "power",
       "ru": "суперсила",
-      "emoji": "✨",
+      "emoji": "🔮",
       "level": "extra"
     },
     {
@@ -237,7 +237,7 @@
       "id": "artist",
       "en": "artist",
       "ru": "художник",
-      "emoji": "🎨",
+      "emoji": "👩‍🎨",
       "level": "movers"
     },
     {
@@ -328,7 +328,7 @@
       "id": "draw",
       "en": "draw",
       "ru": "рисовать",
-      "emoji": "✏️",
+      "emoji": "🖍️",
       "level": "starters"
     },
     {
@@ -398,7 +398,7 @@
       "id": "tower",
       "en": "tower",
       "ru": "башня",
-      "emoji": "🗼",
+      "emoji": "🏰",
       "level": "extra"
     },
     {
@@ -447,28 +447,28 @@
       "id": "go-straight-on",
       "en": "go straight on",
       "ru": "иди прямо",
-      "emoji": "⬆️",
+      "emoji": "🚶‍♀️⬆️",
       "level": "movers"
     },
     {
       "id": "next-to",
       "en": "next to",
       "ru": "рядом с",
-      "emoji": "👭",
+      "emoji": "👫",
       "level": "starters"
     },
     {
       "id": "opposite",
       "en": "opposite",
       "ru": "напротив",
-      "emoji": "↔️",
+      "emoji": "🆚",
       "level": "movers"
     },
     {
       "id": "between",
       "en": "between",
       "ru": "между",
-      "emoji": "↕️",
+      "emoji": "↔️",
       "level": "starters"
     },
     {
@@ -482,21 +482,21 @@
       "id": "in-front-of",
       "en": "in front of",
       "ru": "перед",
-      "emoji": "👀",
+      "emoji": "🧍",
       "level": "starters"
     },
     {
       "id": "street-lamp",
       "en": "street lamp",
       "ru": "уличный фонарь",
-      "emoji": "💡",
+      "emoji": "🏮",
       "level": "extra"
     },
     {
       "id": "painting",
       "en": "painting",
       "ru": "картина",
-      "emoji": "🖼️",
+      "emoji": "🌄",
       "level": "movers"
     },
     {
@@ -510,7 +510,7 @@
       "id": "puppy",
       "en": "puppy",
       "ru": "щенок",
-      "emoji": "🐶",
+      "emoji": "🐾",
       "level": "movers"
     },
     {
@@ -545,21 +545,21 @@
       "id": "tree",
       "en": "tree",
       "ru": "дерево",
-      "emoji": "🌳",
+      "emoji": "🌲",
       "level": "starters"
     },
     {
       "id": "bench",
       "en": "bench",
       "ru": "скамейка",
-      "emoji": "🪑",
+      "emoji": "🪵",
       "level": "extra"
     },
     {
       "id": "friend",
       "en": "friend",
       "ru": "друг, подруга",
-      "emoji": "🤗",
+      "emoji": "🧑‍🤝‍🧑",
       "level": "starters"
     },
     {
@@ -573,7 +573,7 @@
       "id": "dog",
       "en": "dog",
       "ru": "собака",
-      "emoji": "🐕",
+      "emoji": "🐶",
       "level": "starters"
     },
     {

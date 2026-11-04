@@ -250,7 +250,7 @@ export function Quiz({ ex, onDone }: ExProps<Of<'quiz'>>) {
   const results = useRef<{ id: string; correct: boolean }[]>([]);
   const makeQ = () => {
     const id = ex.words[Math.floor(Math.random() * ex.words.length)];
-    const others = sample(ex.words.filter((x) => x !== id && word(x).en !== word(id).en), 3);
+    const others = sample(ex.words.filter((x) => x !== id && word(x).en !== word(id).en && word(x).emoji !== word(id).emoji), 3);
     const mode = Math.random() < 0.5 ? 'pic' : 'text';
     return { id, mode, options: shuffle([id, ...others]) };
   };

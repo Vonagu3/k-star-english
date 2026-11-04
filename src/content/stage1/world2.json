@@ -41,42 +41,42 @@
       "id": "bedroom",
       "en": "bedroom",
       "ru": "спальня",
-      "emoji": "🛏️",
+      "emoji": "🏠🛏️",
       "level": "starters"
     },
     {
       "id": "bathroom",
       "en": "bathroom",
       "ru": "ванная комната",
-      "emoji": "🛁",
+      "emoji": "🏠🛁",
       "level": "starters"
     },
     {
       "id": "kitchen",
       "en": "kitchen",
       "ru": "кухня",
-      "emoji": "🍳",
+      "emoji": "🏠🍳",
       "level": "starters"
     },
     {
       "id": "living-room",
       "en": "living room",
       "ru": "гостиная",
-      "emoji": "🛋️",
+      "emoji": "🏠🛋️",
       "level": "starters"
     },
     {
       "id": "hall",
       "en": "hall",
       "ru": "прихожая, холл",
-      "emoji": "🚪",
+      "emoji": "👟",
       "level": "starters"
     },
     {
       "id": "garden",
       "en": "garden",
       "ru": "сад",
-      "emoji": "🌳",
+      "emoji": "🌷",
       "level": "starters"
     },
     {
@@ -251,7 +251,7 @@
       "id": "clock",
       "en": "clock",
       "ru": "часы (настенные)",
-      "emoji": "⏰",
+      "emoji": "🕰️",
       "level": "starters"
     },
     {
@@ -426,7 +426,7 @@
       "id": "this",
       "en": "this",
       "ru": "этот, эта (близко)",
-      "emoji": "👇",
+      "emoji": "☝️",
       "level": "starters"
     },
     {
@@ -489,7 +489,7 @@
       "id": "between",
       "en": "between",
       "ru": "между",
-      "emoji": "🥪",
+      "emoji": "↔️",
       "level": "starters"
     },
     {
@@ -524,7 +524,7 @@
       "id": "microphone",
       "en": "microphone",
       "ru": "микрофон",
-      "emoji": "🎤",
+      "emoji": "🎙️",
       "level": "extra"
     },
     {
@@ -643,7 +643,7 @@
       "id": "small",
       "en": "small",
       "ru": "маленький",
-      "emoji": "🐭",
+      "emoji": "🐜",
       "level": "starters"
     },
     {
@@ -664,7 +664,7 @@
       "id": "nice",
       "en": "nice",
       "ru": "милый, хороший",
-      "emoji": "😊",
+      "emoji": "🙂",
       "level": "starters"
     },
     {
@@ -685,7 +685,7 @@
       "id": "beautiful",
       "en": "beautiful",
       "ru": "красивый",
-      "emoji": "💖",
+      "emoji": "🦋",
       "level": "starters"
     },
     {
@@ -699,7 +699,7 @@
       "id": "twenty",
       "en": "twenty",
       "ru": "двадцать",
-      "emoji": "2️⃣0️⃣",
+      "emoji": "🔢",
       "level": "starters"
     },
     {

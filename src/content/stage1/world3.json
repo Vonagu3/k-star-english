@@ -20,7 +20,7 @@
       "id": "get-up",
       "en": "get up",
       "ru": "вставать",
-      "emoji": "🛏️",
+      "emoji": "🥱",
       "level": "starters"
     },
     {
@@ -41,56 +41,56 @@
       "id": "have-a-shower",
       "en": "have a shower",
       "ru": "принимать душ",
-      "emoji": "🚿",
+      "emoji": "🧴",
       "level": "movers"
     },
     {
       "id": "go-to-school",
       "en": "go to school",
       "ru": "ходить в школу",
-      "emoji": "🏫",
+      "emoji": "🎒",
       "level": "starters"
     },
     {
       "id": "have-lunch",
       "en": "have lunch",
       "ru": "обедать",
-      "emoji": "🍱",
+      "emoji": "🍴",
       "level": "starters"
     },
     {
       "id": "go-home",
       "en": "go home",
       "ru": "идти домой",
-      "emoji": "🏠",
+      "emoji": "🏃‍♀️🏠",
       "level": "starters"
     },
     {
       "id": "do-homework",
       "en": "do homework",
       "ru": "делать домашнее задание",
-      "emoji": "📝",
+      "emoji": "✍️",
       "level": "movers"
     },
     {
       "id": "have-dinner",
       "en": "have dinner",
       "ru": "ужинать",
-      "emoji": "🍽️",
+      "emoji": "🌙🍝",
       "level": "starters"
     },
     {
       "id": "watch-tv",
       "en": "watch TV",
       "ru": "смотреть телевизор",
-      "emoji": "📺",
+      "emoji": "👀📺",
       "level": "starters"
     },
     {
       "id": "go-to-bed",
       "en": "go to bed",
       "ru": "ложиться спать",
-      "emoji": "🛌",
+      "emoji": "🛌💤",
       "level": "starters"
     },
     {
@@ -307,28 +307,28 @@
       "id": "dance-class",
       "en": "dance class",
       "ru": "урок танцев",
-      "emoji": "💃",
+      "emoji": "💃🏫",
       "level": "extra"
     },
     {
       "id": "singing-lesson",
       "en": "singing lesson",
       "ru": "урок пения",
-      "emoji": "🎤",
+      "emoji": "🎤🏫",
       "level": "extra"
     },
     {
       "id": "dance",
       "en": "dance",
       "ru": "танцевать",
-      "emoji": "🕺",
+      "emoji": "💃",
       "level": "starters"
     },
     {
       "id": "sing",
       "en": "sing",
       "ru": "петь",
-      "emoji": "🎶",
+      "emoji": "🎤",
       "level": "starters"
     },
     {
@@ -342,7 +342,7 @@
       "id": "play-the-piano",
       "en": "play the piano",
       "ru": "играть на пианино",
-      "emoji": "🎹",
+      "emoji": "🎹🎶",
       "level": "starters"
     },
     {
@@ -356,14 +356,14 @@
       "id": "play-football",
       "en": "play football",
       "ru": "играть в футбол",
-      "emoji": "⚽",
+      "emoji": "🥅",
       "level": "starters"
     },
     {
       "id": "play-games",
       "en": "play games",
       "ru": "играть в игры",
-      "emoji": "🎮",
+      "emoji": "🕹️",
       "level": "starters"
     },
     {
@@ -377,7 +377,7 @@
       "id": "draw",
       "en": "draw",
       "ru": "рисовать",
-      "emoji": "🎨",
+      "emoji": "🖍️",
       "level": "starters"
     },
     {
@@ -405,14 +405,14 @@
       "id": "student",
       "en": "student",
       "ru": "ученик",
-      "emoji": "🧒",
+      "emoji": "🧑‍🎓",
       "level": "starters"
     },
     {
       "id": "desk",
       "en": "desk",
       "ru": "парта",
-      "emoji": "🪑",
+      "emoji": "📝",
       "level": "starters"
     },
     {
@@ -440,7 +440,7 @@
       "id": "english",
       "en": "English",
       "ru": "английский язык",
-      "emoji": "🇬🇧",
+      "emoji": "🗣️🇬🇧",
       "level": "starters"
     },
     {
@@ -482,7 +482,7 @@
       "id": "lesson",
       "en": "lesson",
       "ru": "урок",
-      "emoji": "📚",
+      "emoji": "📘",
       "level": "starters"
     },
     {
@@ -503,21 +503,21 @@
       "id": "homework",
       "en": "homework",
       "ru": "домашнее задание",
-      "emoji": "📓",
+      "emoji": "📒",
       "level": "movers"
     },
     {
       "id": "favourite",
       "en": "favourite",
       "ru": "любимый",
-      "emoji": "⭐",
+      "emoji": "😍",
       "level": "starters"
     },
     {
       "id": "easy",
       "en": "easy",
       "ru": "лёгкий",
-      "emoji": "👍",
+      "emoji": "😌",
       "level": "movers"
     },
     {
@@ -573,14 +573,14 @@
       "id": "practice-room",
       "en": "practice room",
       "ru": "репетиционный зал",
-      "emoji": "🪞",
+      "emoji": "💃🏢",
       "level": "extra"
     },
     {
       "id": "stage",
       "en": "stage",
       "ru": "сцена",
-      "emoji": "🎭",
+      "emoji": "🎪",
       "level": "extra"
     },
     {
@@ -608,7 +608,7 @@
       "id": "song",
       "en": "song",
       "ru": "песня",
-      "emoji": "🎵",
+      "emoji": "🎼",
       "level": "starters"
     },
     {
@@ -643,7 +643,7 @@
       "id": "singer",
       "en": "singer",
       "ru": "певец",
-      "emoji": "🎤",
+      "emoji": "👩‍🎤",
       "level": "movers"
     },
     {
@@ -685,7 +685,7 @@
       "id": "soup",
       "en": "soup",
       "ru": "суп",
-      "emoji": "🍲",
+      "emoji": "🍜",
       "level": "movers"
     },
     {
@@ -720,14 +720,14 @@
       "id": "brother",
       "en": "brother",
       "ru": "брат",
-      "emoji": "👦",
+      "emoji": "👨‍👦‍👦",
       "level": "starters"
     },
     {
       "id": "sister",
       "en": "sister",
       "ru": "сестра",
-      "emoji": "👧",
+      "emoji": "👩‍👧‍👧",
       "level": "starters"
     },
     {
@@ -748,14 +748,14 @@
       "id": "family",
       "en": "family",
       "ru": "семья",
-      "emoji": "👨‍👩‍👧",
+      "emoji": "👨‍👩‍👧‍👦",
       "level": "starters"
     },
     {
       "id": "friend",
       "en": "friend",
       "ru": "друг",
-      "emoji": "🤝",
+      "emoji": "🧑‍🤝‍🧑",
       "level": "starters"
     },
     {
@@ -797,35 +797,35 @@
       "id": "house",
       "en": "house",
       "ru": "дом",
-      "emoji": "🏡",
+      "emoji": "🏠",
       "level": "starters"
     },
     {
       "id": "bedroom",
       "en": "bedroom",
       "ru": "спальня",
-      "emoji": "🛏️",
+      "emoji": "🏠🛏️",
       "level": "starters"
     },
     {
       "id": "kitchen",
       "en": "kitchen",
       "ru": "кухня",
-      "emoji": "🍳",
+      "emoji": "🏠🍳",
       "level": "starters"
     },
     {
       "id": "bathroom",
       "en": "bathroom",
       "ru": "ванная",
-      "emoji": "🛁",
+      "emoji": "🏠🛁",
       "level": "starters"
     },
     {
       "id": "living-room",
       "en": "living room",
       "ru": "гостиная",
-      "emoji": "🛋️",
+      "emoji": "🏠🛋️",
       "level": "starters"
     },
     {
@@ -839,7 +839,7 @@
       "id": "table",
       "en": "table",
       "ru": "стол",
-      "emoji": "🪵",
+      "emoji": "🍽️",
       "level": "starters"
     },
     {
@@ -881,14 +881,14 @@
       "id": "on",
       "en": "on",
       "ru": "на",
-      "emoji": "⬆️",
+      "emoji": "🔝",
       "level": "starters"
     },
     {
       "id": "under",
       "en": "under",
       "ru": "под",
-      "emoji": "⬇️",
+      "emoji": "👇",
       "level": "starters"
     }
   ],

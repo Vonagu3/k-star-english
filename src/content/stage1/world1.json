@@ -64,7 +64,7 @@
       "id": "name",
       "en": "name",
       "ru": "имя",
-      "emoji": "📛",
+      "emoji": "🪪",
       "level": "starters"
     },
     {
@@ -274,14 +274,14 @@
       "id": "brother",
       "en": "brother",
       "ru": "брат",
-      "emoji": "👦",
+      "emoji": "👨‍👦‍👦",
       "level": "starters"
     },
     {
       "id": "sister",
       "en": "sister",
       "ru": "сестра",
-      "emoji": "👧",
+      "emoji": "👩‍👧‍👧",
       "level": "starters"
     },
     {
@@ -358,14 +358,14 @@
       "id": "son",
       "en": "son",
       "ru": "сын",
-      "emoji": "👦",
+      "emoji": "👨‍👦",
       "level": "movers"
     },
     {
       "id": "daughter",
       "en": "daughter",
       "ru": "дочь",
-      "emoji": "👧",
+      "emoji": "👩‍👧",
       "level": "movers"
     },
     {
@@ -379,7 +379,7 @@
       "id": "flat",
       "en": "flat",
       "ru": "квартира",
-      "emoji": "🏢",
+      "emoji": "🏬",
       "level": "starters"
     },
     {
@@ -589,7 +589,7 @@
       "id": "poster",
       "en": "poster",
       "ru": "постер",
-      "emoji": "🖼️",
+      "emoji": "📜",
       "level": "extra"
     },
     {
@@ -617,21 +617,21 @@
       "id": "short",
       "en": "short",
       "ru": "низкий, короткий",
-      "emoji": "🐭",
+      "emoji": "🤏",
       "level": "movers"
     },
     {
       "id": "young",
       "en": "young",
       "ru": "молодой",
-      "emoji": "👶",
+      "emoji": "🐣",
       "level": "starters"
     },
     {
       "id": "old",
       "en": "old",
       "ru": "старый, пожилой",
-      "emoji": "👴",
+      "emoji": "🏚️",
       "level": "starters"
     },
     {
@@ -757,7 +757,7 @@
       "id": "country",
       "en": "country",
       "ru": "страна",
-      "emoji": "🗺️",
+      "emoji": "🌍",
       "level": "movers"
     }
   ],
@@ -815,7 +815,7 @@
                       "emoji": "✅"
                     },
                     {
-                      "emoji": "📛"
+                      "emoji": "🪪"
                     }
                   ],
                   "answer": 0
@@ -842,7 +842,7 @@
                       "emoji": "👋"
                     },
                     {
-                      "emoji": "📛"
+                      "emoji": "🪪"
                     },
                     {
                       "emoji": "🌟"
@@ -864,7 +864,7 @@
                 {
                   "text": "My name is {name}.",
                   "ru": "Меня зовут Марго.",
-                  "emoji": "📛"
+                  "emoji": "🪪"
                 },
                 {
                   "text": "What's your name?",
@@ -890,7 +890,7 @@
                 {
                   "sentence": "What's your name?",
                   "ru": "Как тебя зовут?",
-                  "emoji": "📛"
+                  "emoji": "🪪"
                 },
                 {
                   "sentence": "My name is Jun.",
@@ -1667,7 +1667,7 @@
                 {
                   "text": "M, A, R, G, O.",
                   "ru": "М, А, Р, Г, О.",
-                  "emoji": "📛"
+                  "emoji": "🪪"
                 },
                 {
                   "text": "Is she a girl? Yes, she is.",
@@ -1846,7 +1846,7 @@
                 {
                   "sentence": "My name is Sora.",
                   "ru": "Меня зовут Сора.",
-                  "emoji": "📛"
+                  "emoji": "🪪"
                 },
                 {
                   "sentence": "I'm twelve years old.",
@@ -5882,7 +5882,7 @@
           {
             "text": "Hello! My name is {name}. M, A, R, G, O.",
             "ru": "Привет! Меня зовут Марго. М-А-Р-Г-О.",
-            "emoji": "📛"
+            "emoji": "🪪"
           },
           {
             "text": "I'm ten. I'm from Russia.",

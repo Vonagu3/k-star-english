@@ -17,5 +17,8 @@ const NUMBERS: Record<string, string> = {
   eleven: '11', twelve: '12', thirteen: '13', fourteen: '14', fifteen: '15', sixteen: '16', seventeen: '17', eighteen: '18', nineteen: '19',
   twenty: '20', thirty: '30', forty: '40', fifty: '50', sixty: '60', seventy: '70', eighty: '80', ninety: '90', 'one hundred': '100', 'a hundred': '100',
 };
+const DAYS: Record<string, string> = { monday: 'MON', tuesday: 'TUE', wednesday: 'WED', thursday: 'THU', friday: 'FRI', saturday: 'SAT', sunday: 'SUN' };
+/** Short calendar label for days of the week (they have no distinct emoji). */
+export const dayFor = (en: string) => DAYS[en.toLowerCase()];
 /** Digits for number words, so they show as numbers instead of stand-in emoji. */
 export const numberFor = (en: string) => NUMBERS[en.toLowerCase()];

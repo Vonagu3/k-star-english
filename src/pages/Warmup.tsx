@@ -23,7 +23,7 @@ export default function Warmup() {
     if (pool.length < 4) pool = [...pool, ...sample([...WORDS.keys()].slice(0, 30), 8 - pool.length)];
     const all = [...WORDS.keys()];
     return pool.map((id, k) => {
-      const others = sample(all.filter((x) => x !== id && WORDS.get(x)!.en !== WORDS.get(id)!.en), 3);
+      const others = sample(all.filter((x) => x !== id && WORDS.get(x)!.en !== WORDS.get(id)!.en && WORDS.get(x)!.emoji !== WORDS.get(id)!.emoji), 3);
       return { id, mode: (['listen', 'pic', 'ru'] as const)[k % 3], options: shuffle([id, ...others]) };
     });
   }, []); // eslint-disable-line react-hooks/exhaustive-deps

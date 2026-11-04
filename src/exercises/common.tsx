@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import type { Word } from '../content/schema';
 import { WORDS } from '../content';
 import { speak } from '../lib/tts';
-import { numberFor } from '../lib/util';
+import { dayFor, numberFor } from '../lib/util';
 import type { Skill } from '../game/store';
 import type { QuestMetric } from '../game/rules';
 
@@ -17,6 +17,15 @@ export type ExProps<T> = { ex: T; onDone: (r: ExResult) => void; name: string; l
 export const word = (id: string): Word => WORDS.get(id) ?? { id, en: id.replace(/-/g, ' '), ru: '', emoji: '❓', level: 'extra' };
 
 export function WordPic({ w, size = 64 }: { w: Word; size?: number }) {
+  const d = dayFor(w.en);
+  if (d) {
+    return (
+      <span style={{ display: 'inline-flex', flexDirection: 'column', width: size * 1.1, borderRadius: size * 0.16, overflow: 'hidden', border: '2px solid #e3d6f0', background: '#fff', lineHeight: 1, verticalAlign: 'middle' }}>
+        <span style={{ background: 'var(--pink)', height: size * 0.28 }} />
+        <span style={{ fontFamily: 'var(--font-title)', fontWeight: 800, fontSize: size * 0.38, color: 'var(--violet)', padding: `${size * 0.14}px 0` }}>{d}</span>
+      </span>
+    );
+  }
   const n = numberFor(w.en);
   if (n) return <span style={{ fontFamily: 'var(--font-title)', fontWeight: 800, fontSize: size * 0.8, color: 'var(--violet)', lineHeight: 1 }}>{n}</span>;
   return <span style={{ fontSize: size, lineHeight: 1 }}>{w.emoji}</span>;
