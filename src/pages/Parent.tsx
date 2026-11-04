@@ -5,6 +5,7 @@ import { rankFor, dayKey } from '../game/rules';
 import { EPISODE_ORDER, WORDS, WORLDS } from '../content';
 import { clearLocalSubmissions, listSubmissions, reviewSubmission, type Submission } from '../lib/submissions';
 import { supabase } from '../lib/supabase';
+import { britishVoices, configureVoice, hasBritishVoice, speak } from '../lib/tts';
 
 const PROGRAMME_URL = 'https://claude.ai/artifact/FcDuVghhNVuxqhGBTqQBbq';
 
@@ -122,6 +123,15 @@ function Dashboard() {
             <option value={0}>без лимита</option>{[20, 30, 45, 60, 90].map((m) => <option key={m} value={m}>{m} мин</option>)}
           </select>
         </label>
+        <VoiceSettings />
+        <label className="row small">Перевод слов при наведении / долгом нажатии
+          <select className="field" style={{ maxWidth: 220 }} value={s.profile?.settings.hoverTranslate ?? 'practice'}
+            onChange={(e) => update((st) => ({ ...st, profile: { ...st.profile!, settings: { ...st.profile!.settings, hoverTranslate: e.target.value as 'all' | 'practice' | 'off' } } }))}>
+            <option value="practice">везде, кроме проверок (Showcase, Debut)</option>
+            <option value="all">везде</option>
+            <option value="off">выключен</option>
+          </select>
+        </label>
         <label className="row small"><input type="checkbox" checked={s.profile?.settings.muted ?? false} onChange={(e) => update((st) => ({ ...st, profile: { ...st.profile!, settings: { ...st.profile!.settings, muted: e.target.checked } } }))} /> Выключить звуковые эффекты</label>
         <div className="small">Открыть мир вручную (если ребёнок уже знает тему):</div>
         <div className="row wrap">{WORLDS.slice(1).filter((w) => !w.bonus).map((w) => (
@@ -187,6 +197,48 @@ function ResetBlock() {
           {busy ? 'Удаляю…' : 'Удалить всё'}
         </button>
       </div>
+    </div>
+  );
+}
+
+function VoiceSettings() {
+  const settings = useGame((g) => g.s.profile?.settings);
+  const update = useGame((g) => g.update);
+  const [voices, setVoices] = useState(britishVoices());
+  useEffect(() => {
+    const h = () => setVoices(britishVoices());
+    speechSynthesis?.addEventListener?.('voiceschanged', h);
+    const t = setTimeout(h, 600);
+    return () => { speechSynthesis?.removeEventListener?.('voiceschanged', h); clearTimeout(t); };
+  }, []);
+  const set = (patch: { voiceName?: string | null; voiceRate?: number }) => {
+    update((st) => ({ ...st, profile: { ...st.profile!, settings: { ...st.profile!.settings, ...patch } } }));
+    configureVoice({ name: patch.voiceName, rate: patch.voiceRate });
+  };
+  return (
+    <div className="col" style={{ gap: 6 }}>
+      <div className="small"><b>🇬🇧 Британский голос озвучки</b> (на этом устройстве)</div>
+      {!hasBritishVoice() && voices.length === 0 ? (
+        <div className="card tint-sun small" style={{ boxShadow: 'none' }}>
+          На этом устройстве не найден британский голос. Озвучка всё равно запрашивает британский английский, но лучше установить голос:<br />
+          • iPhone/iPad: Настройки → Универсальный доступ → Устные материалы → Голоса → English → English (UK) → скачать Kate или Daniel.<br />
+          • Android: Настройки → Синтез речи → Google → Язык: English (United Kingdom), скачать голос.<br />
+          • Windows: Параметры → Время и язык → Речь → Добавить голоса → English (United Kingdom).<br />
+          • Mac: Системные настройки → Универсальный доступ → Устный контент → Голос системы → Управлять голосами → English (UK).
+        </div>
+      ) : (
+        <div className="row wrap">
+          <select className="field" style={{ maxWidth: 320 }} value={settings?.voiceName ?? ''} onChange={(e) => set({ voiceName: e.target.value || null })}>
+            <option value="">Автоматически (лучший британский)</option>
+            {voices.map((v) => <option key={v.name} value={v.name}>{v.name}</option>)}
+          </select>
+          <button className="btn ghost small" onClick={() => void speak('Hello! Welcome to Star Academy. My favourite colour is purple.')}>▶ Прослушать</button>
+        </div>
+      )}
+      <label className="row small">Скорость речи
+        <input type="range" min={0.6} max={1.1} step={0.05} value={settings?.voiceRate ?? 0.9} onChange={(e) => set({ voiceRate: Number(e.target.value) })} />
+        <span>{Math.round((settings?.voiceRate ?? 0.9) * 100)}%</span>
+      </label>
     </div>
   );
 }

@@ -22,7 +22,7 @@ export type GameState = {
     pinHash: string | null;
     look: Look;
     dorm: DormPlacement[];
-    settings: { dailyLimitMin: number | null; muted: boolean; voiceRate: number };
+    settings: { dailyLimitMin: number | null; muted: boolean; voiceRate: number; voiceName?: string | null; hoverTranslate?: 'all' | 'practice' | 'off' };
   } | null;
   fans: number;
   hearts: number;

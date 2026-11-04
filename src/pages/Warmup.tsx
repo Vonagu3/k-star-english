@@ -67,7 +67,7 @@ export default function Warmup() {
         {q.mode === 'pic' && <WordPic w={w} size={90} />}
         {q.mode === 'ru' && <div className="say-text">{w.ru}</div>}
       </div>
-      <div className="grid grid-2">
+      <div className="grid grid-2" data-no-tr={q.mode === 'ru' ? '' : undefined}>
         {q.options.map((id) => (
           <button key={id} className={`tile ${pick ? (id === q.id ? 'good' : id === pick ? 'bad' : 'dim') : ''}`} onClick={() => choose(id)}>
             {q.mode === 'listen' ? <><WordPic w={word(id)} size={40} /><span className="small">{word(id).en}</span></> : word(id).en}

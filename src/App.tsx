@@ -3,6 +3,7 @@ import { HashRouter, NavLink, Route, Routes, useLocation, useParams } from 'reac
 import { useGame } from './game/store';
 import { supabase } from './lib/supabase';
 import { setMuted } from './lib/sfx';
+import { configureVoice } from './lib/tts';
 import { dayKey } from './game/rules';
 import Home from './pages/Home';
 import MapPage from './pages/Map';
@@ -15,6 +16,7 @@ import Parent from './pages/Parent';
 import Onboarding from './pages/Onboarding';
 import Login from './pages/Login';
 import NotebookBook from './pages/NotebookBook';
+import TranslateTooltip from './components/TranslateTooltip';
 
 function LessonRoute() {
   const { id } = useParams();
@@ -78,6 +80,7 @@ export default function App() {
   }, [load]);
 
   useEffect(() => { setMuted(profile?.settings.muted ?? false); }, [profile?.settings.muted]);
+  useEffect(() => { configureVoice({ name: profile?.settings.voiceName ?? null, rate: profile?.settings.voiceRate ?? 0.9 }); }, [profile?.settings.voiceName, profile?.settings.voiceRate]);
 
   if (auth === 'out') return <Login />;
   if (!ready || auth === 'checking') return <div className="page center" style={{ paddingTop: 120 }}><div style={{ fontSize: 64 }}>🌟</div><h2>Loading…</h2></div>;
@@ -98,6 +101,7 @@ export default function App() {
       </Routes>
       <Nav />
       <TimeKeeper />
+      <TranslateTooltip enabled={(profile.settings.hoverTranslate ?? 'practice') !== 'off'} />
     </HashRouter>
   );
 }
