@@ -87,7 +87,11 @@ export default function TranslateTooltip({ enabled }: { enabled: boolean }) {
       if (say) void speak(tr.en);
       return true;
     };
-    const hideSoon = (ms = 150) => {
+    const hideNow = () => {
+      if (hideTimer.current) { clearTimeout(hideTimer.current); hideTimer.current = null; }
+      tipKey.current = ''; setTip(null);
+    };
+    const hideSoon = (ms = 40) => {
       if (hideTimer.current || !tipKey.current) return;
       hideTimer.current = window.setTimeout(() => { tipKey.current = ''; setTip(null); hideTimer.current = null; }, ms);
     };
@@ -103,12 +107,12 @@ export default function TranslateTooltip({ enabled }: { enabled: boolean }) {
         if (!showAt(last.x, last.y, false)) hideSoon();
       });
     };
-    const onOut = (e: MouseEvent) => { if (!e.relatedTarget) hideSoon(0); };
+    const onOut = (e: MouseEvent) => { if (!e.relatedTarget) hideNow(); };
 
     // Touch / pen: long press on a word shows it and says it.
     const onDown = (e: PointerEvent) => {
+      hideNow();
       if (e.pointerType === 'mouse') return;
-      tipKey.current = ''; setTip(null);
       pressStart.current = { x: e.clientX, y: e.clientY };
       if (pressTimer.current) clearTimeout(pressTimer.current);
       pressTimer.current = window.setTimeout(() => {
@@ -130,7 +134,7 @@ export default function TranslateTooltip({ enabled }: { enabled: boolean }) {
       if (suppressClick.current) { suppressClick.current = false; e.preventDefault(); e.stopPropagation(); }
     };
     const onContext = (e: Event) => { if (suppressClick.current || pressTimer.current !== null) e.preventDefault(); };
-    const onScroll = () => { tipKey.current = ''; setTip(null); };
+    const onScroll = () => hideNow();
 
     document.addEventListener('pointermove', onMove, { passive: true });
     document.addEventListener('mouseout', onOut);
@@ -141,6 +145,8 @@ export default function TranslateTooltip({ enabled }: { enabled: boolean }) {
     document.addEventListener('click', onClick, true);
     document.addEventListener('contextmenu', onContext);
     window.addEventListener('scroll', onScroll, { passive: true, capture: true });
+    window.addEventListener('keydown', onScroll);
+    window.addEventListener('blur', onScroll);
     return () => {
       document.removeEventListener('pointermove', onMove);
       document.removeEventListener('mouseout', onOut);
@@ -151,6 +157,8 @@ export default function TranslateTooltip({ enabled }: { enabled: boolean }) {
       document.removeEventListener('click', onClick, true);
       document.removeEventListener('contextmenu', onContext);
       window.removeEventListener('scroll', onScroll, { capture: true });
+      window.removeEventListener('keydown', onScroll);
+      window.removeEventListener('blur', onScroll);
       if (frame.current !== null) cancelAnimationFrame(frame.current);
     };
   }, [enabled]);
