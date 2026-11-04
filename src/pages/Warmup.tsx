@@ -59,7 +59,7 @@ export default function Warmup() {
     else { setI(i + 1); if (questions[i + 1].mode === 'listen') setTimeout(() => void speak(word(questions[i + 1].id).en), 300); }
   };
   return (
-    <div className="page col" style={{ paddingBottom: 140 }}>
+    <div className="page col" data-no-tr="recall" style={{ paddingBottom: 140 }}>
       <div className="row"><button className="icon-btn" onClick={() => nav('/')}>✖️</button><div className="bar grow"><span style={{ width: `${(i / questions.length) * 100}%` }} /></div></div>
       <h2 className="title-l center">🔥 Daily Warm-up</h2>
       <div className="card center" style={{ minHeight: 150, display: 'grid', placeItems: 'center' }}>
@@ -67,7 +67,7 @@ export default function Warmup() {
         {q.mode === 'pic' && <WordPic w={w} size={90} />}
         {q.mode === 'ru' && <div className="say-text">{w.ru}</div>}
       </div>
-      <div className="grid grid-2" data-no-tr={q.mode === 'ru' ? '' : undefined}>
+      <div className="grid grid-2">
         {q.options.map((id) => (
           <button key={id} className={`tile ${pick ? (id === q.id ? 'good' : id === pick ? 'bad' : 'dim') : ''}`} onClick={() => choose(id)}>
             {q.mode === 'listen' ? <><WordPic w={word(id)} size={40} /><span className="small">{word(id).en}</span></> : word(id).en}

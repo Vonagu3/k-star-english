@@ -34,7 +34,7 @@ function Questions({ qs, name, onDone }: { qs: Question[]; name: string; onDone:
         <h3 className="title-l center">{subName(q.q, name)}</h3>
         <SpeakBtn text={subName(q.q, name)} />
       </div>
-      <div className="grid grid-2">
+      <div className="grid grid-2" data-no-tr="recall">
         {q.options.map((o, k) => (
           <button key={k} className={`tile ${pick === null ? '' : k === q.answer ? 'good' : k === pick ? 'bad' : 'dim'}`} onClick={() => choose(k)}>{subName(o, name)}</button>
         ))}
@@ -192,7 +192,7 @@ export function Draw({ ex, onDone, name, lessonId }: ExProps<Of<'draw'>>) {
   return (
     <div className="col">
       <Prompt ru={ex.ru}>{ex.emoji ?? '🎨'} Draw it!</Prompt>
-      <div className="card tint-sun row" style={{ fontWeight: 800, fontSize: 20 }}>
+      <div className="card tint-sun row" data-no-tr="recall" style={{ fontWeight: 800, fontSize: 20 }}>
         <div className="grow">{prompt}</div><SpeakBtn text={prompt} />
       </div>
       <div className="canvas-wrap">
@@ -305,7 +305,7 @@ export function Quiz({ ex, onDone }: ExProps<Of<'quiz'>>) {
   }
   const w = word(q.id);
   return (
-    <div className="col">
+    <div className="col" data-no-tr="recall">
       <div className="row"><div className="chip">⏱️ {left}s</div><div className="grow" /><div className="chip">⭐ {score}</div></div>
       <div className="bar"><span style={{ width: `${(left / ex.seconds) * 100}%` }} /></div>
       <motion.div key={asked} className={`card center ${flash === 'good' ? 'tint-mint' : flash === 'bad' ? 'tint-pink' : ''}`} initial={{ scale: 0.9 }} animate={{ scale: 1 }} style={{ minHeight: 140, display: 'grid', placeItems: 'center' }}>

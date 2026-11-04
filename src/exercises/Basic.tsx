@@ -65,7 +65,7 @@ export function Listen({ ex, onDone, name }: ExProps<Of<'listen'>>) {
         <SpeakBtn text={say} big />
         <button className="icon-btn" onClick={() => void speak(say, { rate: 0.6 })} aria-label="Slowly">🐢</button>
       </div>
-      <div className={`grid ${it.options.length > 2 ? 'grid-2' : 'grid-2'}`} style={{ marginTop: 8 }}>
+      <div className="grid grid-2" data-no-tr="recall" style={{ marginTop: 8 }}>
         {it.options.map((o, k) => (
           <button key={k} className={`tile ${pick === null ? '' : k === it.answer ? 'good' : k === pick ? 'bad' : 'dim'}`} onClick={() => choose(k)} style={{ minHeight: 110 }}>
             {o.emoji && <span className="emo">{o.emoji}</span>}
@@ -110,7 +110,7 @@ export function Memory({ ex, onDone }: ExProps<Of<'memory'>>) {
   return (
     <div className="col">
       <Prompt ru="Найди пары: слово и картинка">{ex.title ?? 'Find the pairs!'}</Prompt>
-      <div className="grid" style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}>
+      <div className="grid" data-no-tr="recall" style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}>
         {cards.map((c, k) => {
           const shown = open.includes(k) || done.includes(c.id);
           const w = word(c.id);
@@ -158,7 +158,7 @@ export function Spell({ ex, onDone }: ExProps<Of<'spell'>>) {
     else setI(i + 1);
   };
   return (
-    <div className="col" style={{ alignItems: 'center' }}>
+    <div className="col" style={{ alignItems: 'center' }} data-no-tr="recall">
       <Prompt ru="Собери слово из букв">{ex.title ?? 'Spell it!'}</Prompt>
       <Counter i={i} n={ex.words.length} />
       <div className="row"><WordPic w={w} size={80} /><SpeakBtn text={w.en} /></div>
@@ -209,14 +209,14 @@ export function Sentence({ ex, onDone, name }: ExProps<Of<'sentence'>>) {
       <Prompt ru={it.ru ?? 'Составь предложение'}>{ex.title ?? 'Build the sentence!'}</Prompt>
       <Counter i={i} n={ex.items.length} />
       {it.emoji && <div className="center" style={{ fontSize: 64 }}>{it.emoji}</div>}
-      <div className="card row wrap" style={{ minHeight: 80, gap: 8, justifyContent: 'center' }}>
+      <div className="card row wrap" data-no-tr="recall" style={{ minHeight: 80, gap: 8, justifyContent: 'center' }}>
         {picked.length === 0 && <span className="muted">Tap the words…</span>}
         {picked.map((k) => (
           <button key={k} className="tile" style={{ minHeight: 48, fontSize: 18, borderColor: checked === null ? undefined : checked ? 'var(--mint)' : 'var(--red)' }}
             onClick={() => checked === null && setPicked(picked.filter((x) => x !== k))}>{tiles.find((x) => x.k === k)!.t}</button>
         ))}
       </div>
-      <div className="row wrap" style={{ gap: 8, justifyContent: 'center' }}>
+      <div className="row wrap" data-no-tr="recall" style={{ gap: 8, justifyContent: 'center' }}>
         {tiles.map((x) => (
           <button key={x.k} className={`tile ${picked.includes(x.k) ? 'dim' : ''}`} style={{ minHeight: 52, fontSize: 18 }}
             disabled={picked.includes(x.k) || checked !== null} onClick={() => { sfx.tap(); setPicked([...picked, x.k]); }}>{x.t}</button>
@@ -255,10 +255,10 @@ export function Gap({ ex, onDone, name }: ExProps<Of<'gap'>>) {
       <Prompt ru={it.ru ?? 'Выбери слово для пропуска'}>{ex.title ?? 'Fill the gap!'}</Prompt>
       <Counter i={i} n={ex.items.length} />
       {it.emoji && <div className="center" style={{ fontSize: 64 }}>{it.emoji}</div>}
-      <div className="card say-text" style={{ lineHeight: 1.5 }}>
+      <div className="card say-text" data-no-tr="recall" style={{ lineHeight: 1.5 }}>
         {before}<span className="blank" style={{ color: pick === null ? 'var(--violet)' : pick === it.answer ? 'var(--mint)' : 'var(--red)' }}>{pick !== null ? it.options[it.answer] : ''}</span>{after}
       </div>
-      <div className="grid grid-2">
+      <div className="grid grid-2" data-no-tr="recall">
         {options.map(({ o, k }) => (
           <button key={k} className={`tile ${pick === null ? '' : k === it.answer ? 'good' : k === pick ? 'bad' : 'dim'}`} onClick={() => choose(k)}>{o}</button>
         ))}

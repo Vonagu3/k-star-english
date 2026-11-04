@@ -7,7 +7,8 @@ const WORD = /[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ'’]*/g;
 
 type Hit = { tokens: string[]; index: number; rect: DOMRect };
 const inside = (r: DOMRect, x: number, y: number, pad = 2) => x >= r.left - pad && x <= r.right + pad && y >= r.top - pad && y <= r.bottom + pad;
-const blocked = (el: Element | null) => !el || !!el.closest('input, textarea, select, [data-no-tr], .translate-tip');
+let everywhere = false;
+const blocked = (el: Element | null) => !el || !!el.closest(everywhere ? 'input, textarea, select, .translate-tip' : 'input, textarea, select, [data-no-tr], .translate-tip');
 
 /** Word under the point inside one text node, if the point really is on it. */
 function hitInNode(node: Text, x: number, y: number, offset?: number): Hit | null {
@@ -59,7 +60,8 @@ function wordAt(x: number, y: number): Hit | null {
   return null;
 }
 
-export default function TranslateTooltip({ enabled }: { enabled: boolean }) {
+export default function TranslateTooltip({ enabled, all = false }: { enabled: boolean; all?: boolean }) {
+  everywhere = all;
   const [tip, setTip] = useState<Tip | null>(null);
   const tipKey = useRef('');
   const frame = useRef<number | null>(null);

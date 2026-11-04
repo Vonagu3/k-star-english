@@ -60,10 +60,10 @@ export default function Lesson() {
         <div className="chip">{TYPE_LABEL[ex.type].emoji} {k + 1}/{exs.length}</div>
       </div>
       <div className="tiny muted center" style={{ marginTop: -6, marginBottom: 6 }}>
-        {trMode === 'practice' && (ref.episode.kind === 'showcase' || ref.episode.kind === 'debut') ? '🔒 Check time: no translation hints' : trMode !== 'off' ? (matchMedia('(hover: none)').matches ? '👆 Hold a word to see it in Russian' : '🖱️ Point at a word to see it in Russian') : ''}
+        {trMode !== 'all' && (ref.episode.kind === 'showcase' || ref.episode.kind === 'debut') ? '🔒 Check time: no translation hints' : trMode !== 'off' ? (matchMedia('(hover: none)').matches ? '👆 Hold a word to see it in Russian' : '🖱️ Point at a word to see it in Russian') : ''}
       </div>
       <AnimatePresence mode="wait">
-        <motion.div key={k} data-no-tr={trMode === 'practice' && (ref.episode.kind === 'showcase' || ref.episode.kind === 'debut') ? '' : undefined} initial={{ x: 40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -40, opacity: 0 }} transition={{ duration: 0.2 }}>
+        <motion.div key={k} data-no-tr={ref.episode.kind === 'showcase' || ref.episode.kind === 'debut' ? 'check' : undefined} initial={{ x: 40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -40, opacity: 0 }} transition={{ duration: 0.2 }}>
           <ExerciseView ex={ex} onDone={onDone} name={name} lessonId={id} />
         </motion.div>
       </AnimatePresence>

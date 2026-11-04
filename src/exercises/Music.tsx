@@ -95,7 +95,7 @@ export function Chant({ ex, onDone, name }: ExProps<Of<'chant'>>) {
       {phase === 'listen' && <div className="center muted" style={{ fontWeight: 800 }}>🎧 Listen and clap to the beat!</div>}
       {phase === 'fill' && (
         <>
-          <div className="row wrap" style={{ justifyContent: 'center', gap: 8 }}>
+          <div className="row wrap" data-no-tr="recall" style={{ justifyContent: 'center', gap: 8 }}>
             {options.map((w, k) => (
               <button key={k} className={`tile ${filled.includes(w) && filled.filter((x) => x === w).length >= options.filter((x) => x === w).length ? 'dim' : ''} ${wrong === w ? 'bad' : ''}`} onClick={() => pick(w)}>{w}</button>
             ))}
@@ -152,7 +152,7 @@ export function Dance({ ex, onDone, name }: ExProps<Of<'dance'>>) {
     else setI(i + 1);
   };
   return (
-    <div className="col">
+    <div className="col" data-no-tr="recall">
       <Prompt ru="Прочитай команду и собери танец. Потом станцуй вместе с аватаром!">💃 {ex.title ?? 'Dance practice!'}</Prompt>
       <Counter i={i} n={ex.items.length} />
       <div className="card tint-pink row" style={{ fontWeight: 800, fontSize: 22 }}><div className="grow">{text}</div><SpeakBtn text={text} /></div>

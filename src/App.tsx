@@ -101,7 +101,7 @@ export default function App() {
       </Routes>
       <Nav />
       <TimeKeeper />
-      <TranslateTooltip enabled={(profile.settings.hoverTranslate ?? 'practice') !== 'off'} />
+      <TranslateTooltip enabled={(profile.settings.hoverTranslate ?? 'practice') !== 'off'} all={profile.settings.hoverTranslate === 'all'} />
     </HashRouter>
   );
 }
