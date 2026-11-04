@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import type { Exercise, Question } from '../content/schema';
 import { speak } from '../lib/tts';
 import { sfx } from '../lib/sfx';
-import { listenOnce, recognitionAvailable, recordAudio, speechScore } from '../lib/speech';
+import { checkSpeech, listenOnce, normalise, recognitionAvailable, recordAudio, type SpeechCheck } from '../lib/speech';
 import { submitWork } from '../lib/submissions';
 import { useGame } from '../game/store';
 import { sample, shuffle, subName } from '../lib/util';
@@ -77,19 +77,22 @@ export function Speak({ ex, onDone, name, lessonId }: ExProps<Of<'speak'>>) {
   const [score, setScore] = useState(0);
   const [state, setState] = useState<'idle' | 'listening' | 'good' | 'retry' | 'recording' | 'saved' | 'self'>('idle');
   const [heard, setHeard] = useState('');
+  const [check, setCheck] = useState<SpeechCheck | null>(null);
   const [tries, setTries] = useState(0);
   const rec = useRef<{ stop: () => Promise<Blob> } | null>(null);
   const it = ex.items[i];
   const text = subName(it.text, name);
   const canRecognise = recognitionAvailable();
-  useEffect(() => { setState('idle'); setHeard(''); setTries(0); const t = setTimeout(() => void speak(text), 300); return () => clearTimeout(t); }, [text]);
+  useEffect(() => { setState('idle'); setHeard(''); setCheck(null); setTries(0); const t = setTimeout(() => void speak(text), 300); return () => clearTimeout(t); }, [text]);
 
   const tryRecognise = async () => {
     setState('listening');
     try {
       const alts = await listenOnce();
+      const c = checkSpeech(text, alts, name ? [name] : []);
+      setCheck(c);
       setHeard(alts[0] ?? '');
-      if (speechScore(text, alts) >= 0.6) { sfx.correct(); setScore((s) => s + 1); setState('good'); }
+      if (c.ok) { sfx.correct(); setScore((s) => s + 1); setState('good'); }
       else { sfx.wrong(); setTries((t) => t + 1); setState('retry'); }
     } catch {
       setTries((t) => t + 1); setState('retry');
@@ -112,7 +115,20 @@ export function Speak({ ex, onDone, name, lessonId }: ExProps<Of<'speak'>>) {
       <Prompt ru={it.ru}>{ex.title ?? 'Say it!'}</Prompt>
       <Counter i={i} n={ex.items.length} />
       {it.emoji && <div style={{ fontSize: 72 }}>{it.emoji}</div>}
-      <div className="card say-text" style={{ width: '100%' }}>{text}</div>
+      <div className="card say-text" style={{ width: '100%' }}>
+        {check && (state === 'retry' || state === 'good')
+          ? (() => {
+            // Map each displayed word to its normalised tokens ("I'm" → "i am") and colour it by whether they were heard.
+            let pos = 0;
+            return text.split(/\s+/).map((w, k) => {
+              const n = normalise(w).split(' ').filter(Boolean).length;
+              const hit = n === 0 || check.matched.slice(pos, pos + n).every(Boolean);
+              pos += n;
+              return <span key={k} style={{ color: hit ? 'var(--mint)' : 'var(--red)', textDecoration: hit ? 'none' : 'underline wavy' }}>{w} </span>;
+            });
+          })()
+          : text}
+      </div>
       <div className="row">
         <SpeakBtn text={text} big />
         <button className="icon-btn" onClick={() => void speak(text, { rate: 0.6 })} aria-label="Slowly">🐢</button>
@@ -130,10 +146,11 @@ export function Speak({ ex, onDone, name, lessonId }: ExProps<Of<'speak'>>) {
       {state === 'retry' && (
         <div className="center col" style={{ gap: 6 }}>
           <div style={{ fontWeight: 800 }}>{heard ? `I heard: "${heard}"` : "I didn't hear you."} Try again! 💪</div>
-          {tries >= 2 && <button className="btn ghost small" onClick={() => { setState('self'); setScore((x) => x + 0.5); }}>I said it! →</button>}
+          {check && heard && <div className="small muted">Красные слова не услышаны — скажи их чётче · Say the red words clearly</div>}
+          {tries >= 2 && <button className="btn ghost small" onClick={() => setState('self')}>Skip for now →</button>}
         </div>
       )}
-      {(state === 'good' || state === 'saved' || state === 'self') && <Feedback ok text={state === 'saved' ? 'Saved for your parent to listen 🎧' : state === 'self' ? 'Good try! Keep practising 💪' : heard && `"${heard}"`} onNext={next} />}
+      {(state === 'good' || state === 'saved' || state === 'self') && <Feedback ok={state !== 'self'} text={state === 'saved' ? 'Saved for your parent to listen 🎧' : state === 'self' ? "Let's practise it again later 💪" : heard && `"${heard}"`} onNext={next} />}
     </div>
   );
 }

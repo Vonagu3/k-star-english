@@ -3,7 +3,8 @@ import { motion } from 'framer-motion';
 import type { Word } from '../content/schema';
 import { WORDS } from '../content';
 import { speak } from '../lib/tts';
-import { dayFor, numberFor } from '../lib/util';
+import { dayFor, numberFor, subName } from '../lib/util';
+import { useGame } from '../game/store';
 import type { Skill } from '../game/store';
 import type { QuestMetric } from '../game/rules';
 
@@ -40,6 +41,8 @@ export function SpeakBtn({ text, big = false, rate }: { text: string; big?: bool
 }
 
 export function Prompt({ children, ru }: { children: ReactNode; ru?: string }) {
+  const name = useGame((g) => g.s.profile?.name ?? '');
+  if (ru) ru = subName(ru, name);
   return (
     <div className="center col" style={{ gap: 4, marginBottom: 12 }}>
       <h2 className="title-l">{children}</h2>

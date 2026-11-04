@@ -49,7 +49,7 @@ export default function NotebookBook() {
                 <div style={{ fontSize: 34 }}>{t.ex.emoji ?? '✏️'}</div>
                 <div className="grow">
                   <div style={{ fontWeight: 800, fontSize: 19 }}>{subName(t.ex.task, name)}</div>
-                  {t.ex.ru && <div className="muted small">{t.ex.ru}</div>}
+                  {t.ex.ru && <div className="muted small">{subName(t.ex.ru, name)}</div>}
                   <div className="tiny muted">{t.epTitle}</div>
                 </div>
                 <span className="no-print" style={{ fontSize: 24 }} title={done ? 'episode done' : ''}>{done ? '✅' : '⬜'}</span>

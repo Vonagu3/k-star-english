@@ -863,7 +863,7 @@
                 },
                 {
                   "text": "My name is {name}.",
-                  "ru": "Меня зовут Марго.",
+                  "ru": "Меня зовут {name}.",
                   "emoji": "🪪"
                 },
                 {
@@ -1665,8 +1665,8 @@
                   "emoji": "🔤"
                 },
                 {
-                  "text": "M, A, R, G, O.",
-                  "ru": "М, А, Р, Г, О.",
+                  "text": "{spell}",
+                  "ru": "Назови буквы своего имени по-английски",
                   "emoji": "🪪"
                 },
                 {
@@ -1937,7 +1937,7 @@
               "items": [
                 {
                   "text": "Hello! My name is {name}.",
-                  "ru": "Привет! Меня зовут Марго.",
+                  "ru": "Привет! Меня зовут {name}.",
                   "emoji": "👋"
                 },
                 {
@@ -5880,8 +5880,8 @@
         "title": "Part 5: Talk to Coach Mina",
         "items": [
           {
-            "text": "Hello! My name is {name}. M, A, R, G, O.",
-            "ru": "Привет! Меня зовут Марго. М-А-Р-Г-О.",
+            "text": "Hello! My name is {name}. I'm a trainee.",
+            "ru": "Привет! Меня зовут {name}. Я стажёр.",
             "emoji": "🪪"
           },
           {

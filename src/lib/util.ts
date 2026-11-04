@@ -9,7 +9,16 @@ export function shuffle<T>(arr: readonly T[], seed?: number): T[] {
   return a;
 }
 export const sample = <T,>(arr: readonly T[], n: number) => shuffle(arr).slice(0, n);
-export const subName = (text: string, name: string) => text.replaceAll('{name}', name || 'Star');
+const CYR: Record<string, string> = {
+  а: 'a', б: 'b', в: 'v', г: 'g', д: 'd', е: 'e', ё: 'yo', ж: 'zh', з: 'z', и: 'i', й: 'y', к: 'k', л: 'l', м: 'm', н: 'n', о: 'o', п: 'p',
+  р: 'r', с: 's', т: 't', у: 'u', ф: 'f', х: 'kh', ц: 'ts', ч: 'ch', ш: 'sh', щ: 'sch', ъ: '', ы: 'y', ь: '', э: 'e', ю: 'yu', я: 'ya',
+};
+/** Latin spelling of a (possibly Cyrillic) name: "Анна" → "anna". */
+export const translit = (s: string) => s.toLowerCase().split('').map((c) => CYR[c] ?? c).join('');
+/** "Анна" → "A, N, N, A." (the English letters of the child's name). */
+export const spellName = (name: string) => `${translit(name || 'Star').replace(/[^a-z]/g, '').toUpperCase().split('').join(', ')}.`;
+/** Substitutes the child's name ({name}) and its spelling ({spell}) into content text. */
+export const subName = (text: string, name: string) => text.replaceAll('{spell}', spellName(name)).replaceAll('{name}', name || 'Star');
 export const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 export const tidy = (s: string) => s.toLowerCase().replace(/[’']/g, "'").replace(/[^a-z0-9' ]+/g, ' ').replace(/\s+/g, ' ').trim();
 const NUMBERS: Record<string, string> = {
