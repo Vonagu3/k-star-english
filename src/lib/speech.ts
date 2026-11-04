@@ -42,12 +42,49 @@ const CONTRACTIONS: [RegExp, string][] = [
 [/\bcan't\b/g, 'can not'], [/\bcannot\b/g, 'can not'], [/\bwon't\b/g, 'will not'],
   [/\b(\w+)n't\b/g, '$1 not'],
 ];
-const NUMS: Record<string, string> = { '0': 'zero', '1': 'one', '2': 'two', '3': 'three', '4': 'four', '5': 'five', '6': 'six', '7': 'seven', '8': 'eight', '9': 'nine', '10': 'ten', '11': 'eleven', '12': 'twelve', '20': 'twenty' };
+/** Number words → digits, so "one two three" and "1 2 3" / "123" compare equal. */
+const NUM_WORDS: Record<string, string> = {
+  zero: '0', oh: '0', one: '1', two: '2', three: '3', four: '4', five: '5', six: '6', seven: '7', eight: '8', nine: '9', ten: '10',
+  eleven: '11', twelve: '12', thirteen: '13', fourteen: '14', fifteen: '15', sixteen: '16', seventeen: '17', eighteen: '18', nineteen: '19',
+  twenty: '20', thirty: '30', forty: '40', fifty: '50', sixty: '60', seventy: '70', eighty: '80', ninety: '90', hundred: '100',
+};
 
 export function normalise(s: string): string {
-  let t = translit(s).replace(/[’']/g, "'").replace(/[^a-z0-9' ]+/g, ' ');
+  let t = translit(s).replace(/[’']/g, "'")
+    // clock times as recognisers write them: 7:30 → half past 7, 7:00 → 7 o'clock, 7:15 → quarter past 7
+    .replace(/\b(\d{1,2}):30\b/g, 'half past $1').replace(/\b(\d{1,2}):15\b/g, 'quarter past $1')
+    .replace(/\b(\d{1,2}):00\b/g, "$1 o'clock").replace(/\b(\d{1,2})\s*(am|pm|a\.m\.|p\.m\.)/g, '$1')
+    .replace(/[^a-z0-9' ]+/g, ' ');
   for (const [re, rep] of CONTRACTIONS) t = t.replace(re, rep);
-  return t.replace(/'/g, '').split(/\s+/).filter(Boolean).map((w) => NUMS[w] ?? w).join(' ');
+  // "oh" is only a number inside a run of numbers; elsewhere keep it as a word.
+  const words = t.replace(/'/g, '').split(/\s+/).filter(Boolean);
+  const mapped = words.map((w, i) => {
+    if (w === 'oh') return /^\d+$/.test(NUM_WORDS[words[i - 1]] ?? words[i - 1] ?? '') ? '0' : w;
+    return NUM_WORDS[w] ?? w;
+  });
+  // compound numbers: "twenty one" (20 1) → 21, "one hundred" (1 100) → 100
+  const out: string[] = [];
+  for (const w of mapped) {
+    const prev = out[out.length - 1];
+    if (prev && /^[2-9]0$/.test(prev) && /^[1-9]$/.test(w)) out[out.length - 1] = String(Number(prev) + Number(w));
+    else if (prev === '1' && w === '100') out[out.length - 1] = '100';
+    else out.push(w);
+  }
+  return out.join(' ');
+}
+
+/** Joins runs of numbers into one token ("1 2 3 4 5" → "12345"), remembering which original tokens each came from. */
+function mergeNumbers(tokens: string[]): { toks: string[]; from: number[][] } {
+  const toks: string[] = [];
+  const from: number[][] = [];
+  tokens.forEach((t, i) => {
+    const isNum = /^\d+$/.test(t);
+    if (isNum && toks.length && /^\d+$/.test(toks[toks.length - 1])) {
+      toks[toks.length - 1] += t;
+      from[from.length - 1].push(i);
+    } else { toks.push(t); from.push([i]); }
+  });
+  return { toks, from };
 }
 
 function lev(a: string, b: string): number {
@@ -81,10 +118,12 @@ function checkLetters(T: string[], heard: string[]): SpeechCheck | null {
 export type SpeechCheck = { ok: boolean; score: number; matched: boolean[]; words: string[] };
 
 /** Aligns one transcript with the target (fuzzy longest common subsequence, in order). */
-function scoreOne(T: string[], h: string, names: Set<string>, nameWildcard: boolean): SpeechCheck {
-  const H = normalise(h).split(' ').filter(Boolean);
-  if (!H.length) return { ok: false, score: 0, matched: T.map(() => false), words: T };
-  const eq = (t: string, x: string) => (names.has(t) ? nameWildcard || sim(t, x) >= 0.5 : sim(t, x) >= (t.length <= 4 ? 1 : 0.8));
+function scoreOne(T0: string[], h: string, names: Set<string>, nameWildcard: boolean): SpeechCheck {
+  const { toks: T, from } = mergeNumbers(T0);
+  const H = mergeNumbers(normalise(h).split(' ').filter(Boolean)).toks;
+  if (!H.length) return { ok: false, score: 0, matched: T0.map(() => false), words: T0 };
+  const eq = (t: string, x: string) => (names.has(t) ? nameWildcard || sim(t, x) >= 0.5
+    : /^\d+$/.test(t) ? t === x : sim(t, x) >= (t.length <= 4 ? 1 : 0.8));
   const L = Array.from({ length: T.length + 1 }, () => Array(H.length + 1).fill(0));
   for (let i = T.length - 1; i >= 0; i--) for (let j = H.length - 1; j >= 0; j--) {
     L[i][j] = eq(T[i], H[j]) ? L[i + 1][j + 1] + 1 : Math.max(L[i + 1][j], L[i][j + 1]);
@@ -98,7 +137,9 @@ function scoreOne(T: string[], h: string, names: Set<string>, nameWildcard: bool
   const recall = m / T.length;
   const precision = m / H.length;
   const ok = (T.length <= 4 ? m === T.length : recall >= 0.85) && precision >= 0.6;
-  return { ok, score: recall * Math.min(1, precision / 0.6), matched, words: T };
+  const matched0 = T0.map(() => false);
+  from.forEach((idx, k) => idx.forEach((i) => { matched0[i] = matched[k]; }));
+  return { ok, score: recall * Math.min(1, precision / 0.6), matched: matched0, words: T0 };
 }
 
 /**

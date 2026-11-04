@@ -27,6 +27,23 @@ describe('checkSpeech', () => {
     expect(checkSpeech('M, A, R, I, A.', ['em ay ar eye ay']).ok).toBe(true);
     expect(checkSpeech('M, A, R, I, A.', ['m a r k']).ok).toBe(false);
   });
+  it('accepts counting however the recogniser writes numbers', () => {
+    for (const heard of ['one two three four five', '1 2 3 4 5', '12345', '1, 2, 3, 4, 5', '1 2 3 45']) {
+      expect(checkSpeech('One, two, three, four, five.', [heard]).ok).toBe(true);
+    }
+    expect(checkSpeech('One, two, three, four, five.', ['1 2 3 4']).ok).toBe(false);
+    expect(checkSpeech('One, two, three, four, five.', ['1 2 3 4 6']).ok).toBe(false);
+    expect(checkSpeech("I'm ten.", ["I'm 10"]).ok).toBe(true);
+    expect(checkSpeech('Six, seven, eight, nine, ten!', ['678910']).ok).toBe(true);
+    expect(checkSpeech("It's half past seven.", ["it's 7:30"]).ok).toBe(true);
+    expect(checkSpeech("It's seven o'clock.", ["it's 7:00"]).ok).toBe(true);
+    expect(checkSpeech("It's seven o'clock.", ["it's 7 o'clock"]).ok).toBe(true);
+    expect(checkSpeech("It's seven o'clock.", ["it's 8 o'clock"]).ok).toBe(false);
+    expect(checkSpeech('There are twenty-one stars.', ['there are 21 stars']).ok).toBe(true);
+    expect(checkSpeech('One hundred!', ['100']).ok).toBe(true);
+    const m = checkSpeech('One, two, three. Go!', ['one two three']);
+    expect(m.matched).toEqual([true, true, true, false]);
+  });
   it('rejects long unrelated speech that happens to contain the words', () => {
     expect(checkSpeech('I like pizza.', ['i really really like to eat a big pizza with my mum and dad every day']).ok).toBe(false);
   });
@@ -52,5 +69,32 @@ describe('checkSpeech', () => {
   });
   it('normalises contractions and punctuation', () => {
     expect(normalise("He's got a cat, isn't it?")).toBe('he has got a cat is not it');
+    expect(normalise('One, two, three!')).toBe('1 2 3');
+    expect(normalise('Oh no!')).toBe('oh no');
+  });
+});
+
+import world1 from '../content/stage1/world1.json';
+import world2 from '../content/stage1/world2.json';
+import world3 from '../content/stage1/world3.json';
+import paris from '../content/stage1/world-paris.json';
+import { subName } from './util';
+
+describe('every Say it! phrase in the content can be passed', () => {
+  const DIGITS: Record<string, string> = { one: '1', two: '2', three: '3', four: '4', five: '5', six: '6', seven: '7', eight: '8', nine: '9', ten: '10', eleven: '11', twelve: '12', twenty: '20' };
+  const texts: string[] = [];
+  for (const w of [world1, world2, world3, paris] as { weeks: { episodes: { exercises: { type: string; items?: { text: string }[] }[] }[] }[]; showcase: { exercises: { type: string; items?: { text: string }[] }[] }; finale?: { exercises: { type: string; items?: { text: string }[] }[] } }[]) {
+    const eps = [...w.weeks.flatMap((wk) => wk.episodes), w.showcase, ...(w.finale ? [w.finale] : [])];
+    for (const ep of eps) for (const ex of ep.exercises) if (ex.type === 'speak') for (const it of ex.items ?? []) texts.push(subName(it.text, 'Anna'));
+  }
+  it(`passes all ${texts.length} phrases said exactly, and with numbers as digits`, () => {
+    const failed: string[] = [];
+    for (const t of texts) {
+      const plain = t.replace(/[!?.,]/g, '');
+      const digits = plain.replace(/\b(one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|twenty)\b/gi, (m) => DIGITS[m.toLowerCase()]);
+      if (!checkSpeech(t, [plain], ['Anna']).ok) failed.push(`exact: ${t}`);
+      if (!checkSpeech(t, [digits], ['Anna']).ok) failed.push(`digits: ${t} <- ${digits}`);
+    }
+    expect(failed).toEqual([]);
   });
 });
