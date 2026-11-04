@@ -14,6 +14,8 @@ export type Tally = { c: number; t: number };
 export type GameState = {
   version: 1;
   updatedAt: number;
+  /** Set when the parent starts over: older snapshots from other devices are ignored. */
+  resetAt?: number;
   profile: {
     name: string;
     createdAt: number;
@@ -49,6 +51,7 @@ export const emptyState = (): GameState => ({
 /** Merge two snapshots (e.g. two devices): newer wins for scalars, collections are unioned with best values. */
 export function mergeStates(a: GameState, b: GameState): GameState {
   const [base, other] = a.updatedAt >= b.updatedAt ? [a, b] : [b, a];
+  if (base.resetAt && other.updatedAt <= base.resetAt) return base;
   const progress = { ...other.progress };
   for (const [k, v] of Object.entries(base.progress)) {
     const o = progress[k];
@@ -238,6 +241,22 @@ if (typeof window !== 'undefined') {
 }
 
 export const persistNow = persist;
+
+/** Wipes the child's profile and progress on this device and in the cloud (parent action). */
+export async function resetEverything() {
+  const now = Date.now();
+  const fresh: GameState = { ...emptyState(), updatedAt: now, resetAt: now };
+  useGame.setState({ s: fresh });
+  await idbSet(KEY, fresh);
+  const { userId } = useGame.getState();
+  if (supabase && userId) {
+    await supabase.from('kid_state').upsert({ user_id: userId, state: fresh, updated_at: new Date(now).toISOString() });
+    const { data } = await supabase.from('submissions').select('storage_path').not('storage_path', 'is', null);
+    const paths = (data ?? []).map((r) => r.storage_path as string);
+    if (paths.length) await supabase.storage.from('submissions').remove(paths);
+    await supabase.from('submissions').delete().eq('user_id', userId);
+  }
+}
 
 export async function sha256(text: string) {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(`kstar:${text}`));

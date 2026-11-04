@@ -33,6 +33,12 @@ export async function submitWork(userId: string | null, s: { kind: Submission['k
   await idbSet(KEY, list.slice(0, 300));
 }
 
+export async function clearLocalSubmissions() {
+  for (const x of await localList()) await idbSet(BLOBS + x.id, undefined);
+  await idbSet(KEY, []);
+  await idbSet('kstar-seen-fb', []);
+}
+
 export async function listSubmissions(userId: string | null): Promise<Submission[]> {
   const local = await localList();
   const withUrls = await Promise.all(local.map(async (x) => {

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useGame, sha256 } from '../game/store';
+import { useGame, sha256, resetEverything } from '../game/store';
 import { rankFor, dayKey } from '../game/rules';
 import { EPISODE_ORDER, WORDS, WORLDS } from '../content';
-import { listSubmissions, reviewSubmission, type Submission } from '../lib/submissions';
+import { clearLocalSubmissions, listSubmissions, reviewSubmission, type Submission } from '../lib/submissions';
 import { supabase } from '../lib/supabase';
 
 const PROGRAMME_URL = 'https://claude.ai/artifact/FcDuVghhNVuxqhGBTqQBbq';
@@ -135,6 +135,7 @@ function Dashboard() {
         </div>
         <a href={PROGRAMME_URL} target="_blank" rel="noreferrer">📄 Программа обучения (Claude Doc)</a>
         <a href="#/notebook">📓 Все задания для тетради (можно распечатать)</a>
+        <ResetBlock />
         {supabase && <button className="btn ghost small" onClick={() => void supabase!.auth.signOut().then(() => location.reload())}>Выйти из семейного аккаунта на этом устройстве</button>}
       </div>
     </div>
@@ -165,6 +166,27 @@ function ReviewItem({ x, onReview }: { x: Submission; onReview: (x: Submission, 
           </div>
         </>
       ) : <div className="small">{x.status === 'approved' ? '✅ Принято' : '🔁 На доработку'}{x.comment ? ` — ${x.comment}` : ''}{x.bonus ? ` (+${x.bonus} ❤️)` : ''}</div>}
+    </div>
+  );
+}
+
+function ResetBlock() {
+  const [step, setStep] = useState(0);
+  const [text, setText] = useState('');
+  const [busy, setBusy] = useState(false);
+  if (step === 0) return <button className="btn ghost small" style={{ color: 'var(--red)' }} onClick={() => setStep(1)}>🗑️ Начать заново (удалить профиль и весь прогресс)</button>;
+  return (
+    <div className="card col" style={{ boxShadow: 'none', borderColor: 'var(--red)' }}>
+      <b style={{ color: 'var(--red)' }}>Удалить имя, аватар, прогресс, карточки, рисунки и фото — на всех устройствах?</b>
+      <div className="small">Это нельзя отменить. Семейный аккаунт (email и пароль) останется. Для подтверждения введите слово <b>УДАЛИТЬ</b>.</div>
+      <input className="field" value={text} onChange={(e) => setText(e.target.value)} />
+      <div className="row">
+        <button className="btn ghost small" onClick={() => { setStep(0); setText(''); }}>Отмена</button>
+        <button className="btn small" disabled={text.trim().toUpperCase() !== 'УДАЛИТЬ' || busy}
+          onClick={async () => { setBusy(true); await resetEverything(); await clearLocalSubmissions(); location.hash = '#/'; location.reload(); }}>
+          {busy ? 'Удаляю…' : 'Удалить всё'}
+        </button>
+      </div>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { emptyState, mergeStates } from './store';
 import { rankFor, starsFor, rewardsFor, isUnlocked, srsUpdate, srsDue, streakOnActive, questsForDay, dayKey, cardDrop } from './rules';
 
 const D = 86400000;
@@ -89,5 +90,17 @@ describe('quests', () => {
       expect(new Set(q.map((x) => x.id)).size).toBe(3);
       expect(q[0].metric).toBe('episodes');
     }
+  });
+});
+
+describe('merge after reset', () => {
+  it('ignores older snapshots after a reset', () => {
+    const old = { ...emptyState(), updatedAt: 100, fans: 500, profile: { name: 'Old' } as never };
+    const fresh = { ...emptyState(), updatedAt: 200, resetAt: 200 };
+    const m = mergeStates(old, fresh);
+    expect(m.profile).toBeNull();
+    expect(m.fans).toBe(0);
+    const later = { ...emptyState(), updatedAt: 300, fans: 10 };
+    expect(mergeStates(fresh, later).fans).toBe(10);
   });
 });
