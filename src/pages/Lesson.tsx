@@ -80,7 +80,7 @@ export default function Lesson() {
         </div>
       )}
       <div className="tiny muted center" style={{ marginTop: -6, marginBottom: 6 }}>
-        {trMode !== 'all' && (ref.episode.kind === 'showcase' || ref.episode.kind === 'debut') ? '🔒 Check time: no translation hints' : trMode !== 'off' ? (matchMedia('(hover: none)').matches ? '👆 Hold a word to see it in Russian' : '🖱️ Point at a word to see it in Russian') : ''}
+        {trMode !== 'all' && (ref.episode.kind === 'showcase' || ref.episode.kind === 'debut') ? '🔒 Check time: no translation hints' : trMode !== 'off' ? (matchMedia('(hover: none)').matches ? '👆 Hold a word to see it in Russian' : '🖱️ Right-click a word to see it in Russian') : ''}
       </div>
       {review !== null && (
         <div key={`review-${review}`} data-no-tr={ref.episode.kind === 'showcase' || ref.episode.kind === 'debut' ? 'check' : undefined}>

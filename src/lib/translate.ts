@@ -1,7 +1,16 @@
 import DICT from '../content/dictionary.json';
+import IPA from '../content/ipa.json';
 import { WORLDS } from '../content';
 
 const dict = DICT as Record<string, string>;
+const ipa = IPA as Record<string, string>;
+
+/** British IPA for a word or phrase (word by word), or null if a word is unknown. */
+export function ipaFor(en: string): string | null {
+  const parts = en.toLowerCase().replace(/’/g, "'").split(/[\s-]+/).filter(Boolean);
+  const out = parts.map((p) => ipa[p] ?? ipa[p.replace(/'s$/, '')] ?? null);
+  return out.every(Boolean) ? out.join(' ') : null;
+}
 
 /** Lesson vocabulary first (exact meaning used in the app), including multi-word phrases. */
 const VOCAB = new Map<string, string>();

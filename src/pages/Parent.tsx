@@ -124,7 +124,7 @@ function Dashboard() {
           </select>
         </label>
         <VoiceSettings />
-        <label className="row small">Перевод слов при наведении / долгом нажатии (в заданиях на вспоминание, разминке, Showcase и Debut подсказок нет)
+        <label className="row small">Перевод и транскрипция слов по правому клику мыши / долгому нажатию (в заданиях на вспоминание, разминке, Showcase и Debut подсказок нет)
           <select className="field" style={{ maxWidth: 220 }} value={s.profile?.settings.hoverTranslate ?? 'practice'}
             onChange={(e) => update((st) => ({ ...st, profile: { ...st.profile!, settings: { ...st.profile!.settings, hoverTranslate: e.target.value as 'all' | 'practice' | 'off' } } }))}>
             <option value="practice">только в обучающих частях (рекомендуется)</option>

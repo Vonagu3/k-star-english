@@ -168,12 +168,14 @@ input.field:focus, textarea.field:focus { border-color: var(--violet); }
 }
 
 .translate-tip {
-  position: fixed; z-index: 80; pointer-events: none; max-width: 260px;
+  position: fixed; z-index: 80; max-width: 280px;
   padding: 8px 12px; border-radius: 14px; background: #2b2140; color: #fff;
   font-weight: 700; font-size: 16px; line-height: 1.3; text-align: center;
   box-shadow: 0 6px 18px rgba(43, 33, 64, 0.3);
 }
-.translate-tip b { color: #ffd23f; }
+.translate-tip b { color: #ffd23f; font-size: 18px; }
+.translate-tip .tip-ipa { color: #c9bfff; font-family: 'Charis SIL', 'Doulos SIL', 'Lucida Sans Unicode', 'Arial Unicode MS', system-ui, sans-serif; font-weight: 500; font-size: 15px; margin: 2px 0 4px; }
+.translate-tip .tip-say { width: 32px; height: 32px; border-radius: 10px; background: rgba(255, 255, 255, 0.15); font-size: 16px; display: grid; place-items: center; }
 @media (hover: none) {
   body { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
   input, textarea { -webkit-user-select: text; user-select: text; }
