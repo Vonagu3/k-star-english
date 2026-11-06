@@ -16,6 +16,8 @@ export type GameState = {
   updatedAt: number;
   /** Set when the parent starts over: older snapshots from other devices are ignored. */
   resetAt?: number;
+  /** Account the saved progress belongs to (cloud mode): progress of another account is never mixed in. */
+  owner?: string;
   profile: {
     name: string;
     createdAt: number;
@@ -120,6 +122,8 @@ export const useGame = create<Store>((set, get) => ({
 
   load: async (userId) => {
     let local = ((await idbGet(KEY)) as GameState | undefined) ?? emptyState();
+    // Progress saved on this device for another (or a deleted) account must not leak into this one.
+    if (supabase && userId && local.owner !== userId) local = emptyState();
     if (supabase && userId) {
       try {
         const { data, error } = await supabase.from('kid_state').select('state').eq('user_id', userId).maybeSingle();
@@ -129,7 +133,7 @@ export const useGame = create<Store>((set, get) => ({
         set({ syncing: 'offline' });
       }
     }
-    set({ s: rollDay(local), ready: true, userId });
+    set({ s: { ...rollDay(local), owner: userId ?? local.owner }, ready: true, userId });
   },
 
   update: (fn) => {
@@ -245,7 +249,7 @@ export const persistNow = persist;
 /** Wipes the child's profile and progress on this device and in the cloud (parent action). */
 export async function resetEverything() {
   const now = Date.now();
-  const fresh: GameState = { ...emptyState(), updatedAt: now, resetAt: now };
+  const fresh: GameState = { ...emptyState(), updatedAt: now, resetAt: now, owner: useGame.getState().userId ?? undefined };
   useGame.setState({ s: fresh });
   await idbSet(KEY, fresh);
   const { userId } = useGame.getState();
