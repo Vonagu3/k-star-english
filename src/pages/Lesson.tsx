@@ -19,6 +19,8 @@ export default function Lesson() {
   const trMode = useGame((g) => g.s.profile?.settings.hoverTranslate ?? 'practice');
   const finishEpisode = useGame((g) => g.finishEpisode);
   const [k, setK] = useState(0);
+  /** Index of an earlier exercise being re-watched (review mode), or null. */
+  const [review, setReview] = useState<number | null>(null);
   const acc = useRef<ExResult[]>([]);
   const [outcome, setOutcome] = useState<(FinishOutcome & { correct: number; total: number }) | null>(null);
   const [confirmExit, setConfirmExit] = useState(false);
@@ -30,7 +32,7 @@ export default function Lesson() {
   const onDone = useCallback((r: ExResult) => {
     acc.current.push(r);
     stopSpeaking();
-    if (k + 1 < exs.length) { setK(k + 1); window.scrollTo({ top: 0 }); return; }
+    if (k + 1 < exs.length) { setK(k + 1); setReview(null); window.scrollTo({ top: 0 }); return; }
     const all = acc.current;
     const result: EpisodeResult = {
       correct: all.reduce((s, x) => s + x.correct, 0),
@@ -56,17 +58,42 @@ export default function Lesson() {
     <div className="page" style={{ paddingBottom: 140 }}>
       <div className="lesson-top row">
         <button className="icon-btn" aria-label="Exit" onClick={() => setConfirmExit(true)}>✖️</button>
-        <div className="bar grow"><span style={{ width: `${(k / exs.length) * 100}%` }} /></div>
-        <div className="chip">{TYPE_LABEL[ex.type].emoji} {k + 1}/{exs.length}</div>
+        <div className="row grow" style={{ gap: 4 }} role="tablist" aria-label="Tasks in this episode">
+          {exs.map((e, j) => {
+            const state = j < k ? 'done' : j === k ? 'current' : 'next';
+            const viewing = (review ?? k) === j;
+            return (
+              <button key={j} role="tab" aria-selected={viewing} disabled={j > k} title={`${j + 1}. ${TYPE_LABEL[e.type].name}`}
+                onClick={() => { stopSpeaking(); setReview(j === k ? null : j); window.scrollTo({ top: 0 }); }}
+                style={{ flex: 1, height: viewing ? 16 : 12, borderRadius: 999, cursor: j > k ? 'default' : 'pointer', transition: 'height 0.15s',
+                  background: state === 'done' ? 'var(--mint)' : state === 'current' ? 'var(--pink)' : '#eadcf0',
+                  outline: viewing ? '3px solid var(--violet)' : 'none', outlineOffset: 1 }} />
+            );
+          })}
+        </div>
+        <div className="chip">{TYPE_LABEL[exs[review ?? k].type].emoji} {(review ?? k) + 1}/{exs.length}</div>
       </div>
+      {review !== null && (
+        <div className="card tint-violet row" style={{ padding: 10, marginBottom: 8 }}>
+          <div className="grow small" style={{ fontWeight: 800 }}>👀 Review: {TYPE_LABEL[exs[review].type].name} · повторение, баллы не меняются</div>
+          <button className="btn small" onClick={() => { stopSpeaking(); setReview(null); }}>Back to task {k + 1} →</button>
+        </div>
+      )}
       <div className="tiny muted center" style={{ marginTop: -6, marginBottom: 6 }}>
         {trMode !== 'all' && (ref.episode.kind === 'showcase' || ref.episode.kind === 'debut') ? '🔒 Check time: no translation hints' : trMode !== 'off' ? (matchMedia('(hover: none)').matches ? '👆 Hold a word to see it in Russian' : '🖱️ Point at a word to see it in Russian') : ''}
       </div>
+      {review !== null && (
+        <div key={`review-${review}`} data-no-tr={ref.episode.kind === 'showcase' || ref.episode.kind === 'debut' ? 'check' : undefined}>
+          <ExerciseView ex={exs[review]} onDone={() => { stopSpeaking(); setReview(null); window.scrollTo({ top: 0 }); }} name={name} lessonId={`${id}#review`} />
+        </div>
+      )}
+      <div style={{ display: review !== null ? 'none' : undefined }}>
       <AnimatePresence mode="wait">
         <motion.div key={k} data-no-tr={ref.episode.kind === 'showcase' || ref.episode.kind === 'debut' ? 'check' : undefined} initial={{ x: 40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -40, opacity: 0 }} transition={{ duration: 0.2 }}>
           <ExerciseView ex={ex} onDone={onDone} name={name} lessonId={id} />
         </motion.div>
       </AnimatePresence>
+      </div>
       {confirmExit && (
         <div className="feedback bad"><div className="inner">
           <div className="grow" style={{ fontWeight: 800 }}>Leave the episode? Progress in it will be lost. · Выйти из эпизода?</div>

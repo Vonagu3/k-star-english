@@ -12,12 +12,60 @@ import { Counter, Feedback, Prompt, SpeakBtn, type ExProps } from './common';
 type Of<T extends Exercise['type']> = Extract<Exercise, { type: T }>;
 const strip = (s: string) => s.toLowerCase().replace(/[^a-z0-9']/g, '');
 
-// 10. Rhythm chant / karaoke.
+// 10. Rhythm chant / karaoke — with a player: previous / play-pause / next line, restart, tap a line to start there.
+function useChantPlayer(lines: string[], bpm: number) {
+  const [line, setLine] = useState(-1);
+  const [playing, setPlaying] = useState(false);
+  const [heardAll, setHeardAll] = useState(false);
+  const stopRef = useRef<(() => void) | null>(null);
+  const lastLine = useRef(0);
+  const stop = () => { stopRef.current?.(); stopRef.current = null; stopSpeaking(); setPlaying(false); };
+  const playFrom = (from: number, withVoice: boolean, onEnd?: () => void) => {
+    stop();
+    const start = Math.max(0, Math.min(from, lines.length - 1));
+    setPlaying(true); setLine(-1);
+    const COUNT_IN = 2;
+    stopRef.current = startBeat(bpm, (b) => {
+      if (b < COUNT_IN) { sfx.tap(); return; }
+      if ((b - COUNT_IN) % 4 !== 0) return;
+      const L = start + (b - COUNT_IN) / 4;
+      if (L >= lines.length) {
+        stopRef.current?.(); stopRef.current = null;
+        setPlaying(false); setLine(-1); lastLine.current = 0; setHeardAll(true);
+        onEnd?.();
+        return;
+      }
+      setLine(L); lastLine.current = L;
+      if (withVoice) void speak(lines[L], { rate: 1.05 });
+    });
+  };
+  useEffect(() => () => { stopRef.current?.(); stopSpeaking(); }, []);
+  const pause = () => { if (line >= 0) lastLine.current = line; stop(); };
+  return { line, playing, heardAll, playFrom, pause, stop, resumeAt: () => lastLine.current };
+}
+
+function PlayerControls({ p, n, voice, onVoice }: { p: ReturnType<typeof useChantPlayer>; n: number; voice: boolean; onVoice?: () => void }) {
+  const cur = p.line >= 0 ? p.line : p.resumeAt();
+  return (
+    <div className="row wrap" style={{ justifyContent: 'center', gap: 8 }}>
+      <button className="icon-btn" aria-label="Start again" title="Start again" onClick={() => p.playFrom(0, voice)}>⏮</button>
+      <button className="icon-btn" aria-label="Previous line" title="Previous line" onClick={() => p.playFrom(cur - 1, voice)}>◀️</button>
+      {p.playing
+        ? <button className="btn violet" style={{ minWidth: 120 }} onClick={p.pause}>⏸ Pause</button>
+        : <button className="btn violet" style={{ minWidth: 120 }} onClick={() => p.playFrom(cur, voice)}>▶️ Play</button>}
+      <button className="icon-btn" aria-label="Next line" title="Next line" onClick={() => p.playFrom(Math.min(cur + 1, n - 1), voice)}>▶️▶️</button>
+      {onVoice && <button className="chip" onClick={onVoice}>{voice ? '🔊 voice on' : '🔇 voice off'}</button>}
+    </div>
+  );
+}
+
 export function Chant({ ex, onDone, name }: ExProps<Of<'chant'>>) {
   const lines = useMemo(() => ex.lines.map((l) => subName(l, name)), [ex.lines, name]);
-  const [phase, setPhase] = useState<'intro' | 'listen' | 'fill' | 'sing' | 'done'>('intro');
-  const [line, setLine] = useState(-1);
-  const stopRef = useRef<(() => void) | null>(null);
+  const [phase, setPhase] = useState<'listen' | 'fill' | 'sing'>('listen');
+  const [singVoice, setSingVoice] = useState(false);
+  const [sangOnce, setSangOnce] = useState(false);
+  const p = useChantPlayer(lines, ex.bpm);
+  useEffect(() => { if (phase === 'sing' && p.playing) setSangOnce(true); }, [phase, p.playing]);
 
   // Blank positions: [lineIdx, tokenIdx[]] per blank, in reading order.
   const tokens = useMemo(() => lines.map((l) => l.split(/\s+/)), [lines]);
@@ -30,7 +78,7 @@ export function Chant({ ex, onDone, name }: ExProps<Of<'chant'>>) {
         for (let ti = 0; ti + parts.length <= tokens[li].length; ti++) {
           const idx = parts.map((_, k) => ti + k);
           if (idx.some((k) => used.has(`${li}:${k}`))) continue;
-          if (parts.every((p, k) => strip(tokens[li][ti + k]) === p)) {
+          if (parts.every((pt, k) => strip(tokens[li][ti + k]) === pt)) {
             idx.forEach((k) => used.add(`${li}:${k}`));
             found.push({ word: b, line: li, idx });
             break outer;
@@ -41,26 +89,12 @@ export function Chant({ ex, onDone, name }: ExProps<Of<'chant'>>) {
     return found.sort((a, b) => a.line - b.line || a.idx[0] - b.idx[0]);
   }, [ex.blanks, tokens]);
   const options = useMemo(() => shuffle(blanks.map((b) => b.word)), [blanks]);
-  const [filled, setFilled] = useState<(string | null)[]>([]);
+  const [filled, setFilled] = useState<string[]>([]);
   const [score, setScore] = useState(0);
   const [wrong, setWrong] = useState<string | null>(null);
   const cur = filled.length;
 
-  const play = (withVoice: boolean, then: () => void) => {
-    setLine(-1);
-    const beatsPerLine = 4;
-    stopRef.current = startBeat(ex.bpm, (b) => {
-      if (b < 4) { if (b === 0) sfx.tap(); return; } // count-in bar
-      const L = Math.floor((b - 4) / beatsPerLine);
-      if ((b - 4) % beatsPerLine === 0) {
-        if (L >= lines.length) { stopRef.current?.(); setLine(-1); then(); return; }
-        setLine(L);
-        if (withVoice) void speak(lines[L], { rate: 1.05 });
-      }
-    });
-  };
-  useEffect(() => () => { stopRef.current?.(); stopSpeaking(); }, []);
-
+  const go = (ph: typeof phase) => { p.stop(); setPhase(ph); };
   const pick = (w: string) => {
     if (cur >= blanks.length) return;
     if (strip(w) === strip(blanks[cur].word)) {
@@ -69,8 +103,12 @@ export function Chant({ ex, onDone, name }: ExProps<Of<'chant'>>) {
       setWrong(null);
       const next = [...filled, w];
       setFilled(next);
-      if (next.length === blanks.length) setTimeout(() => setPhase('sing'), 700);
+      if (next.length === blanks.length) setTimeout(() => go('sing'), 700);
     } else { sfx.wrong(); setWrong(w); }
+  };
+  const finish = () => {
+    p.stop(); sfx.win(); confetti({ particleCount: 80, spread: 70 });
+    setTimeout(() => onDone({ correct: score, total: blanks.length, skill: 'listening', metric: 'chant' }), 700);
   };
 
   const renderLine = (li: number) => tokens[li].map((t, ti) => {
@@ -78,33 +116,59 @@ export function Chant({ ex, onDone, name }: ExProps<Of<'chant'>>) {
     if (phase === 'fill' && bi >= 0) {
       if (blanks[bi].idx[0] !== ti) return null;
       const val = filled[bi];
-      return <span key={ti} className="blank" style={{ color: val ? 'var(--mint)' : bi === cur ? 'var(--pink)' : undefined }}>{val ?? ' '}</span>;
+      return <span key={ti} className="blank" style={{ color: val ? 'var(--mint)' : bi === cur ? 'var(--pink)' : undefined }}>{val ?? '\u00a0'}</span>;
     }
     return <span key={ti}>{t} </span>;
   });
+  const voice = phase === 'sing' ? singVoice : true;
 
   return (
     <div className="col">
-      <Prompt ru={phase === 'fill' ? 'Вставь пропущенные слова' : 'Слушай ритм и пой!'}>🎵 {ex.title ?? 'Chant time!'}</Prompt>
-      <div className="card col" style={{ gap: 6, background: 'linear-gradient(160deg, #2a1f5c, #5a2ca0)', borderColor: '#5a2ca0' }}>
-        {lines.map((_, li) => (
-          <div key={li} className={`karaoke-line ${line === li ? 'on' : ''}`} style={{ color: line === li ? '#fff' : '#d9ccff' }}>{renderLine(li)}</div>
+      <Prompt ru={phase === 'fill' ? 'Вставь пропущенные слова. Можно вернуться и послушать ещё' : phase === 'sing' ? 'Теперь пой сама! Нажми на строку, чтобы начать с неё' : 'Слушай и хлопай в ритм. Нажми на строку, чтобы начать с неё'}>
+        🎵 {ex.title ?? 'Chant time!'}
+      </Prompt>
+      <div className="row" style={{ justifyContent: 'center', gap: 6 }}>
+        {(['listen', 'fill', 'sing'] as const).map((ph, i) => (
+          <button key={ph} className="chip" disabled={(ph === 'fill' && !p.heardAll && filled.length === 0) || (ph === 'sing' && filled.length < blanks.length)}
+            style={{ borderColor: phase === ph ? 'var(--pink)' : undefined, background: phase === ph ? 'var(--pink-soft)' : undefined }} onClick={() => go(ph)}>
+            {i + 1}. {ph === 'listen' ? '🎧 Listen' : ph === 'fill' ? '✏️ Fill' : '🎤 Sing'}
+          </button>
         ))}
       </div>
-      {phase === 'intro' && <button className="btn" onClick={() => { setPhase('listen'); play(true, () => setPhase('fill')); }}>▶️ Listen to the chant</button>}
-      {phase === 'listen' && <div className="center muted" style={{ fontWeight: 800 }}>🎧 Listen and clap to the beat!</div>}
+      <div className="card col" style={{ gap: 6, background: 'linear-gradient(160deg, #2a1f5c, #5a2ca0)', borderColor: '#5a2ca0' }}>
+        {lines.map((_, li) => (
+          <div key={li} className={`karaoke-line ${p.line === li ? 'on' : ''}`} role="button" tabIndex={0}
+            style={{ color: p.line === li ? '#fff' : '#d9ccff', cursor: 'pointer' }}
+            onClick={() => p.playFrom(li, voice)}>
+            {renderLine(li)}
+          </div>
+        ))}
+      </div>
+      {phase !== 'fill' && <PlayerControls p={p} n={lines.length} voice={voice} onVoice={phase === 'sing' ? () => setSingVoice(!singVoice) : undefined} />}
+      {phase === 'listen' && (
+        <button className="btn" disabled={!p.heardAll && filled.length === 0} onClick={() => go(filled.length === blanks.length ? 'sing' : 'fill')}>
+          {p.heardAll || filled.length ? (filled.length === blanks.length ? 'Sing it! →' : 'Fill the gaps →') : '🎧 Listen to the end first'}
+        </button>
+      )}
       {phase === 'fill' && (
         <>
           <div className="row wrap" data-no-tr="recall" style={{ justifyContent: 'center', gap: 8 }}>
             {options.map((w, k) => (
-              <button key={k} className={`tile ${filled.includes(w) && filled.filter((x) => x === w).length >= options.filter((x) => x === w).length ? 'dim' : ''} ${wrong === w ? 'bad' : ''}`} onClick={() => pick(w)}>{w}</button>
+              <button key={k} className={`tile ${filled.filter((x) => x === w).length >= options.filter((x) => x === w).length ? 'dim' : ''} ${wrong === w ? 'bad' : ''}`} onClick={() => pick(w)}>{w}</button>
             ))}
           </div>
-          <div className="row" style={{ justifyContent: 'center' }}><SpeakBtn text={lines.join('. ')} /></div>
+          <div className="row" style={{ justifyContent: 'center' }}>
+            <button className="btn ghost small" onClick={() => go('listen')}>🎧 Listen again</button>
+            <SpeakBtn text={lines.join('. ')} />
+          </div>
         </>
       )}
-      {phase === 'sing' && <button className="btn sun" onClick={() => { setPhase('done'); play(false, () => { sfx.win(); confetti({ particleCount: 80, spread: 70 }); setTimeout(() => onDone({ correct: score, total: blanks.length, skill: 'listening', metric: 'chant' }), 800); }); }}>🎤 Now YOU sing it!</button>}
-      {phase === 'done' && <div className="center" style={{ fontWeight: 800, fontSize: 20 }}>🎤 Sing! Sing! Sing!</div>}
+      {phase === 'sing' && (
+        <div className="row wrap" style={{ justifyContent: 'center' }}>
+          {!sangOnce && !p.playing && <button className="btn sun" onClick={() => { setSangOnce(true); p.playFrom(0, singVoice); }}>🎤 Sing from the start!</button>}
+          <button className="btn mint" disabled={!sangOnce} onClick={finish}>✅ I sang it!</button>
+        </div>
+      )}
     </div>
   );
 }

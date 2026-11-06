@@ -8,33 +8,61 @@ import { Counter, Feedback, Prompt, SpeakBtn, WordPic, word, type ExProps } from
 
 type Of<T extends Exercise['type']> = Extract<Exercise, { type: T }>;
 
-// 1. Flashcards — learn new words with a British voice.
+/** Row of dots to jump to any item (current one highlighted, seen ones filled). */
+export function StepDots({ n, i, seen, onJump }: { n: number; i: number; seen: number; onJump: (k: number) => void }) {
+  return (
+    <div className="row wrap" style={{ justifyContent: 'center', gap: 6 }} role="tablist">
+      {Array.from({ length: n }, (_, k) => (
+        <button key={k} role="tab" aria-selected={k === i} aria-label={`Card ${k + 1}`} onClick={() => onJump(k)}
+          style={{ width: k === i ? 28 : 14, height: 14, borderRadius: 999, transition: 'width 0.2s',
+            background: k === i ? 'var(--pink)' : k <= seen ? 'var(--pink-2)' : '#eadcf0' }} />
+      ))}
+    </div>
+  );
+}
+
+// 1. Flashcards — learn new words with a British voice. Back / forward / jump to any card.
 export function Flashcards({ ex, onDone }: ExProps<Of<'flashcards'>>) {
   const [i, setI] = useState(0);
+  const [seen, setSeen] = useState(0);
   const [flip, setFlip] = useState(false);
   const w = word(ex.words[i]);
-  useEffect(() => { setFlip(false); void speak(w.en); }, [w.en]);
-  const next = () => {
-    sfx.tap();
-    if (i + 1 >= ex.words.length) onDone({ correct: ex.words.length, total: ex.words.length, skill: 'listening', words: ex.words.map((id) => ({ id, correct: true })) });
-    else setI(i + 1);
-  };
+  const last = ex.words.length - 1;
+  useEffect(() => { setFlip(false); setSeen((x) => Math.max(x, i)); void speak(w.en); }, [w.en, i]);
+  const go = (k: number) => { sfx.tap(); setI(Math.max(0, Math.min(last, k))); };
+  const finish = () => onDone({ correct: ex.words.length, total: ex.words.length, skill: 'listening', words: ex.words.map((id) => ({ id, correct: true })) });
+  useEffect(() => {
+    const h = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowRight') setI((x) => Math.min(last, x + 1));
+      if (e.key === 'ArrowLeft') setI((x) => Math.max(0, x - 1));
+    };
+    window.addEventListener('keydown', h);
+    return () => window.removeEventListener('keydown', h);
+  }, [last]);
   return (
     <div className="col" style={{ alignItems: 'center' }}>
-      <Prompt ru="Слушай и повторяй вслух">New words!</Prompt>
+      <Prompt ru="Слушай и повторяй вслух. Листай карточки стрелками или точками">New words!</Prompt>
       <Counter i={i} n={ex.words.length} />
-      <motion.button key={w.id} className="card" onClick={() => { setFlip(!flip); void speak(w.en); }}
-        initial={{ rotateY: 90, opacity: 0 }} animate={{ rotateY: 0, opacity: 1 }}
-        style={{ width: 'min(100%, 380px)', minHeight: 300, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 14 }}>
-        <WordPic w={w} size={110} />
-        <div className="say-text">{w.en}</div>
-        <div className="muted" style={{ minHeight: 24, fontWeight: 700 }}>{flip ? w.ru : 'tap to see in Russian'}</div>
-      </motion.button>
+      <div className="row" style={{ width: '100%', justifyContent: 'center', gap: 8 }}>
+        <button className="icon-btn" aria-label="Previous word" disabled={i === 0} style={{ opacity: i === 0 ? 0.35 : 1 }} onClick={() => go(i - 1)}>⬅️</button>
+        <motion.button key={w.id} className="card" onClick={() => { setFlip(!flip); void speak(w.en); }}
+          initial={{ rotateY: 90, opacity: 0 }} animate={{ rotateY: 0, opacity: 1 }}
+          style={{ width: 'min(100%, 380px)', minHeight: 300, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 14 }}>
+          <WordPic w={w} size={110} />
+          <div className="say-text">{w.en}</div>
+          <div className="muted" style={{ minHeight: 24, fontWeight: 700 }}>{flip ? w.ru : 'tap to see in Russian'}</div>
+        </motion.button>
+        <button className="icon-btn" aria-label="Next word" disabled={i === last} style={{ opacity: i === last ? 0.35 : 1 }} onClick={() => go(i + 1)}>➡️</button>
+      </div>
+      <StepDots n={ex.words.length} i={i} seen={seen} onJump={go} />
       <div className="row">
         <SpeakBtn text={w.en} />
         <button className="icon-btn" onClick={() => void speak(w.en, { rate: 0.6 })} aria-label="Slowly">🐢</button>
-        <button className="btn" onClick={next}>{i + 1 >= ex.words.length ? 'Got it!' : 'Next'}</button>
+        {i < last
+          ? <button className="btn" onClick={() => go(i + 1)}>Next</button>
+          : <button className="btn mint" onClick={finish}>Got it! ✓</button>}
       </div>
+      {seen >= last && i < last && <button className="btn ghost small" onClick={finish}>I know them all → continue</button>}
     </div>
   );
 }

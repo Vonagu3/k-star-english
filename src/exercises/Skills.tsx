@@ -12,7 +12,7 @@ import { Counter, Feedback, Prompt, SpeakBtn, WordPic, word, type ExProps } from
 type Of<T extends Exercise['type']> = Extract<Exercise, { type: T }>;
 
 /** Multiple-choice questions shared by read / watch / kculture. */
-function Questions({ qs, name, onDone }: { qs: Question[]; name: string; onDone: (correct: number) => void }) {
+function Questions({ qs, name, onDone, onBack, backLabel }: { qs: Question[]; name: string; onDone: (correct: number) => void; onBack?: () => void; backLabel?: string }) {
   const [i, setI] = useState(0);
   const [pick, setPick] = useState<number | null>(null);
   const [score, setScore] = useState(0);
@@ -29,6 +29,7 @@ function Questions({ qs, name, onDone }: { qs: Question[]; name: string; onDone:
   };
   return (
     <div className="col">
+      {onBack && <button className="btn ghost small" style={{ alignSelf: 'flex-start' }} onClick={onBack}>⬅️ {backLabel ?? 'Back to the text'}</button>}
       <Counter i={i} n={qs.length} />
       <div className="row" style={{ justifyContent: 'center' }}>
         <h3 className="title-l center">{subName(q.q, name)}</h3>
@@ -48,9 +49,10 @@ function Questions({ qs, name, onDone }: { qs: Question[]; name: string; onDone:
 export function Read({ ex, onDone, name }: ExProps<Of<'read'>>) {
   const [stage, setStage] = useState<'read' | 'q'>('read');
   const paras = ex.story.paragraphs.map((p) => subName(p, name));
-  if (stage === 'q') return <Questions qs={ex.questions} name={name} onDone={(c) => onDone({ correct: c, total: ex.questions.length, skill: 'reading' })} />;
+  const questions = <div style={{ display: stage === 'q' ? undefined : 'none' }}><Questions qs={ex.questions} name={name} onBack={() => setStage('read')} backLabel="Back to the story" onDone={(c) => onDone({ correct: c, total: ex.questions.length, skill: 'reading' })} /></div>;
   return (
-    <div className="col">
+    <>
+    <div className="col" style={{ display: stage === 'q' ? 'none' : undefined }}>
       <Prompt ru="Прочитай историю. Нажми на предложение, чтобы послушать">{ex.story.emoji} {subName(ex.story.title, name)}</Prompt>
       <div className="card" style={{ fontSize: 'clamp(19px, 4.4vw, 23px)', lineHeight: 1.7, fontWeight: 700 }}>
         {paras.map((p, k) => (
@@ -67,6 +69,8 @@ export function Read({ ex, onDone, name }: ExProps<Of<'read'>>) {
         <button className="btn" onClick={() => setStage('q')}>I read it! →</button>
       </div>
     </div>
+    {questions}
+    </>
   );
 }
 
@@ -243,7 +247,7 @@ export function Write({ ex, onDone, name, lessonId }: ExProps<Of<'write'>>) {
 export function Watch({ ex, onDone, name }: ExProps<Of<'watch'>>) {
   const [opened, setOpened] = useState(false);
   const [q, setQ] = useState(false);
-  if (q) return <Questions qs={ex.questions} name={name} onDone={(c) => onDone({ correct: c, total: ex.questions.length, skill: 'listening' })} />;
+  if (q) return <Questions qs={ex.questions} name={name} onBack={() => setQ(false)} backLabel="Back to the video" onDone={(c) => onDone({ correct: c, total: ex.questions.length, skill: 'listening' })} />;
   return (
     <div className="col" style={{ alignItems: 'center' }}>
       <Prompt ru="Посмотри видео, потом вернись и ответь на вопросы">📺 Watch time!</Prompt>
@@ -326,7 +330,8 @@ export function Quiz({ ex, onDone }: ExProps<Of<'quiz'>>) {
 export function KCulture({ ex, onDone, name }: ExProps<Of<'kculture'>>) {
   const [q, setQ] = useState(false);
   const text = useMemo(() => ex.text.map((t) => subName(t, name)), [ex.text, name]);
-  if (q) return <Questions qs={ex.questions} name={name} onDone={(c) => onDone({ correct: c, total: ex.questions.length, skill: 'reading' })} />;
+  const questions = <div style={{ display: q ? undefined : 'none' }}><Questions qs={ex.questions} name={name} onBack={() => setQ(false)} backLabel="Back to the text" onDone={(c) => onDone({ correct: c, total: ex.questions.length, skill: 'reading' })} /></div>;
+
   const sayKo = () => {
     if (typeof speechSynthesis === 'undefined' || !ex.korean) return;
     const u = new SpeechSynthesisUtterance(ex.korean.ko);
@@ -336,7 +341,8 @@ export function KCulture({ ex, onDone, name }: ExProps<Of<'kculture'>>) {
     speechSynthesis.cancel(); speechSynthesis.speak(u);
   };
   return (
-    <div className="col">
+    <>
+    <div className="col" style={{ display: q ? 'none' : undefined }}>
       <Prompt ru="Уголок корейской культуры">🇰🇷 K-Culture</Prompt>
       <div className="card tint-pink" style={{ fontSize: 21, lineHeight: 1.6, fontWeight: 700 }}>
         <div style={{ fontSize: 64, textAlign: 'center' }}>{ex.emoji}</div>
@@ -353,5 +359,7 @@ export function KCulture({ ex, onDone, name }: ExProps<Of<'kculture'>>) {
       )}
       <button className="btn" onClick={() => setQ(true)}>Quiz time! →</button>
     </div>
+    {questions}
+    </>
   );
 }

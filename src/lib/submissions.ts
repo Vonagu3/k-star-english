@@ -13,6 +13,8 @@ const BLOBS = 'kstar-blob-';
 async function localList(): Promise<Submission[]> { return ((await idbGet(KEY)) as Submission[] | undefined) ?? []; }
 
 export async function submitWork(userId: string | null, s: { kind: Submission['kind']; lessonId: string; prompt: string; blob?: Blob; text?: string }) {
+  // Re-watching an earlier task in review mode must not send the work again.
+  if (s.lessonId.endsWith('#review')) return;
   const id = crypto.randomUUID();
   const createdAt = Date.now();
   if (supabase && userId && navigator.onLine) {
