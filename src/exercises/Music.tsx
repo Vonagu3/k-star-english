@@ -13,7 +13,28 @@ type Of<T extends Exercise['type']> = Extract<Exercise, { type: T }>;
 const strip = (s: string) => s.toLowerCase().replace(/[^a-z0-9']/g, '');
 
 // 10. Rhythm chant / karaoke — with a player: previous / play-pause / next line, restart, tap a line to start there.
-function useChantPlayer(lines: string[], bpm: number) {
+export type ChantSpeed = 'slow' | 'normal' | 'fast';
+const SPEEDS: Record<ChantSpeed, { beat: number; voice: number; label: string; emoji: string }> = {
+  slow: { beat: 0.7, voice: 0.75, label: 'Slow', emoji: '🐢' },
+  normal: { beat: 0.85, voice: 0.9, label: 'Normal', emoji: '🙂' },
+  fast: { beat: 1, voice: 1.05, label: 'Fast', emoji: '🐇' },
+};
+const SPEED_KEY = 'kstar-chant-speed';
+function savedSpeed(): ChantSpeed {
+  try { const v = localStorage.getItem(SPEED_KEY); if (v === 'slow' || v === 'normal' || v === 'fast') return v; } catch { /* ignore */ }
+  return 'normal';
+}
+
+/** Beats a line gets: 4, or 8 when the voice needs longer than one bar to say it. */
+function beatsFor(line: string, bpm: number, voiceRate: number) {
+  const words = line.split(/\s+/).length;
+  const speechSec = (words * 0.33 + 0.2) / voiceRate;
+  return speechSec > (4 * 60) / bpm * 0.9 ? 8 : 4;
+}
+
+function useChantPlayer(lines: string[], baseBpm: number, speed: ChantSpeed) {
+  const bpm = Math.round(baseBpm * SPEEDS[speed].beat);
+  const voiceRate = SPEEDS[speed].voice;
   const [line, setLine] = useState(-1);
   const [playing, setPlaying] = useState(false);
   const [heardAll, setHeardAll] = useState(false);
@@ -25,10 +46,22 @@ function useChantPlayer(lines: string[], bpm: number) {
     const start = Math.max(0, Math.min(from, lines.length - 1));
     setPlaying(true); setLine(-1);
     const COUNT_IN = 2;
+    // Beat index at which each line (from `start`) begins.
+    const starts: number[] = [];
+    let acc = COUNT_IN;
+    for (let L = start; L < lines.length; L++) { starts.push(acc); acc += beatsFor(lines[L], bpm, voiceRate); }
+    const endBeat = acc;
     stopRef.current = startBeat(bpm, (b) => {
       if (b < COUNT_IN) { sfx.tap(); return; }
-      if ((b - COUNT_IN) % 4 !== 0) return;
-      const L = start + (b - COUNT_IN) / 4;
+      if (b === endBeat) {
+        stopRef.current?.(); stopRef.current = null;
+        setPlaying(false); setLine(-1); lastLine.current = 0; setHeardAll(true);
+        onEnd?.();
+        return;
+      }
+      const k = starts.indexOf(b);
+      if (k < 0) return;
+      const L = start + k;
       if (L >= lines.length) {
         stopRef.current?.(); stopRef.current = null;
         setPlaying(false); setLine(-1); lastLine.current = 0; setHeardAll(true);
@@ -36,7 +69,7 @@ function useChantPlayer(lines: string[], bpm: number) {
         return;
       }
       setLine(L); lastLine.current = L;
-      if (withVoice) void speak(lines[L], { rate: 1.05 });
+      if (withVoice) void speak(lines[L], { rate: voiceRate });
     });
   };
   useEffect(() => () => { stopRef.current?.(); stopSpeaking(); }, []);
@@ -44,9 +77,19 @@ function useChantPlayer(lines: string[], bpm: number) {
   return { line, playing, heardAll, playFrom, pause, stop, resumeAt: () => lastLine.current };
 }
 
-function PlayerControls({ p, n, voice, onVoice }: { p: ReturnType<typeof useChantPlayer>; n: number; voice: boolean; onVoice?: () => void }) {
+function PlayerControls({ p, n, voice, onVoice, speed, onSpeed }: { p: ReturnType<typeof useChantPlayer>; n: number; voice: boolean; onVoice?: () => void; speed: ChantSpeed; onSpeed: (s: ChantSpeed) => void }) {
   const cur = p.line >= 0 ? p.line : p.resumeAt();
   return (
+    <div className="col" style={{ gap: 8, alignItems: 'center' }}>
+    <div className="row" role="radiogroup" aria-label="Speed" style={{ gap: 6 }}>
+      {(Object.keys(SPEEDS) as ChantSpeed[]).map((s) => (
+        <button key={s} role="radio" aria-checked={speed === s} className="chip"
+          style={{ borderColor: speed === s ? 'var(--violet)' : undefined, background: speed === s ? 'var(--violet-soft)' : undefined }}
+          onClick={() => onSpeed(s)}>
+          {SPEEDS[s].emoji} {SPEEDS[s].label}
+        </button>
+      ))}
+    </div>
     <div className="row wrap" style={{ justifyContent: 'center', gap: 8 }}>
       <button className="icon-btn" aria-label="Start again" title="Start again" onClick={() => p.playFrom(0, voice)}>⏮</button>
       <button className="icon-btn" aria-label="Previous line" title="Previous line" onClick={() => p.playFrom(cur - 1, voice)}>◀️</button>
@@ -56,6 +99,7 @@ function PlayerControls({ p, n, voice, onVoice }: { p: ReturnType<typeof useChan
       <button className="icon-btn" aria-label="Next line" title="Next line" onClick={() => p.playFrom(Math.min(cur + 1, n - 1), voice)}>▶️▶️</button>
       {onVoice && <button className="chip" onClick={onVoice}>{voice ? '🔊 voice on' : '🔇 voice off'}</button>}
     </div>
+    </div>
   );
 }
 
@@ -64,7 +108,22 @@ export function Chant({ ex, onDone, name }: ExProps<Of<'chant'>>) {
   const [phase, setPhase] = useState<'listen' | 'fill' | 'sing'>('listen');
   const [singVoice, setSingVoice] = useState(false);
   const [sangOnce, setSangOnce] = useState(false);
-  const p = useChantPlayer(lines, ex.bpm);
+  const [speed, setSpeedState] = useState<ChantSpeed>(savedSpeed);
+  const setSpeed = (s: ChantSpeed) => { setSpeedState(s); try { localStorage.setItem(SPEED_KEY, s); } catch { /* ignore */ } };
+  const p = useChantPlayer(lines, ex.bpm, speed);
+  // Changing the speed while playing restarts the current line at the new speed.
+  const restartRef = useRef<{ line: number; voice: boolean } | null>(null);
+  const changeSpeed = (s: ChantSpeed) => {
+    if (s === speed) return;
+    restartRef.current = p.playing ? { line: p.line >= 0 ? p.line : p.resumeAt(), voice: phase === 'sing' ? singVoice : true } : null;
+    p.stop();
+    setSpeed(s);
+  };
+  useEffect(() => {
+    const r = restartRef.current;
+    restartRef.current = null;
+    if (r) p.playFrom(r.line, r.voice);
+  }, [speed]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => { if (phase === 'sing' && p.playing) setSangOnce(true); }, [phase, p.playing]);
 
   // Blank positions: [lineIdx, tokenIdx[]] per blank, in reading order.
@@ -144,7 +203,7 @@ export function Chant({ ex, onDone, name }: ExProps<Of<'chant'>>) {
           </div>
         ))}
       </div>
-      {phase !== 'fill' && <PlayerControls p={p} n={lines.length} voice={voice} onVoice={phase === 'sing' ? () => setSingVoice(!singVoice) : undefined} />}
+      {phase !== 'fill' && <PlayerControls p={p} n={lines.length} voice={voice} speed={speed} onSpeed={changeSpeed} onVoice={phase === 'sing' ? () => setSingVoice(!singVoice) : undefined} />}
       {phase === 'listen' && (
         <button className="btn" disabled={!p.heardAll && filled.length === 0} onClick={() => go(filled.length === blanks.length ? 'sing' : 'fill')}>
           {p.heardAll || filled.length ? (filled.length === blanks.length ? 'Sing it! →' : 'Fill the gaps →') : '🎧 Listen to the end first'}
