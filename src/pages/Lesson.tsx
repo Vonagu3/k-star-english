@@ -11,6 +11,7 @@ import { stopSpeaking } from '../lib/tts';
 import Avatar from '../components/Avatar';
 import PhotoCard from '../components/PhotoCard';
 import { SHOP_BY_ID } from '../game/catalog';
+import ErrorBoundary from '../components/ErrorBoundary';
 
 export default function Lesson() {
   const { id = '' } = useParams();
@@ -85,13 +86,27 @@ export default function Lesson() {
       </div>
       {review !== null && (
         <div key={`review-${review}`} data-no-tr={ref.episode.kind === 'showcase' || ref.episode.kind === 'debut' ? 'check' : undefined}>
-          <ExerciseView ex={exs[review]} onDone={() => { stopSpeaking(); setReview(null); window.scrollTo({ top: 0 }); }} name={name} lessonId={`${id}#review`} />
+          <ErrorBoundary resetKey={review} fallback={() => <div className="card tint-sun center">🙈 Oops! <button className="btn small" onClick={() => setReview(null)}>Back to task {k + 1} →</button></div>}>
+            <ExerciseView ex={exs[review]} onDone={() => { stopSpeaking(); setReview(null); window.scrollTo({ top: 0 }); }} name={name} lessonId={`${id}#review`} />
+          </ErrorBoundary>
         </div>
       )}
       <div style={{ display: review !== null ? 'none' : undefined }}>
       <AnimatePresence mode="wait">
         <motion.div key={k} data-no-tr={ref.episode.kind === 'showcase' || ref.episode.kind === 'debut' ? 'check' : undefined} initial={{ x: 40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -40, opacity: 0 }} transition={{ duration: 0.2 }}>
-          <ExerciseView ex={ex} onDone={onDone} name={name} lessonId={id} />
+          <ErrorBoundary resetKey={k} fallback={() => (
+            <div className="card tint-sun col center" style={{ alignItems: 'center' }}>
+              <div style={{ fontSize: 56 }}>🙈</div>
+              <h2 className="title-l">Oops! This task broke.</h2>
+              <div className="muted">Ой, это задание сломалось. Его можно пропустить — баллы за него не снимутся.</div>
+              <div className="row wrap" style={{ justifyContent: 'center' }}>
+                <button className="btn" onClick={() => onDone({ correct: 0, total: 0, skill: 'reading' })}>Skip this task →</button>
+                <button className="btn ghost" onClick={() => nav('/map')}>🗺️ Map</button>
+              </div>
+            </div>
+          )}>
+            <ExerciseView ex={ex} onDone={onDone} name={name} lessonId={id} />
+          </ErrorBoundary>
         </motion.div>
       </AnimatePresence>
       </div>

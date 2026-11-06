@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App';
+import ErrorBoundary from './components/ErrorBoundary';
 import { registerSW } from 'virtual:pwa-register';
 
 // A new service worker activates as soon as it is downloaded (skipWaiting). Reload to use it —
@@ -26,6 +27,15 @@ registerSW({
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <ErrorBoundary fallback={() => (
+      <div className="page center" style={{ paddingTop: 80 }}>
+        <div style={{ fontSize: 64 }}>🙈</div>
+        <h2>Oops! Something went wrong.</h2>
+        <p className="muted">Что-то пошло не так. Прогресс сохранён.</p>
+        <button className="btn" onClick={() => { location.hash = '#/'; location.reload(); }}>Reload · Перезагрузить</button>
+      </div>
+    )}>
+      <App />
+    </ErrorBoundary>
   </StrictMode>,
 );

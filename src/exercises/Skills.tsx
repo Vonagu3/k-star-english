@@ -87,7 +87,7 @@ export function Speak({ ex, onDone, name, lessonId }: ExProps<Of<'speak'>>) {
   const it = ex.items[i];
   const text = subName(it.text, name);
   const canRecognise = recognitionAvailable();
-  useEffect(() => { setState('idle'); setHeard(''); setCheck(null); setTries(0); const t = setTimeout(() => void speak(text), 300); return () => clearTimeout(t); }, [text]);
+  useEffect(() => { setState('idle'); setHeard(''); setCheck(null); setTries(0); const t = setTimeout(() => void speak(text), 300); return () => clearTimeout(t); }, [i, text]);
 
   const tryRecognise = async () => {
     setState('listening');
@@ -196,7 +196,7 @@ export function Draw({ ex, onDone, name, lessonId }: ExProps<Of<'draw'>>) {
   return (
     <div className="col">
       <Prompt ru={ex.ru}>{ex.emoji ?? '🎨'} Draw it!</Prompt>
-      <div className="card tint-sun row" data-no-tr="recall" style={{ fontWeight: 800, fontSize: 20 }}>
+      <div className="card tint-sun row" style={{ fontWeight: 800, fontSize: 20 }}>
         <div className="grow">{prompt}</div><SpeakBtn text={prompt} />
       </div>
       <div className="canvas-wrap">

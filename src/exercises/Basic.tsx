@@ -70,11 +70,11 @@ export function Flashcards({ ex, onDone }: ExProps<Of<'flashcards'>>) {
 // 2. Listen & tap.
 export function Listen({ ex, onDone, name }: ExProps<Of<'listen'>>) {
   const [i, setI] = useState(0);
-  const [pick, setPick] = useState<number | null>(null);
+  const [pick, setPick] = useKeyed<number | null>(i, null);
   const [score, setScore] = useState(0);
   const it = ex.items[i];
   const say = subName(it.say, name);
-  useEffect(() => { setPick(null); const t = setTimeout(() => void speak(say), 300); return () => clearTimeout(t); }, [say]);
+  useEffect(() => { const t = setTimeout(() => void speak(say), 300); return () => clearTimeout(t); }, [i, say]);
   const ok = pick === it.answer;
   const choose = (k: number) => {
     if (pick !== null) return;
@@ -155,6 +155,12 @@ export function Memory({ ex, onDone }: ExProps<Of<'memory'>>) {
   );
 }
 
+/** State that belongs to one item: it resets automatically (in the same render) when `key` changes. */
+function useKeyed<T>(key: unknown, init: T): [T, (v: T) => void] {
+  const [st, setSt] = useState<{ key: unknown; v: T }>({ key, v: init });
+  return [st.key === key ? st.v : init, (v: T) => setSt({ key, v })];
+}
+
 // 4. Spell it with letter tiles.
 export function Spell({ ex, onDone }: ExProps<Of<'spell'>>) {
   const [i, setI] = useState(0);
@@ -166,11 +172,11 @@ export function Spell({ ex, onDone }: ExProps<Of<'spell'>>) {
     const ls = target.replace(/[^a-z]/g, '').split('');
     const extra = 'aeioustrnl'.split('').filter((x) => !ls.includes(x)).slice(0, ls.length > 6 ? 1 : 2);
     return shuffle([...ls, ...extra]).map((ch, k) => ({ ch, k }));
-  }, [target]);
-  const [used, setUsed] = useState<number[]>([]);
-  const [checked, setChecked] = useState<boolean | null>(null);
-  useEffect(() => { setUsed([]); setChecked(null); void speak(w.en); }, [w.en]);
-  const typed = used.map((k) => letters.find((l) => l.k === k)!.ch);
+  }, [target, i]); // eslint-disable-line react-hooks/exhaustive-deps
+  const [used, setUsed] = useKeyed<number[]>(i, []);
+  const [checked, setChecked] = useKeyed<boolean | null>(i, null);
+  useEffect(() => { void speak(w.en); }, [i, w.en]);
+  const typed = used.map((k) => letters.find((l) => l.k === k)?.ch ?? '');
   // Rebuild display with fixed spaces / apostrophes.
   let p = 0;
   const display = target.split('').map((ch) => (/[a-z]/.test(ch) ? typed[p++] ?? '' : ch));
@@ -218,11 +224,10 @@ export function Sentence({ ex, onDone, name }: ExProps<Of<'sentence'>>) {
   const [score, setScore] = useState(0);
   const it = ex.items[i];
   const sentence = subName(it.sentence, name);
-  const tiles = useMemo(() => shuffle(sentence.split(/\s+/).map((t, k) => ({ t, k }))), [sentence]);
-  const [picked, setPicked] = useState<number[]>([]);
-  const [checked, setChecked] = useState<boolean | null>(null);
-  useEffect(() => { setPicked([]); setChecked(null); }, [sentence]);
-  const built = picked.map((k) => tiles.find((x) => x.k === k)!.t).join(' ');
+  const tiles = useMemo(() => shuffle(sentence.split(/\s+/).map((t, k) => ({ t, k }))), [sentence, i]); // eslint-disable-line react-hooks/exhaustive-deps
+  const [picked, setPicked] = useKeyed<number[]>(i, []);
+  const [checked, setChecked] = useKeyed<boolean | null>(i, null);
+  const built = picked.map((k) => tiles.find((x) => x.k === k)?.t ?? '').join(' ');
   const check = () => {
     const ok = tidy(built) === tidy(sentence);
     setChecked(ok);
@@ -241,7 +246,7 @@ export function Sentence({ ex, onDone, name }: ExProps<Of<'sentence'>>) {
         {picked.length === 0 && <span className="muted">Tap the words…</span>}
         {picked.map((k) => (
           <button key={k} className="tile" style={{ minHeight: 48, fontSize: 18, borderColor: checked === null ? undefined : checked ? 'var(--mint)' : 'var(--red)' }}
-            onClick={() => checked === null && setPicked(picked.filter((x) => x !== k))}>{tiles.find((x) => x.k === k)!.t}</button>
+            onClick={() => checked === null && setPicked(picked.filter((x) => x !== k))}>{tiles.find((x) => x.k === k)?.t}</button>
         ))}
       </div>
       <div className="row wrap" data-no-tr="recall" style={{ gap: 8, justifyContent: 'center' }}>
@@ -261,13 +266,12 @@ export function Sentence({ ex, onDone, name }: ExProps<Of<'sentence'>>) {
 // 6. Fill the gap.
 export function Gap({ ex, onDone, name }: ExProps<Of<'gap'>>) {
   const [i, setI] = useState(0);
-  const [pick, setPick] = useState<number | null>(null);
+  const [pick, setPick] = useKeyed<number | null>(i, null);
   const [score, setScore] = useState(0);
   const it = ex.items[i];
   const text = subName(it.text, name);
   const [before, after] = text.split('___');
   const options = useMemo(() => it.options.map((o, k) => ({ o, k })), [it]);
-  useEffect(() => setPick(null), [i]);
   const choose = (k: number) => {
     if (pick !== null) return;
     setPick(k);
@@ -283,7 +287,7 @@ export function Gap({ ex, onDone, name }: ExProps<Of<'gap'>>) {
       <Prompt ru={it.ru ?? 'Выбери слово для пропуска'}>{ex.title ?? 'Fill the gap!'}</Prompt>
       <Counter i={i} n={ex.items.length} />
       {it.emoji && <div className="center" style={{ fontSize: 64 }}>{it.emoji}</div>}
-      <div className="card say-text" data-no-tr="recall" style={{ lineHeight: 1.5 }}>
+      <div className="card say-text" style={{ lineHeight: 1.5 }}>
         {before}<span className="blank" style={{ color: pick === null ? 'var(--violet)' : pick === it.answer ? 'var(--mint)' : 'var(--red)' }}>{pick !== null ? it.options[it.answer] : ''}</span>{after}
       </div>
       <div className="grid grid-2" data-no-tr="recall">

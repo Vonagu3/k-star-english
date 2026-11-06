@@ -251,7 +251,7 @@ export function Dance({ ex, onDone, name }: ExProps<Of<'dance'>>) {
   const stopRef = useRef<(() => void) | null>(null);
   const it = ex.items[i];
   const text = subName(it.text, name);
-  useEffect(() => { setSeq([]); setChecked(null); setMove('idle'); const t = setTimeout(() => void speak(text), 300); return () => clearTimeout(t); }, [text]);
+  useEffect(() => { setSeq([]); setChecked(null); setMove('idle'); const t = setTimeout(() => void speak(text), 300); return () => clearTimeout(t); }, [i, text]);
   useEffect(() => () => stopRef.current?.(), []);
 
   const perform = (moves: DanceMove[]) => {
@@ -275,13 +275,13 @@ export function Dance({ ex, onDone, name }: ExProps<Of<'dance'>>) {
     else setI(i + 1);
   };
   return (
-    <div className="col" data-no-tr="recall">
+    <div className="col">
       <Prompt ru="Прочитай команду и собери танец. Потом станцуй вместе с аватаром!">💃 {ex.title ?? 'Dance practice!'}</Prompt>
       <Counter i={i} n={ex.items.length} />
       <div className="card tint-pink row" style={{ fontWeight: 800, fontSize: 22 }}><div className="grow">{text}</div><SpeakBtn text={text} /></div>
       <div className="row" style={{ alignItems: 'flex-start', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }}>
         {look && <Avatar look={look} size={150} move={move} moveKey={mk} />}
-        <div className="col grow" style={{ minWidth: 240 }}>
+        <div className="col grow" data-no-tr="recall" style={{ minWidth: 240 }}>
           <div className="card row wrap" style={{ minHeight: 70, gap: 6 }}>
             {seq.length === 0 && <span className="muted">Your dance: tap the moves below</span>}
             {seq.map((m, k) => (
