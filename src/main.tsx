@@ -8,7 +8,7 @@ import { registerSW } from 'virtual:pwa-register';
 // A new service worker activates as soon as it is downloaded (skipWaiting). Reload to use it —
 // but never in the middle of a lesson or the warm-up: then wait until the child leaves it.
 let pending = false;
-const busy = () => /^#\/(lesson|warmup|daily)/.test(location.hash);
+const busy = () => /^#\/(lesson|warmup|daily|rhythm|karaoke)/.test(location.hash);
 const reloadWhenFree = () => { if (busy()) pending = true; else location.reload(); };
 if ('serviceWorker' in navigator) {
   const hadController = !!navigator.serviceWorker.controller;

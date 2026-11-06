@@ -49,6 +49,8 @@ export type GameState = {
   totals?: Partial<Record<QuestMetric, number>>;
   /** Earned badges: id -> when (ms). */
   badges?: Record<string, number>;
+  /** Mini-game records. */
+  games?: { rhythmBest?: number };
 };
 
 export const emptyState = (): GameState => ({

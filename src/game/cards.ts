@@ -4,7 +4,7 @@ import type { Look } from './catalog';
 export type Rarity = 'common' | 'rare' | 'epic' | 'legend';
 export type Card = { id: string; who: string; concept: string; rarity: Rarity; look: Look; line: string };
 
-const PEOPLE: Record<string, Look> = {
+export const PEOPLE: Record<string, Look> = {
   Hana: { skin: '#ffe6d5', hair: 'long', hairColor: '#111111', eyes: 'sparkle', outfit: 'dress', outfitColor: '#ff8fc4', acc: 'bow', stick: 'heart', bg: 'pink' },
   Jun: { skin: '#ffd9c2', hair: 'short', hairColor: '#3b2a26', eyes: 'smile', outfit: 'jacket', outfitColor: '#222244', acc: 'none', stick: 'star', bg: 'night' },
   Sora: { skin: '#e8b48f', hair: 'buns', hairColor: '#8f7bff', eyes: 'star', outfit: 'track', outfitColor: '#2ec4b6', acc: 'clip', stick: 'round', bg: 'mint' },

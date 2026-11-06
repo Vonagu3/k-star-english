@@ -19,8 +19,8 @@ const SPEEDS: Record<ChantSpeed, { beat: number; voice: number; label: string; e
   normal: { beat: 0.85, voice: 0.9, label: 'Normal', emoji: '🙂' },
   fast: { beat: 1, voice: 1.05, label: 'Fast', emoji: '🐇' },
 };
-const SPEED_KEY = 'kstar-chant-speed';
-function savedSpeed(): ChantSpeed {
+export const SPEED_KEY = 'kstar-chant-speed';
+export function savedSpeed(): ChantSpeed {
   try { const v = localStorage.getItem(SPEED_KEY); if (v === 'slow' || v === 'normal' || v === 'fast') return v; } catch { /* ignore */ }
   return 'normal';
 }
@@ -32,7 +32,7 @@ function beatsFor(line: string, bpm: number, voiceRate: number) {
   return speechSec > (4 * 60) / bpm * 0.9 ? 8 : 4;
 }
 
-function useChantPlayer(lines: string[], baseBpm: number, speed: ChantSpeed) {
+export function useChantPlayer(lines: string[], baseBpm: number, speed: ChantSpeed) {
   const bpm = Math.round(baseBpm * SPEEDS[speed].beat);
   const voiceRate = SPEEDS[speed].voice;
   const [line, setLine] = useState(-1);
@@ -77,7 +77,7 @@ function useChantPlayer(lines: string[], baseBpm: number, speed: ChantSpeed) {
   return { line, playing, heardAll, playFrom, pause, stop, resumeAt: () => lastLine.current };
 }
 
-function PlayerControls({ p, n, voice, onVoice, speed, onSpeed }: { p: ReturnType<typeof useChantPlayer>; n: number; voice: boolean; onVoice?: () => void; speed: ChantSpeed; onSpeed: (s: ChantSpeed) => void }) {
+export function PlayerControls({ p, n, voice, onVoice, speed, onSpeed }: { p: ReturnType<typeof useChantPlayer>; n: number; voice: boolean; onVoice?: () => void; speed: ChantSpeed; onSpeed: (s: ChantSpeed) => void }) {
   const cur = p.line >= 0 ? p.line : p.resumeAt();
   return (
     <div className="col" style={{ gap: 8, alignItems: 'center' }}>

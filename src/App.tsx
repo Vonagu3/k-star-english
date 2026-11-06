@@ -22,6 +22,9 @@ import BadgeWatcher from './components/BadgeWatcher';
 import Badges from './pages/Badges';
 import Certificate from './pages/Certificate';
 import Words from './pages/Words';
+import Karaoke from './pages/Karaoke';
+import Rhythm from './pages/Rhythm';
+import Comics from './pages/Comics';
 
 function LessonRoute() {
   const { id } = useParams();
@@ -30,7 +33,7 @@ function LessonRoute() {
 
 function Nav() {
   const loc = useLocation();
-  if (loc.pathname.startsWith('/lesson') || loc.pathname.startsWith('/daily') || loc.pathname.startsWith('/warmup') || loc.pathname.startsWith('/parent')) return null;
+  if (loc.pathname.startsWith('/lesson') || loc.pathname.startsWith('/daily') || loc.pathname.startsWith('/rhythm') || loc.pathname.startsWith('/warmup') || loc.pathname.startsWith('/parent')) return null;
   const items = [['/', '🏠', 'Home'], ['/map', '🗺️', 'Map'], ['/studio', '👗', 'Studio'], ['/dorm', '🛏️', 'Dorm'], ['/cards', '🃏', 'Cards'], ['/parent', '🔐', 'Parent']] as const;
   return (
     <nav className="bottom-nav">
@@ -82,6 +85,9 @@ export default function App() {
         <Route path="/badges" element={<Badges />} />
         <Route path="/certificate/:id" element={<Certificate />} />
         <Route path="/words" element={<Words />} />
+        <Route path="/karaoke" element={<Karaoke />} />
+        <Route path="/rhythm" element={<Rhythm />} />
+        <Route path="/comics" element={<Comics />} />
         <Route path="*" element={<Home />} />
       </Routes>
       <Nav />

@@ -168,7 +168,7 @@ function glassesDeco(kind: string) {
   }
 }
 
-function bgDeco(bg: string) {
+export function bgDeco(bg: string) {
   switch (bg) {
     case 'seoul': return <g fill="#0b0f26" opacity="0.85"><path d="M0 260 L0 200 L18 200 L18 180 L34 180 L34 210 L52 210 L52 170 L62 170 L62 150 L66 150 L66 170 L76 170 L76 205 L98 205 L98 190 L118 190 L118 215 L138 215 L138 175 L156 175 L156 200 L176 200 L176 186 L200 186 L200 260 Z" />{[[24, 190], [56, 180], [142, 186], [182, 196], [104, 198]].map(([x, y], i) => <rect key={i} x={x} y={y} width="4" height="4" fill="#ffd36e" />)}</g>;
     case 'cherry': return <g>{[[20, 30], [170, 50], [40, 120], [180, 150], [24, 210], [150, 230], [100, 18]].map(([x, y], i) => <g key={i} transform={`translate(${x} ${y}) rotate(${i * 40})`}><ellipse cx="0" cy="-4" rx="4" ry="7" fill="#ffb3cf" /><ellipse cx="4" cy="2" rx="4" ry="7" fill="#ffc8dc" transform="rotate(72)" /></g>)}</g>;
@@ -262,5 +262,18 @@ export default function Avatar({ look: rawLook, size = 180, move = 'idle', moveK
         <motion.text x="30" y="250" fontSize="40" textAnchor="middle" animate={{ y: [0, -8, 0] }} transition={{ duration: 1.4, repeat: Infinity }}>{look.pet}</motion.text>
       )}
     </svg>
+  );
+}
+
+/** A scene background (gradient + decorations) in the avatar's 200x260 space. */
+export function SceneBackground({ bg, id }: { bg: string; id: string }) {
+  const [c1, c2] = BGS[bg] ?? BGS.pink;
+  return (
+    <g>
+      <defs><linearGradient id={id} x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor={c1} /><stop offset="1" stopColor={c2} /></linearGradient></defs>
+      <rect x="0" y="0" width="200" height="260" fill={`url(#${id})`} />
+      {bg === 'paris' && <path d="M160 250 L172 150 L176 120 L178 96 L180 120 L184 150 L196 250 L188 250 L182 196 L174 196 L168 250 Z" fill="#1d1a45" opacity="0.7" />}
+      {bgDeco(bg)}
+    </g>
   );
 }

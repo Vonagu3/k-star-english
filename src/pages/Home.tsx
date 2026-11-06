@@ -145,6 +145,15 @@ export default function Home() {
         );
       })}
 
+      <div className="card col" style={{ background: 'linear-gradient(135deg, #fff0f7, #efe9ff)' }}>
+        <strong style={{ fontFamily: 'var(--font-title)', fontSize: 22 }}>🎉 Fun zone</strong>
+        <div className="grid grid-3">
+          <Link to="/karaoke" className="card center" style={{ textDecoration: 'none', color: 'inherit', boxShadow: 'none' }}><div style={{ fontSize: 36 }}>🎤</div><b>Karaoke</b><div className="tiny muted">Пой и записывай</div></Link>
+          <Link to="/rhythm" className="card center" style={{ textDecoration: 'none', color: 'inherit', boxShadow: 'none' }}><div style={{ fontSize: 36 }}>🎧</div><b>Word Beats</b><div className="tiny muted">{s.games?.rhythmBest ? `Best: ${s.games.rhythmBest}` : 'Лови слова под бит'}</div></Link>
+          <Link to="/comics" className="card center" style={{ textDecoration: 'none', color: 'inherit', boxShadow: 'none' }}><div style={{ fontSize: 36 }}>💬</div><b>Comics</b><div className="tiny muted">Сделай комикс</div></Link>
+        </div>
+      </div>
+
       <Link to="/notebook" className="card tint-sun row" style={{ textDecoration: 'none', color: 'inherit' }}>
         <div style={{ fontSize: 40 }}>📓</div>
         <div className="grow"><b>My Notebook</b><div className="tiny muted">Задания для тетради · print & write</div></div>
