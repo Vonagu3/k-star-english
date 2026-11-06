@@ -196,6 +196,7 @@ function Results({ ep, outcome, minutes, onRetry }: { ep: { id: string; title: s
       )}
       {!pass && <div className="card tint-violet">Get 40% or more to pass. You can do it! · Набери хотя бы 40%, и эпизод засчитается.</div>}
       {pass && <div className="muted" style={{ fontWeight: 700 }}>{MINA_LINES[Math.floor(Math.random() * MINA_LINES.length)]}</div>}
+      {pass && (ep.kind === 'showcase' || ep.kind === 'debut') && <button className="btn violet" onClick={() => nav(`/certificate/${ep.id}`)}>📜 Get your certificate!</button>}
       {outcome.card && !showCard && <button className="btn sun" onClick={() => { setShowCard(true); sfx.card(); }}>🎁 Open your photocard!</button>}
       {outcome.card && showCard && (
         <motion.div initial={{ rotateY: 180, scale: 0.6 }} animate={{ rotateY: 0, scale: 1 }} transition={{ type: 'spring', duration: 0.9 }}>

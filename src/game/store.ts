@@ -43,6 +43,12 @@ export type GameState = {
   activeSec?: Record<string, number>;
   skills: Record<Skill, Tally>;
   mistakes: Record<string, number>;
+  /** When each word was first met (ms). */
+  wordsSeen?: Record<string, number>;
+  /** Lifetime counters of quest metrics (chants sung, drawings, words reviewed...). */
+  totals?: Partial<Record<QuestMetric, number>>;
+  /** Earned badges: id -> when (ms). */
+  badges?: Record<string, number>;
 };
 
 export const emptyState = (): GameState => ({
@@ -83,6 +89,10 @@ export function mergeStates(a: GameState, b: GameState): GameState {
     forcedWorlds: [...new Set([...base.forcedWorlds, ...other.forcedWorlds])],
     minutes: maxPerDay(other.minutes, base.minutes),
     activeSec: maxPerDay(other.activeSec ?? {}, base.activeSec ?? {}),
+    wordsSeen: { ...other.wordsSeen, ...base.wordsSeen },
+    badges: { ...other.badges, ...base.badges },
+    totals: Object.fromEntries([...new Set([...Object.keys(base.totals ?? {}), ...Object.keys(other.totals ?? {})])]
+      .map((k) => [k, Math.max(base.totals?.[k as QuestMetric] ?? 0, other.totals?.[k as QuestMetric] ?? 0)])),
     daily: base.daily.day === other.daily.day
       ? { ...base.daily, extraMin: Math.max(base.daily.extraMin ?? 0, other.daily.extraMin ?? 0) }
       : base.daily,
@@ -130,8 +140,18 @@ function rollDay(s: GameState): GameState {
 
 function bumpMetrics(s: GameState, m: Partial<Record<QuestMetric, number>>): GameState {
   const metrics = { ...s.daily.metrics };
-  for (const [k, v] of Object.entries(m)) metrics[k as QuestMetric] = (metrics[k as QuestMetric] ?? 0) + (v ?? 0);
-  return { ...s, daily: { ...s.daily, metrics } };
+  const totals = { ...s.totals };
+  for (const [k, v] of Object.entries(m)) {
+    metrics[k as QuestMetric] = (metrics[k as QuestMetric] ?? 0) + (v ?? 0);
+    totals[k as QuestMetric] = (totals[k as QuestMetric] ?? 0) + (v ?? 0);
+  }
+  return { ...s, daily: { ...s.daily, metrics }, totals };
+}
+
+function markSeen(seen: Record<string, number> | undefined, ids: string[], now: number) {
+  const out = { ...seen };
+  for (const id of ids) if (!out[id]) out[id] = now;
+  return out;
 }
 
 export const useGame = create<Store>((set, get) => ({
@@ -203,6 +223,7 @@ export const useGame = create<Store>((set, get) => ({
           },
         },
         srs, skills, mistakes,
+        wordsSeen: markSeen(s.wordsSeen, r.words.map((w) => w.id), now),
         cards: card ? { ...s.cards, [card.id]: (s.cards[card.id] ?? 0) + 1 } : s.cards,
       };
       next = bumpMetrics(next, { ...r.metrics, episodes: stars > 0 ? 1 : 0, threeStars: stars === 3 ? 1 : 0, fans });
@@ -221,7 +242,7 @@ export const useGame = create<Store>((set, get) => ({
       if (w.correct) correct++; else mistakes[w.id] = (mistakes[w.id] ?? 0) + 1;
     }
     const fans = correct * 5;
-    return bumpMetrics({ ...s, srs, mistakes, fans: s.fans + fans, streak: results.length >= 5 ? streakOnActive(s.streak, now) : s.streak }, { reviewed: results.length, fans });
+    return bumpMetrics({ ...s, srs, mistakes, wordsSeen: markSeen(s.wordsSeen, results.map((w) => w.id), now), fans: s.fans + fans, streak: results.length >= 5 ? streakOnActive(s.streak, now) : s.streak }, { reviewed: results.length, fans });
   }),
 
   addMetric: (m, n = 1) => get().update((s) => bumpMetrics(s, { [m]: n })),

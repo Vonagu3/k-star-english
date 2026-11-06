@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useGame, usedToday } from '../game/store';
 import { srsDue } from '../game/rules';
 import { WORDS } from '../content';
@@ -16,8 +16,10 @@ export default function Warmup() {
   const nav = useNavigate();
   const srs = useGame((g) => g.s.srs);
   const reviewWords = useGame((g) => g.reviewWords);
+  const [params] = useSearchParams();
+  const chosen = (params.get('words') ?? '').split(',').filter((id) => WORDS.has(id));
   const questions = useMemo<Q[]>(() => {
-    const due = srsDue(srs, Date.now());
+    const due = chosen.length >= 3 ? chosen : srsDue(srs, Date.now());
     const known = Object.keys(srs);
     let pool = due.slice(0, 12);
     if (pool.length < 8) pool = [...pool, ...sample(known.filter((k) => !pool.includes(k)), 8 - pool.length)];

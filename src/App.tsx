@@ -18,6 +18,10 @@ import NotebookBook from './pages/NotebookBook';
 import Daily from './pages/Daily';
 import TranslateTooltip from './components/TranslateTooltip';
 import TimeKeeper from './components/TimeKeeper';
+import BadgeWatcher from './components/BadgeWatcher';
+import Badges from './pages/Badges';
+import Certificate from './pages/Certificate';
+import Words from './pages/Words';
 
 function LessonRoute() {
   const { id } = useParams();
@@ -75,10 +79,14 @@ export default function App() {
         <Route path="/parent" element={<Parent />} />
         <Route path="/notebook" element={<NotebookBook />} />
         <Route path="/daily" element={<Daily />} />
+        <Route path="/badges" element={<Badges />} />
+        <Route path="/certificate/:id" element={<Certificate />} />
+        <Route path="/words" element={<Words />} />
         <Route path="*" element={<Home />} />
       </Routes>
       <Nav />
       <TimeKeeper />
+      <BadgeWatcher />
       <TranslateTooltip enabled={(profile.settings.hoverTranslate ?? 'practice') !== 'off'} all={profile.settings.hoverTranslate === 'all'} />
     </HashRouter>
   );

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGame, sha256, resetEverything, usedToday } from '../game/store';
 import { useTimeStatus } from '../components/TimerChip';
+import WeeklyReport from '../components/WeeklyReport';
 import { DEFAULT_LIMIT_MIN, mmss } from '../game/rules';
 import { rankFor, dayKey } from '../game/rules';
 import { EPISODE_ORDER, WORDS, WORLDS } from '../content';
@@ -63,6 +64,8 @@ function Dashboard() {
         <Stat label="Минут сегодня / за 7 дней" value={`${s.minutes[dayKey(Date.now())] ?? 0} / ${weekMin}`} />
         <Stat label={`Ранг · уровень ${rank.cefr}`} value={rank.name} sub={next ? `${s.fans} / ${next.fans} фанатов` : ''} />
       </div>
+
+      <WeeklyReport subs={subs} />
 
       <div className="card col">
         <strong>Время занятий, мин</strong>

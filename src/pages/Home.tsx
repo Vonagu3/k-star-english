@@ -155,6 +155,8 @@ export default function Home() {
         <Link to="/studio" className="card center" style={{ textDecoration: 'none', color: 'inherit' }}><div style={{ fontSize: 40 }}>👗</div><b>Style Studio</b><div className="tiny muted">Аватар и магазин</div></Link>
         <Link to="/dorm" className="card center" style={{ textDecoration: 'none', color: 'inherit' }}><div style={{ fontSize: 40 }}>🛏️</div><b>My Dorm</b><div className="tiny muted">Моя комната</div></Link>
         <Link to="/cards" className="card center" style={{ textDecoration: 'none', color: 'inherit' }}><div style={{ fontSize: 40 }}>🃏</div><b>Photocards</b><div className="tiny muted">{Object.keys(s.cards).length} collected</div></Link>
+        <Link to="/words" className="card center" style={{ textDecoration: 'none', color: 'inherit' }}><div style={{ fontSize: 40 }}>📖</div><b>My Words</b><div className="tiny muted">Мой словарик</div></Link>
+        <Link to="/badges" className="card center" style={{ textDecoration: 'none', color: 'inherit' }}><div style={{ fontSize: 40 }}>🏅</div><b>Badges</b><div className="tiny muted">{Object.keys(s.badges ?? {}).length} earned</div></Link>
       </div>
     </div>
   );
