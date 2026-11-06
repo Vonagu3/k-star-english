@@ -132,3 +132,38 @@ export function questsForDay(day: string) {
 }
 export const QUEST_REWARD = 20;
 export const QUEST_CHEST = 50;
+
+// ---- Daily time limit ----
+export const DEFAULT_LIMIT_MIN = 60;
+export const GRACE_SEC = 10 * 60;
+export type TimeLevel = 'unlimited' | 'ok' | 'warn10' | 'warn2' | 'grace' | 'locked';
+
+/**
+ * Where the child is against today's limit.
+ * `limitMin`: null/undefined = default 60, 0 = no limit. `extraMin`: parent's extension for today.
+ * `episodeStartedAtSec`: seconds already used when the current episode started (null = not in an episode).
+ * An episode started before the limit may be finished: up to GRACE_SEC over the limit.
+ */
+export function timeStatus(p: { usedSec: number; limitMin: number | null | undefined; extraMin?: number; episodeStartedAtSec: number | null }) {
+  const limit = p.limitMin == null ? DEFAULT_LIMIT_MIN : p.limitMin;
+  if (limit <= 0) return { level: 'unlimited' as TimeLevel, remainingSec: Infinity, totalSec: Infinity, graceLeftSec: 0 };
+  const totalSec = (limit + (p.extraMin ?? 0)) * 60;
+  const remainingSec = totalSec - p.usedSec;
+  let level: TimeLevel;
+  let graceLeftSec = 0;
+  if (remainingSec > 600) level = 'ok';
+  else if (remainingSec > 120) level = 'warn10';
+  else if (remainingSec > 0) level = 'warn2';
+  else {
+    const over = -remainingSec;
+    const startedInTime = p.episodeStartedAtSec !== null && p.episodeStartedAtSec < totalSec;
+    if (startedInTime && over < GRACE_SEC) { level = 'grace'; graceLeftSec = GRACE_SEC - over; } else level = 'locked';
+  }
+  return { level, remainingSec, totalSec, graceLeftSec };
+}
+
+/** "42:05" for a number of seconds (never negative). */
+export const mmss = (sec: number) => {
+  const s = Math.max(0, Math.floor(sec));
+  return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+};

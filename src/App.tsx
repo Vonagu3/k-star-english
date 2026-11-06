@@ -4,7 +4,6 @@ import { useGame } from './game/store';
 import { supabase } from './lib/supabase';
 import { setMuted } from './lib/sfx';
 import { configureVoice } from './lib/tts';
-import { dayKey } from './game/rules';
 import Home from './pages/Home';
 import MapPage from './pages/Map';
 import Lesson from './pages/Lesson';
@@ -18,6 +17,7 @@ import Login from './pages/Login';
 import NotebookBook from './pages/NotebookBook';
 import Daily from './pages/Daily';
 import TranslateTooltip from './components/TranslateTooltip';
+import TimeKeeper from './components/TimeKeeper';
 
 function LessonRoute() {
   const { id } = useParams();
@@ -34,30 +34,6 @@ function Nav() {
         <NavLink key={to} to={to} end={to === '/'} className={({ isActive }) => (isActive ? 'active' : '')}><span className="ico">{ico}</span>{label}</NavLink>
       ))}
     </nav>
-  );
-}
-
-/** Counts active minutes (tab visible) and shows a gentle break screen over the daily limit. */
-function TimeKeeper() {
-  const addMinute = useGame((g) => g.addMinute);
-  const limit = useGame((g) => g.s.profile?.settings.dailyLimitMin ?? null);
-  const today = useGame((g) => g.s.minutes[dayKey(Date.now())] ?? 0);
-  const [dismissedAt, setDismissedAt] = useState<number | null>(null);
-  useEffect(() => {
-    const id = setInterval(() => { if (document.visibilityState === 'visible') addMinute(); }, 60000);
-    return () => clearInterval(id);
-  }, [addMinute]);
-  const loc = useLocation();
-  if (!limit || today < limit || loc.pathname.startsWith('/parent') || (dismissedAt !== null && today < dismissedAt + 5)) return null;
-  return (
-    <div style={{ position: 'fixed', inset: 0, zIndex: 60, background: 'rgba(43,33,64,0.6)', display: 'grid', placeItems: 'center', padding: 16 }}>
-      <div className="card center col" style={{ maxWidth: 420, alignItems: 'center' }}>
-        <div style={{ fontSize: 64 }}>🌙</div>
-        <h2 className="title-l">Time for a break, star!</h2>
-        <div className="muted">Ты сегодня отлично позанималась ({today} мин). Отдохни — завтра продолжим! 💖</div>
-        <button className="btn ghost small" onClick={() => setDismissedAt(today)}>5 more minutes</button>
-      </div>
-    </div>
   );
 }
 

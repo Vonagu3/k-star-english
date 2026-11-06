@@ -13,6 +13,8 @@ import Avatar from '../components/Avatar';
 import PhotoCard from '../components/PhotoCard';
 import { SHOP_BY_ID } from '../game/catalog';
 import ErrorBoundary from '../components/ErrorBoundary';
+import TimerChip from '../components/TimerChip';
+import { usedToday } from '../game/store';
 
 export default function Lesson() {
   const { id = '' } = useParams();
@@ -48,6 +50,13 @@ export function LessonPlayer({ episode, id, intro, onFinished }: PlayerProps) {
   const startedAt = useMemo(() => Date.now(), []);
 
   useEffect(() => () => stopSpeaking(), []);
+  // Mark "in an episode" (for the daily time limit: an episode started in time may be finished).
+  const playing = started && !outcome;
+  useEffect(() => {
+    if (!playing) return;
+    useGame.setState((g) => ({ episodeStartSec: g.episodeStartSec ?? usedToday(g) }));
+    return () => useGame.setState({ episodeStartSec: null });
+  }, [playing]);
 
   const onDone = useCallback((r: ExResult) => {
     acc.current.push(r);
@@ -101,6 +110,7 @@ export function LessonPlayer({ episode, id, intro, onFinished }: PlayerProps) {
           })}
         </div>
         <div className="chip">{TYPE_LABEL[exs[review ?? k].type].emoji} {(review ?? k) + 1}/{exs.length}</div>
+        <TimerChip />
       </div>
       {review !== null && (
         <div className="card tint-violet row" style={{ padding: 10, marginBottom: 8 }}>

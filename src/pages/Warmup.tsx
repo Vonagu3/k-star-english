@@ -1,6 +1,6 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useGame } from '../game/store';
+import { useGame, usedToday } from '../game/store';
 import { srsDue } from '../game/rules';
 import { WORDS } from '../content';
 import { sample, shuffle } from '../lib/util';
@@ -8,6 +8,7 @@ import { speak } from '../lib/tts';
 import { sfx } from '../lib/sfx';
 import { Feedback, WordPic, word } from '../exercises/common';
 import confetti from 'canvas-confetti';
+import TimerChip from '../components/TimerChip';
 
 type Q = { id: string; mode: 'listen' | 'pic' | 'ru'; options: string[] };
 
@@ -32,6 +33,11 @@ export default function Warmup() {
   const [res, setRes] = useState<{ id: string; correct: boolean }[]>([]);
   const [done, setDone] = useState(false);
   const q = questions[i];
+  useEffect(() => {
+    if (done) return;
+    useGame.setState((g) => ({ episodeStartSec: g.episodeStartSec ?? usedToday(g) }));
+    return () => useGame.setState({ episodeStartSec: null });
+  }, [done]);
 
   if (done) {
     const c = res.filter((r) => r.correct).length;
@@ -60,7 +66,7 @@ export default function Warmup() {
   };
   return (
     <div className="page col" data-no-tr="recall" style={{ paddingBottom: 140 }}>
-      <div className="row"><button className="icon-btn" onClick={() => nav('/')}>✖️</button><div className="bar grow"><span style={{ width: `${(i / questions.length) * 100}%` }} /></div></div>
+      <div className="row"><button className="icon-btn" onClick={() => nav('/')}>✖️</button><div className="bar grow"><span style={{ width: `${(i / questions.length) * 100}%` }} /></div><TimerChip /></div>
       <h2 className="title-l center">🔥 Daily Warm-up</h2>
       <div className="card center" style={{ minHeight: 150, display: 'grid', placeItems: 'center' }}>
         {q.mode === 'listen' && <button className="btn violet" onClick={() => void speak(w.en)}>🔊 Listen</button>}

@@ -37,8 +37,10 @@ export type GameState = {
   furniture: string[];
   cards: Record<string, number>;
   forcedWorlds: string[];
-  daily: { day: string; metrics: Partial<Record<QuestMetric, number>>; claimed: string[]; chest: boolean; missionBonus?: boolean };
+  daily: { day: string; metrics: Partial<Record<QuestMetric, number>>; claimed: string[]; chest: boolean; missionBonus?: boolean; extraMin?: number };
   minutes: Record<string, number>;
+  /** Active study seconds per day (tab visible and child active). */
+  activeSec?: Record<string, number>;
   skills: Record<Skill, Tally>;
   mistakes: Record<string, number>;
 };
@@ -51,6 +53,13 @@ export const emptyState = (): GameState => ({
   skills: { listening: { c: 0, t: 0 }, reading: { c: 0, t: 0 }, writing: { c: 0, t: 0 }, speaking: { c: 0, t: 0 } },
   mistakes: {},
 });
+
+/** Per-day maximum: time on another device is never lost or double counted. */
+function maxPerDay(a: Record<string, number>, b: Record<string, number>) {
+  const out = { ...a };
+  for (const [k, v] of Object.entries(b)) out[k] = Math.max(v, out[k] ?? 0);
+  return out;
+}
 
 /** Merge two snapshots (e.g. two devices): newer wins for scalars, collections are unioned with best values. */
 export function mergeStates(a: GameState, b: GameState): GameState {
@@ -72,7 +81,11 @@ export function mergeStates(a: GameState, b: GameState): GameState {
     inventory: [...new Set([...base.inventory, ...other.inventory])],
     furniture: [...new Set([...base.furniture, ...other.furniture])],
     forcedWorlds: [...new Set([...base.forcedWorlds, ...other.forcedWorlds])],
-    minutes: { ...other.minutes, ...base.minutes },
+    minutes: maxPerDay(other.minutes, base.minutes),
+    activeSec: maxPerDay(other.activeSec ?? {}, base.activeSec ?? {}),
+    daily: base.daily.day === other.daily.day
+      ? { ...base.daily, extraMin: Math.max(base.daily.extraMin ?? 0, other.daily.extraMin ?? 0) }
+      : base.daily,
   };
 }
 
@@ -100,6 +113,11 @@ type Store = {
   claimChest: () => void;
   buy: (id: string, price: number, kind: 'look' | 'furniture') => boolean;
   addMinute: () => void;
+  addSeconds: (n: number) => void;
+  /** Seconds counted but not yet saved (flushed every 30 s). Not persisted. */
+  liveSec: number;
+  /** Seconds used today when the current episode started; null = not in an episode. Not persisted. */
+  episodeStartSec: number | null;
 };
 
 const KEY = 'kstar-state-v1';
@@ -121,6 +139,8 @@ export const useGame = create<Store>((set, get) => ({
   ready: false,
   syncing: 'idle',
   userId: null,
+  liveSec: 0,
+  episodeStartSec: null,
 
   load: async (userId) => {
     let local = ((await idbGet(KEY)) as GameState | undefined) ?? emptyState();
@@ -226,6 +246,12 @@ export const useGame = create<Store>((set, get) => ({
     return true;
   },
 
+  addSeconds: (n) => get().update((s) => {
+    const d = dayKey(Date.now());
+    const sec = (s.activeSec?.[d] ?? 0) + n;
+    return { ...s, activeSec: { ...s.activeSec, [d]: sec }, minutes: { ...s.minutes, [d]: Math.max(s.minutes[d] ?? 0, Math.round(sec / 60)) } };
+  }),
+
   addMinute: () => get().update((s) => {
     const d = dayKey(Date.now());
     return { ...s, minutes: { ...s.minutes, [d]: (s.minutes[d] ?? 0) + 1 } };
@@ -263,6 +289,9 @@ export async function resetEverything() {
     await supabase.from('submissions').delete().eq('user_id', userId);
   }
 }
+
+/** Seconds studied today, including not-yet-saved live seconds. */
+export const usedToday = (g: { s: GameState; liveSec: number }) => (g.s.activeSec?.[dayKey(Date.now())] ?? 0) + g.liveSec;
 
 export async function sha256(text: string) {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(`kstar:${text}`));

@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useGame, sha256, resetEverything } from '../game/store';
+import { useGame, sha256, resetEverything, usedToday } from '../game/store';
+import { useTimeStatus } from '../components/TimerChip';
+import { DEFAULT_LIMIT_MIN, mmss } from '../game/rules';
 import { rankFor, dayKey } from '../game/rules';
 import { EPISODE_ORDER, WORDS, WORLDS } from '../content';
 import { clearLocalSubmissions, listSubmissions, reviewSubmission, type Submission } from '../lib/submissions';
@@ -117,12 +119,7 @@ function Dashboard() {
 
       <div className="card col">
         <strong>Настройки</strong>
-        <label className="row small">Дневной лимит времени
-          <select className="field" style={{ maxWidth: 160 }} value={s.profile?.settings.dailyLimitMin ?? 0}
-            onChange={(e) => update((st) => ({ ...st, profile: { ...st.profile!, settings: { ...st.profile!.settings, dailyLimitMin: Number(e.target.value) || null } } }))}>
-            <option value={0}>без лимита</option>{[20, 30, 45, 60, 90].map((m) => <option key={m} value={m}>{m} мин</option>)}
-          </select>
-        </label>
+        <TimeLimitSettings />
         <VoiceSettings />
         <label className="row small">Перевод и транскрипция слов по правому клику мыши / долгому нажатию (в заданиях на вспоминание, разминке, Showcase и Debut подсказок нет)
           <select className="field" style={{ maxWidth: 220 }} value={s.profile?.settings.hoverTranslate ?? 'practice'}
@@ -240,6 +237,37 @@ function VoiceSettings() {
         <input type="range" min={0.6} max={1.1} step={0.05} value={settings?.voiceRate ?? 0.9} onChange={(e) => set({ voiceRate: Number(e.target.value) })} />
         <span>{Math.round((settings?.voiceRate ?? 0.9) * 100)}%</span>
       </label>
+    </div>
+  );
+}
+
+function TimeLimitSettings() {
+  const settings = useGame((g) => g.s.profile?.settings);
+  const extra = useGame((g) => g.s.daily.extraMin ?? 0);
+  const used = useGame(usedToday);
+  const update = useGame((g) => g.update);
+  const t = useTimeStatus();
+  const limit = settings?.dailyLimitMin ?? DEFAULT_LIMIT_MIN;
+  const extend = (min: number) => update((st) => ({ ...st, daily: { ...st.daily, extraMin: (st.daily.extraMin ?? 0) + min } }));
+  return (
+    <div className="col" style={{ gap: 6 }}>
+      <label className="row small"><b>⏱ Лимит занятий в день</b>
+        <select className="field" style={{ maxWidth: 170 }} value={limit}
+          onChange={(e) => update((st) => ({ ...st, profile: { ...st.profile!, settings: { ...st.profile!.settings, dailyLimitMin: Number(e.target.value) } } }))}>
+          {[30, 45, 60, 90, 120].map((m) => <option key={m} value={m}>{m} мин{m === DEFAULT_LIMIT_MIN ? ' (по умолчанию)' : ''}</option>)}
+          <option value={0}>без лимита</option>
+        </select>
+      </label>
+      {limit > 0 && (
+        <>
+          <div className="small">Сегодня: <b>{Math.floor(used / 60)} мин</b> из {limit + extra} мин{extra ? ` (в т.ч. продление +${extra})` : ''} · осталось <b>{t.level === 'locked' ? '0:00 — время вышло' : mmss(t.remainingSec)}</b></div>
+          <div className="row wrap">
+            <button className="btn ghost small" onClick={() => extend(15)}>+15 мин сегодня</button>
+            <button className="btn ghost small" onClick={() => extend(30)}>+30 мин сегодня</button>
+          </div>
+          <div className="tiny muted">Время считается, только пока портал открыт и ребёнок им пользуется (после 3 минут бездействия таймер останавливается). Начатый урок можно доиграть — до 10 минут сверх лимита.</div>
+        </>
+      )}
     </div>
   );
 }

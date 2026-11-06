@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useGame } from '../game/store';
 import { rankFor } from '../game/rules';
 import Avatar from './Avatar';
+import TimerChip from './TimerChip';
 
 export default function TopBar() {
   const s = useGame((g) => g.s);
@@ -25,6 +26,7 @@ export default function TopBar() {
         <span className="chip" title="Fans">💖 {s.fans.toLocaleString()}</span>
         <span className="chip" title="Hearts">❤️ {s.hearts}</span>
         <span className="chip" title="Streak">🔥 {s.streak.streak}</span>
+        <TimerChip />
       </div>
     </div>
   );

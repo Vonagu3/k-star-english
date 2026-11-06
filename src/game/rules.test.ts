@@ -104,3 +104,39 @@ describe('merge after reset', () => {
     expect(mergeStates(fresh, later).fans).toBe(10);
   });
 });
+
+import { timeStatus, mmss } from './rules';
+describe('daily time limit', () => {
+  const M = 60;
+  it('defaults to 60 minutes and warns before the end', () => {
+    expect(timeStatus({ usedSec: 10 * M, limitMin: null, episodeStartedAtSec: null }).level).toBe('ok');
+    expect(timeStatus({ usedSec: 51 * M, limitMin: null, episodeStartedAtSec: null }).level).toBe('warn10');
+    expect(timeStatus({ usedSec: 59 * M, limitMin: 60, episodeStartedAtSec: null }).level).toBe('warn2');
+    expect(timeStatus({ usedSec: 60 * M, limitMin: 60, episodeStartedAtSec: null }).level).toBe('locked');
+  });
+  it('lets an episode started in time be finished, up to 10 minutes', () => {
+    expect(timeStatus({ usedSec: 60 * M, limitMin: 60, episodeStartedAtSec: 55 * M }).level).toBe('grace');
+    expect(timeStatus({ usedSec: 65 * M, limitMin: 60, episodeStartedAtSec: 55 * M }).graceLeftSec).toBe(5 * M);
+    expect(timeStatus({ usedSec: 70 * M, limitMin: 60, episodeStartedAtSec: 55 * M }).level).toBe('locked');
+  });
+  it('does not give grace to an episode started after the limit', () => {
+    expect(timeStatus({ usedSec: 61 * M, limitMin: 60, episodeStartedAtSec: 60 * M + 30 }).level).toBe('locked');
+  });
+  it('parent extension and no-limit', () => {
+    expect(timeStatus({ usedSec: 61 * M, limitMin: 60, extraMin: 15, episodeStartedAtSec: null }).level).toBe('ok');
+    expect(timeStatus({ usedSec: 500 * M, limitMin: 0, episodeStartedAtSec: null }).level).toBe('unlimited');
+  });
+  it('formats mm:ss', () => {
+    expect(mmss(125)).toBe('2:05');
+    expect(mmss(-3)).toBe('0:00');
+  });
+});
+
+import { emptyState as es, mergeStates as ms } from './store';
+describe('time is merged per day by maximum', () => {
+  it('keeps the larger count from either device', () => {
+    const a = { ...es(), updatedAt: 200, activeSec: { '2026-11-06': 1200, '2026-11-05': 300 } };
+    const b = { ...es(), updatedAt: 100, activeSec: { '2026-11-06': 1500 } };
+    expect(ms(a, b).activeSec).toEqual({ '2026-11-06': 1500, '2026-11-05': 300 });
+  });
+});
