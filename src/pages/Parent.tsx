@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useGame, sha256, resetEverything, usedToday } from '../game/store';
 import { useTimeStatus } from '../components/TimerChip';
 import WeeklyReport from '../components/WeeklyReport';
+import { TASK_KIND } from './ParentTask';
+import type { ParentTask } from '../game/store';
 import { DEFAULT_LIMIT_MIN, mmss } from '../game/rules';
 import { rankFor, dayKey } from '../game/rules';
 import { EPISODE_ORDER, WORDS, WORLDS } from '../content';
@@ -67,6 +69,8 @@ function Dashboard() {
 
       <WeeklyReport subs={subs} />
 
+      <ParentTasks />
+
       <div className="card col">
         <strong>Время занятий, мин</strong>
         <div className="row" style={{ alignItems: 'flex-end', height: 120, gap: 8 }}>
@@ -123,6 +127,11 @@ function Dashboard() {
       <div className="card col">
         <strong>Настройки</strong>
         <TimeLimitSettings />
+        <label className="row small">🎂 День рождения ребёнка (для праздника и подарка)
+          <input className="field" type="date" style={{ maxWidth: 180 }}
+            value={s.profile?.settings.birthday ? `2016-${s.profile.settings.birthday}` : ''}
+            onChange={(e) => update((st) => ({ ...st, profile: { ...st.profile!, settings: { ...st.profile!.settings, birthday: e.target.value ? e.target.value.slice(5) : null } } }))} />
+        </label>
         <VoiceSettings />
         <label className="row small">Перевод и транскрипция слов по правому клику мыши / долгому нажатию (в заданиях на вспоминание, разминке, Showcase и Debut подсказок нет)
           <select className="field" style={{ maxWidth: 220 }} value={s.profile?.settings.hoverTranslate ?? 'practice'}
@@ -271,6 +280,42 @@ function TimeLimitSettings() {
           <div className="tiny muted">Время считается, только пока портал открыт и ребёнок им пользуется (после 3 минут бездействия таймер останавливается). Начатый урок можно доиграть — до 10 минут сверх лимита.</div>
         </>
       )}
+    </div>
+  );
+}
+
+const NO_TASKS: ParentTask[] = [];
+
+function ParentTasks() {
+  const stored = useGame((g) => g.s.parentTasks);
+  const tasks = stored ?? NO_TASKS;
+  const update = useGame((g) => g.update);
+  const [kind, setKind] = useState<ParentTask['kind']>('write');
+  const [prompt, setPrompt] = useState('');
+  const [ru, setRu] = useState('');
+  const [reward, setReward] = useState(20);
+  const add = () => {
+    const t: ParentTask = { id: crypto.randomUUID(), kind, prompt: prompt.trim(), ru: ru.trim() || undefined, reward, createdAt: Date.now(), doneAt: null };
+    update((s) => ({ ...s, parentTasks: [t, ...(s.parentTasks ?? [])].slice(0, 50) }));
+    setPrompt(''); setRu('');
+  };
+  return (
+    <div className="card col">
+      <strong>📮 Задания от вас</strong>
+      <div className="tiny muted">Придумайте своё задание — оно появится у ребёнка на главной. Пишите по-английски простыми словами; русская подсказка по желанию. Результат придёт в «На проверку».</div>
+      <div className="row wrap">{(Object.keys(TASK_KIND) as ParentTask['kind'][]).map((k) => <button key={k} className="chip" style={{ borderColor: kind === k ? 'var(--violet)' : undefined }} onClick={() => setKind(k)}>{TASK_KIND[k].emoji} {TASK_KIND[k].ru}</button>)}</div>
+      <input className="field" placeholder={kind === 'speak' ? 'Фраза, например: I love my cat Murka.' : 'Задание, например: Write about your cat. What colour is it?'} value={prompt} onChange={(e) => setPrompt(e.target.value)} maxLength={160} />
+      <input className="field" placeholder="Подсказка по-русски (необязательно)" value={ru} onChange={(e) => setRu(e.target.value)} maxLength={120} />
+      <div className="row wrap"><span className="small">Награда:</span>{[10, 20, 30, 50].map((r) => <button key={r} className="chip" style={{ borderColor: reward === r ? 'var(--violet)' : undefined }} onClick={() => setReward(r)}>❤️ {r}</button>)}
+        <div className="grow" /><button className="btn violet small" disabled={prompt.trim().length < 4} onClick={add}>Добавить задание</button></div>
+      {tasks.map((t) => (
+        <div key={t.id} className="row small" style={{ borderTop: '2px solid var(--line)', paddingTop: 6 }}>
+          <span>{TASK_KIND[t.kind].emoji}</span>
+          <div className="grow"><b>{t.prompt}</b>{t.ru ? <span className="muted"> · {t.ru}</span> : null}</div>
+          <span>{t.doneAt ? `✅ ${new Date(t.doneAt).toLocaleDateString('ru-RU')}` : '⏳ ждёт'}</span>
+          <button className="chip" onClick={() => update((s) => ({ ...s, parentTasks: (s.parentTasks ?? []).filter((x) => x.id !== t.id) }))}>🗑️</button>
+        </div>
+      ))}
     </div>
   );
 }

@@ -21,7 +21,7 @@ export const RARITY: Record<Rarity, { label: string; color: string }> = {
   epic: { label: 'Epic', color: '#a259ff' }, legend: { label: 'Legend', color: '#ffb800' },
 };
 
-export type ShopItem = { id: string; slot: keyof Look; value: string; name: string; price: number; emoji: string };
+export type ShopItem = { id: string; slot: keyof Look; value: string; name: string; price: number; emoji: string; /** Seasonal: sold only during its event. */ event?: boolean };
 
 const s = (slot: keyof Look, value: string, name: string, price: number, emoji: string): ShopItem => ({ id: `${slot}:${value}`, slot, value, name, price, emoji });
 
@@ -99,6 +99,8 @@ export const isOwned = (inventory: string[], it: ShopItem) => it.price === 0 || 
 export const SHOP_BY_ID = new Map(SHOP.map((i) => [i.id, i]));
 
 export const BGS: Record<string, [string, string]> = {
+  autumn: ['#ffd8a8', '#ffb067'], xmas: ['#0f4c3a', '#1d3557'], love: ['#ffd1e1', '#ff8fb1'], spring: ['#ffe4f0', '#d7f7e8'], pool: ['#7fd6ff', '#c8f1ff'],
+  moon: ['#141a3a', '#2b2a6b'], spooky: ['#2b1a3d', '#5b2a86'], party: ['#ffe9a8', '#ffc2da'],
   seoul: ['#141a3a', '#3b2d6b'], cherry: ['#ffe1ec', '#fff7fa'], beach: ['#8ad8ff', '#ffe9a8'], snow: ['#dbeeff', '#ffffff'],
   concert: ['#1a0b2e', '#6a1b9a'], rainbow: ['#ffd6e8', '#d6f0ff'], candy: ['#ffd1f0', '#d7f9ff'], ocean: ['#1a6fb3', '#7fd6ff'], space: ['#05030f', '#24104a'],
   pink: ['#ffd6ea', '#ffeaf4'], night: ['#1d1b4b', '#4b2a7a'], sunset: ['#ff9a8b', '#ffd36e'], galaxy: ['#120c3c', '#5a2ca0'], mint: ['#c9f7ea', '#eafff8'], paris: ['#2b2a6b', '#ff8fa3'],
@@ -116,7 +118,38 @@ export const FURNITURE: Furniture[] = [
   { id: 'piano', en: 'piano', emoji: '🎹', price: 120 }, { id: 'headphones', en: 'headphones', emoji: '🎧', price: 45 }, { id: 'cake', en: 'cake', emoji: '🎂', price: 35 },
   { id: 'lightstick', en: 'lightstick', emoji: '🪄', price: 40 }, { id: 'balloon', en: 'balloon', emoji: '🎈', price: 15 }, { id: 'rug', en: 'rug', emoji: '🟪', price: 30 },
   { id: 'eiffel', en: 'Eiffel Tower model', emoji: '🗼', price: 70 }, { id: 'croissant', en: 'croissant', emoji: '🥐', price: 20 }, { id: 'ladybird', en: 'ladybird toy', emoji: '🐞', price: 50 },
+  // kitchen
+  { id: 'fridge', en: 'fridge', emoji: '🧊', price: 60 }, { id: 'cooker', en: 'cooker', emoji: '🔥', price: 60 }, { id: 'sink', en: 'sink', emoji: '🚰', price: 40 },
+  { id: 'kettle', en: 'kettle', emoji: '🫖', price: 25 }, { id: 'table', en: 'table', emoji: '🍽️', price: 40 }, { id: 'fruit', en: 'fruit bowl', emoji: '🍎', price: 20 },
+  { id: 'pizza', en: 'pizza', emoji: '🍕', price: 20 }, { id: 'cupcakes', en: 'cupcakes', emoji: '🧁', price: 25 },
+  // bathroom
+  { id: 'bath', en: 'bath', emoji: '🛁', price: 70 }, { id: 'shower', en: 'shower', emoji: '🚿', price: 60 }, { id: 'toilet', en: 'toilet', emoji: '🚽', price: 50 },
+  { id: 'toothbrush', en: 'toothbrush', emoji: '🪥', price: 15 }, { id: 'soap', en: 'soap', emoji: '🧼', price: 15 }, { id: 'duck', en: 'rubber duck', emoji: '🦆', price: 30 },
+  // garden
+  { id: 'tree', en: 'tree', emoji: '🌳', price: 50 }, { id: 'flowers', en: 'flowers', emoji: '🌷', price: 25 }, { id: 'bike', en: 'bike', emoji: '🚲', price: 70 },
+  { id: 'swing', en: 'slide', emoji: '🛝', price: 80 }, { id: 'tent', en: 'tent', emoji: '⛺', price: 90 }, { id: 'rabbit', en: 'rabbit', emoji: '🐇', price: 100 }, { id: 'sunflower', en: 'sunflower', emoji: '🌻', price: 25 },
+];
+
+export type Room = { id: string; en: string; ru: string; emoji: string; price: number };
+export const ROOMS: Room[] = [
+  { id: 'bedroom', en: 'bedroom', ru: 'спальня', emoji: '🛏️', price: 0 }, { id: 'living', en: 'living room', ru: 'гостиная', emoji: '🛋️', price: 100 },
+  { id: 'kitchen', en: 'kitchen', ru: 'кухня', emoji: '🍳', price: 120 }, { id: 'bathroom', en: 'bathroom', ru: 'ванная', emoji: '🛁', price: 120 },
+  { id: 'garden', en: 'garden', ru: 'сад', emoji: '🌳', price: 180 },
+];
+export type Surface = { id: string; name: string; color: string; pattern?: string; price: number };
+export const WALLS: Surface[] = [
+  { id: 'cream', name: 'Cream', color: '#fbe7d4', price: 0 }, { id: 'pink', name: 'Pink', color: '#ffd6ea', price: 30 }, { id: 'mint', name: 'Mint', color: '#d2f5ea', price: 30 },
+  { id: 'lilac', name: 'Lilac', color: '#e6dcff', price: 30 }, { id: 'sky', name: 'Sky', color: '#d6efff', price: 30 },
+  { id: 'stars', name: 'Stars', color: '#2b2a6b', pattern: 'radial-gradient(#fff 1.2px, transparent 1.6px) 0 0/14px 14px', price: 80 },
+  { id: 'stripes', name: 'Candy stripes', color: '#fff', pattern: 'repeating-linear-gradient(90deg, #ffd6ea 0 10px, #fff 10px 20px)', price: 60 },
+  { id: 'hearts', name: 'Hearts', color: '#ffe3f0', pattern: 'radial-gradient(#ff8fc4 2px, transparent 2.5px) 0 0/16px 16px', price: 70 },
+];
+export const FLOORS: Surface[] = [
+  { id: 'wood', name: 'Wood', color: '#f6d7b8', price: 0 }, { id: 'darkwood', name: 'Dark wood', color: '#c8946a', price: 30 },
+  { id: 'tiles', name: 'Tiles', color: '#eef3f7', pattern: 'linear-gradient(90deg, #d5dde5 1px, transparent 1px) 0 0/24px 24px, linear-gradient(#d5dde5 1px, transparent 1px) 0 0/24px 24px', price: 40 },
+  { id: 'check', name: 'Checkerboard', color: '#fff', pattern: 'conic-gradient(#2b2140 25%, #fff 0 50%, #2b2140 0 75%, #fff 0) 0 0/28px 28px', price: 60 },
+  { id: 'carpet', name: 'Pink carpet', color: '#ffc2da', price: 50 }, { id: 'grass', name: 'Grass', color: '#9be38f', pattern: 'radial-gradient(#7bd06c 1.5px, transparent 2px) 0 0/10px 10px', price: 40 },
 ];
 export const DORM_COLS = 6;
 export const DORM_ROWS = 4;
-export type DormPlacement = { item: string; x: number; y: number };
+export type DormPlacement = { item: string; x: number; y: number; room?: string };

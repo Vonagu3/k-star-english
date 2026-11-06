@@ -9,6 +9,7 @@ import {
 import { supabase } from '../lib/supabase';
 
 export type Skill = 'listening' | 'reading' | 'writing' | 'speaking';
+export type ParentTask = { id: string; kind: 'write' | 'draw' | 'speak' | 'notebook'; prompt: string; ru?: string; reward: number; createdAt: number; doneAt?: number | null };
 export type Tally = { c: number; t: number };
 
 export type GameState = {
@@ -24,9 +25,11 @@ export type GameState = {
     pinHash: string | null;
     look: Look;
     dorm: DormPlacement[];
+    /** Wall and floor per room. */
+    dormStyle?: Record<string, { wall: string; floor: string }>;
     /** Shop item the child is saving hearts for. */
     wish?: string | null;
-    settings: { dailyLimitMin: number | null; muted: boolean; voiceRate: number; voiceName?: string | null; hoverTranslate?: 'all' | 'practice' | 'off' };
+    settings: { dailyLimitMin: number | null; muted: boolean; voiceRate: number; birthday?: string | null; voiceName?: string | null; hoverTranslate?: 'all' | 'practice' | 'off' };
   } | null;
   fans: number;
   hearts: number;
@@ -51,6 +54,10 @@ export type GameState = {
   badges?: Record<string, number>;
   /** Mini-game records. */
   games?: { rhythmBest?: number };
+  /** Year the birthday gift was last given. */
+  birthdayGift?: number;
+  /** Tasks written by the parent for the child. */
+  parentTasks?: ParentTask[];
 };
 
 export const emptyState = (): GameState => ({
@@ -92,6 +99,7 @@ export function mergeStates(a: GameState, b: GameState): GameState {
     minutes: maxPerDay(other.minutes, base.minutes),
     activeSec: maxPerDay(other.activeSec ?? {}, base.activeSec ?? {}),
     wordsSeen: { ...other.wordsSeen, ...base.wordsSeen },
+    parentTasks: base.parentTasks ?? other.parentTasks,
     badges: { ...other.badges, ...base.badges },
     totals: Object.fromEntries([...new Set([...Object.keys(base.totals ?? {}), ...Object.keys(other.totals ?? {})])]
       .map((k) => [k, Math.max(base.totals?.[k as QuestMetric] ?? 0, other.totals?.[k as QuestMetric] ?? 0)])),

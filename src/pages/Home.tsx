@@ -8,6 +8,7 @@ import { questsForDay, srsDue, QUEST_REWARD, QUEST_CHEST } from '../game/rules';
 import { EPISODE_ORDER, WORLDS } from '../content';
 import { RARITY, SHOP_BY_ID, fullLook, rarityOf } from '../game/catalog';
 import Avatar from '../components/Avatar';
+import EventBanner from '../components/EventBanner';
 import { useDailyMission } from './Daily';
 import { DAILY_BONUS } from '../game/daily';
 import { useUnlocked } from './Map';
@@ -52,6 +53,20 @@ export default function Home() {
           <button className="btn ghost small" onClick={() => { void markFeedbackSeen(fb.map((x) => x.id)); setFb([]); }}>Thank you! 💖</button>
         </div>
       )}
+
+      <EventBanner />
+
+      {(s.parentTasks ?? []).filter((t) => !t.doneAt).slice(0, 3).map((t) => (
+        <button key={t.id} className="card row" onClick={() => nav(`/task/${t.id}`)} style={{ textAlign: 'left', borderColor: 'var(--mint)', background: 'var(--mint-soft)' }}>
+          <div style={{ fontSize: 40 }}>📮</div>
+          <div className="grow">
+            <div className="tiny" style={{ fontWeight: 800, color: '#0d6b61' }}>TASK FROM MUM/DAD · ЗАДАНИЕ ОТ РОДИТЕЛЯ</div>
+            <b>{t.prompt}</b>
+            <div className="tiny muted">{t.ru}</div>
+          </div>
+          <span className="btn mint small">❤️ {t.reward}</span>
+        </button>
+      ))}
 
       <button className="card row" onClick={() => nav('/daily')}
         style={{ textAlign: 'left', background: s.daily.missionBonus ? '#fff' : 'linear-gradient(120deg, #2b2a6b, #ff6f91)', color: s.daily.missionBonus ? 'var(--ink)' : '#fff', borderColor: '#ff3b4e' }}>

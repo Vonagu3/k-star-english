@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import Avatar from '../components/Avatar';
 import TopBar from '../components/TopBar';
-import { RARITY, SHOP, fullLook, isOwned, rarityOf, type Look, type ShopItem } from '../game/catalog';
+import { RARITY, SHOP, SHOP_BY_ID, fullLook, isOwned, rarityOf, type Look, type ShopItem } from '../game/catalog';
+import { activeEvent, isBirthdayWeek, BIRTHDAY_ITEMS } from '../game/events';
 import { useGame } from '../game/store';
 import { sfx } from '../lib/sfx';
 import { DANCE_MOVES, type DanceMove } from '../content/schema';
@@ -25,7 +26,9 @@ export default function Studio() {
   const s = useGame((g) => g.s);
   const update = useGame((g) => g.update);
   const buy = useGame((g) => g.buy);
-  const [tab, setTab] = useState<keyof Look>('outfit');
+  const ev = activeEvent();
+  const bday = isBirthdayWeek(useGame.getState().s.profile?.settings.birthday);
+  const [tab, setTab] = useState<keyof Look | 'event'>(ev || bday ? 'event' : 'outfit');
   const [preview, setPreview] = useState<Look | null>(null);
   const [move, setMove] = useState<DanceMove | 'idle'>('idle');
   const [mk, setMk] = useState(0);
@@ -61,8 +64,10 @@ export default function Studio() {
     setMsg(`⭐ ${it.name} is your goal! Earn hearts in episodes. · Это твоя цель — копи сердечки!`);
   };
 
-  const items = SHOP.filter((i) => i.slot === tab).sort((a, b) => a.price - b.price);
-  const previewing = preview ? items.find((i) => preview[tab] === i.value && !isOwned(s.inventory, i)) : undefined;
+  const eventItems = [...(ev ? ev.items : []), ...(bday ? BIRTHDAY_ITEMS : [])].map((i) => SHOP_BY_ID.get(i.id) ?? i);
+  const items = tab === 'event' ? eventItems
+    : SHOP.filter((i) => i.slot === tab && (!i.event || isOwned(s.inventory, i))).sort((a, b) => a.price - b.price);
+  const previewing = preview ? items.find((i) => preview[i.slot] === i.value && !isOwned(s.inventory, i)) : undefined;
   const trying = preview && SHOP.some((i) => fullLook(preview)[i.slot] === i.value && !isOwned(s.inventory, i));
   const ownedCount = SHOP.filter((i) => i.price > 0 && s.inventory.includes(i.id)).length;
   const paidCount = SHOP.filter((i) => i.price > 0).length;
@@ -84,8 +89,10 @@ export default function Studio() {
         </div>
         <div className="col grow" style={{ minWidth: 260 }}>
           <div className="row wrap" style={{ gap: 6 }}>
+            {(ev || bday) && <button className="chip" style={{ borderColor: tab === 'event' ? 'var(--pink)' : '#ffb800', background: tab === 'event' ? 'var(--pink-soft)' : '#fff3cc' }} onClick={() => setTab('event')}>{bday ? '🎂 Birthday' : ev!.emoji} {ev ? ev.name : 'Birthday'}</button>}
             {TABS.map((t) => <button key={t.slot} className="chip" style={{ borderColor: tab === t.slot ? 'var(--pink)' : undefined, background: tab === t.slot ? 'var(--pink-soft)' : undefined }} onClick={() => setTab(t.slot)}>{t.emoji} {t.label}</button>)}
           </div>
+          {tab === 'event' && <div className="card tint-sun small" style={{ fontWeight: 800 }}>{bday && '🎂 Birthday items — only this week! '}{ev && `${ev.emoji} ${ev.name}: limited items, only until ${ev.to.split('-').reverse().join('.')}! · Только во время праздника!`}</div>}
           <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(112px, 1fr))' }}>
             {items.map((it) => {
               const owned = isOwned(s.inventory, it);
@@ -93,8 +100,8 @@ export default function Studio() {
               const r = RARITY[rarityOf(it.price)];
               const afford = s.hearts >= it.price;
               return (
-                <button key={it.id} className={`tile ${on ? 'good' : preview?.[tab] === it.value ? 'selected' : ''}`} onClick={() => select(it)}
-                  style={{ minHeight: 112, fontSize: 14, position: 'relative', borderColor: !owned && !on && preview?.[tab] !== it.value ? `${r.color}88` : undefined }}>
+                <button key={it.id} className={`tile ${on ? 'good' : preview?.[it.slot] === it.value ? 'selected' : ''}`} onClick={() => select(it)}
+                  style={{ minHeight: 112, fontSize: 14, position: 'relative', borderColor: !owned && !on && preview?.[it.slot] !== it.value ? `${r.color}88` : undefined }}>
                   {!owned && <span className="badge" style={{ position: 'absolute', top: 4, left: 4, background: r.color, fontSize: 9 }}>{r.label}</span>}
                   {wish === it.id && <span style={{ position: 'absolute', top: 2, right: 6, fontSize: 16 }}>⭐</span>}
                   <span style={{ fontSize: 30, marginTop: 6 }}>{it.slot.endsWith('olor') || it.slot === 'skin' ? <Swatch value={it.value} /> : it.emoji}</span>
