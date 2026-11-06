@@ -16,6 +16,7 @@ import Parent from './pages/Parent';
 import Onboarding from './pages/Onboarding';
 import Login from './pages/Login';
 import NotebookBook from './pages/NotebookBook';
+import Daily from './pages/Daily';
 import TranslateTooltip from './components/TranslateTooltip';
 
 function LessonRoute() {
@@ -25,7 +26,7 @@ function LessonRoute() {
 
 function Nav() {
   const loc = useLocation();
-  if (loc.pathname.startsWith('/lesson') || loc.pathname.startsWith('/warmup') || loc.pathname.startsWith('/parent')) return null;
+  if (loc.pathname.startsWith('/lesson') || loc.pathname.startsWith('/daily') || loc.pathname.startsWith('/warmup') || loc.pathname.startsWith('/parent')) return null;
   const items = [['/', '🏠', 'Home'], ['/map', '🗺️', 'Map'], ['/studio', '👗', 'Studio'], ['/dorm', '🛏️', 'Dorm'], ['/cards', '🃏', 'Cards'], ['/parent', '🔐', 'Parent']] as const;
   return (
     <nav className="bottom-nav">
@@ -97,6 +98,7 @@ export default function App() {
         <Route path="/cards" element={<Cards />} />
         <Route path="/parent" element={<Parent />} />
         <Route path="/notebook" element={<NotebookBook />} />
+        <Route path="/daily" element={<Daily />} />
         <Route path="*" element={<Home />} />
       </Routes>
       <Nav />

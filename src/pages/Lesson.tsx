@@ -1,8 +1,9 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import confetti from 'canvas-confetti';
 import { EPISODES, EPISODE_ORDER } from '../content';
+import type { Episode } from '../content/schema';
 import { ExerciseView, TYPE_LABEL } from '../exercises';
 import type { ExResult } from '../exercises/common';
 import { useGame, type EpisodeResult, type FinishOutcome } from '../game/store';
@@ -17,6 +18,23 @@ export default function Lesson() {
   const { id = '' } = useParams();
   const ref = EPISODES.get(id);
   const nav = useNavigate();
+  if (!ref) return <div className="page center"><h2>Episode not found</h2><button className="btn" onClick={() => nav('/map')}>Back to map</button></div>;
+  return <LessonPlayer episode={ref.episode} id={id} />;
+}
+
+type PlayerProps = {
+  episode: Episode;
+  id: string;
+  /** Optional story card shown before the first task. */
+  intro?: ReactNode;
+  /** Called once when the episode is finished; may return bonus hearts to show on the results screen. */
+  onFinished?: (out: FinishOutcome) => number;
+};
+
+/** Plays one episode: tasks in order, review of finished tasks, results. Used for map episodes and the daily mission. */
+export function LessonPlayer({ episode, id, intro, onFinished }: PlayerProps) {
+  const nav = useNavigate();
+  const [started, setStarted] = useState(!intro);
   const name = useGame((g) => g.s.profile?.name ?? '');
   const trMode = useGame((g) => g.s.profile?.settings.hoverTranslate ?? 'practice');
   const finishEpisode = useGame((g) => g.finishEpisode);
@@ -26,7 +44,7 @@ export default function Lesson() {
   const acc = useRef<ExResult[]>([]);
   const [outcome, setOutcome] = useState<(FinishOutcome & { correct: number; total: number }) | null>(null);
   const [confirmExit, setConfirmExit] = useState(false);
-  const exs = ref?.episode.exercises ?? [];
+  const exs = episode.exercises;
   const startedAt = useMemo(() => Date.now(), []);
 
   useEffect(() => () => stopSpeaking(), []);
@@ -46,14 +64,23 @@ export default function Lesson() {
       result.skills[x.skill] = { c: sk.c + x.correct, t: sk.t + x.total };
       if (x.metric) result.metrics[x.metric] = (result.metrics[x.metric] ?? 0) + (x.metricN ?? 1);
     }
-    const out = finishEpisode(id, ref!.episode.kind, result);
-    setOutcome({ ...out, correct: result.correct, total: result.total });
+    const out = finishEpisode(id, episode.kind, result);
+    const bonus = onFinished?.(out) ?? 0;
+    setOutcome({ ...out, hearts: out.hearts + bonus, correct: result.correct, total: result.total });
     if (out.stars > 0) { sfx.win(); setTimeout(() => confetti({ particleCount: 160, spread: 100, origin: { y: 0.3 } }), 300); }
     if (out.rankUp) setTimeout(() => sfx.levelUp(), 1200);
-  }, [k, exs.length, finishEpisode, id, ref]);
+  }, [k, exs.length, finishEpisode, id, episode.kind, onFinished]);
 
-  if (!ref) return <div className="page center"><h2>Episode not found</h2><button className="btn" onClick={() => nav('/map')}>Back to map</button></div>;
-  if (outcome) return <Results ep={ref.episode} outcome={outcome} minutes={Math.round((Date.now() - startedAt) / 60000)} onRetry={() => { acc.current = []; setOutcome(null); setK(0); }} />;
+  if (outcome) return <Results ep={episode} outcome={outcome} minutes={Math.round((Date.now() - startedAt) / 60000)} onRetry={() => { acc.current = []; setOutcome(null); setK(0); }} />;
+
+  if (!started) {
+    return (
+      <div className="page col" style={{ alignItems: 'center', textAlign: 'center' }}>
+        {intro}
+        <div className="row"><button className="btn ghost" onClick={() => nav('/')}>🏠 Home</button><button className="btn" onClick={() => setStarted(true)}>Start the mission! →</button></div>
+      </div>
+    );
+  }
 
   const ex = exs[k];
   return (
@@ -82,10 +109,10 @@ export default function Lesson() {
         </div>
       )}
       <div className="tiny muted center" style={{ marginTop: -6, marginBottom: 6 }}>
-        {trMode !== 'all' && (ref.episode.kind === 'showcase' || ref.episode.kind === 'debut') ? '🔒 Check time: no translation hints' : trMode !== 'off' ? (matchMedia('(hover: none)').matches ? '👆 Hold a word to see it in Russian' : '🖱️ Right-click a word to see it in Russian') : ''}
+        {trMode !== 'all' && (episode.kind === 'showcase' || episode.kind === 'debut') ? '🔒 Check time: no translation hints' : trMode !== 'off' ? (matchMedia('(hover: none)').matches ? '👆 Hold a word to see it in Russian' : '🖱️ Right-click a word to see it in Russian') : ''}
       </div>
       {review !== null && (
-        <div key={`review-${review}`} data-no-tr={ref.episode.kind === 'showcase' || ref.episode.kind === 'debut' ? 'check' : undefined}>
+        <div key={`review-${review}`} data-no-tr={episode.kind === 'showcase' || episode.kind === 'debut' ? 'check' : undefined}>
           <ErrorBoundary resetKey={review} fallback={() => <div className="card tint-sun center">🙈 Oops! <button className="btn small" onClick={() => setReview(null)}>Back to task {k + 1} →</button></div>}>
             <ExerciseView ex={exs[review]} onDone={() => { stopSpeaking(); setReview(null); window.scrollTo({ top: 0 }); }} name={name} lessonId={`${id}#review`} />
           </ErrorBoundary>
@@ -93,7 +120,7 @@ export default function Lesson() {
       )}
       <div style={{ display: review !== null ? 'none' : undefined }}>
       <AnimatePresence mode="wait">
-        <motion.div key={k} data-no-tr={ref.episode.kind === 'showcase' || ref.episode.kind === 'debut' ? 'check' : undefined} initial={{ x: 40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -40, opacity: 0 }} transition={{ duration: 0.2 }}>
+        <motion.div key={k} data-no-tr={episode.kind === 'showcase' || episode.kind === 'debut' ? 'check' : undefined} initial={{ x: 40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -40, opacity: 0 }} transition={{ duration: 0.2 }}>
           <ErrorBoundary resetKey={k} fallback={() => (
             <div className="card tint-sun col center" style={{ alignItems: 'center' }}>
               <div style={{ fontSize: 56 }}>🙈</div>

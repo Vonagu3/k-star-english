@@ -37,7 +37,7 @@ export type GameState = {
   furniture: string[];
   cards: Record<string, number>;
   forcedWorlds: string[];
-  daily: { day: string; metrics: Partial<Record<QuestMetric, number>>; claimed: string[]; chest: boolean };
+  daily: { day: string; metrics: Partial<Record<QuestMetric, number>>; claimed: string[]; chest: boolean; missionBonus?: boolean };
   minutes: Record<string, number>;
   skills: Record<Skill, Tally>;
   mistakes: Record<string, number>;

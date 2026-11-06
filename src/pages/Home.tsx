@@ -8,6 +8,8 @@ import { questsForDay, srsDue, QUEST_REWARD, QUEST_CHEST } from '../game/rules';
 import { EPISODE_ORDER, WORLDS } from '../content';
 import { RARITY, SHOP_BY_ID, fullLook, rarityOf } from '../game/catalog';
 import Avatar from '../components/Avatar';
+import { useDailyMission } from './Daily';
+import { DAILY_BONUS } from '../game/daily';
 import { useUnlocked } from './Map';
 import { sfx } from '../lib/sfx';
 import { markFeedbackSeen, unseenFeedback, type Submission } from '../lib/submissions';
@@ -20,6 +22,7 @@ export default function Home() {
   const unlocked = useUnlocked();
   const nav = useNavigate();
   const [fb, setFb] = useState<Submission[]>([]);
+  const daily = useDailyMission();
   useEffect(() => { void unseenFeedback(userId).then(setFb); }, [userId]);
 
   const quests = questsForDay(s.daily.day);
@@ -49,6 +52,17 @@ export default function Home() {
           <button className="btn ghost small" onClick={() => { void markFeedbackSeen(fb.map((x) => x.id)); setFb([]); }}>Thank you! 💖</button>
         </div>
       )}
+
+      <button className="card row" onClick={() => nav('/daily')}
+        style={{ textAlign: 'left', background: s.daily.missionBonus ? '#fff' : 'linear-gradient(120deg, #2b2a6b, #ff6f91)', color: s.daily.missionBonus ? 'var(--ink)' : '#fff', borderColor: '#ff3b4e' }}>
+        <div style={{ fontSize: 44 }}>{s.daily.missionBonus ? '✅' : daily.mission.emoji}</div>
+        <div className="grow">
+          <div className="tiny" style={{ fontWeight: 800, opacity: 0.9 }}>🗼 MISSION OF THE DAY · МИССИЯ ДНЯ</div>
+          <div style={{ fontFamily: 'var(--font-title)', fontWeight: 800, fontSize: 20 }}>{daily.mission.title}</div>
+          <div className="small" style={{ fontWeight: 700 }}>{s.daily.missionBonus ? 'Done! A new mission comes tomorrow 🌙' : `5 quick tasks · +${DAILY_BONUS} ❤️ bonus`}</div>
+        </div>
+        {!s.daily.missionBonus && <span className="btn sun small">Go!</span>}
+      </button>
 
       <div className="grid grid-2">
         {nextRef && (
