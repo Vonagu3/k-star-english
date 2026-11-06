@@ -1,82 +1,129 @@
 import { useState } from 'react';
 import Avatar from '../components/Avatar';
 import TopBar from '../components/TopBar';
-import { SHOP, type Look, type ShopItem } from '../game/catalog';
+import { RARITY, SHOP, fullLook, isOwned, rarityOf, type Look, type ShopItem } from '../game/catalog';
 import { useGame } from '../game/store';
 import { sfx } from '../lib/sfx';
 import { DANCE_MOVES, type DanceMove } from '../content/schema';
+import confetti from 'canvas-confetti';
 
 const TABS: { slot: keyof Look; label: string; emoji: string }[] = [
-  { slot: 'hair', label: 'Hair', emoji: '💇‍♀️' }, { slot: 'hairColor', label: 'Hair colour', emoji: '🎨' }, { slot: 'eyes', label: 'Eyes', emoji: '👀' },
-  { slot: 'outfit', label: 'Clothes', emoji: '👗' }, { slot: 'outfitColor', label: 'Colour', emoji: '🌈' }, { slot: 'acc', label: 'Accessories', emoji: '🎀' },
-  { slot: 'stick', label: 'Lightstick', emoji: '🪄' }, { slot: 'bg', label: 'Background', emoji: '🌌' }, { slot: 'skin', label: 'Skin', emoji: '🙂' },
+  { slot: 'outfit', label: 'Clothes', emoji: '👗' }, { slot: 'hair', label: 'Hair', emoji: '💇‍♀️' }, { slot: 'hairColor', label: 'Hair colour', emoji: '🎨' },
+  { slot: 'pet', label: 'Pets', emoji: '🐾' }, { slot: 'fx', label: 'Effects', emoji: '✨' }, { slot: 'acc', label: 'Accessories', emoji: '🎀' },
+  { slot: 'glasses', label: 'Glasses', emoji: '👓' }, { slot: 'eyes', label: 'Eyes', emoji: '👀' }, { slot: 'face', label: 'Face', emoji: '💗' },
+  { slot: 'outfitColor', label: 'Clothes colour', emoji: '🌈' }, { slot: 'stick', label: 'Lightstick', emoji: '🪄' }, { slot: 'bg', label: 'Background', emoji: '🌌' },
+  { slot: 'skin', label: 'Skin', emoji: '🙂' },
 ];
+
+/** Colour swatch, including two-tone / rainbow gradients ("grad:#a:#b"). */
+function Swatch({ value }: { value: string }) {
+  const bg = value.startsWith('grad:') ? `linear-gradient(180deg, ${value.slice(5).split(':').join(', ')})` : value;
+  return <span style={{ display: 'inline-block', width: 34, height: 34, borderRadius: '50%', background: bg, border: '2px solid #ddd' }} />;
+}
 
 export default function Studio() {
   const s = useGame((g) => g.s);
   const update = useGame((g) => g.update);
   const buy = useGame((g) => g.buy);
-  const [tab, setTab] = useState<keyof Look>('hair');
+  const [tab, setTab] = useState<keyof Look>('outfit');
   const [preview, setPreview] = useState<Look | null>(null);
   const [move, setMove] = useState<DanceMove | 'idle'>('idle');
   const [mk, setMk] = useState(0);
   const [msg, setMsg] = useState('');
   if (!s.profile) return null;
-  const look = preview ?? s.profile.look;
+  const myLook = fullLook(s.profile.look);
+  const look = preview ? fullLook(preview) : myLook;
+  const wish = s.profile.wish ?? null;
 
+  const wear = (it: ShopItem) => update((x) => ({ ...x, profile: { ...x.profile!, look: { ...x.profile!.look, [it.slot]: it.value } } }));
   const select = (it: ShopItem) => {
-    const owned = s.inventory.includes(it.id);
-    if (owned) {
-      sfx.tap();
-      update((x) => ({ ...x, profile: { ...x.profile!, look: { ...x.profile!.look, [it.slot]: it.value } } }));
+    if (isOwned(s.inventory, it)) {
+      sfx.tap(); wear(it);
       setPreview(preview ? { ...preview, [it.slot]: it.value } : null); setMsg('');
     } else {
-      setPreview({ ...(preview ?? s.profile!.look), [it.slot]: it.value });
-      setMsg(`${it.name}: ${it.price} ❤️`);
+      setPreview({ ...(preview ?? myLook), [it.slot]: it.value });
+      setMsg('');
     }
   };
   const purchase = (it: ShopItem) => {
     if (buy(it.id, it.price, 'look')) {
-      sfx.coin();
-      update((x) => ({ ...x, profile: { ...x.profile!, look: { ...x.profile!.look, [it.slot]: it.value } } }));
+      sfx.levelUp();
+      if (rarityOf(it.price) === 'epic' || rarityOf(it.price) === 'legend') confetti({ particleCount: 140, spread: 90, origin: { y: 0.3 } });
+      wear(it);
+      if (wish === it.id) update((x) => ({ ...x, profile: { ...x.profile!, wish: null } }));
       setPreview(preview ? { ...preview, [it.slot]: it.value } : null); setMsg(`You got ${it.name}! 🎉`);
       setMove('pose'); setMk((k) => k + 1);
-    } else { sfx.wrong(); setMsg('Not enough hearts yet — play episodes to earn more! · Пока не хватает сердечек'); }
+    } else { sfx.wrong(); setMsg(`You need ${it.price - s.hearts} more ❤️. Play episodes to earn them! · Не хватает ${it.price - s.hearts} ❤️`); }
   };
-  const items = SHOP.filter((i) => i.slot === tab);
-  const previewing = preview ? items.find((i) => preview[tab] === i.value && !s.inventory.includes(i.id)) : undefined;
-  const trying = preview && SHOP.some((i) => preview[i.slot] === i.value && !s.inventory.includes(i.id));
+  const setWish = (it: ShopItem) => {
+    sfx.coin();
+    update((x) => ({ ...x, profile: { ...x.profile!, wish: it.id } }));
+    setMsg(`⭐ ${it.name} is your goal! Earn hearts in episodes. · Это твоя цель — копи сердечки!`);
+  };
+
+  const items = SHOP.filter((i) => i.slot === tab).sort((a, b) => a.price - b.price);
+  const previewing = preview ? items.find((i) => preview[tab] === i.value && !isOwned(s.inventory, i)) : undefined;
+  const trying = preview && SHOP.some((i) => fullLook(preview)[i.slot] === i.value && !isOwned(s.inventory, i));
+  const ownedCount = SHOP.filter((i) => i.price > 0 && s.inventory.includes(i.id)).length;
+  const paidCount = SHOP.filter((i) => i.price > 0).length;
+
   return (
     <div className="page col">
       <TopBar />
-      <h1 className="title-xl">👗 Style Studio</h1>
+      <div className="row wrap">
+        <h1 className="title-xl grow">👗 Style Studio</h1>
+        <span className="chip">🛍️ {ownedCount} / {paidCount} items</span>
+      </div>
       <div className="row wrap" style={{ alignItems: 'flex-start', gap: 16 }}>
-        <div className="col" style={{ alignItems: 'center', flex: '0 0 auto', margin: '0 auto' }}>
-          <Avatar look={look} size={200} move={move} moveKey={mk} />
-          <div className="row wrap" style={{ justifyContent: 'center', gap: 4, maxWidth: 240 }}>
-            {DANCE_MOVES.slice(0, 12).map((m) => <button key={m} className="chip" style={{ padding: '4px 8px' }} onClick={() => { setMove(m); setMk((k) => k + 1); }}>{m.replace('-', ' ')}</button>)}
+        <div className="col studio-avatar" style={{ alignItems: 'center', flex: '0 0 auto', margin: '0 auto' }}>
+          <Avatar look={look} size={210} move={move} moveKey={mk} />
+          {trying && <div className="badge" style={{ background: 'var(--violet)' }}>👀 Trying on</div>}
+          <div className="row wrap" style={{ justifyContent: 'center', gap: 4, maxWidth: 250 }}>
+            {DANCE_MOVES.map((m) => <button key={m} className="chip" style={{ padding: '4px 8px' }} onClick={() => { setMove(m); setMk((k) => k + 1); }}>{m.replace('-', ' ')}</button>)}
           </div>
         </div>
         <div className="col grow" style={{ minWidth: 260 }}>
           <div className="row wrap" style={{ gap: 6 }}>
             {TABS.map((t) => <button key={t.slot} className="chip" style={{ borderColor: tab === t.slot ? 'var(--pink)' : undefined, background: tab === t.slot ? 'var(--pink-soft)' : undefined }} onClick={() => setTab(t.slot)}>{t.emoji} {t.label}</button>)}
           </div>
-          <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(110px, 1fr))' }}>
+          <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(112px, 1fr))' }}>
             {items.map((it) => {
-              const owned = s.inventory.includes(it.id);
-              const on = s.profile!.look[it.slot] === it.value;
+              const owned = isOwned(s.inventory, it);
+              const on = myLook[it.slot] === it.value;
+              const r = RARITY[rarityOf(it.price)];
+              const afford = s.hearts >= it.price;
               return (
-                <button key={it.id} className={`tile ${on ? 'good' : preview?.[tab] === it.value ? 'selected' : ''}`} onClick={() => select(it)} style={{ minHeight: 96, fontSize: 14 }}>
-                  <span style={{ fontSize: 30 }}>{it.slot.endsWith('olor') || it.slot === 'skin' ? <span style={{ display: 'inline-block', width: 30, height: 30, borderRadius: '50%', background: it.value, border: '2px solid #ddd' }} /> : it.emoji}</span>
+                <button key={it.id} className={`tile ${on ? 'good' : preview?.[tab] === it.value ? 'selected' : ''}`} onClick={() => select(it)}
+                  style={{ minHeight: 112, fontSize: 14, position: 'relative', borderColor: !owned && !on && preview?.[tab] !== it.value ? `${r.color}88` : undefined }}>
+                  {!owned && <span className="badge" style={{ position: 'absolute', top: 4, left: 4, background: r.color, fontSize: 9 }}>{r.label}</span>}
+                  {wish === it.id && <span style={{ position: 'absolute', top: 2, right: 6, fontSize: 16 }}>⭐</span>}
+                  <span style={{ fontSize: 30, marginTop: 6 }}>{it.slot.endsWith('olor') || it.slot === 'skin' ? <Swatch value={it.value} /> : it.emoji}</span>
                   {it.name}
-                  <span className="tiny muted">{owned ? (on ? 'wearing' : 'owned') : `${it.price} ❤️`}</span>
+                  <span className="tiny" style={{ fontWeight: 800, color: owned ? 'var(--mint)' : afford ? 'var(--pink)' : 'var(--ink-2)' }}>
+                    {owned ? (on ? '✓ wearing' : 'owned') : `${it.price} ❤️`}
+                  </span>
                 </button>
               );
             })}
           </div>
           {msg && <div className="card tint-sun small" style={{ fontWeight: 800 }}>{msg}</div>}
+          {previewing && (
+            <div className="card col" style={{ borderColor: RARITY[rarityOf(previewing.price)].color }}>
+              <div className="row">
+                <span style={{ fontSize: 30 }}>{previewing.emoji}</span>
+                <div className="grow">
+                  <b>{previewing.name}</b> <span className="badge" style={{ background: RARITY[rarityOf(previewing.price)].color }}>{RARITY[rarityOf(previewing.price)].label}</span>
+                  <div className="bar" style={{ marginTop: 6 }}><span style={{ width: `${Math.min(100, (s.hearts / previewing.price) * 100)}%` }} /></div>
+                  <div className="tiny muted">{s.hearts >= previewing.price ? 'You can buy it now!' : `${s.hearts} / ${previewing.price} ❤️ — ${previewing.price - s.hearts} more to go`}</div>
+                </div>
+              </div>
+              <div className="row wrap">
+                <button className="btn sun" disabled={s.hearts < previewing.price} onClick={() => purchase(previewing)}>Buy for {previewing.price} ❤️</button>
+                {s.hearts < previewing.price && wish !== previewing.id && <button className="btn violet small" onClick={() => setWish(previewing)}>⭐ Make it my goal</button>}
+              </div>
+            </div>
+          )}
           {trying && <button className="btn ghost small" onClick={() => { setPreview(null); setMsg(''); }}>↩️ Take off the try-on</button>}
-          {previewing && <button className="btn sun" onClick={() => purchase(previewing)}>Buy {previewing.name} for {previewing.price} ❤️</button>}
         </div>
       </div>
     </div>

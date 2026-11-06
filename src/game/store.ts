@@ -24,6 +24,8 @@ export type GameState = {
     pinHash: string | null;
     look: Look;
     dorm: DormPlacement[];
+    /** Shop item the child is saving hearts for. */
+    wish?: string | null;
     settings: { dailyLimitMin: number | null; muted: boolean; voiceRate: number; voiceName?: string | null; hoverTranslate?: 'all' | 'practice' | 'off' };
   } | null;
   fans: number;

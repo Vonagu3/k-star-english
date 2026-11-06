@@ -2,11 +2,23 @@
 export type Look = {
   skin: string; hair: string; hairColor: string; eyes: string;
   outfit: string; outfitColor: string; acc: string; stick: string; bg: string;
+  /** Added later: optional in saved looks, filled from DEFAULT_LOOK. */
+  face?: string; glasses?: string; pet?: string; fx?: string;
 };
 
-export const DEFAULT_LOOK: Look = {
+export const DEFAULT_LOOK: Required<Look> = {
   skin: '#ffd9c2', hair: 'bob', hairColor: '#3b2a26', eyes: 'sparkle',
   outfit: 'hoodie', outfitColor: '#ff8fc4', acc: 'none', stick: 'heart', bg: 'pink',
+  face: 'none', glasses: 'none', pet: 'none', fx: 'none',
+};
+/** A saved look with every slot filled in. */
+export const fullLook = (l: Look): Required<Look> => ({ ...DEFAULT_LOOK, ...l });
+
+export type Rarity = 'free' | 'common' | 'rare' | 'epic' | 'legend';
+export const rarityOf = (price: number): Rarity => (price === 0 ? 'free' : price < 120 ? 'common' : price < 300 ? 'rare' : price < 800 ? 'epic' : 'legend');
+export const RARITY: Record<Rarity, { label: string; color: string }> = {
+  free: { label: 'Free', color: '#9aa5b1' }, common: { label: 'Common', color: '#2ec4b6' }, rare: { label: 'Rare', color: '#3fa7ff' },
+  epic: { label: 'Epic', color: '#a259ff' }, legend: { label: 'Legend', color: '#ffb800' },
 };
 
 export type ShopItem = { id: string; slot: keyof Look; value: string; name: string; price: number; emoji: string };
@@ -30,9 +42,65 @@ export const SHOP: ShopItem[] = [
   s('stick', 'heart', 'Heart lightstick', 0, '💗'), s('stick', 'star', 'Star lightstick', 60, '🌟'), s('stick', 'round', 'Round lightstick', 60, '🔮'), s('stick', 'bunny', 'Bunny lightstick', 120, '🐰'),
   s('bg', 'pink', 'Pink studio', 0, '🩷'), s('bg', 'night', 'Night stage', 80, '🌃'), s('bg', 'sunset', 'Sunset', 80, '🌅'), s('bg', 'galaxy', 'Galaxy', 150, '🌌'), s('bg', 'mint', 'Mint room', 50, '🍃'), s('bg', 'paris', 'Paris night', 120, '🗼'),
 ];
+// ---- Big shop expansion: lots of things to save hearts for ----
+SHOP.push(
+  // hair styles
+  s('hair', 'braids', 'Two braids', 110, '🧶'), s('hair', 'curly', 'Curly cloud', 150, '☁️'), s('hair', 'topbun', 'Top bun', 90, '🍙'),
+  s('hair', 'side', 'Side ponytail', 130, '🎐'), s('hair', 'pixie', 'Pixie cut', 100, '🧚'), s('hair', 'hime', 'Princess bangs', 220, '👸'),
+  s('hair', 'wolf', 'Idol layers', 320, '🐺'), s('hair', 'mega', 'Mega twin tails', 650, '💫'),
+  // hair colours (grad: = two-tone ombré)
+  s('hairColor', '#7ee0c3', 'Mint', 120, '🌿'), s('hairColor', '#c7a6ff', 'Lavender', 120, '🪻'), s('hairColor', '#d6243c', 'Cherry red', 140, '🍒'),
+  s('hairColor', '#1d2a5c', 'Blue-black', 90, '🌑'), s('hairColor', '#b5652b', 'Copper', 100, '🟠'), s('hairColor', '#e7a7a1', 'Rose gold', 260, '🌹'),
+  s('hairColor', '#c9ced6', 'Silver', 280, '🪙'), s('hairColor', '#ffe36e', 'Lemon', 140, '🍋'), s('hairColor', '#2bb3b1', 'Ocean teal', 160, '🌊'),
+  s('hairColor', 'grad:#ff7eb6:#8f7bff', 'Pink-purple ombré', 450, '🦄'), s('hairColor', 'grad:#5cc8ff:#c7a6ff', 'Sky ombré', 450, '🌤️'),
+  s('hairColor', 'grad:#ffd36e:#ff6a3d', 'Sunset ombré', 500, '🌅'), s('hairColor', 'grad:#111111:#ff5fa2', 'Idol pink tips', 600, '🎤'),
+  s('hairColor', 'grad:#7ee0c3:#5cc8ff', 'Mermaid ombré', 700, '🧜‍♀️'), s('hairColor', 'grad:#ff7eb6:#ffd36e:#7ee0c3:#5cc8ff:#c7a6ff', 'Rainbow', 1500, '🌈'),
+  // eyes
+  s('eyes', 'heart', 'Heart eyes', 150, '😍'), s('eyes', 'sleepy', 'Sleepy eyes', 60, '😌'), s('eyes', 'cat', 'Cat-eye liner', 180, '🐱'),
+  s('eyes', 'blue', 'Blue sparkle eyes', 220, '💎'), s('eyes', 'happy', 'Happy ^^', 80, '😄'), s('eyes', 'galaxy', 'Galaxy eyes', 700, '🌌'),
+  // face
+  s('face', 'none', 'Nothing', 0, '➖'), s('face', 'freckles', 'Freckles', 60, '🌰'), s('face', 'hearts', 'Heart blush', 110, '💗'),
+  s('face', 'star', 'Star sticker', 90, '⭐'), s('face', 'glitter', 'Glitter cheeks', 240, '✨'), s('face', 'stage', 'Stage gems', 420, '💎'),
+  // glasses
+  s('glasses', 'none', 'No glasses', 0, '➖'), s('glasses', 'round', 'Round glasses', 80, '👓'), s('glasses', 'heart', 'Heart sunnies', 200, '💕'),
+  s('glasses', 'star', 'Star glasses', 220, '🌟'), s('glasses', 'sun', 'Cool sunglasses', 160, '😎'), s('glasses', 'visor', 'Neon visor', 500, '🥽'),
+  // outfits
+  s('outfit', 'hanbok', 'Hanbok', 480, '🇰🇷'), s('outfit', 'sailor', 'Sailor suit', 180, '⚓'), s('outfit', 'overalls', 'Overalls', 140, '👖'),
+  s('outfit', 'puffer', 'Puffer jacket', 200, '🧥'), s('outfit', 'pyjamas', 'Star pyjamas', 110, '🌙'), s('outfit', 'gown', 'Princess gown', 750, '👑'),
+  s('outfit', 'tutu', 'Ballet tutu', 260, '🩰'), s('outfit', 'astro', 'Space suit', 900, '🚀'), s('outfit', 'cheer', 'Cheer uniform', 230, '📣'),
+  s('outfit', 'sweater', 'Heart sweater', 120, '💝'), s('outfit', 'raincoat', 'Raincoat', 90, '☔'), s('outfit', 'idol', 'Idol stage outfit', 1200, '💃'),
+  // outfit colours
+  s('outfitColor', '#c7a6ff', 'Lavender', 60, '🪻'), s('outfitColor', '#7ee0c3', 'Mint green', 60, '🌿'), s('outfitColor', '#ffb38a', 'Peach', 60, '🍑'),
+  s('outfitColor', '#5cc8ff', 'Sky blue', 70, '🩵'), s('outfitColor', '#ffd700', 'Gold', 400, '🏆'), s('outfitColor', '#c0c0c8', 'Silver', 350, '🥈'),
+  s('outfitColor', 'grad:#ff7eb6:#8f7bff', 'Dreamy ombré', 550, '🦋'), s('outfitColor', 'grad:#ff7eb6:#ffd36e:#7ee0c3:#5cc8ff:#c7a6ff', 'Rainbow', 1200, '🌈'),
+  // accessories
+  s('acc', 'catears', 'Cat ears', 140, '🐈'), s('acc', 'bunnyears', 'Bunny ears', 160, '🐇'), s('acc', 'halo', 'Halo', 380, '😇'),
+  s('acc', 'flowers', 'Flower crown', 260, '🌸'), s('acc', 'tiara', 'Star tiara', 600, '💫'), s('acc', 'beanie', 'Beanie', 90, '🧶'),
+  s('acc', 'horns', 'Cute devil horns', 220, '😈'), s('acc', 'butterflies', 'Butterfly clips', 120, '🦋'), s('acc', 'idolcrown', 'Superstar crown', 1800, '👑'),
+  // lightsticks
+  s('stick', 'moon', 'Moon lightstick', 180, '🌙'), s('stick', 'strawberry', 'Strawberry lightstick', 160, '🍓'), s('stick', 'cloud', 'Cloud lightstick', 140, '☁️'),
+  s('stick', 'crownstick', 'Crown lightstick', 520, '👑'), s('stick', 'galaxystick', 'Galaxy lightstick', 900, '🌌'),
+  // backgrounds
+  s('bg', 'seoul', 'Seoul at night', 260, '🏙️'), s('bg', 'cherry', 'Cherry blossoms', 220, '🌸'), s('bg', 'beach', 'Summer beach', 180, '🏖️'),
+  s('bg', 'snow', 'Snowy day', 160, '❄️'), s('bg', 'concert', 'Concert stage', 600, '🎆'), s('bg', 'rainbow', 'Rainbow sky', 300, '🌈'),
+  s('bg', 'candy', 'Candy land', 340, '🍭'), s('bg', 'ocean', 'Under the sea', 380, '🐠'), s('bg', 'space', 'Outer space', 700, '🪐'),
+  // pets
+  s('pet', 'none', 'No pet', 0, '➖'), s('pet', '🐱', 'Kitten', 200, '🐱'), s('pet', '🐶', 'Puppy', 200, '🐶'), s('pet', '🐰', 'Bunny', 220, '🐰'),
+  s('pet', '🐹', 'Hamster', 150, '🐹'), s('pet', '🐼', 'Panda', 400, '🐼'), s('pet', '🦊', 'Fox', 380, '🦊'), s('pet', '🐧', 'Penguin', 320, '🐧'),
+  s('pet', '🦄', 'Unicorn', 950, '🦄'), s('pet', '🐉', 'Little dragon', 2000, '🐉'), s('pet', '🤖', 'Robot buddy', 800, '🤖'),
+  // effects
+  s('fx', 'none', 'No effect', 0, '➖'), s('fx', '✨', 'Sparkles', 150, '✨'), s('fx', '💗', 'Floating hearts', 180, '💗'), s('fx', '🎵', 'Music notes', 200, '🎵'),
+  s('fx', '❄️', 'Snowflakes', 160, '❄️'), s('fx', '🫧', 'Bubbles', 140, '🫧'), s('fx', '⭐', 'Shooting stars', 450, '⭐'), s('fx', '🌸', 'Petal rain', 380, '🌸'),
+  s('fx', '👑', 'Superstar aura', 1600, '👑'),
+);
+
 export const FREE_ITEMS = SHOP.filter((i) => i.price === 0).map((i) => i.id);
+export const isOwned = (inventory: string[], it: ShopItem) => it.price === 0 || inventory.includes(it.id);
+export const SHOP_BY_ID = new Map(SHOP.map((i) => [i.id, i]));
 
 export const BGS: Record<string, [string, string]> = {
+  seoul: ['#141a3a', '#3b2d6b'], cherry: ['#ffe1ec', '#fff7fa'], beach: ['#8ad8ff', '#ffe9a8'], snow: ['#dbeeff', '#ffffff'],
+  concert: ['#1a0b2e', '#6a1b9a'], rainbow: ['#ffd6e8', '#d6f0ff'], candy: ['#ffd1f0', '#d7f9ff'], ocean: ['#1a6fb3', '#7fd6ff'], space: ['#05030f', '#24104a'],
   pink: ['#ffd6ea', '#ffeaf4'], night: ['#1d1b4b', '#4b2a7a'], sunset: ['#ff9a8b', '#ffd36e'], galaxy: ['#120c3c', '#5a2ca0'], mint: ['#c9f7ea', '#eafff8'], paris: ['#2b2a6b', '#ff8fa3'],
 };
 

@@ -180,3 +180,5 @@ input.field:focus, textarea.field:focus { border-color: var(--violet); }
   body { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
   input, textarea { -webkit-user-select: text; user-select: text; }
 }
+
+@media (min-width: 760px) { .studio-avatar { position: sticky; top: 8px; } }

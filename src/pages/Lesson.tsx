@@ -10,6 +10,7 @@ import { sfx } from '../lib/sfx';
 import { stopSpeaking } from '../lib/tts';
 import Avatar from '../components/Avatar';
 import PhotoCard from '../components/PhotoCard';
+import { SHOP_BY_ID } from '../game/catalog';
 
 export default function Lesson() {
   const { id = '' } = useParams();
@@ -110,6 +111,8 @@ const MINA_LINES = ['Coach Mina: "Your English is getting so good!"', 'Coach Min
 function Results({ ep, outcome, minutes, onRetry }: { ep: { id: string; title: string; kind: string }; outcome: FinishOutcome & { correct: number; total: number }; minutes: number; onRetry: () => void }) {
   const nav = useNavigate();
   const look = useGame((g) => g.s.profile?.look);
+  const hearts = useGame((g) => g.s.hearts);
+  const goal = useGame((g) => (g.s.profile?.wish ? SHOP_BY_ID.get(g.s.profile.wish) : undefined));
   const [showCard, setShowCard] = useState(false);
   const pass = outcome.stars > 0;
   return (
@@ -126,6 +129,13 @@ function Results({ ep, outcome, minutes, onRetry }: { ep: { id: string; title: s
         <div className="chip" style={{ fontSize: 20 }}>💖 +{outcome.fans} fans</div>
         <div className="chip" style={{ fontSize: 20 }}>❤️ +{outcome.hearts} hearts</div>
       </div>
+      {goal && outcome.hearts > 0 && (
+        <div className="card tint-sun col" style={{ width: 'min(100%, 380px)', gap: 4 }}>
+          <div className="small" style={{ fontWeight: 800 }}>⭐ My goal: {goal.emoji} {goal.name}</div>
+          <div className="bar"><span style={{ width: `${Math.min(100, (hearts / goal.price) * 100)}%` }} /></div>
+          <div className="tiny muted" style={{ fontWeight: 700 }}>{hearts >= goal.price ? 'You can buy it now! 🎉' : `${hearts} / ${goal.price} ❤️ — ${goal.price - hearts} more`}</div>
+        </div>
+      )}
       {outcome.rankUp && (
         <motion.div className="card tint-sun" initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 1.2, type: 'spring' }}>
           <div style={{ fontSize: 40 }}>🏆</div>

@@ -6,6 +6,8 @@ import TopBar from '../components/TopBar';
 import { useGame } from '../game/store';
 import { questsForDay, srsDue, QUEST_REWARD, QUEST_CHEST } from '../game/rules';
 import { EPISODE_ORDER, WORLDS } from '../content';
+import { RARITY, SHOP_BY_ID, fullLook, rarityOf } from '../game/catalog';
+import Avatar from '../components/Avatar';
 import { useUnlocked } from './Map';
 import { sfx } from '../lib/sfx';
 import { markFeedbackSeen, unseenFeedback, type Submission } from '../lib/submissions';
@@ -87,6 +89,30 @@ export default function Home() {
           {s.daily.chest ? '🎁 Chest opened!' : `🎁 Open the bonus chest (+${QUEST_CHEST} ❤️)`}
         </button>
       </div>
+
+      {(() => {
+        const goal = s.profile?.wish ? SHOP_BY_ID.get(s.profile.wish) : undefined;
+        if (!goal || !s.profile) return (
+          <Link to="/studio" className="card row" style={{ textDecoration: 'none', color: 'inherit', borderStyle: 'dashed' }}>
+            <div style={{ fontSize: 36 }}>🛍️</div>
+            <div className="grow"><b>Choose a goal in the Style Studio!</b><div className="tiny muted">Выбери вещь мечты в студии и копи на неё сердечки</div></div>
+          </Link>
+        );
+        const r = RARITY[rarityOf(goal.price)];
+        const ready = s.hearts >= goal.price;
+        return (
+          <Link to="/studio" className="card row" style={{ textDecoration: 'none', color: 'inherit', borderColor: r.color }}>
+            <div style={{ lineHeight: 0, borderRadius: 14, overflow: 'hidden', flexShrink: 0 }}><Avatar look={{ ...fullLook(s.profile.look), [goal.slot]: goal.value }} size={70} /></div>
+            <div className="grow col" style={{ gap: 4 }}>
+              <div className="tiny" style={{ fontWeight: 800, color: r.color }}>⭐ MY GOAL · {r.label.toUpperCase()}</div>
+              <b>{goal.emoji} {goal.name}</b>
+              <div className="bar"><span style={{ width: `${Math.min(100, (s.hearts / goal.price) * 100)}%` }} /></div>
+              <div className="tiny muted" style={{ fontWeight: 700 }}>{ready ? 'You can buy it now! Go to the studio 🎉' : `${s.hearts} / ${goal.price} ❤️ · ещё ${goal.price - s.hearts} ❤️`}</div>
+            </div>
+            {ready && <span className="btn sun small">Buy!</span>}
+          </Link>
+        );
+      })()}
 
       {WORLDS.filter((w) => w.bonus).map((w) => {
         const eps = EPISODE_ORDER.filter((r) => r.world.id === w.id);
