@@ -41,6 +41,12 @@ describe('checkSpeech', () => {
     expect(checkSpeech("It's seven o'clock.", ["it's 8 o'clock"]).ok).toBe(false);
     expect(checkSpeech('There are twenty-one stars.', ['there are 21 stars']).ok).toBe(true);
     expect(checkSpeech('One hundred!', ['100']).ok).toBe(true);
+    for (const heard of ['16 17 18 19 and 20', 'sixteen seventeen 18 19 20', '1617 18 1920', '16, 17, 18, 19 and twenty']) {
+      expect([heard, checkSpeech('Sixteen, seventeen, eighteen, nineteen, twenty!', [heard]).ok]).toEqual([heard, true]);
+    }
+    expect(checkSpeech('Sixteen, seventeen, eighteen, nineteen, twenty!', ['60 70 80 90 20']).ok).toBe(false);
+    expect(checkSpeech('Sixteen, seventeen, eighteen, nineteen, twenty!', ['16 17 18 20']).ok).toBe(false);
+    expect(checkSpeech('I have got two cats and one dog.', ['I have got 2 cats and 1 dog']).ok).toBe(true);
     const m = checkSpeech('One, two, three. Go!', ['one two three']);
     expect(m.matched).toEqual([true, true, true, false]);
   });

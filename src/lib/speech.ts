@@ -73,19 +73,6 @@ export function normalise(s: string): string {
   return out.join(' ');
 }
 
-/** Joins runs of numbers into one token ("1 2 3 4 5" → "12345"), remembering which original tokens each came from. */
-function mergeNumbers(tokens: string[]): { toks: string[]; from: number[][] } {
-  const toks: string[] = [];
-  const from: number[][] = [];
-  tokens.forEach((t, i) => {
-    const isNum = /^\d+$/.test(t);
-    if (isNum && toks.length && /^\d+$/.test(toks[toks.length - 1])) {
-      toks[toks.length - 1] += t;
-      from[from.length - 1].push(i);
-    } else { toks.push(t); from.push([i]); }
-  });
-  return { toks, from };
-}
 
 function lev(a: string, b: string): number {
   const d = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array(b.length).fill(0)]);
@@ -119,26 +106,33 @@ export type SpeechCheck = { ok: boolean; score: number; matched: boolean[]; word
 
 /** Aligns one transcript with the target (fuzzy longest common subsequence, in order). */
 function scoreOne(T0: string[], h: string, names: Set<string>, nameWildcard: boolean): SpeechCheck {
-  const { toks: T, from } = mergeNumbers(T0);
-  const H = mergeNumbers(normalise(h).split(' ').filter(Boolean)).toks;
-  if (!H.length) return { ok: false, score: 0, matched: T0.map(() => false), words: T0 };
-  const eq = (t: string, x: string) => (names.has(t) ? nameWildcard || sim(t, x) >= 0.5
-    : /^\d+$/.test(t) ? t === x : sim(t, x) >= (t.length <= 4 ? 1 : 0.8));
+  const isNum = (t: string) => /^\d+$/.test(t);
+  const H0 = normalise(h).split(' ').filter(Boolean);
+  if (!H0.length) return { ok: false, score: 0, matched: T0.map(() => false), words: T0 };
+  // Numbers are compared as one digit sequence, however the recogniser splits or joins them
+  // ("16 17 18" = "161718" = "sixteen seventeen 18"); an extra "and" between them is ignored.
+  const DT = T0.filter(isNum).join('');
+  const DH = H0.filter(isNum).join('');
+  const numbersOk = DT === DH;
+  const T = T0.map((t, i) => ({ t, i })).filter((x) => !isNum(x.t));
+  const allowAnd = T.some((x) => x.t === 'and');
+  const H = H0.filter((x) => !isNum(x) && (allowAnd || x !== 'and' || !DT));
+  const eq = (t: string, x: string) => (names.has(t) ? nameWildcard || sim(t, x) >= 0.5 : sim(t, x) >= (t.length <= 4 ? 1 : 0.8));
   const L = Array.from({ length: T.length + 1 }, () => Array(H.length + 1).fill(0));
   for (let i = T.length - 1; i >= 0; i--) for (let j = H.length - 1; j >= 0; j--) {
-    L[i][j] = eq(T[i], H[j]) ? L[i + 1][j + 1] + 1 : Math.max(L[i + 1][j], L[i][j + 1]);
+    L[i][j] = eq(T[i].t, H[j]) ? L[i + 1][j + 1] + 1 : Math.max(L[i + 1][j], L[i][j + 1]);
   }
-  const matched = T.map(() => false);
+  const matched0 = T0.map((t) => isNum(t) && numbersOk);
   for (let i = 0, j = 0; i < T.length && j < H.length;) {
-    if (eq(T[i], H[j]) && L[i][j] === L[i + 1][j + 1] + 1) { matched[i] = true; i++; j++; }
+    if (eq(T[i].t, H[j]) && L[i][j] === L[i + 1][j + 1] + 1) { matched0[T[i].i] = true; i++; j++; }
     else if (L[i + 1][j] >= L[i][j + 1]) i++; else j++;
   }
-  const m = L[0][0];
-  const recall = m / T.length;
-  const precision = m / H.length;
-  const ok = (T.length <= 4 ? m === T.length : recall >= 0.85) && precision >= 0.6;
-  const matched0 = T0.map(() => false);
-  from.forEach((idx, k) => idx.forEach((i) => { matched0[i] = matched[k]; }));
+  const units = T.length + (DT ? 1 : 0);
+  const heardUnits = H.length + (DH ? 1 : 0);
+  const m = L[0][0] + (DT && numbersOk ? 1 : 0);
+  const recall = units ? m / units : 0;
+  const precision = heardUnits ? m / heardUnits : 0;
+  const ok = (!DT || numbersOk) && (units <= 4 ? m === units : recall >= 0.85) && precision >= 0.6;
   return { ok, score: recall * Math.min(1, precision / 0.6), matched: matched0, words: T0 };
 }
 
