@@ -67,6 +67,8 @@ function Dashboard() {
         <Stat label={`Ранг · уровень ${rank.cefr}`} value={rank.name} sub={next ? `${s.fans} / ${next.fans} фанатов` : ''} />
       </div>
 
+      <HeartsFix />
+
       <WeeklyReport subs={subs} />
 
       <ParentTasks />
@@ -186,6 +188,28 @@ function ReviewItem({ x, onReview }: { x: Submission; onReview: (x: Submission, 
           </div>
         </>
       ) : <div className="small">{x.status === 'approved' ? '✅ Принято' : '🔁 На доработку'}{x.comment ? ` — ${x.comment}` : ''}{x.bonus ? ` (+${x.bonus} ❤️)` : ''}</div>}
+    </div>
+  );
+}
+
+/** Lets the parent correct the hearts balance (e.g. after an accidental purchase). */
+function HeartsFix() {
+  const hearts = useGame((g) => g.s.hearts);
+  const update = useGame((g) => g.update);
+  const [v, setV] = useState('');
+  const [done, setDone] = useState('');
+  const n = Number(v);
+  const valid = v !== '' && Number.isInteger(n) && n >= 0 && n <= 100000;
+  return (
+    <div className="card col" style={{ gap: 8 }}>
+      <strong>❤️ Сердечки: {hearts}</strong>
+      <div className="tiny muted">Если сердечки потратились по ошибке, впишите нужный баланс. Купленные вещи останутся у ребёнка.</div>
+      <div className="row wrap">
+        <input className="field" inputMode="numeric" placeholder="например, 350" value={v} onChange={(e) => { setV(e.target.value.replace(/\D/g, '')); setDone(''); }} style={{ maxWidth: 160 }} />
+        <button className="btn violet small" disabled={!valid} style={{ opacity: valid ? 1 : 0.5 }}
+          onClick={() => { update((st) => ({ ...st, hearts: n })); setDone(`Готово: теперь ${n} ❤️`); setV(''); }}>Установить</button>
+      </div>
+      {done && <div className="small" style={{ fontWeight: 700, color: 'var(--mint)' }}>✅ {done}</div>}
     </div>
   );
 }

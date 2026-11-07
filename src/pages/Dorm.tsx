@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, type ReactNode } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import TopBar from '../components/TopBar';
 import DormScene, { type Burst } from '../components/DormScene';
@@ -18,6 +18,28 @@ const roomOf = (p: DormPlacement) => p.room ?? 'bedroom';
 const plural = (w: string) => /s$/.test(w) && !/(bus|glass)$/.test(w);
 const ARROW: Record<Dir, string> = { left: '◀️', right: '▶️', up: '🔼', down: '🔽' };
 const DIR_SAY: Record<Dir, string> = { left: 'left', right: 'right', up: 'upstairs', down: 'downstairs' };
+
+/** A purchase waiting for "Yes, buy". */
+type Ask = { id: string; price: number; label: string; icon: ReactNode; then: () => void };
+
+/** "Buy the sofa for 80 ❤️?" — so a tap in the shop never spends hearts by accident. */
+function BuyDialog({ ask, hearts, onYes, onNo }: { ask: Ask; hearts: number; onYes: () => void; onNo: () => void }) {
+  return (
+    <div role="dialog" aria-modal="true" aria-label={`Buy the ${ask.label}?`} onClick={onNo}
+      style={{ position: 'fixed', inset: 0, zIndex: 75, display: 'grid', placeItems: 'center', background: 'rgba(43,33,64,0.45)', padding: 16 }}>
+      <motion.div className="card col" initial={{ scale: 0.85, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} onClick={(e) => e.stopPropagation()}
+        style={{ alignItems: 'center', gap: 10, maxWidth: 340, width: '100%', textAlign: 'center' }}>
+        <div style={{ fontSize: 64, lineHeight: 1 }}>{ask.icon}</div>
+        <div style={{ fontWeight: 800, fontSize: 22 }}>Buy {/^[A-Z]/.test(ask.label) ? '' : 'the '}{ask.label} for {ask.price} ❤️?</div>
+        <div className="muted small">Купить за {ask.price} ❤️? У тебя {hearts} ❤️ → останется {hearts - ask.price} ❤️.</div>
+        <div className="row" style={{ gap: 10, justifyContent: 'center' }}>
+          <button className="btn ghost" onClick={onNo}>❌ No</button>
+          <button className="btn mint" onClick={onYes} autoFocus>✅ Yes, buy</button>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
 
 /** Writes free coordinates together with the grid cell older app versions understand. */
 const save = (p: Placed): DormPlacement => {
@@ -43,6 +65,7 @@ export default function Dorm() {
   const [lit, setLit] = useState<Set<string>>(new Set());
   const [burst, setBurst] = useState<Burst | null>(null);
   const [chats, setChats] = useState(0);
+  const [ask, setAsk] = useState<Ask | null>(null);
 
   const dorm = useMemo(() => (s.profile?.dorm ?? []).map(normalize), [s.profile?.dorm]);
   const styleOf = (id: string) => s.profile?.dormStyle?.[id] ?? { wall: 'cream', floor: id === 'garden' ? 'grass' : 'wood' };
@@ -182,17 +205,30 @@ export default function Dorm() {
     const parts = [`This is my ${r.en}.`, things ? `There ${things === 1 ? 'is one thing' : `are ${things} things`} in the ${r.en}.` : `The ${r.en} is empty.`, ...here.map((d) => describe(d, dorm))];
     say(parts.join(' '));
   };
+  /** Paid things are bought only after a "Yes, buy" in the confirmation window. Free or owned things run `then` right away. */
+  const purchase = (a: Omit<Ask, 'then'> & { poor?: string }, then: () => void) => {
+    if (a.price === 0 || owns(a.id)) { then(); return; }
+    if (s.hearts < a.price) { sfx.wrong(); setMsg(a.poor ?? `The ${a.label} costs ${a.price} ❤️. You have ${s.hearts} ❤️. Play more to earn hearts!`); return; }
+    sfx.tap();
+    setAsk({ id: a.id, price: a.price, label: a.label, icon: a.icon, then });
+  };
+  const confirmBuy = () => {
+    if (!ask) return;
+    const a = ask;
+    setAsk(null);
+    if (!buy(a.id, a.price, 'furniture')) { sfx.wrong(); setMsg(`You need ${a.price} ❤️.`); return; }
+    sfx.coin();
+    a.then();
+  };
+
   const setStyle = (kind: 'wall' | 'floor', sf: Surface) => {
     const id = `${kind}:${sf.id}`;
-    if (sf.price > 0 && !owns(id)) {
-      if (!buy(id, sf.price, 'furniture')) { sfx.wrong(); setMsg(`${sf.name} costs ${sf.price} ❤️. Play more to earn hearts!`); return; }
-      sfx.coin();
-    }
-    update((x) => ({ ...x, profile: { ...x.profile!, dormStyle: { ...x.profile!.dormStyle, [room]: { ...styleOf(room), [kind]: sf.id } } } }));
+    purchase({ id, price: sf.price, label: `${sf.name.toLowerCase()} ${kind}`, icon: <span style={{ display: 'inline-block', width: 64, height: 44, borderRadius: 10, background: surfaceBg(sf), border: '2px solid #ddd' }} /> },
+      () => update((x) => ({ ...x, profile: { ...x.profile!, dormStyle: { ...x.profile!.dormStyle, [room]: { ...styleOf(room), [kind]: sf.id } } } })));
   };
   const unlock = (id: string) => {
-    if (buy(`room:${id}`, R.get(id)!.price, 'furniture')) { sfx.levelUp(); say(`Welcome to your new ${roomName(id)}!`); }
-    else { sfx.wrong(); setMsg(`You need ${R.get(id)!.price} ❤️.`); }
+    const r = R.get(id)!;
+    purchase({ id: `room:${id}`, price: r.price, label: r.en, icon: r.emoji }, () => { sfx.levelUp(); say(`Welcome to your new ${roomName(id)}!`); });
   };
 
   const scene = (id: string, interactive: boolean) => (
@@ -246,6 +282,7 @@ export default function Dorm() {
   return (
     <div className="page col">
       <TopBar />
+      {ask && <BuyDialog ask={ask} hearts={s.hearts} onYes={confirmBuy} onNo={() => { sfx.tap(); setAsk(null); }} />}
       <div className="row" style={{ justifyContent: 'space-between' }}>
         <button className="btn ghost small" onClick={() => { setView('house'); setSel(null); }}>🏠 House</button>
         <h1 className="title-l" style={{ margin: 0 }}>{r.emoji} {r.en}</h1>
@@ -300,9 +337,7 @@ export default function Dorm() {
                   <button key={f.id} className={`tile ${sel === f.id ? 'selected' : ''}`} style={{ minHeight: 92, fontSize: 14 }}
                     onClick={() => {
                       void speak(plural(f.en) ? f.en : `a ${f.en}`);
-                      if (owns(f.id) || f.price === 0) place(f.id);
-                      else if (buy(f.id, f.price, 'furniture')) { sfx.coin(); place(f.id); }
-                      else { sfx.wrong(); setMsg(`The ${f.en} costs ${f.price} ❤️. Play more to earn hearts!`); }
+                      purchase({ id: f.id, price: f.price, label: f.en, icon: f.emoji }, () => place(f.id));
                     }}>
                     <span style={{ fontSize: 34 }}>{f.emoji}</span>{f.en}
                     <span className="tiny muted">{owns(f.id) || f.price === 0 ? (placed ? `in the ${roomName(roomOf(placed))}` : 'owned') : `${f.price} ❤️`}</span>
@@ -322,8 +357,8 @@ export default function Dorm() {
                   <button key={id} className={`tile ${sel === id ? 'selected' : ''}`} style={{ minHeight: 120, fontSize: 14, opacity: open ? 1 : 0.75 }}
                     onClick={() => {
                       if (open) { place(id); return; }
-                      if (buy(id, price, 'furniture')) { sfx.coin(); place(id); }
-                      else { sfx.wrong(); setMsg(`Get a ${who} card in a lesson, or invite ${who} for ${price} ❤️.`); }
+                      purchase({ id, price, label: who, icon: looks[id] ? <Avatar look={{ ...looks[id], pet: 'none', fx: 'none' }} size={70} showBg={false} showStick={false} /> : '👫',
+                        poor: `Get a ${who} card in a lesson, or invite ${who} for ${price} ❤️. You have ${s.hearts} ❤️.` }, () => place(id));
                     }}>
                     <span style={{ lineHeight: 0, filter: open ? undefined : 'grayscale(0.8)' }}>{looks[id] && <Avatar look={{ ...looks[id], pet: 'none', fx: 'none' }} size={48} showBg={false} showStick={false} />}</span>
                     {who === 'me' ? `⭐ ${myName}` : who}
