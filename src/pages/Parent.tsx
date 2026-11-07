@@ -279,12 +279,16 @@ function VoiceSettings() {
 
 function TimeLimitSettings() {
   const settings = useGame((g) => g.s.profile?.settings);
-  const extra = useGame((g) => g.s.daily.extraMin ?? 0);
+  const extra = useGame((g) => (g.s.daily.day === dayKey(Date.now()) ? g.s.daily.extraMin ?? 0 : 0));
   const used = useGame(usedToday);
   const update = useGame((g) => g.update);
   const t = useTimeStatus();
   const limit = settings?.dailyLimitMin ?? DEFAULT_LIMIT_MIN;
-  const extend = (min: number) => update((st) => ({ ...st, daily: { ...st.daily, extraMin: (st.daily.extraMin ?? 0) + min } }));
+  /** Adds (or with a negative number takes away) minutes for today only. Today's total never goes below 0. */
+  const adjust = (min: number) => update((st) => ({ ...st, daily: { ...st.daily, extraMin: Math.max(-limit, (st.daily.extraMin ?? 0) + min), extraAt: Date.now() } }));
+  /** Ends today's time now: the total becomes the minutes already used. */
+  const stopToday = () => update((st) => ({ ...st, daily: { ...st.daily, extraMin: Math.floor(used / 60) - limit, extraAt: Date.now() } }));
+  const [askStop, setAskStop] = useState(false);
   return (
     <div className="col" style={{ gap: 6 }}>
       <label className="row small"><b>⏱ Лимит занятий в день</b>
@@ -296,11 +300,23 @@ function TimeLimitSettings() {
       </label>
       {limit > 0 && (
         <>
-          <div className="small">Сегодня: <b>{Math.floor(used / 60)} мин</b> из {limit + extra} мин{extra ? ` (в т.ч. продление +${extra})` : ''} · осталось <b>{t.level === 'locked' ? '0:00 — время вышло' : mmss(t.remainingSec)}</b></div>
+          <div className="small">Сегодня: <b>{Math.floor(used / 60)} мин</b> из {Math.max(0, limit + extra)} мин{extra > 0 ? ` (в т.ч. продление +${extra})` : extra < 0 ? ` (сегодня ${extra} от лимита)` : ''} · осталось <b>{t.level === 'locked' ? '0:00 — время вышло' : mmss(t.remainingSec)}</b></div>
           <div className="row wrap">
-            <button className="btn ghost small" onClick={() => extend(15)}>+15 мин сегодня</button>
-            <button className="btn ghost small" onClick={() => extend(30)}>+30 мин сегодня</button>
+            <button className="btn ghost small" onClick={() => adjust(15)}>+15 мин сегодня</button>
+            <button className="btn ghost small" onClick={() => adjust(30)}>+30 мин сегодня</button>
+            <button className="btn ghost small" disabled={limit + extra <= 0} onClick={() => adjust(-15)}>−15 мин сегодня</button>
+            <button className="btn ghost small" disabled={limit + extra <= 0} onClick={() => adjust(-30)}>−30 мин сегодня</button>
           </div>
+          {t.level !== 'locked' && (!askStop
+            ? <button className="btn ghost small" style={{ alignSelf: 'flex-start', color: 'var(--red)' }} onClick={() => setAskStop(true)}>⏹ Закончить на сегодня</button>
+            : (
+              <div className="row wrap small" style={{ fontWeight: 700 }}>
+                Закончить занятия на сегодня прямо сейчас?
+                <button className="btn small" style={{ background: 'var(--red)' }} onClick={() => { stopToday(); setAskStop(false); }}>Да, закончить</button>
+                <button className="btn ghost small" onClick={() => setAskStop(false)}>Отмена</button>
+              </div>
+            ))}
+          <div className="tiny muted">Изменения действуют только сегодня и приходят на устройство ребёнка примерно за полминуты (сразу — если свернуть и открыть приложение).</div>
           <div className="tiny muted">Время считается, только пока портал открыт и ребёнок им пользуется (после 3 минут бездействия таймер останавливается). Начатый урок можно доиграть — до 10 минут сверх лимита.</div>
         </>
       )}

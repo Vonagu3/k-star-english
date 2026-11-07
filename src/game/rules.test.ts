@@ -156,6 +156,13 @@ describe('mergeStates: parent changes survive the child device writing later', (
       expect(m.fans).toBe(500);
     }
   });
+  it('taking time away for today wins over an older, larger extension', () => {
+    const child = kid(); child.updatedAt = 2000; child.daily.extraMin = 30; child.daily.extraAt = 500;
+    const parent = kid(); parent.updatedAt = 1000; parent.daily.extraMin = -15; parent.daily.extraAt = 900;
+    expect(mergeStates(child, parent).daily.extraMin).toBe(-15);
+    expect(mergeStates(parent, child).daily.extraMin).toBe(-15);
+    expect(timeStatus({ usedSec: 46 * 60, limitMin: 60, extraMin: -15, episodeStartedAtSec: null }).level).toBe('locked');
+  });
   it('extra minutes for today are kept, the parent hearts balance wins, deleted tasks stay deleted', () => {
     const parent = kid(); parent.updatedAt = 1000; parent.daily.extraMin = 30; parent.hearts = 350; parent.heartsSetAt = 1000;
     parent.parentTasks = [{ id: 'new', kind: 'write', prompt: 'x', reward: 5, createdAt: 900 }];

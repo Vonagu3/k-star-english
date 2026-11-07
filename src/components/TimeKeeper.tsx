@@ -84,7 +84,7 @@ function LockScreen({ usedSec }: { usedSec: number }) {
   const [ok, setOk] = useState(false);
   const [err, setErr] = useState('');
   const extend = (min: number) => {
-    update((s) => ({ ...s, daily: { ...s.daily, extraMin: (s.daily.extraMin ?? 0) + min } }));
+    update((s) => ({ ...s, daily: { ...s.daily, extraMin: (s.daily.extraMin ?? 0) + min, extraAt: Date.now() } }));
     setOk(false); setPin('');
   };
   return (

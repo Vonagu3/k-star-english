@@ -42,7 +42,7 @@ export type GameState = {
   furniture: string[];
   cards: Record<string, number>;
   forcedWorlds: string[];
-  daily: { day: string; metrics: Partial<Record<QuestMetric, number>>; claimed: string[]; chest: boolean; missionBonus?: boolean; extraMin?: number };
+  daily: { day: string; metrics: Partial<Record<QuestMetric, number>>; claimed: string[]; chest: boolean; missionBonus?: boolean; extraMin?: number; /** When the parent last changed extraMin (the latest change wins in a merge). */ extraAt?: number };
   minutes: Record<string, number>;
   /** Active study seconds per day (tab visible and child active). */
   activeSec?: Record<string, number>;
@@ -80,6 +80,13 @@ function maxPerDay(a: Record<string, number>, b: Record<string, number>) {
   const out = { ...a };
   for (const [k, v] of Object.entries(b)) out[k] = Math.max(v, out[k] ?? 0);
   return out;
+}
+
+/** Today's extra minutes from two copies: the parent's latest change wins (it can also take time away);
+ *  copies without a change time (older app versions) keep the larger extension. */
+function extraOf(a: GameState['daily'], b: GameState['daily']): { extraMin?: number; extraAt?: number } {
+  if (a.extraAt || b.extraAt) return (b.extraAt ?? 0) > (a.extraAt ?? 0) ? { extraMin: b.extraMin, extraAt: b.extraAt } : { extraMin: a.extraMin, extraAt: a.extraAt };
+  return { extraMin: Math.max(a.extraMin ?? 0, b.extraMin ?? 0) };
 }
 
 /** Merge two snapshots (e.g. two devices): newer wins for scalars, collections are unioned with best values. */
@@ -127,7 +134,7 @@ export function mergeStates(a: GameState, b: GameState): GameState {
     totals: Object.fromEntries([...new Set([...Object.keys(base.totals ?? {}), ...Object.keys(other.totals ?? {})])]
       .map((k) => [k, Math.max(base.totals?.[k as QuestMetric] ?? 0, other.totals?.[k as QuestMetric] ?? 0)])),
     daily: base.daily.day === other.daily.day
-      ? { ...base.daily, extraMin: Math.max(base.daily.extraMin ?? 0, other.daily.extraMin ?? 0) }
+      ? { ...base.daily, ...extraOf(base.daily, other.daily) }
       : base.daily,
   };
 }
