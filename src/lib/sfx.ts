@@ -33,6 +33,11 @@ export const sfx = {
   win: () => [523, 659, 784, 1047, 1319].forEach((f, i) => tone(f, i * 0.09, 0.25, 'triangle', 0.14)),
   levelUp: () => [392, 523, 659, 784, 1047, 784, 1047, 1319].forEach((f, i) => tone(f, i * 0.08, 0.22, 'square', 0.07)),
   card: () => [1568, 1319, 1568, 2093].forEach((f, i) => tone(f, i * 0.06, 0.2, 'sine', 0.1)),
+  /** A short tune (dorm instruments). */
+  melody: () => [523, 659, 784, 659, 880, 784].forEach((f, i) => tone(f, i * 0.16, 0.3, 'triangle', 0.12)),
+  pop: () => { tone(880, 0, 0.05, 'sine', 0.12); tone(1320, 0.04, 0.08, 'sine', 0.08); },
+  boing: () => { tone(330, 0, 0.12, 'sine', 0.14); tone(494, 0.08, 0.14, 'sine', 0.1); },
+  splash: () => { const c = ac(); if (c && !muted) noise(c, c.currentTime, 0.6, 0.12, 1200); },
 };
 
 function noise(c: AudioContext, at: number, dur: number, vol: number, hp: number) {

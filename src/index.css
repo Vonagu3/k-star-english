@@ -156,6 +156,20 @@ input.field:focus, textarea.field:focus { border-color: var(--violet); }
 .dorm-grid { display: grid; gap: 6px; padding: 10px; border-radius: 22px; background: linear-gradient(#fbe7d4 0 18%, #f6d7b8 18%); border: 3px solid #e9c19c; }
 .dorm-cell { aspect-ratio: 1; border-radius: 12px; background: rgba(255, 255, 255, 0.35); display: grid; place-items: center; font-size: clamp(26px, 7vw, 46px); border: 2px dashed rgba(160, 110, 70, 0.25); }
 .dorm-cell.sel { border: 3px solid var(--violet); background: rgba(124, 92, 255, 0.15); }
+.dorm-scene { position: relative; isolation: isolate; width: 100%; aspect-ratio: 1.6; overflow: hidden; border-radius: 18px; border: 6px solid #e9c19c; box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.06), 0 6px 0 #d9a97c; background: #fff; user-select: none; -webkit-user-select: none; }
+.dorm-item { position: absolute; transform: translate(-50%, -100%); display: flex; flex-direction: column; align-items: center; }
+.dorm-glyph { background: none; border: 0; padding: 0; line-height: 1; touch-action: none; border-radius: 12px; outline: none; -webkit-tap-highlight-color: transparent; }
+.dorm-glyph.sel { outline: 3px dashed var(--violet); outline-offset: 2px; }
+.dorm-glow { position: absolute; left: 50%; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(circle, rgba(255, 236, 150, 0.75), rgba(255, 220, 120, 0.25) 45%, transparent 70%); pointer-events: none; z-index: -1; }
+.dorm-window { position: absolute; left: 7%; top: 10%; width: 17%; height: 34%; border: 1.3cqw solid #fff; border-radius: 1.5cqw; box-shadow: 0 0 0 0.4cqw #e2b98f; padding: 0; }
+.dorm-window::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent calc(50% - 0.35cqw), #fff calc(50% - 0.35cqw) calc(50% + 0.35cqw), transparent 0), linear-gradient(transparent calc(50% - 0.35cqw), #fff calc(50% - 0.35cqw) calc(50% + 0.35cqw), transparent 0); }
+.dorm-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 20; width: 40px; height: 40px; font-size: 20px; opacity: 0.9; }
+.dorm-sky { position: absolute; background: none; border: 0; padding: 0; line-height: 1; }
+.dorm-house { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; align-items: end; }
+.dorm-house .dorm-scene { border-width: 3px; border-radius: 6px; box-shadow: none; }
+.dorm-roof { grid-column: 1 / span 2; height: clamp(40px, 10vw, 90px); background: linear-gradient(#ff8fc4, #ff5fa2); clip-path: polygon(50% 0, 100% 100%, 0 100%); display: grid; place-items: end center; padding-bottom: 6px; font-size: clamp(16px, 3vw, 26px); }
+.dorm-room-btn { position: relative; padding: 0; background: none; border: 0; display: block; }
+.dorm-room-btn .lock { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(43, 33, 64, 0.45); color: #fff; font-weight: 800; border-radius: 6px; font-size: clamp(12px, 2.4vw, 18px); text-align: center; }
 
 .print-only { display: none; }
 @media print {

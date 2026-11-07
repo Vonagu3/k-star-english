@@ -152,4 +152,6 @@ export const FLOORS: Surface[] = [
 ];
 export const DORM_COLS = 6;
 export const DORM_ROWS = 4;
-export type DormPlacement = { item: string; x: number; y: number; room?: string };
+/** x/y: grid cell (older versions). fx/fy: free position in the side-view room (centre x, bottom y, % of the scene);
+ *  on: id of the furniture it rests on; flip: mirrored. */
+export type DormPlacement = { item: string; x: number; y: number; room?: string; fx?: number; fy?: number; on?: string; flip?: boolean };
