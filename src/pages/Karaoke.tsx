@@ -4,10 +4,9 @@ import TopBar from '../components/TopBar';
 import { EPISODE_ORDER } from '../content';
 import { useGame } from '../game/store';
 import { PlayerControls, SPEED_KEY, savedSpeed, useChantPlayer, type ChantSpeed } from '../exercises/Music';
-import { recordAudio } from '../lib/speech';
 import { submitWork } from '../lib/submissions';
 import { subName } from '../lib/util';
-import { sfx } from '../lib/sfx';
+import { recordWithBeat, sfx } from '../lib/sfx';
 import confetti from 'canvas-confetti';
 
 type Song = { key: string; title: string; emoji: string; lines: string[]; bpm: number; from: string };
@@ -74,12 +73,13 @@ function Stage({ song, onBack, onTake, takes, onChange }: { song: Song; onBack: 
   const [recording, setRecording] = useState(false);
   const [err, setErr] = useState('');
 
-  const startRecording = async () => {
+  /** Records over the backing track (beat only); `withVoice` adds the helper voice to sing along with (not recorded). */
+  const startRecording = async (withVoice: boolean) => {
     setErr('');
     try {
-      rec.current = await recordAudio(5 * 60 * 1000);
+      rec.current = await recordWithBeat(5 * 60 * 1000);
       setRecording(true);
-      p.playFrom(0, voice, () => void stopRecording());
+      p.playFrom(0, withVoice, () => void stopRecording());
     } catch { setErr('Нет доступа к микрофону. Разреши микрофон в настройках браузера.'); }
   };
   const stopRecording = async () => {
@@ -106,10 +106,13 @@ function Stage({ song, onBack, onTake, takes, onChange }: { song: Song; onBack: 
       {!recording && <PlayerControls p={p} n={song.lines.length} voice={voice} onVoice={() => setVoice(!voice)} speed={speed} onSpeed={setSpeed} />}
       <div className="row wrap" style={{ justifyContent: 'center' }}>
         {!recording
-          ? <button className="btn" style={{ minHeight: 64, fontSize: 22 }} onClick={() => void startRecording()}>🔴 Record my song</button>
+          ? <>
+            <button className="btn" style={{ minHeight: 64, fontSize: 22 }} onClick={() => void startRecording(false)}>🔴 Record my song</button>
+            <button className="btn ghost small" onClick={() => void startRecording(true)}>🔴 Record with the helper voice</button>
+          </>
           : <button className="btn violet" style={{ minHeight: 64, fontSize: 22 }} onClick={() => void stopRecording()}>⏹ Stop recording</button>}
       </div>
-      <div className="muted small center">{recording ? '🎙️ Recording… Sing along with the beat!' : 'Совет: выключи голос (🔇 voice off) — и пой сама под бит!'}</div>
+      <div className="muted small center">{recording ? '🎙️ Recording… Sing along with the beat!' : 'Запись идёт под минус: бит записывается вместе с твоим голосом. Если слова ещё не выучены — нажми «with the helper voice», подсказка будет звучать, но в запись не попадёт.'}</div>
       {err && <div className="card tint-sun small">{err}</div>}
       {takes.length > 0 && <Takes takes={takes} onChange={onChange} />}
     </div>

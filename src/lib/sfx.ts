@@ -40,7 +40,14 @@ export const sfx = {
   splash: () => { const c = ac(); if (c && !muted) noise(c, c.currentTime, 0.6, 0.12, 1200); },
 };
 
-function noise(c: AudioContext, at: number, dur: number, vol: number, hp: number) {
+/** All beat sounds go through this bus, so a recording can take the beat directly (not through the microphone). */
+let beatBus: GainNode | null = null;
+function bus(c: AudioContext): GainNode {
+  if (!beatBus) { beatBus = c.createGain(); beatBus.connect(c.destination); }
+  return beatBus;
+}
+
+function noise(c: AudioContext, at: number, dur: number, vol: number, hp: number, out: AudioNode = c.destination) {
   const len = Math.floor(c.sampleRate * dur);
   const buf = c.createBuffer(1, len, c.sampleRate);
   const d = buf.getChannelData(0);
@@ -48,21 +55,21 @@ function noise(c: AudioContext, at: number, dur: number, vol: number, hp: number
   const s = c.createBufferSource(); s.buffer = buf;
   const f = c.createBiquadFilter(); f.type = 'highpass'; f.frequency.value = hp;
   const g = c.createGain(); g.gain.value = vol;
-  s.connect(f).connect(g).connect(c.destination); s.start(at);
+  s.connect(f).connect(g).connect(out); s.start(at);
 }
 
-function kick(c: AudioContext, at: number) {
+function kick(c: AudioContext, at: number, out: AudioNode) {
   const o = c.createOscillator(); const g = c.createGain();
   o.frequency.setValueAtTime(150, at); o.frequency.exponentialRampToValueAtTime(40, at + 0.15);
   g.gain.setValueAtTime(0.5, at); g.gain.exponentialRampToValueAtTime(0.001, at + 0.2);
-  o.connect(g).connect(c.destination); o.start(at); o.stop(at + 0.25);
+  o.connect(g).connect(out); o.start(at); o.stop(at + 0.25);
 }
 
-function synth(c: AudioContext, at: number, freq: number, dur: number) {
+function synth(c: AudioContext, at: number, freq: number, dur: number, out: AudioNode) {
   const o = c.createOscillator(); const g = c.createGain();
   o.type = 'square'; o.frequency.value = freq;
   g.gain.setValueAtTime(0.04, at); g.gain.exponentialRampToValueAtTime(0.001, at + dur);
-  o.connect(g).connect(c.destination); o.start(at); o.stop(at + dur + 0.02);
+  o.connect(g).connect(out); o.start(at); o.stop(at + dur + 0.02);
 }
 
 /** Starts a looping beat. Calls onBeat(beatIndex) on every quarter note. Returns stop(). */
@@ -78,10 +85,11 @@ export function startBeat(bpm: number, onBeat: (beat: number) => void): () => vo
     if (c && !muted) {
       while (next < c.currentTime + 0.2) {
         const b = beat;
-        if (b % 2 === 0) kick(c, next);
-        if (b % 4 === 2) noise(c, next, 0.12, 0.25, 1500);
-        noise(c, next + spb / 2, 0.04, 0.08, 7000);
-        if (b % 4 === 0) chords[Math.floor(b / 4) % 4].forEach((f) => synth(c, next, f / 2, spb * 1.5));
+        const out = bus(c);
+        if (b % 2 === 0) kick(c, next, out);
+        if (b % 4 === 2) noise(c, next, 0.12, 0.25, 1500, out);
+        noise(c, next + spb / 2, 0.04, 0.08, 7000, out);
+        if (b % 4 === 0) chords[Math.floor(b / 4) % 4].forEach((f) => synth(c, next, f / 2, spb * 1.5, out));
         const delay = Math.max(0, (next - c.currentTime) * 1000);
         setTimeout(() => { if (!stopped) onBeat(b); }, delay);
         beat++; next += spb;
@@ -93,4 +101,43 @@ export function startBeat(bpm: number, onBeat: (beat: number) => void): () => vo
   const id = setInterval(tick, c && !muted ? 50 : spb * 1000);
   tick();
   return () => { stopped = true; clearInterval(id); };
+}
+
+/** Records the microphone mixed with the beat (the backing track), for karaoke.
+ *  The beat is taken straight from the sound engine: the browser's echo cancellation removes
+ *  speaker sound from the microphone, so it would never get into the recording otherwise.
+ *  The beat is delayed by the device's audio latency so it lines up with what the child heard and sang to. */
+export async function recordWithBeat(maxMs = 5 * 60 * 1000): Promise<{ stop: () => Promise<Blob> }> {
+  const stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true } });
+  const c = ac();
+  if (!c || typeof c.createMediaStreamDestination !== 'function') return plainRecorder(stream, stream, maxMs, () => {});
+  const dest = c.createMediaStreamDestination();
+  const mic = c.createMediaStreamSource(stream);
+  mic.connect(dest);
+  const delay = c.createDelay(1);
+  delay.delayTime.value = Math.min(0.9, (c.outputLatency || 0) + (c.baseLatency || 0) + 0.05);
+  const level = c.createGain();
+  level.gain.value = 0.5; // the voice stays on top of the beat
+  const b = bus(c);
+  b.connect(delay).connect(level).connect(dest);
+  return plainRecorder(dest.stream, stream, maxMs, () => {
+    try { b.disconnect(delay); } catch { /* already disconnected */ }
+    mic.disconnect(); level.disconnect();
+  });
+}
+
+function plainRecorder(recStream: MediaStream, micStream: MediaStream, maxMs: number, cleanup: () => void): { stop: () => Promise<Blob> } {
+  const rec = new MediaRecorder(recStream);
+  const chunks: Blob[] = [];
+  rec.ondataavailable = (e) => chunks.push(e.data);
+  rec.start();
+  let resolveStop: (b: Blob) => void;
+  const stopped = new Promise<Blob>((r) => { resolveStop = r; });
+  rec.onstop = () => {
+    micStream.getTracks().forEach((t) => t.stop());
+    cleanup();
+    resolveStop(new Blob(chunks, { type: rec.mimeType || 'audio/webm' }));
+  };
+  const timer = setTimeout(() => rec.state !== 'inactive' && rec.stop(), maxMs);
+  return { stop: () => { clearTimeout(timer); if (rec.state !== 'inactive') rec.stop(); return stopped; } };
 }
