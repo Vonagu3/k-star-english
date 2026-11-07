@@ -140,3 +140,34 @@ describe('time is merged per day by maximum', () => {
     expect(ms(a, b).activeSec).toEqual({ '2026-11-06': 1500, '2026-11-05': 300 });
   });
 });
+
+describe('mergeStates: parent changes survive the child device writing later', () => {
+  const kid = () => {
+    const s = emptyState();
+    s.profile = { name: 'R', createdAt: 0, pinHash: null, look: {} as never, dorm: [], settings: { dailyLimitMin: 60, muted: false, voiceRate: 1 }, settingsAt: 100 };
+    s.daily.day = '2026-11-07';
+    return s;
+  };
+  it('a newer time limit from the parent wins over a newer snapshot from the child', () => {
+    const parent = kid(); parent.updatedAt = 1000; parent.profile!.settings = { ...parent.profile!.settings, dailyLimitMin: 90 }; parent.profile!.settingsAt = 1000;
+    const child = kid(); child.updatedAt = 2000; child.fans = 500;
+    for (const m of [mergeStates(child, parent), mergeStates(parent, child)]) {
+      expect(m.profile!.settings.dailyLimitMin).toBe(90);
+      expect(m.fans).toBe(500);
+    }
+  });
+  it('extra minutes for today are kept, the parent hearts balance wins, deleted tasks stay deleted', () => {
+    const parent = kid(); parent.updatedAt = 1000; parent.daily.extraMin = 30; parent.hearts = 350; parent.heartsSetAt = 1000;
+    parent.parentTasks = [{ id: 'new', kind: 'write', prompt: 'x', reward: 5, createdAt: 900 }];
+    parent.parentTasksGone = ['old'];
+    const child = kid(); child.updatedAt = 2000; child.hearts = 12;
+    child.parentTasks = [{ id: 'old', kind: 'draw', prompt: 'y', reward: 5, createdAt: 10 }];
+    const m = mergeStates(child, parent);
+    expect(m.daily.extraMin).toBe(30);
+    expect(m.hearts).toBe(350);
+    expect(m.parentTasks!.map((t) => t.id)).toEqual(['new']);
+    // later the child earns hearts: their own newer total is kept
+    const later = { ...m, updatedAt: 3000, hearts: 360 };
+    expect(mergeStates(later, parent).hearts).toBe(360);
+  });
+});

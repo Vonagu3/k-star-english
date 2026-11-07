@@ -30,6 +30,8 @@ export type GameState = {
     /** Shop item the child is saving hearts for. */
     wish?: string | null;
     settings: { dailyLimitMin: number | null; muted: boolean; voiceRate: number; birthday?: string | null; voiceName?: string | null; hoverTranslate?: 'all' | 'practice' | 'off' };
+    /** When settings or the PIN last changed: the latest change wins on every device, whichever device is newer overall. */
+    settingsAt?: number;
   } | null;
   fans: number;
   hearts: number;
@@ -58,6 +60,10 @@ export type GameState = {
   birthdayGift?: number;
   /** Tasks written by the parent for the child. */
   parentTasks?: ParentTask[];
+  /** Ids of parent tasks the parent deleted (so a merge with an older copy does not bring them back). */
+  parentTasksGone?: string[];
+  /** When the parent last set the hearts balance (fix or review bonus): that value wins over older copies. */
+  heartsSetAt?: number;
 };
 
 export const emptyState = (): GameState => ({
@@ -87,9 +93,26 @@ export function mergeStates(a: GameState, b: GameState): GameState {
   }
   const cards = { ...other.cards };
   for (const [k, v] of Object.entries(base.cards)) cards[k] = Math.max(v, cards[k] ?? 0);
+  // Parent-controlled fields: the latest change wins, even if the other device wrote more recently overall
+  // (the child's device writes every half minute, so "newest snapshot wins" would undo the parent's changes).
+  const setFrom = (other.profile?.settingsAt ?? 0) > (base.profile?.settingsAt ?? 0) ? other.profile : base.profile;
+  const profile = base.profile && setFrom
+    ? { ...base.profile, settings: setFrom.settings, pinHash: setFrom.pinHash, settingsAt: setFrom.settingsAt }
+    : base.profile ?? other.profile;
+  const heartsFromOther = (other.heartsSetAt ?? 0) > (base.heartsSetAt ?? 0);
+  const gone = [...new Set([...(base.parentTasksGone ?? []), ...(other.parentTasksGone ?? [])])];
+  const tasks = new Map<string, ParentTask>();
+  for (const t of [...(other.parentTasks ?? []), ...(base.parentTasks ?? [])]) {
+    const prev = tasks.get(t.id);
+    tasks.set(t.id, prev ? { ...t, doneAt: t.doneAt ?? prev.doneAt } : t);
+  }
+  const parentTasks = [...tasks.values()].filter((t) => !gone.includes(t.id)).sort((a, b) => b.createdAt - a.createdAt).slice(0, 50);
   return {
     ...base,
-    profile: base.profile ?? other.profile,
+    profile,
+    hearts: heartsFromOther ? other.hearts : base.hearts,
+    heartsSetAt: Math.max(base.heartsSetAt ?? 0, other.heartsSetAt ?? 0) || undefined,
+    parentTasksGone: gone.length ? gone.slice(-200) : undefined,
     progress,
     srs: { ...other.srs, ...base.srs },
     cards,
@@ -99,7 +122,7 @@ export function mergeStates(a: GameState, b: GameState): GameState {
     minutes: maxPerDay(other.minutes, base.minutes),
     activeSec: maxPerDay(other.activeSec ?? {}, base.activeSec ?? {}),
     wordsSeen: { ...other.wordsSeen, ...base.wordsSeen },
-    parentTasks: base.parentTasks ?? other.parentTasks,
+    parentTasks: base.parentTasks || other.parentTasks ? parentTasks : undefined,
     badges: { ...other.badges, ...base.badges },
     totals: Object.fromEntries([...new Set([...Object.keys(base.totals ?? {}), ...Object.keys(other.totals ?? {})])]
       .map((k) => [k, Math.max(base.totals?.[k as QuestMetric] ?? 0, other.totals?.[k as QuestMetric] ?? 0)])),
@@ -186,10 +209,16 @@ export const useGame = create<Store>((set, get) => ({
       }
     }
     set({ s: { ...rollDay(local), owner: userId ?? local.owner }, ready: true, userId });
+    startPulling();
   },
 
   update: (fn) => {
-    const next = { ...fn(rollDay(get().s)), updatedAt: Date.now() };
+    const prev = rollDay(get().s);
+    let next = fn(prev);
+    if (next.profile && prev.profile && (next.profile.settings !== prev.profile.settings || next.profile.pinHash !== prev.profile.pinHash)) {
+      next = { ...next, profile: { ...next.profile, settingsAt: Date.now() } };
+    }
+    next = { ...next, updatedAt: Date.now() };
     set({ s: next });
     if (saveTimer) clearTimeout(saveTimer);
     saveTimer = setTimeout(() => void persist(), 600);
@@ -289,13 +318,45 @@ export const useGame = create<Store>((set, get) => ({
   }),
 }));
 
+// ---- Cloud sync: both ways. Changes made on another device (e.g. the parent's phone) are pulled in and merged,
+// and every save merges the cloud copy first, so one device never overwrites another's changes.
+let lastRemoteAt = 0;
+
+/** Fetches the cloud copy and merges it into the local state if another device changed it. */
+async function pullRemote(): Promise<void> {
+  const { userId } = useGame.getState();
+  if (!supabase || !userId || !navigator.onLine) return;
+  const { data, error } = await supabase.from('kid_state').select('state').eq('user_id', userId).maybeSingle();
+  if (error || !data?.state) return;
+  const remote = data.state as GameState;
+  if (remote.updatedAt === lastRemoteAt) return;
+  lastRemoteAt = remote.updatedAt;
+  const cur = useGame.getState().s;
+  if (remote.updatedAt === cur.updatedAt) return;
+  const merged = mergeStates(cur, remote);
+  useGame.setState({ s: { ...rollDay(merged), owner: cur.owner } });
+  await idbSet(KEY, useGame.getState().s);
+}
+
+let pulling = false;
+function startPulling() {
+  if (pulling || typeof window === 'undefined') return;
+  pulling = true;
+  setInterval(() => void pullRemote(), 30 * 1000);
+  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') void pullRemote(); });
+  window.addEventListener('focus', () => void pullRemote());
+}
+
 async function persist() {
-  const { s, userId } = useGame.getState();
-  await idbSet(KEY, s);
+  const { userId } = useGame.getState();
+  await idbSet(KEY, useGame.getState().s);
   if (!supabase || !userId) return;
   if (!navigator.onLine) { useGame.setState({ syncing: 'offline' }); return; }
   useGame.setState({ syncing: 'saving' });
+  try { await pullRemote(); } catch { /* push anyway */ }
+  const s = useGame.getState().s;
   const { error } = await supabase.from('kid_state').upsert({ user_id: userId, state: s, updated_at: new Date(s.updatedAt).toISOString() });
+  if (!error) lastRemoteAt = s.updatedAt;
   useGame.setState({ syncing: error ? 'error' : 'idle' });
 }
 

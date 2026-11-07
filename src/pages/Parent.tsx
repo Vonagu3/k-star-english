@@ -53,7 +53,7 @@ function Dashboard() {
 
   const review = async (x: Submission, status: 'approved' | 'redo', comment: string, bonus: number) => {
     await reviewSubmission(x.id, status, comment, bonus);
-    if (bonus) update((st) => ({ ...st, hearts: st.hearts + bonus }));
+    if (bonus) update((st) => ({ ...st, hearts: st.hearts + bonus, heartsSetAt: Date.now() }));
     setSubs(await listSubmissions(userId));
   };
 
@@ -207,7 +207,7 @@ function HeartsFix() {
       <div className="row wrap">
         <input className="field" inputMode="numeric" placeholder="например, 350" value={v} onChange={(e) => { setV(e.target.value.replace(/\D/g, '')); setDone(''); }} style={{ maxWidth: 160 }} />
         <button className="btn violet small" disabled={!valid} style={{ opacity: valid ? 1 : 0.5 }}
-          onClick={() => { update((st) => ({ ...st, hearts: n })); setDone(`Готово: теперь ${n} ❤️`); setV(''); }}>Установить</button>
+          onClick={() => { update((st) => ({ ...st, hearts: n, heartsSetAt: Date.now() })); setDone(`Готово: теперь ${n} ❤️`); setV(''); }}>Установить</button>
       </div>
       {done && <div className="small" style={{ fontWeight: 700, color: 'var(--mint)' }}>✅ {done}</div>}
     </div>
@@ -337,7 +337,7 @@ function ParentTasks() {
           <span>{TASK_KIND[t.kind].emoji}</span>
           <div className="grow"><b>{t.prompt}</b>{t.ru ? <span className="muted"> · {t.ru}</span> : null}</div>
           <span>{t.doneAt ? `✅ ${new Date(t.doneAt).toLocaleDateString('ru-RU')}` : '⏳ ждёт'}</span>
-          <button className="chip" onClick={() => update((s) => ({ ...s, parentTasks: (s.parentTasks ?? []).filter((x) => x.id !== t.id) }))}>🗑️</button>
+          <button className="chip" onClick={() => update((s) => ({ ...s, parentTasks: (s.parentTasks ?? []).filter((x) => x.id !== t.id), parentTasksGone: [...(s.parentTasksGone ?? []), t.id] }))}>🗑️</button>
         </div>
       ))}
     </div>
