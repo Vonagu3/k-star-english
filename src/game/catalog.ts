@@ -114,6 +114,18 @@ export const SKINS: Skin[] = [
   sk('dance', 'Dance Practice', 'Танцевальная репетиция', '💃', 420, { hair: 'wolf', hairColor: 'grad:#111111:#ff5fa2', outfit: 'dance', outfitColor: '#7c5cff', acc: 'bandana', eyes: 'star', bg: 'seoul', fx: '🎵', stick: 'star' }),
   sk('gamer', 'Gamer Girl', 'Геймер', '🎮', 450, { hair: 'long', hairColor: '#1d2a5c', outfit: 'gamer', outfitColor: '#2b2140', acc: 'ledcat', eyes: 'cat', bg: 'night', fx: '✨', pet: '🤖' }),
   sk('kawaii', 'Strawberry Kawaii', 'Клубничный каваи', '🍓', 480, { hair: 'twin', hairColor: '#ff7eb6', outfit: 'kawaii', outfitColor: '#ffd6ea', acc: 'strawclips', face: 'hearts', eyes: 'heart', bg: 'candy', pet: '🐰', stick: 'strawberry' }),
+  sk('matcha', 'Matcha Café', 'Кафе с матчей', '🍵', 0, { hair: 'curtain', hairColor: '#3b2a26', outfit: 'vest', outfitColor: '#ffffff', acc: 'beret', eyes: 'smile', bg: 'mint' }),
+  sk('pyjama', 'Pyjama Party', 'Пижамная вечеринка', '🌙', 0, { hair: 'sidebraid', hairColor: '#c98a4b', outfit: 'pyjamas', outfitColor: '#c7a6ff', acc: 'sleepmask', eyes: 'sleepy', bg: 'night', pet: '🐱' }),
+  sk('artist', 'Little Artist', 'Юная художница', '🎨', 0, { hair: 'topbun', hairColor: '#3b2a26', outfit: 'artist', outfitColor: '#ff8fc4', face: 'paint', eyes: 'happy', bg: 'rainbow' }),
+  sk('picnic', 'Picnic Day', 'Пикник', '🧺', 280, { hair: 'sidebraid', hairColor: '#c98a4b', outfit: 'picnic', outfitColor: '#ff8fb1', acc: 'daisies', face: 'freckles', bg: 'cherry' }),
+  sk('football', 'Football Star', 'Звезда футбола', '⚽', 300, { hair: 'sleekpony', hairColor: '#111111', outfit: 'jersey', outfitColor: '#2ec4b6', acc: 'sweatband', eyes: 'wink', bg: 'sunset', stick: 'star' }),
+  sk('chef', 'Little Chef', 'Юный повар', '🧁', 320, { hair: 'bob', hairColor: '#3b2a26', outfit: 'apron', outfitColor: '#ffffff', acc: 'chefhat', eyes: 'happy', face: 'freckles', bg: 'candy' }),
+  sk('beach', 'Beach Day', 'День на пляже', '🏖️', 340, { hair: 'wavy', hairColor: '#ffe36e', outfit: 'beach', outfitColor: '#5cc8ff', acc: 'hibiscus', glasses: 'sun', bg: 'beach', fx: '🫧' }),
+  sk('ballet', 'Ballet Core', 'Балетный стиль', '🩰', 380, { hair: 'balletbun', hairColor: '#3b2a26', outfit: 'ballet', outfitColor: '#ffd6ea', face: 'glitter', bg: 'pink', fx: '🌸' }),
+  sk('skate', 'Ice Skater', 'Фигуристка', '⛸️', 420, { hair: 'sleekpony', hairColor: '#c9ced6', outfit: 'skate', outfitColor: '#5cc8ff', acc: 'earmuffs', eyes: 'blue', face: 'glitter', bg: 'snow', fx: '❄️' }),
+  sk('rock', 'Rock Star', 'Рок-звезда', '🎸', 450, { hair: 'wolf', hairColor: 'grad:#111111:#8f7bff', outfit: 'leather', outfitColor: '#1b1b24', glasses: 'star', eyes: 'wink', bg: 'concert', fx: '🎵', stick: 'star' }),
+  sk('cyber', 'Cyber Neon', 'Кибер-неон', '💜', 600, { hair: 'sleekpony', hairColor: 'grad:#5cc8ff:#c7a6ff', outfit: 'cyber', outfitColor: '#2b2140', glasses: 'visor', eyes: 'galaxy', bg: 'space', fx: '✨', stick: 'galaxystick' }),
+  sk('fairy', 'Fairy Garden', 'Сад фей', '🧚', 900, { hair: 'wavy', hairColor: 'grad:#ffd36e:#ff7eb6', outfit: 'fairy', outfitColor: '#7ee0c3', acc: 'flowers', face: 'glitter', bg: 'cherry', fx: '🌸', pet: '🦋' }),
   sk('debut', 'Debut Stage', 'Сцена дебюта', '🎤', 1500, { hair: 'mega', hairColor: 'grad:#ff7eb6:#ffd36e:#7ee0c3:#5cc8ff:#c7a6ff', outfit: 'idol', outfitColor: 'grad:#ff7eb6:#8f7bff', acc: 'mic', eyes: 'star', face: 'stage', bg: 'concert', fx: '⭐', stick: 'crownstick' }),
 ];
 export const isWearingSkin = (look: Look, skin: Skin) => (Object.keys(skin.look) as (keyof SkinLook)[]).every((k) => fullLook(look)[k] === skin.look[k]);

@@ -119,7 +119,7 @@ export default function Studio() {
           {tab === 'looks' && <div className="muted small">Готовые образы целиком — одним нажатием. Некоторые вещи из них есть только здесь! · Whole looks in one tap.</div>}
           {tab === 'looks' && (
             <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(124px, 1fr))' }}>
-              {SKINS.map((k) => {
+              {[...SKINS].sort((x, y) => x.price - y.price).map((k) => {
                 const owned = ownsSkin(k);
                 const on = isWearingSkin(myLook, k);
                 const r = RARITY[rarityOf(k.price)];
