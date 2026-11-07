@@ -24,6 +24,22 @@ export default function Lesson() {
   return <LessonPlayer episode={ref.episode} id={id} />;
 }
 
+// ---- Progress inside an episode survives a page reload (tab dropped by the phone, camera, accidental refresh) ----
+type Saved = { k: number; acc: ExResult[]; n: number; ts: number };
+const saveKey = (id: string) => `kstar-lesson-progress-${id}`;
+const RESUME_WITHIN_MS = 12 * 3600 * 1000;
+/** Saved progress for this episode, if it is recent and still matches the episode's tasks. */
+function loadProgress(id: string, n: number): Saved | null {
+  try {
+    const v = JSON.parse(localStorage.getItem(saveKey(id)) ?? 'null') as Saved | null;
+    if (v && v.n === n && v.k > 0 && v.k < n && Array.isArray(v.acc) && v.acc.length === v.k && Date.now() - v.ts < RESUME_WITHIN_MS) return v;
+  } catch { /* storage blocked or broken: just start from the beginning */ }
+  return null;
+}
+function saveProgress(id: string, p: Saved | null) {
+  try { if (p) localStorage.setItem(saveKey(id), JSON.stringify(p)); else localStorage.removeItem(saveKey(id)); } catch { /* ignore */ }
+}
+
 type PlayerProps = {
   episode: Episode;
   id: string;
@@ -47,6 +63,7 @@ export function LessonPlayer({ episode, id, intro, onFinished }: PlayerProps) {
   const [outcome, setOutcome] = useState<(FinishOutcome & { correct: number; total: number }) | null>(null);
   const [confirmExit, setConfirmExit] = useState(false);
   const exs = episode.exercises;
+  const [resume, setResume] = useState<Saved | null>(() => loadProgress(id, episode.exercises.length));
   const startedAt = useMemo(() => Date.now(), []);
 
   useEffect(() => () => stopSpeaking(), []);
@@ -61,7 +78,11 @@ export function LessonPlayer({ episode, id, intro, onFinished }: PlayerProps) {
   const onDone = useCallback((r: ExResult) => {
     acc.current.push(r);
     stopSpeaking();
-    if (k + 1 < exs.length) { setK(k + 1); setReview(null); window.scrollTo({ top: 0 }); return; }
+    if (k + 1 < exs.length) {
+      saveProgress(id, { k: k + 1, acc: acc.current, n: exs.length, ts: Date.now() });
+      setK(k + 1); setReview(null); window.scrollTo({ top: 0 }); return;
+    }
+    saveProgress(id, null);
     const all = acc.current;
     const result: EpisodeResult = {
       correct: all.reduce((s, x) => s + x.correct, 0),
@@ -81,6 +102,26 @@ export function LessonPlayer({ episode, id, intro, onFinished }: PlayerProps) {
   }, [k, exs.length, finishEpisode, id, episode.kind, onFinished]);
 
   if (outcome) return <Results ep={episode} outcome={outcome} minutes={Math.round((Date.now() - startedAt) / 60000)} onRetry={() => { acc.current = []; setOutcome(null); setK(0); }} />;
+
+  if (resume) {
+    return (
+      <div className="page col" style={{ alignItems: 'center', textAlign: 'center', paddingTop: 40 }}>
+        <div style={{ fontSize: 64 }}>📌</div>
+        <h2 className="title-l">Welcome back! Let's continue?</h2>
+        <div className="card col" style={{ maxWidth: 420, gap: 6 }}>
+          <b>{episode.title}</b>
+          <div className="muted">Ты остановилась на задании {resume.k + 1} из {resume.n}. Выполненные задания и баллы сохранены.</div>
+          <div className="row" style={{ gap: 4, justifyContent: 'center' }}>
+            {Array.from({ length: resume.n }, (_, j) => <span key={j} style={{ width: 28, height: 10, borderRadius: 999, background: j < resume.k ? 'var(--mint)' : j === resume.k ? 'var(--pink)' : '#eadcf0' }} />)}
+          </div>
+        </div>
+        <div className="row wrap" style={{ justifyContent: 'center' }}>
+          <button className="btn ghost" onClick={() => { saveProgress(id, null); setResume(null); }}>🔄 Start over</button>
+          <button className="btn" onClick={() => { acc.current = resume.acc; setK(resume.k); setStarted(true); setResume(null); }}>▶️ Continue from task {resume.k + 1}</button>
+        </div>
+      </div>
+    );
+  }
 
   if (!started) {
     return (
