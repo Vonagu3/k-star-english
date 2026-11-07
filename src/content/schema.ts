@@ -29,6 +29,22 @@ export const DANCE_MOVES = [
 export const DanceMove = z.enum(DANCE_MOVES);
 export type DanceMove = z.infer<typeof DanceMove>;
 
+/** Picture next to a maths problem. */
+export const Figure = z.discriminatedUnion('kind', [
+  // Bar model for "problems on parts": each row is a bar of equal parts, `extra` is a label after the bar (e.g. "+ 12 кг").
+  z.object({ kind: z.literal('parts'), rows: z.array(z.object({
+    label: z.string(), parts: z.number().int().min(1).max(12), extra: z.string().optional(),
+  })).min(1).max(4), total: z.string().optional() }),
+  // Rectangle with side labels.
+  z.object({ kind: z.literal('rect'), a: z.number().positive(), b: z.number().positive(), unit: z.string() }),
+  // Shape on squared paper: '#' = filled square, '.' = empty.
+  z.object({ kind: z.literal('grid'), cells: z.array(z.string().regex(/^[#.]+$/)).min(1).max(12) }),
+  // Rectangular cuboid a (length) × b (width) × c (height); `cubes` draws it split into unit cubes.
+  z.object({ kind: z.literal('cuboid'), a: z.number().positive(), b: z.number().positive(), c: z.number().positive(),
+    unit: z.string(), cubes: z.boolean().optional() }),
+]);
+export type Figure = z.infer<typeof Figure>;
+
 const base = { title: z.string().optional() };
 
 export const Exercise = z.discriminatedUnion('type', [
@@ -84,6 +100,13 @@ export const Exercise = z.discriminatedUnion('type', [
   z.object({ ...base, type: z.literal('kculture'), emoji: z.string(), text: z.array(z.string()).min(1),
     korean: z.object({ ko: z.string(), roman: z.string(), en: z.string() }).optional(),
     questions: z.array(Question).min(1) }),
+  // Maths problem (Russian text, English terms): numeric answer on a number pad, or multiple choice when `options` are given.
+  // `solution` is shown step by step after a wrong answer; `terms` are word ids shown as English chips.
+  z.object({ ...base, type: z.literal('solve'), items: z.array(z.object({
+    q: z.string().min(1), answer: z.number(), unit: z.string().optional(),
+    options: z.array(z.number()).min(2).max(4).optional(),
+    solution: z.array(z.string()).min(1), terms: z.array(z.string()).optional(), figure: Figure.optional(),
+  })).min(1) }),
 ]);
 export type Exercise = z.infer<typeof Exercise>;
 export type ExerciseType = Exercise['type'];

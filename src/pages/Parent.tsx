@@ -103,8 +103,8 @@ function Dashboard() {
 
       <div className="card col">
         <strong>Навыки (доля верных ответов)</strong>
-        {([['listening', 'Аудирование'], ['reading', 'Чтение'], ['writing', 'Письмо'], ['speaking', 'Говорение']] as const).map(([k, l]) => {
-          const t = s.skills[k];
+        {([['listening', 'Аудирование'], ['reading', 'Чтение'], ['writing', 'Письмо'], ['speaking', 'Говорение'], ['maths', 'Математика']] as const).map(([k, l]) => {
+          const t = s.skills[k] ?? { c: 0, t: 0 };
           const p = t.t ? t.c / t.t : 0;
           return <div key={k} className="row small"><span style={{ width: 120 }}>{l}</span><div className="bar grow"><span style={{ width: `${p * 100}%` }} /></div><span style={{ width: 80, textAlign: 'right' }}>{t.t ? `${Math.round(p * 100)}%` : '—'} ({t.t})</span></div>;
         })}

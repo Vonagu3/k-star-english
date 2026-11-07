@@ -4,7 +4,7 @@ import { World, type Episode, type Exercise } from '../src/content/schema';
 
 const files = process.argv.slice(2).length
   ? process.argv.slice(2)
-  : ['world1', 'world2', 'world3', 'world-paris'].map((w) => `src/content/stage1/${w}.json`);
+  : ['world1', 'world2', 'world3', 'world-paris', 'world-math'].map((w) => `src/content/stage1/${w}.json`);
 
 const errors: string[] = [];
 const allWords = new Map<string, string>();
@@ -49,6 +49,17 @@ function checkEx(where: string, ex: Exercise) {
       ex.blanks.forEach((b) => { if (!text.includes(b.toLowerCase())) errors.push(`${where}: chant blank "${b}" not in lines`); });
       break;
     }
+    case 'solve': ex.items.forEach((it, i) => {
+      ref(it.terms ?? []);
+      if (it.options && !it.options.includes(it.answer)) errors.push(`${where}: solve item ${i} answer ${it.answer} is not among options`);
+      if (it.options && new Set(it.options).size !== it.options.length) errors.push(`${where}: solve item ${i} has duplicate options`);
+      const f = it.figure;
+      if (f?.kind === 'grid' && it.unit?.includes('²')) { // area on squared paper = number of filled cells
+        const n = f.cells.join('').split('').filter((c) => c === '#').length;
+        if (n !== it.answer) errors.push(`${where}: solve item ${i} grid has ${n} filled cells but answer is ${it.answer}`);
+      }
+      if (f?.kind === 'cuboid' && f.cubes && f.a * f.b * f.c !== it.answer) errors.push(`${where}: solve item ${i} has ${f.a * f.b * f.c} cubes but answer is ${it.answer}`);
+    }); break;
     case 'sentence': ex.items.forEach((it, i) => { if (it.sentence.split(/\s+/).length < 2) errors.push(`${where}: sentence ${i} too short`); }); break;
   }
   if (ex.type === 'watch') {

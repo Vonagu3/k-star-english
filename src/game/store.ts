@@ -8,7 +8,7 @@ import {
 } from './rules';
 import { supabase } from '../lib/supabase';
 
-export type Skill = 'listening' | 'reading' | 'writing' | 'speaking';
+export type Skill = 'listening' | 'reading' | 'writing' | 'speaking' | 'maths';
 export type ParentTask = { id: string; kind: 'write' | 'draw' | 'speak' | 'notebook'; prompt: string; ru?: string; reward: number; createdAt: number; doneAt?: number | null };
 export type Tally = { c: number; t: number };
 
@@ -65,7 +65,7 @@ export const emptyState = (): GameState => ({
   streak: { streak: 0, lastActive: null, freezeWeek: null },
   progress: {}, srs: {}, inventory: [...FREE_ITEMS], furniture: ['bed', 'desk', 'chair'], cards: {}, forcedWorlds: [],
   daily: { day: dayKey(Date.now()), metrics: {}, claimed: [], chest: false }, minutes: {},
-  skills: { listening: { c: 0, t: 0 }, reading: { c: 0, t: 0 }, writing: { c: 0, t: 0 }, speaking: { c: 0, t: 0 } },
+  skills: { listening: { c: 0, t: 0 }, reading: { c: 0, t: 0 }, writing: { c: 0, t: 0 }, speaking: { c: 0, t: 0 }, maths: { c: 0, t: 0 } },
   mistakes: {},
 });
 
@@ -209,7 +209,7 @@ export const useGame = create<Store>((set, get) => ({
       const now = Date.now();
       const skills = { ...s.skills };
       for (const [k, v] of Object.entries(r.skills)) {
-        const cur = skills[k as Skill];
+        const cur = skills[k as Skill] ?? { c: 0, t: 0 }; // older saves have no maths tally
         skills[k as Skill] = { c: cur.c + (v?.c ?? 0), t: cur.t + (v?.t ?? 0) };
       }
       const srs = { ...s.srs };
