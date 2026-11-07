@@ -26,9 +26,36 @@ const M: Record<string, Partial<ItemMeta>> = {
   tree: { size: 30 }, flowers: { size: 10 }, sunflower: { size: 12 }, bike: { size: 18 }, swing: { size: 22 }, tent: { size: 24 },
   poster: { size: 12, kind: 'wall' }, clock: { size: 9, kind: 'wall' }, mirror: { size: 10, kind: 'wall' }, balloon: { size: 9, kind: 'air' },
 };
-export const meta = (id: string): ItemMeta => ({ size: 9, kind: 'floor', ...M[id] });
+export const meta = (id: string): ItemMeta => (isChar(id) ? { size: CHAR_SIZE, kind: 'floor' } : { size: 9, kind: 'floor', ...M[id] });
 /** Glyph height in % of scene height. */
-export const heightOf = (id: string) => (id === 'rug' ? 4 : meta(id).size * ASPECT * 0.92); // the rug lies flat
+export const heightOf = (id: string) => (id === 'rug' ? 4 : isChar(id) ? CHAR_SIZE * 1.3 * ASPECT : meta(id).size * ASPECT * 0.92); // the rug lies flat
+
+// ---------------- Characters: you and your friends ----------------
+/** Characters are placements with item "char:me" or "char:<Friend>". */
+export const isChar = (id: string | undefined): id is string => !!id && id.startsWith('char:');
+export const CHAR_SIZE = 11;
+export const FRIENDS = ['Hana', 'Jun', 'Sora', 'Leo', 'Max', 'Mina'] as const;
+/** Friends you can invite for hearts if you have no card with them yet. Hana is free. */
+export const FRIEND_PRICE: Record<string, number> = { Hana: 0, Jun: 150, Sora: 150, Leo: 150, Max: 150, Mina: 250 };
+export const FRIEND_LIKES: Record<string, string> = {
+  Hana: 'I like singing.', Jun: 'I like dancing.', Sora: 'I like cats and cakes.',
+  Leo: 'I like football.', Max: 'I like music and computer games.', Mina: 'I am your dance coach. Let’s practise!',
+};
+/** Things a character can hold in their hand. */
+export const HOLDABLE = new Set(['teddy', 'guitar', 'microphone', 'cat', 'dog', 'rabbit', 'ball', 'headphones', 'cake', 'lightstick', 'balloon',
+  'croissant', 'ladybird', 'kettle', 'fruit', 'pizza', 'cupcakes', 'toothbrush', 'soap', 'duck', 'books', 'flowers', 'sunflower', 'eiffel']);
+export type Pose = 'stand' | 'sit' | 'lie';
+const SIT_ON = new Set(['sofa', 'chair', 'toilet', 'bath', 'swing', 'bike']);
+const LIE_ON = new Set(['bed', 'tent']);
+export const poseOf = (p: DormPlacement): Pose => (p.on && LIE_ON.has(p.on) ? 'lie' : p.on && SIT_ON.has(p.on) ? 'sit' : 'stand');
+/** Where a held thing sits: in the character's hand (right hand, or left when flipped). */
+export function handPos(c: Placed): { fx: number; fy: number } {
+  const pose = poseOf(c);
+  const d = c.flip ? -1 : 1;
+  if (pose === 'lie') return { fx: c.fx + d * CHAR_SIZE * 0.2, fy: c.fy - 2 };
+  const h = heightOf(c.item);
+  return { fx: c.fx + d * CHAR_SIZE * 0.24, fy: pose === 'sit' ? c.fy - h * 0.02 : c.fy - h * 0.2 };
+}
 
 /** A placement with free coordinates filled in: fx = centre x (% of width), fy = bottom y (% of height). */
 export type Placed = DormPlacement & { fx: number; fy: number };
@@ -75,8 +102,12 @@ export function settle(item: string, fx: number, fy: number, others: Placed[]): 
   const h = heightOf(item);
   fx = clamp(fx, m.size / 2, 100 - m.size / 2);
   if (m.kind === 'wall') return { fx, fy: clamp(fy, h + 2, FLOOR_TOP - 2) };
-  if (m.kind === 'air') return { fx, fy: clamp(fy, h + 2, FLOOR_BOTTOM) };
   const skip = descendants(item, others);
+  if (HOLDABLE.has(item)) {
+    const hand = others.find((c) => isChar(c.item) && !skip.has(c.item) && Math.abs(fx - c.fx) < CHAR_SIZE * 0.55 && fy <= c.fy + 3 && fy >= c.fy - heightOf(c.item) - 4);
+    if (hand) return { ...handPos(hand), on: hand.item };
+  }
+  if (m.kind === 'air') return { fx, fy: clamp(fy, h + 2, FLOOR_BOTTOM) };
   let best: { top: number; id: string } | null = null;
   for (const o of others) {
     if (o.item === item || skip.has(o.item)) continue;
@@ -103,17 +134,26 @@ export function depth(p: Placed, all: Placed[], guard = 0): number {
 
 // ---------------- English descriptions ----------------
 const F = new Map(FURNITURE.map((f) => [f.id, f]));
-export const en = (id: string) => F.get(id)?.en ?? id;
+/** English name; for characters, the friend's name ("me" for you). */
+export const en = (id: string) => (isChar(id) ? (id === 'char:me' ? 'me' : id.slice(5)) : F.get(id)?.en ?? id);
 const plural = (w: string) => /s$/.test(w) && !/(bus|glass)$/.test(w);
-const the = (id: string) => `the ${en(id)}`;
+const the = (id: string) => (isChar(id) ? en(id) : `the ${en(id)}`);
+/** Subject and "to be" for an item or character: "The cat is", "Jun is", "I am", "The books are". */
+const subj = (id: string) => (id === 'char:me' ? { X: 'I', be: 'am', has: 'have' } : { X: cap(the(id)), be: plural(en(id)) && !isChar(id) ? 'are' : 'is', has: 'has' });
 const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
 export const roomName = (id: string) => ROOMS.find((r) => r.id === id)?.en ?? id;
 
 export function describe(p: Placed, all: Placed[]): string {
   const same = all.filter((o) => roomOf(o) === roomOf(p) && o.item !== p.item);
-  const be = plural(en(p.item)) ? 'are' : 'is';
-  const X = cap(the(p.item));
+  const { X, be } = subj(p.item);
   const m = meta(p.item);
+  if (isChar(p.on)) { const o = subj(p.on); return `${o.X} ${o.has} ${the(p.item)}.`; }
+  if (isChar(p.item) && p.on) {
+    const pose = poseOf(p);
+    if (pose === 'lie') return `${X} ${be} in ${the(p.on)}. ${p.item === 'char:me' ? 'I am' : `${X} is`} sleeping.`;
+    if (p.on === 'bath') return `${X} ${be} in the bath.`;
+    if (pose === 'sit') return `${X} ${be} sitting on ${the(p.on)}.`;
+  }
   if (p.on) return `${X} ${be} on ${the(p.on)}.`;
   if (m.kind === 'wall') {
     const below = same.filter((o) => meta(o.item).kind === 'floor' && !o.on && Math.abs(o.fx - p.fx) < (meta(o.item).size + m.size) / 2);
@@ -137,6 +177,7 @@ export function describe(p: Placed, all: Placed[]): string {
   if (left || right) return `${X} ${be} next to ${the((left ?? right)!.item)}.`;
   const rug = same.find((o) => o.item === 'rug' && Math.abs(o.fx - p.fx) < meta('rug').size / 2 && Math.abs(o.fy - p.fy) < 6);
   if (rug) return `${X} ${be} on the rug.`;
+  if (isChar(p.item)) return `${X} ${be} in the ${roomName(roomOf(p))}.`;
   const a = plural(en(p.item)) ? 'some' : /^[aeiou]/i.test(en(p.item)) ? 'an' : 'a';
   return `There ${be} ${a} ${en(p.item)} in the ${roomName(roomOf(p))}.`;
 }
@@ -197,3 +238,51 @@ export function clockSay(d: Date): string {
   return q === 0 ? `It's ${H} o'clock.` : q === 1 ? `It's quarter past ${H}.` : q === 2 ? `It's half past ${H}.` : `It's quarter to ${next}.`;
 }
 export const actionFor = (id: string): Action => (id === 'clock' ? { effect: 'bounce', say: clockSay(new Date()) } : ACTIONS[id] ?? { effect: 'bounce', say: `This is my ${en(id)}.` });
+
+// ---------------- Things characters do (tap a character) ----------------
+export const FRIEND_HIS: Record<string, string> = { Hana: 'her', Jun: 'his', Sora: 'her', Leo: 'his', Max: 'his', Mina: 'her' };
+export type CharMove = 'wave' | 'cheer' | 'jump' | 'clap' | 'finger-heart' | 'pose' | 'spin' | 'idle';
+export type CharAction = { say: string; move: CharMove; effect?: Effect; pop?: string };
+/** Held thing → [verb, rest of the sentence ({my} = my / his / her), effect]. */
+const HOLD_DO: Record<string, [string, string, Effect]> = {
+  cake: ['eat', 'the cake. Yummy!', 'eat'], cupcakes: ['eat', 'a cupcake. Yummy!', 'eat'], pizza: ['eat', 'a slice of pizza.', 'eat'],
+  croissant: ['eat', 'a croissant.', 'eat'], fruit: ['eat', 'an apple.', 'eat'], kettle: ['make', 'a cup of tea.', 'steam'],
+  guitar: ['play', 'the guitar.', 'notes'], microphone: ['sing', 'a song.', 'notes'], headphones: ['listen', 'to music.', 'notes'],
+  lightstick: ['wave', 'the lightstick.', 'sparkle'], books: ['read', 'a book.', 'open'], ball: ['kick', 'the ball.', 'bounce'],
+  teddy: ['hug', '{my} teddy.', 'sparkle'], cat: ['hug', 'the cat. Meow!', 'sparkle'], dog: ['hug', 'the dog. Woof woof!', 'sparkle'],
+  rabbit: ['hug', 'the rabbit.', 'sparkle'], balloon: ['have', 'a red balloon.', 'fly'], flowers: ['smell', 'the flowers.', 'sparkle'],
+  sunflower: ['have', 'a big yellow sunflower.', 'sparkle'], duck: ['play', 'with the rubber duck.', 'bubbles'],
+  soap: ['wash', '{my} hands.', 'bubbles'], toothbrush: ['brush', '{my} teeth.', 'bubbles'], ladybird: ['play', 'with the ladybird toy.', 'sparkle'],
+  eiffel: ['have', 'a little Eiffel Tower from Paris.', 'sparkle'],
+};
+/** "eat" → "eats", "brush" → "brushes", "have" → "has". */
+export const third = (v: string) => (v === 'have' ? 'has' : /(s|sh|ch|x|o)$/.test(v) ? `${v}es` : `${v}s`);
+
+/** What a character says and does when tapped. `n` picks a different chat line each time; `myName` is the learner's name. */
+export function charAction(c: Placed, all: Placed[], n: number, myName: string): CharAction {
+  const me = c.item === 'char:me';
+  const who = en(c.item);
+  const my = me ? 'my' : FRIEND_HIS[who] ?? 'their';
+  const held = all.find((o) => o.on === c.item);
+  if (held && HOLD_DO[held.item]) {
+    const [v, rest, effect] = HOLD_DO[held.item];
+    return { say: `${me ? 'I' : who} ${me ? v : third(v)} ${rest.replace('{my}', my)}`, move: effect === 'eat' ? 'clap' : effect === 'notes' ? 'pose' : 'cheer', effect };
+  }
+  const pose = poseOf(c);
+  if (pose === 'lie') return { say: me ? 'I am sleeping. Zzz… Good night!' : `Shh! ${who} is sleeping.`, move: 'idle', effect: 'zzz' };
+  if (c.on === 'bath') return { say: me ? 'I have a bath. Bubbles!' : `${who} is having a bath.`, move: 'clap', effect: 'bubbles' };
+  if (c.on === 'toilet') return { say: 'Knock, knock! Sorry, busy!', move: 'wave' };
+  if (c.on === 'swing') return { say: 'Wheee!', move: 'cheer', effect: 'sparkle' };
+  if (c.on === 'bike') return { say: me ? 'I ride my bike.' : `${who} rides ${my} bike.`, move: 'cheer' };
+  if (pose === 'sit') return { say: me ? `I sit on the ${en(c.on!)} and relax.` : `${who} is relaxing on the ${en(c.on!)}.`, move: 'wave' };
+  const friend = all.find((o) => isChar(o.item) && o.item !== c.item && roomOf(o) === roomOf(c) && Math.abs(o.fx - c.fx) < 22 && Math.abs(o.fy - c.fy) < 10);
+  if (friend && n % 2 === 0) {
+    const other = friend.item === 'char:me' ? myName : en(friend.item);
+    return { say: me ? `Hi, ${other}! Let's play!` : `Hi, ${other}! How are you?`, move: 'wave' };
+  }
+  const lines: [string, CharMove][] = me
+    ? [[`Hello! I'm ${myName}.`, 'wave'], ['I am a K-pop trainee!', 'pose'], ['I am happy!', 'cheer'], ['I like English!', 'finger-heart']]
+    : [[`Hi! I'm ${who}.`, 'wave'], [FRIEND_LIKES[who] ?? 'I am happy!', 'finger-heart'], ['I am happy!', 'cheer'], ['Nice to meet you!', 'clap']];
+  const [say, move] = lines[n % lines.length];
+  return { say, move };
+}

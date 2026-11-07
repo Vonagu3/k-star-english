@@ -1,12 +1,13 @@
 import { useRef, useState, type CSSProperties, type PointerEvent as RPointerEvent } from 'react';
 import { motion, type TargetAndTransition } from 'framer-motion';
-import { FURNITURE, type Surface } from '../game/catalog';
-import { FLOOR_TOP, descendants, depth, en, heightOf, meta, surfaceBg, type Effect, type Placed } from '../game/dorm';
+import { FURNITURE, type Look, type Surface } from '../game/catalog';
+import { ASPECT, CHAR_SIZE, FLOOR_TOP, descendants, depth, en, handPos, heightOf, isChar, meta, poseOf, surfaceBg, type CharMove, type Effect, type Placed, type Pose } from '../game/dorm';
+import Avatar from './Avatar';
 
 const EMOJI = new Map(FURNITURE.map((f) => [f.id, f.emoji]));
 
 /** A one-off animation on an item (n changes every tap so the same effect can replay). */
-export type Burst = { item: string; effect: Effect; pop?: string; n: number };
+export type Burst = { item: string; effect?: Effect; pop?: string; n: number; /** Characters: speech bubble and a dance move. */ say?: string; move?: CharMove };
 
 type Props = {
   items: Placed[];
@@ -16,6 +17,8 @@ type Props = {
   night: boolean;
   /** Items switched on (lamp, TV…). */
   lit: Set<string>;
+  /** Looks of the characters in the room, by item id ("char:me", "char:Jun"…). */
+  looks?: Record<string, Look>;
   burst?: Burst | null;
   selected?: string | null;
   /** Newly placed item: it drops in from above. */
@@ -30,7 +33,7 @@ type Props = {
 type Drag = { item: string; sx: number; sy: number; w: number; h: number; dx: number; dy: number; moved: boolean };
 
 /** Side view of one room of the dollhouse: wall with a window, floor, and freely placed things you can drag and tap. */
-export default function DormScene({ items, wall, floor, garden, night, lit, burst, selected, fresh, interactive, onDrop, onTap, onWindow, onBackground }: Props) {
+export default function DormScene({ items, wall, floor, garden, night, lit, looks, burst, selected, fresh, interactive, onDrop, onTap, onWindow, onBackground }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const [drag, setDrag] = useState<Drag | null>(null);
   const kids = drag ? descendants(drag.item, items) : new Set<string>();
@@ -77,7 +80,10 @@ export default function DormScene({ items, wall, floor, garden, night, lit, burs
       {sorted.map((p) => {
         const m = meta(p.item);
         const dragging = drag && (drag.item === p.item || kids.has(p.item));
-        const fx = p.fx + (dragging ? drag!.dx : 0), fy = p.fy + (dragging ? drag!.dy : 0);
+        const holder = isChar(p.on) ? items.find((o) => o.item === p.on) : undefined;
+        const base = holder ? handPos(holder) : p; // held things stay in the hand, whatever pose
+        const fx = base.fx + (dragging ? drag!.dx : 0), fy = base.fy + (dragging ? drag!.dy : 0);
+        const char = isChar(p.item);
         const on = lit.has(p.item);
         const b = burst && burst.item === p.item ? burst : null;
         const h = heightOf(p.item);
@@ -93,18 +99,25 @@ export default function DormScene({ items, wall, floor, garden, night, lit, burs
             <motion.button type="button" key={b ? `${p.item}-${b.n}` : p.item} aria-label={en(p.item)}
               onPointerDown={(e) => down(e, p.item)} onPointerMove={move} onPointerUp={up} onPointerCancel={() => setDrag(null)}
               onClick={(e) => e.stopPropagation()}
-              animate={b ? ANIM[b.effect] ?? {} : {}} transition={{ duration: b?.effect === 'eat' ? 2.4 : b?.effect === 'fly' ? 1.8 : 0.7 }}
+              animate={b && b.effect && !char ? ANIM[b.effect] ?? {} : {}} transition={{ duration: b?.effect === 'eat' ? 2.4 : b?.effect === 'fly' ? 1.8 : 0.7 }}
               className={`dorm-glyph ${selected === p.item ? 'sel' : ''}`}
-              style={{ fontSize: `${m.size * 0.86}cqw`, filter: night && !on ? 'brightness(0.78)' : undefined, scaleX: p.flip ? -1 : 1 }}>
-              {p.item === 'rug'
+              style={{ fontSize: `${m.size * 0.86 * (holder ? 0.62 : 1)}cqw`, filter: night && !on ? 'brightness(0.78)' : undefined, scaleX: p.flip ? -1 : 1 }}>
+              {char ? <CharFigure look={looks?.[p.item]} pose={poseOf(p)} move={b?.move} moveKey={b?.n} />
+                : p.item === 'rug'
                 ? <span style={{ display: 'block', width: `${m.size}cqw`, height: '3.4cqw', borderRadius: '50%', background: 'repeating-radial-gradient(ellipse, #c9a8ff 0 6%, #a98bff 6% 12%)', boxShadow: '0 0.4cqw 0 rgba(0,0,0,0.12)' }} />
                 : EMOJI.get(p.item) ?? '❓'}
             </motion.button>
             {on && (p.item === 'tv' || p.item === 'computer') && <Particles key={`s${p.item}`} emojis={p.item === 'tv' ? '🎶💃🎤' : '✏️📚'} loop />}
-            {b && PARTICLES[b.effect] && <Particles key={b.n} emojis={b.pop ?? PARTICLES[b.effect]!} down={b.effect === 'water'} />}
+            {b && b.effect && PARTICLES[b.effect] && <Particles key={b.n} emojis={b.pop ?? PARTICLES[b.effect]!} down={b.effect === 'water'} />}
           </motion.div>
         );
       })}
+      {burst?.say && (() => {
+        const c = items.find((o) => o.item === burst.item);
+        if (!c) return null;
+        const top = c.fy - (poseOf(c) === 'lie' ? CHAR_SIZE * ASPECT * 0.7 : heightOf(c.item)) - 2;
+        return <Bubble key={`say${burst.n}`} text={burst.say} x={Math.max(14, Math.min(78, c.fx))} y={Math.max(2, top)} />;
+      })()}
     </div>
   );
 }
@@ -122,6 +135,38 @@ const ANIM: Partial<Record<Effect, TargetAndTransition>> = {
 const PARTICLES: Partial<Record<Effect, string>> = {
   zzz: '💤💤💤', notes: '🎵🎶🎵', bubbles: '🫧🫧🫧', steam: '💨☁️💨', sparkle: '✨⭐✨', water: '💧💧💧', grow: '💧🌱', eat: '😋', open: '✨', glow: '', screen: '',
 };
+
+/** A character drawn with the avatar artwork: standing, sitting (legs hidden by the seat) or lying down asleep. */
+function CharFigure({ look, pose, move, moveKey }: { look?: Look; pose: Pose; move?: CharMove; moveKey?: number }) {
+  if (!look) return <span style={{ fontSize: `${CHAR_SIZE * 0.9}cqw` }}>🙂</span>;
+  const w = CHAR_SIZE, h = CHAR_SIZE * 1.3;
+  const art = (l: Look) => <Avatar look={{ ...l, pet: 'none', fx: 'none' }} size={100} move={move ?? 'idle'} moveKey={moveKey ?? 0} showBg={false} showStick={false} />;
+  if (pose === 'lie') {
+    return (
+      <span className="dorm-char" style={{ width: `${h}cqw`, height: `${w * 0.62}cqw`, transform: 'translateY(32%)' }}>
+        <span style={{ position: 'absolute', left: '50%', top: '50%', width: `${w}cqw`, transform: 'translate(-50%, -50%) rotate(-90deg)' }}>{art({ ...look, eyes: 'sleepy' })}</span>
+      </span>
+    );
+  }
+  if (pose === 'sit') {
+    return (
+      <span className="dorm-char" style={{ width: `${w}cqw`, height: `${h * 0.78}cqw`, clipPath: 'inset(-80% -80% 0 -80%)', transform: 'translateY(14%)' }}>
+        <span style={{ position: 'absolute', left: 0, top: 0, width: '100%' }}>{art(look)}</span>
+      </span>
+    );
+  }
+  return <span className="dorm-char" style={{ width: `${w}cqw` }}>{art(look)}</span>;
+}
+
+/** Speech bubble over a character. */
+function Bubble({ text, x, y }: { text: string; x: number; y: number }) {
+  // Anchored at the same fraction of its own width as x is of the room, so it never sticks out of the room.
+  return (
+    <motion.div className="dorm-bubble" style={{ left: `${x}%`, bottom: `${100 - y}%`, translate: `-${x}% 0` }}
+      initial={{ opacity: 0, scale: 0.6, y: 6 }} animate={{ opacity: [0, 1, 1, 0], scale: [0.6, 1, 1, 1], y: [6, 0, 0, -4] }}
+      transition={{ duration: 3.6, times: [0, 0.08, 0.85, 1] }}>{text}</motion.div>
+  );
+}
 
 /** Little emoji that float up (or drip down) from an item and fade. */
 function Particles({ emojis, down, loop }: { emojis: string; down?: boolean; loop?: boolean }) {

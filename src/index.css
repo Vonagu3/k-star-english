@@ -163,6 +163,9 @@ input.field:focus, textarea.field:focus { border-color: var(--violet); }
 .dorm-glow { position: absolute; left: 50%; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(circle, rgba(255, 236, 150, 0.75), rgba(255, 220, 120, 0.25) 45%, transparent 70%); pointer-events: none; z-index: -1; }
 .dorm-window { position: absolute; left: 7%; top: 10%; width: 17%; height: 34%; border: 1.3cqw solid #fff; border-radius: 1.5cqw; box-shadow: 0 0 0 0.4cqw #e2b98f; padding: 0; }
 .dorm-window::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent calc(50% - 0.35cqw), #fff calc(50% - 0.35cqw) calc(50% + 0.35cqw), transparent 0), linear-gradient(transparent calc(50% - 0.35cqw), #fff calc(50% - 0.35cqw) calc(50% + 0.35cqw), transparent 0); }
+.dorm-char { position: relative; display: block; line-height: 0; }
+.dorm-char svg { width: 100%; height: auto; display: block; }
+.dorm-bubble { position: absolute; left: 50%; translate: -50% 0; width: max-content; max-width: max(130px, 34cqw); padding: 0.8cqw 1.6cqw; border-radius: 2cqw; background: #fff; border: 0.35cqw solid var(--violet); font-weight: 800; font-size: max(11px, 2.5cqw); line-height: 1.25; text-align: center; color: var(--ink); pointer-events: none; z-index: 600; box-shadow: 0 0.5cqw 0 rgba(0, 0, 0, 0.08); }
 .dorm-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 20; width: 40px; height: 40px; font-size: 20px; opacity: 0.9; }
 .dorm-sky { position: absolute; background: none; border: 0; padding: 0; line-height: 1; }
 .dorm-house { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; align-items: end; }

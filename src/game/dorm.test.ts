@@ -72,3 +72,39 @@ group('house', () => {
     expect(clockSay(new Date(2026, 0, 1, 23, 58))).toBe("It's twelve o'clock.");
   });
 });
+
+group('characters', () => {
+  it('a character lies in the bed and sits on the sofa', async () => {
+    const { poseOf } = await import('./dorm');
+    const bed = P('bed', 30, 85), sofa = P('sofa', 70, 85);
+    const jun = settle('char:Jun', 30, 60, [bed, sofa]);
+    expect(jun.on).toBe('bed');
+    expect(poseOf({ ...P('char:Jun', jun.fx, jun.fy), on: jun.on })).toBe('lie');
+    const me = settle('char:me', 70, 60, [bed, sofa]);
+    expect(me.on).toBe('sofa');
+    const all = [bed, sofa, P('char:Jun', jun.fx, jun.fy, 'bed'), P('char:me', me.fx, me.fy, 'sofa')];
+    expect(describe(all[2], all)).toBe('Jun is in the bed. Jun is sleeping.');
+    expect(describe(all[3], all)).toBe('I am sitting on the sofa.');
+  });
+  it('small things go into a hand; the character then uses them', async () => {
+    const { charAction, third } = await import('./dorm');
+    const hana = P('char:Hana', 50, 85);
+    const cake = settle('cake', 51, 72, [hana]);
+    expect(cake.on).toBe('char:Hana');
+    const all = [hana, P('cake', cake.fx, cake.fy, 'char:Hana')];
+    expect(describe(all[1], all)).toBe('Hana has the cake.');
+    expect(charAction(hana, all, 0, 'Rita').say).toBe('Hana eats the cake. Yummy!');
+    const tb = [P('char:Jun', 50, 85), P('toothbrush', 50, 70, 'char:Jun')];
+    expect(charAction(tb[0], tb, 0, 'Rita').say).toBe('Jun brushes his teeth.');
+    expect(third('watch')).toBe('watches');
+    // furniture is not holdable
+    expect(settle('chair', 50, 72, [hana]).on).toBeUndefined();
+  });
+  it('friends greet each other, and you by name', async () => {
+    const { charAction } = await import('./dorm');
+    const all = [P('char:me', 40, 85), P('char:Leo', 52, 85)];
+    expect(charAction(all[1], all, 0, 'Rita').say).toBe('Hi, Rita! How are you?');
+    expect(charAction(all[0], all, 0, 'Rita').say).toBe("Hi, Leo! Let's play!");
+    expect(charAction(all[0], [all[0]], 0, 'Rita').say).toBe("Hello! I'm Rita.");
+  });
+});

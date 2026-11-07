@@ -2,8 +2,13 @@ import { useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import TopBar from '../components/TopBar';
 import DormScene, { type Burst } from '../components/DormScene';
-import { FLOORS, FURNITURE, ROOMS, WALLS, type DormPlacement, type Surface } from '../game/catalog';
-import { FLOOR_TOP, LAYOUT, actionFor, describe, descendants, en, neighbour, normalize, roomName, settle, surfaceBg, toCell, type Dir, type Placed } from '../game/dorm';
+import Avatar from '../components/Avatar';
+import { FLOORS, FURNITURE, ROOMS, WALLS, type DormPlacement, type Look, type Surface } from '../game/catalog';
+import { PEOPLE } from '../game/cards';
+import {
+  CHAR_SIZE, FLOOR_TOP, FRIENDS, FRIEND_LIKES, FRIEND_PRICE, LAYOUT, actionFor, charAction, describe, descendants, en, handPos, isChar, neighbour, normalize,
+  roomName, settle, surfaceBg, toCell, type Dir, type Placed,
+} from '../game/dorm';
 import { useGame } from '../game/store';
 import { speak } from '../lib/tts';
 import { sfx } from '../lib/sfx';
@@ -33,10 +38,11 @@ export default function Dorm() {
   const [sel, setSel] = useState<string | null>(null);
   const [fresh, setFresh] = useState<string | null>(null);
   const [msg, setMsg] = useState('');
-  const [tab, setTab] = useState<'things' | 'walls' | 'floors'>('things');
+  const [tab, setTab] = useState<'friends' | 'things' | 'walls' | 'floors'>('things');
   const [night, setNight] = useState(false);
   const [lit, setLit] = useState<Set<string>>(new Set());
   const [burst, setBurst] = useState<Burst | null>(null);
+  const [chats, setChats] = useState(0);
 
   const dorm = useMemo(() => (s.profile?.dorm ?? []).map(normalize), [s.profile?.dorm]);
   const styleOf = (id: string) => s.profile?.dormStyle?.[id] ?? { wall: 'cream', floor: id === 'garden' ? 'grass' : 'wood' };
@@ -46,6 +52,14 @@ export default function Dorm() {
   const roomOpen = (id: string) => R.get(id)!.price === 0 || owns(`room:${id}`);
   const setDorm = (d: Placed[]) => update((x) => ({ ...x, profile: { ...x.profile!, dorm: d.map(save) } }));
   const here = dorm.filter((d) => roomOf(d) === room);
+  const myName = s.profile?.name || 'me';
+  const looks = useMemo(() => {
+    const out: Record<string, Look> = Object.fromEntries(Object.entries(PEOPLE).map(([k, v]) => [`char:${k}`, v]));
+    if (s.profile?.look) out['char:me'] = s.profile.look;
+    return out;
+  }, [s.profile?.look]);
+  const hasCard = (who: string) => Object.entries(s.cards).some(([k, v]) => v > 0 && k.startsWith(`${who.toLowerCase()}-`));
+  const friendOpen = (who: string) => FRIEND_PRICE[who] === 0 || owns(`char:${who}`) || hasCard(who);
   const say = (t: string) => { setMsg(t); void speak(t); };
 
   /** Things that rested on removed / moved-away items fall down again. */
@@ -60,6 +74,12 @@ export default function Dorm() {
     return out;
   };
 
+  /** Held things are stored at the holder's hand. */
+  const syncHeld = (list: Placed[]): Placed[] => list.map((o) => {
+    const c = isChar(o.on) ? list.find((x) => x.item === o.on) : undefined;
+    return c ? { ...o, ...handPos(c) } : o;
+  });
+
   const drop = (item: string, fx: number, fy: number) => {
     const p = dorm.find((d) => d.item === item);
     if (!p) return;
@@ -67,7 +87,17 @@ export default function Dorm() {
     const at = settle(item, fx, fy, others);
     const kids = descendants(item, here);
     const dx = at.fx - p.fx, dy = at.fy - p.fy;
-    const next = dorm.map((o) => (o.item === item ? { ...o, fx: at.fx, fy: at.fy, on: at.on } : kids.has(o.item) ? { ...o, fx: o.fx + dx, fy: o.fy + dy } : o));
+    let next = dorm.map((o) => (o.item === item ? { ...o, fx: at.fx, fy: at.fy, on: at.on } : kids.has(o.item) ? { ...o, fx: o.fx + dx, fy: o.fy + dy } : o));
+    // One thing per hand: what the character held before falls down next to them.
+    if (isChar(at.on)) {
+      const old = next.find((o) => o.on === at.on && o.item !== item);
+      if (old) {
+        const rest = next.filter((o) => roomOf(o) === room && o.item !== old.item && !isChar(o.item));
+        const o2 = settle(old.item, at.fx + CHAR_SIZE, FLOOR_TOP + 8, rest);
+        next = next.map((o) => (o.item === old.item ? { ...o, ...o2 } : o));
+      }
+    }
+    next = syncHeld(next);
     sfx.pop();
     setDorm(next);
     setSel(item); setFresh(null);
@@ -75,8 +105,20 @@ export default function Dorm() {
     say(describe(moved, next));
   };
 
-  const tap = (item: string) => {
-    setSel(item);
+  const tap = (tapped: string) => {
+    const holder = here.find((o) => o.item === tapped)?.on;
+    const item = isChar(holder) ? holder : tapped; // a thing in someone's hand: they use it
+    setSel(tapped);
+    if (isChar(item)) {
+      const c = here.find((o) => o.item === item);
+      if (!c) return;
+      const a = charAction(c, here, chats, myName);
+      setChats(chats + 1);
+      if (a.effect === 'notes') sfx.melody(); else if (a.effect === 'bubbles') sfx.splash(); else sfx.pop();
+      setBurst({ item, effect: a.effect, n: Date.now(), say: a.say, move: a.move });
+      say(a.say);
+      return;
+    }
     const a = actionFor(item);
     if (a.toggle) {
       const on = !lit.has(item);
@@ -104,15 +146,21 @@ export default function Dorm() {
     const old = dorm.find((d) => d.item === id);
     let next = dorm.filter((d) => d.item !== id);
     if (old) next = resettle(next, [id]);
-    next = [...next, { item: id, x: 0, y: 0, room, fx: at.fx, fy: at.fy, on: at.on }];
+    next = syncHeld([...next, { item: id, x: 0, y: 0, room, fx: at.fx, fy: at.fy, on: at.on }]);
     setDorm(next); setSel(id); setFresh(id); sfx.pop();
+    if (isChar(id)) {
+      const line = id === 'char:me' ? `I am in the ${roomName(room)}!` : `Hi! I'm ${en(id)}. ${FRIEND_LIKES[en(id)] ?? ''}`;
+      setBurst({ item: id, n: Date.now(), say: line, move: 'wave' });
+      say(`${line} Drag ${id === 'char:me' ? 'me' : en(id)} to the sofa or to the bed!`);
+      return;
+    }
     say(`${old && roomOf(old) !== room ? `I move the ${en(id)} to the ${roomName(room)}. ` : ''}Drag the ${en(id)} anywhere you like!`);
   };
 
   const putAway = () => {
     if (!sel) return;
     setDorm(resettle(dorm.filter((d) => d.item !== sel), [sel]));
-    say(`I put the ${en(sel)} in the box.`); setSel(null);
+    say(isChar(sel) ? (sel === 'char:me' ? 'Bye-bye! See you later!' : `Bye-bye, ${en(sel)}! See you later!`) : `I put the ${en(sel)} in the box.`); setSel(null);
   };
   const flip = () => {
     if (!sel) return;
@@ -130,7 +178,8 @@ export default function Dorm() {
 
   const describeAll = () => {
     const r = R.get(room)!;
-    const parts = [`This is my ${r.en}.`, here.length ? `There ${here.length === 1 ? 'is one thing' : `are ${here.length} things`} in the ${r.en}.` : `The ${r.en} is empty.`, ...here.map((d) => describe(d, dorm))];
+    const things = here.filter((d) => !isChar(d.item)).length;
+    const parts = [`This is my ${r.en}.`, things ? `There ${things === 1 ? 'is one thing' : `are ${things} things`} in the ${r.en}.` : `The ${r.en} is empty.`, ...here.map((d) => describe(d, dorm))];
     say(parts.join(' '));
   };
   const setStyle = (kind: 'wall' | 'floor', sf: Surface) => {
@@ -147,7 +196,7 @@ export default function Dorm() {
   };
 
   const scene = (id: string, interactive: boolean) => (
-    <DormScene items={dorm.filter((d) => roomOf(d) === id)} wall={wallOf(id)} floor={floorOf(id)} garden={id === 'garden'} night={night} lit={lit}
+    <DormScene items={dorm.filter((d) => roomOf(d) === id)} wall={wallOf(id)} floor={floorOf(id)} garden={id === 'garden'} night={night} lit={lit} looks={looks}
       interactive={interactive} burst={interactive ? burst : null} selected={interactive ? sel : null} fresh={interactive ? fresh : null}
       onDrop={drop} onTap={tap} onWindow={window_} onBackground={() => setSel(null)} />
   );
@@ -225,21 +274,21 @@ export default function Dorm() {
 
       {open && (
         <>
-          <div className="muted small">Перетаскивай вещи пальцем: на пол, на стол, на кровать. Тапни на вещь — она оживёт!</div>
+          <div className="muted small">Перетаскивай вещи пальцем: на пол, на стол, на кровать. Тапни на вещь — она оживёт! Друзей можно усадить на диван, уложить спать, дать им в руки торт или гитару.</div>
           {msg && <div className="card tint-violet row" style={{ fontWeight: 800, fontSize: 19 }}><div className="grow">{msg}</div><button className="icon-btn" onClick={() => void speak(msg)}>🔊</button></div>}
           <div className="row wrap">
             <button className="btn violet small" onClick={describeAll}>🗣️ Describe my {r.en}</button>
             {sel && here.some((d) => d.item === sel) && (
               <>
                 <button className="btn ghost small" onClick={flip}>🔄 Flip</button>
-                <button className="btn ghost small" onClick={putAway}>📦 Put away</button>
+                <button className="btn ghost small" onClick={putAway}>{isChar(sel) ? '👋 Go home' : '📦 Put away'}</button>
               </>
             )}
           </div>
           <div className="row" style={{ gap: 6 }}>
-            {(['things', ...(room === 'garden' ? [] : ['walls']), 'floors'] as const).map((t) => (
+            {(['friends', 'things', ...(room === 'garden' ? [] : ['walls']), 'floors'] as const).map((t) => (
               <button key={t} className="chip" style={{ borderColor: tab === t ? 'var(--pink)' : undefined }} onClick={() => setTab(t as typeof tab)}>
-                {t === 'things' ? '🧸 Things' : t === 'walls' ? '🎨 Walls' : '🟫 Floors'}
+                {t === 'friends' ? '👫 Friends' : t === 'things' ? '🧸 Things' : t === 'walls' ? '🎨 Walls' : '🟫 Floors'}
               </button>
             ))}
           </div>
@@ -262,7 +311,29 @@ export default function Dorm() {
               })}
             </div>
           )}
-          {tab !== 'things' && (
+          {tab === 'friends' && (
+            <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(96px, 1fr))' }}>
+              {['me', ...FRIENDS].map((who) => {
+                const id = `char:${who}`;
+                const open = who === 'me' || friendOpen(who);
+                const placed = dorm.find((d) => d.item === id);
+                const price = FRIEND_PRICE[who] ?? 0;
+                return (
+                  <button key={id} className={`tile ${sel === id ? 'selected' : ''}`} style={{ minHeight: 120, fontSize: 14, opacity: open ? 1 : 0.75 }}
+                    onClick={() => {
+                      if (open) { place(id); return; }
+                      if (buy(id, price, 'furniture')) { sfx.coin(); place(id); }
+                      else { sfx.wrong(); setMsg(`Get a ${who} card in a lesson, or invite ${who} for ${price} ❤️.`); }
+                    }}>
+                    <span style={{ lineHeight: 0, filter: open ? undefined : 'grayscale(0.8)' }}>{looks[id] && <Avatar look={{ ...looks[id], pet: 'none', fx: 'none' }} size={48} showBg={false} showStick={false} />}</span>
+                    {who === 'me' ? `⭐ ${myName}` : who}
+                    <span className="tiny muted">{open ? (placed ? `in the ${roomName(roomOf(placed))}` : 'invite') : `🃏 or ${price} ❤️`}</span>
+                  </button>
+                );
+              })}
+            </div>
+          )}
+          {(tab === 'walls' || tab === 'floors') && (
             <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(96px, 1fr))' }}>
               {(tab === 'walls' ? WALLS : FLOORS).map((sf) => {
                 const kind = tab === 'walls' ? 'wall' : 'floor';
