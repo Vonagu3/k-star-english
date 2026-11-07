@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Avatar from '../components/Avatar';
 import TopBar from '../components/TopBar';
-import { RARITY, SHOP, SHOP_BY_ID, fullLook, isOwned, rarityOf, type Look, type ShopItem } from '../game/catalog';
+import { RARITY, SHOP, SHOP_BY_ID, SKINS, fullLook, isOwned, isWearingSkin, rarityOf, type Look, type ShopItem, type Skin } from '../game/catalog';
 import { activeEvent, isBirthdayWeek, BIRTHDAY_ITEMS } from '../game/events';
 import { useGame } from '../game/store';
 import { sfx } from '../lib/sfx';
@@ -28,7 +28,8 @@ export default function Studio() {
   const buy = useGame((g) => g.buy);
   const ev = activeEvent();
   const bday = isBirthdayWeek(useGame.getState().s.profile?.settings.birthday);
-  const [tab, setTab] = useState<keyof Look | 'event'>(ev || bday ? 'event' : 'outfit');
+  const [tab, setTab] = useState<keyof Look | 'event' | 'looks'>(ev || bday ? 'event' : 'looks');
+  const [picked, setPicked] = useState<Skin | null>(null);
   const [preview, setPreview] = useState<Look | null>(null);
   const [move, setMove] = useState<DanceMove | 'idle'>('idle');
   const [mk, setMk] = useState(0);
@@ -58,6 +59,26 @@ export default function Studio() {
       setMove('pose'); setMk((k) => k + 1);
     } else { sfx.wrong(); setMsg(`You need ${it.price - s.hearts} more ❤️. Play episodes to earn them! · Не хватает ${it.price - s.hearts} ❤️`); }
   };
+  // ---- Ready-made looks ----
+  const ownsSkin = (k: Skin) => k.price === 0 || s.inventory.includes(k.id);
+  const wearSkin = (k: Skin) => update((x) => ({ ...x, profile: { ...x.profile!, look: { ...x.profile!.look, ...k.look } } }));
+  const selectSkin = (k: Skin) => {
+    if (ownsSkin(k)) {
+      sfx.tap(); wearSkin(k); setPreview(null); setPicked(null);
+      setMsg(`You look great in ${k.name}! ✨`); setMove('pose'); setMk((n) => n + 1);
+    } else {
+      setPreview({ ...myLook, ...k.look }); setPicked(k); setMsg('');
+    }
+  };
+  const buySkin = (k: Skin) => {
+    if (buy(k.id, k.price, 'look')) {
+      sfx.levelUp();
+      if (rarityOf(k.price) === 'epic' || rarityOf(k.price) === 'legend') confetti({ particleCount: 140, spread: 90, origin: { y: 0.3 } });
+      wearSkin(k); setPreview(null); setPicked(null);
+      setMsg(`You got the ${k.name} look! 🎉`); setMove('pose'); setMk((n) => n + 1);
+    } else { sfx.wrong(); setMsg(`You need ${k.price - s.hearts} more ❤️. Play episodes to earn them! · Не хватает ${k.price - s.hearts} ❤️`); }
+  };
+
   const setWish = (it: ShopItem) => {
     sfx.coin();
     update((x) => ({ ...x, profile: { ...x.profile!, wish: it.id } }));
@@ -65,10 +86,11 @@ export default function Studio() {
   };
 
   const eventItems = [...(ev ? ev.items : []), ...(bday ? BIRTHDAY_ITEMS : [])].map((i) => SHOP_BY_ID.get(i.id) ?? i);
-  const items = tab === 'event' ? eventItems
+  const items = tab === 'looks' ? [] : tab === 'event' ? eventItems
     : SHOP.filter((i) => i.slot === tab && (!i.event || isOwned(s.inventory, i))).sort((a, b) => a.price - b.price);
   const previewing = preview ? items.find((i) => preview[i.slot] === i.value && !isOwned(s.inventory, i)) : undefined;
-  const trying = preview && SHOP.some((i) => fullLook(preview)[i.slot] === i.value && !isOwned(s.inventory, i));
+  const pickedSkin = tab === 'looks' && picked && !ownsSkin(picked) ? picked : null;
+  const trying = !!pickedSkin || preview && SHOP.some((i) => fullLook(preview)[i.slot] === i.value && !isOwned(s.inventory, i));
   const ownedCount = SHOP.filter((i) => i.price > 0 && s.inventory.includes(i.id)).length;
   const paidCount = SHOP.filter((i) => i.price > 0).length;
 
@@ -90,9 +112,32 @@ export default function Studio() {
         <div className="col grow" style={{ minWidth: 260 }}>
           <div className="row wrap" style={{ gap: 6 }}>
             {(ev || bday) && <button className="chip" style={{ borderColor: tab === 'event' ? 'var(--pink)' : '#ffb800', background: tab === 'event' ? 'var(--pink-soft)' : '#fff3cc' }} onClick={() => setTab('event')}>{bday ? '🎂 Birthday' : ev!.emoji} {ev ? ev.name : 'Birthday'}</button>}
-            {TABS.map((t) => <button key={t.slot} className="chip" style={{ borderColor: tab === t.slot ? 'var(--pink)' : undefined, background: tab === t.slot ? 'var(--pink-soft)' : undefined }} onClick={() => setTab(t.slot)}>{t.emoji} {t.label}</button>)}
+            <button className="chip" style={{ borderColor: tab === 'looks' ? 'var(--pink)' : '#ffb800', background: tab === 'looks' ? 'var(--pink-soft)' : '#fff3cc' }} onClick={() => setTab('looks')}>🌟 Looks</button>
+            {TABS.map((t) => <button key={t.slot} className="chip" style={{ borderColor: tab === t.slot ? 'var(--pink)' : undefined, background: tab === t.slot ? 'var(--pink-soft)' : undefined }} onClick={() => { setTab(t.slot); setPicked(null); }}>{t.emoji} {t.label}</button>)}
           </div>
           {tab === 'event' && <div className="card tint-sun small" style={{ fontWeight: 800 }}>{bday && '🎂 Birthday items — only this week! '}{ev && `${ev.emoji} ${ev.name}: limited items, only until ${ev.to.split('-').reverse().join('.')}! · Только во время праздника!`}</div>}
+          {tab === 'looks' && <div className="muted small">Готовые образы целиком — одним нажатием. Некоторые вещи из них есть только здесь! · Whole looks in one tap.</div>}
+          {tab === 'looks' && (
+            <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(124px, 1fr))' }}>
+              {SKINS.map((k) => {
+                const owned = ownsSkin(k);
+                const on = isWearingSkin(myLook, k);
+                const r = RARITY[rarityOf(k.price)];
+                return (
+                  <button key={k.id} className={`tile ${on ? 'good' : picked?.id === k.id ? 'selected' : ''}`} onClick={() => selectSkin(k)}
+                    style={{ minHeight: 160, fontSize: 14, position: 'relative', padding: 6, borderColor: !owned && !on && picked?.id !== k.id ? `${r.color}88` : undefined }}>
+                    {!owned && <span className="badge" style={{ position: 'absolute', top: 4, left: 4, background: r.color, fontSize: 9, zIndex: 1 }}>{r.label}</span>}
+                    {k.price === 0 && <span className="badge" style={{ position: 'absolute', top: 4, left: 4, background: 'var(--mint)', fontSize: 9, zIndex: 1 }}>Free</span>}
+                    <span style={{ lineHeight: 0, borderRadius: 12, overflow: 'hidden' }}><Avatar look={{ ...myLook, ...k.look }} size={84} showStick={false} /></span>
+                    <span>{k.emoji} {k.name}</span>
+                    <span className="tiny" style={{ fontWeight: 800, color: owned ? 'var(--mint)' : s.hearts >= k.price ? 'var(--pink)' : 'var(--ink-2)' }}>
+                      {on ? '✓ wearing' : owned ? (k.price === 0 ? 'free' : 'owned') : `${k.price} ❤️`}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          )}
           <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(112px, 1fr))' }}>
             {items.map((it) => {
               const owned = isOwned(s.inventory, it);
@@ -130,7 +175,21 @@ export default function Studio() {
               </div>
             </div>
           )}
-          {trying && <button className="btn ghost small" onClick={() => { setPreview(null); setMsg(''); }}>↩️ Take off the try-on</button>}
+          {pickedSkin && (
+            <div className="card col" style={{ borderColor: RARITY[rarityOf(pickedSkin.price)].color }}>
+              <div className="row">
+                <span style={{ fontSize: 30 }}>{pickedSkin.emoji}</span>
+                <div className="grow">
+                  <b>{pickedSkin.name}</b> <span className="badge" style={{ background: RARITY[rarityOf(pickedSkin.price)].color }}>{RARITY[rarityOf(pickedSkin.price)].label}</span>
+                  <div className="tiny muted">{pickedSkin.ru} · весь образ целиком</div>
+                  <div className="bar" style={{ marginTop: 6 }}><span style={{ width: `${Math.min(100, (s.hearts / pickedSkin.price) * 100)}%` }} /></div>
+                  <div className="tiny muted">{s.hearts >= pickedSkin.price ? 'You can buy it now!' : `${s.hearts} / ${pickedSkin.price} ❤️ — ${pickedSkin.price - s.hearts} more to go`}</div>
+                </div>
+              </div>
+              <button className="btn sun" disabled={s.hearts < pickedSkin.price} onClick={() => buySkin(pickedSkin)}>Buy the look for {pickedSkin.price} ❤️</button>
+            </div>
+          )}
+          {trying && <button className="btn ghost small" onClick={() => { setPreview(null); setPicked(null); setMsg(''); }}>↩️ Take off the try-on</button>}
         </div>
       </div>
     </div>

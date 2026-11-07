@@ -94,6 +94,30 @@ SHOP.push(
   s('fx', '👑', 'Superstar aura', 1600, '👑'),
 );
 
+// ---- Ready-made looks: a whole trendy outfit in one tap. Some parts exist only in these looks. ----
+/** Every slot but skin tone: the learner keeps their own skin colour. */
+export type SkinLook = Omit<Required<Look>, 'skin'>;
+export type Skin = { id: string; name: string; ru: string; emoji: string; price: number; look: SkinLook };
+const base: Omit<SkinLook, 'hair' | 'hairColor' | 'outfit' | 'outfitColor'> = { eyes: 'sparkle', acc: 'none', stick: 'heart', bg: 'pink', face: 'none', glasses: 'none', pet: 'none', fx: 'none' };
+const sk = (id: string, name: string, ru: string, emoji: string, price: number, look: Partial<SkinLook> & Pick<SkinLook, 'hair' | 'hairColor' | 'outfit' | 'outfitColor'>): Skin =>
+  ({ id: `look:${id}`, name, ru, emoji, price, look: { ...base, ...look } });
+export const SKINS: Skin[] = [
+  sk('comfy', 'Comfy Hoodie', 'Уютное худи', '🧸', 0, { hair: 'halfup', hairColor: '#3b2a26', outfit: 'oversize', outfitColor: '#c7a6ff', eyes: 'smile' }),
+  sk('denim', 'Denim Day', 'Джинсовый день', '👖', 0, { hair: 'curtain', hairColor: '#c98a4b', outfit: 'denim', outfitColor: '#6f9fe0', face: 'freckles', bg: 'mint', stick: 'star' }),
+  sk('sporty', 'Sporty Pony', 'Спортивный хвост', '👟', 0, { hair: 'sleekpony', hairColor: '#111111', outfit: 'track', outfitColor: '#ffffff', eyes: 'happy', bg: 'sunset', stick: 'round' }),
+  sk('tennis', 'Tennis Club', 'Теннисный клуб', '🎾', 260, { hair: 'sleekpony', hairColor: '#c98a4b', outfit: 'tennis', outfitColor: '#ffffff', eyes: 'smile', face: 'freckles', bg: 'mint' }),
+  sk('soft', 'Soft Girl', 'Нежный стиль', '🎀', 300, { hair: 'halfup', hairColor: '#e7a7a1', outfit: 'cardigan', outfitColor: '#c7a6ff', acc: 'coquette', face: 'hearts', bg: 'cherry', stick: 'strawberry' }),
+  sk('y2k', 'Y2K Butterfly', 'Стиль 2000-х', '🦋', 320, { hair: 'buns', hairColor: 'grad:#ff7eb6:#8f7bff', outfit: 'y2k', outfitColor: '#ffd6ea', acc: 'butterflies', glasses: 'tinted', face: 'glitter', eyes: 'star', bg: 'candy', stick: 'bunny' }),
+  sk('skater', 'Skater Cool', 'Скейтер', '🛹', 340, { hair: 'curtain', hairColor: '#111111', outfit: 'skater', outfitColor: '#e63946', acc: 'bucket', glasses: 'sun', eyes: 'wink', bg: 'sunset' }),
+  sk('winter', 'Winter Cosy', 'Зимний уют', '❄️', 360, { hair: 'curtain', hairColor: '#f4f1ea', outfit: 'puffer', outfitColor: '#ffffff', acc: 'beanie', eyes: 'happy', bg: 'snow', fx: '❄️', pet: '🐧' }),
+  sk('varsity', 'Varsity Star', 'Студенческая куртка', '⭐', 380, { hair: 'long', hairColor: '#c98a4b', outfit: 'varsity', outfitColor: '#d6243c', bg: 'rainbow', stick: 'star' }),
+  sk('dance', 'Dance Practice', 'Танцевальная репетиция', '💃', 420, { hair: 'wolf', hairColor: 'grad:#111111:#ff5fa2', outfit: 'dance', outfitColor: '#7c5cff', acc: 'bandana', eyes: 'star', bg: 'seoul', fx: '🎵', stick: 'star' }),
+  sk('gamer', 'Gamer Girl', 'Геймер', '🎮', 450, { hair: 'long', hairColor: '#1d2a5c', outfit: 'gamer', outfitColor: '#2b2140', acc: 'ledcat', eyes: 'cat', bg: 'night', fx: '✨', pet: '🤖' }),
+  sk('kawaii', 'Strawberry Kawaii', 'Клубничный каваи', '🍓', 480, { hair: 'twin', hairColor: '#ff7eb6', outfit: 'kawaii', outfitColor: '#ffd6ea', acc: 'strawclips', face: 'hearts', eyes: 'heart', bg: 'candy', pet: '🐰', stick: 'strawberry' }),
+  sk('debut', 'Debut Stage', 'Сцена дебюта', '🎤', 1500, { hair: 'mega', hairColor: 'grad:#ff7eb6:#ffd36e:#7ee0c3:#5cc8ff:#c7a6ff', outfit: 'idol', outfitColor: 'grad:#ff7eb6:#8f7bff', acc: 'mic', eyes: 'star', face: 'stage', bg: 'concert', fx: '⭐', stick: 'crownstick' }),
+];
+export const isWearingSkin = (look: Look, skin: Skin) => (Object.keys(skin.look) as (keyof SkinLook)[]).every((k) => fullLook(look)[k] === skin.look[k]);
+
 export const FREE_ITEMS = SHOP.filter((i) => i.price === 0).map((i) => i.id);
 export const isOwned = (inventory: string[], it: ShopItem) => it.price === 0 || inventory.includes(it.id);
 export const SHOP_BY_ID = new Map(SHOP.map((i) => [i.id, i]));
