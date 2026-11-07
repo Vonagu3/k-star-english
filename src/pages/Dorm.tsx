@@ -130,8 +130,8 @@ export default function Dorm() {
 
   const tap = (tapped: string) => {
     const holder = here.find((o) => o.item === tapped)?.on;
-    const item = isChar(holder) ? holder : tapped; // a thing in someone's hand: they use it
-    setSel(tapped);
+    const item = isChar(holder) ? holder : tapped; // a thing in someone's hand: they use it, and they get selected
+    setSel(item);
     if (isChar(item)) {
       const c = here.find((o) => o.item === item);
       if (!c) return;
