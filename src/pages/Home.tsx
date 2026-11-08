@@ -11,6 +11,8 @@ import Avatar from '../components/Avatar';
 import EventBanner from '../components/EventBanner';
 import { useDailyMission } from './Daily';
 import { DAILY_BONUS } from '../game/daily';
+import { useDailyCase } from './DailyCase';
+import { CASE_BONUS } from '../game/dailyCase';
 import { useUnlocked } from './Map';
 import { sfx } from '../lib/sfx';
 import { markFeedbackSeen, unseenFeedback, type Submission } from '../lib/submissions';
@@ -24,6 +26,7 @@ export default function Home() {
   const nav = useNavigate();
   const [fb, setFb] = useState<Submission[]>([]);
   const daily = useDailyMission();
+  const dcase = useDailyCase();
   useEffect(() => { void unseenFeedback(userId).then(setFb); }, [userId]);
 
   const quests = questsForDay(s.daily.day);
@@ -77,6 +80,17 @@ export default function Home() {
           <div className="small" style={{ fontWeight: 700 }}>{s.daily.missionBonus ? 'Done! A new mission comes tomorrow 🌙' : `5 quick tasks · +${DAILY_BONUS} ❤️ bonus`}</div>
         </div>
         {!s.daily.missionBonus && <span className="btn sun small">Go!</span>}
+      </button>
+
+      <button className="card row" onClick={() => nav('/case')}
+        style={{ textAlign: 'left', background: s.daily.caseBonus ? '#fff' : 'linear-gradient(120deg, #2f4a32, #b48a55)', color: s.daily.caseBonus ? 'var(--ink)' : '#fff', borderColor: '#3f7d4e' }}>
+        <div style={{ fontSize: 44 }}>{s.daily.caseBonus ? '✅' : dcase.story.emoji}</div>
+        <div className="grow">
+          <div className="tiny" style={{ fontWeight: 800, opacity: 0.9 }}>🌲 MYSTERY OF THE DAY · ДЕЛО ДНЯ</div>
+          <div style={{ fontFamily: 'var(--font-title)', fontWeight: 800, fontSize: 20 }}>{dcase.story.title}</div>
+          <div className="small" style={{ fontWeight: 700 }}>{s.daily.caseBonus ? 'Case closed! A new mystery comes tomorrow 🌙' : `Шифр + улики · +${CASE_BONUS} ❤️ bonus`}</div>
+        </div>
+        {!s.daily.caseBonus && <span className="btn sun small">Go!</span>}
       </button>
 
       <div className="grid grid-2">

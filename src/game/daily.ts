@@ -28,7 +28,7 @@ export function rng(seedText: string) {
     return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
   };
 }
-const pickN = <T,>(arr: readonly T[], n: number, r: () => number): T[] => {
+export const pickN = <T,>(arr: readonly T[], n: number, r: () => number): T[] => {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
   return a.slice(0, n);

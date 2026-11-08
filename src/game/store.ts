@@ -42,7 +42,7 @@ export type GameState = {
   furniture: string[];
   cards: Record<string, number>;
   forcedWorlds: string[];
-  daily: { day: string; metrics: Partial<Record<QuestMetric, number>>; claimed: string[]; chest: boolean; missionBonus?: boolean; extraMin?: number; /** When the parent last changed extraMin (the latest change wins in a merge). */ extraAt?: number };
+  daily: { day: string; metrics: Partial<Record<QuestMetric, number>>; claimed: string[]; chest: boolean; missionBonus?: boolean; caseBonus?: boolean; extraMin?: number; /** When the parent last changed extraMin (the latest change wins in a merge). */ extraAt?: number };
   minutes: Record<string, number>;
   /** Active study seconds per day (tab visible and child active). */
   activeSec?: Record<string, number>;

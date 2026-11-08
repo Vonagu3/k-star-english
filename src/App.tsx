@@ -16,6 +16,7 @@ import Onboarding from './pages/Onboarding';
 import Login from './pages/Login';
 import NotebookBook from './pages/NotebookBook';
 import Daily from './pages/Daily';
+import DailyCase from './pages/DailyCase';
 import TranslateTooltip from './components/TranslateTooltip';
 import TimeKeeper from './components/TimeKeeper';
 import BadgeWatcher from './components/BadgeWatcher';
@@ -34,7 +35,7 @@ function LessonRoute() {
 
 function Nav() {
   const loc = useLocation();
-  if (loc.pathname.startsWith('/lesson') || loc.pathname.startsWith('/daily') || loc.pathname.startsWith('/rhythm') || loc.pathname.startsWith('/task') || loc.pathname.startsWith('/warmup') || loc.pathname.startsWith('/parent')) return null;
+  if (loc.pathname.startsWith('/lesson') || loc.pathname.startsWith('/daily') || loc.pathname.startsWith('/case') || loc.pathname.startsWith('/rhythm') || loc.pathname.startsWith('/task') || loc.pathname.startsWith('/warmup') || loc.pathname.startsWith('/parent')) return null;
   const items = [['/', '🏠', 'Home'], ['/map', '🗺️', 'Map'], ['/studio', '👗', 'Studio'], ['/dorm', '🛏️', 'Dorm'], ['/cards', '🃏', 'Cards'], ['/parent', '🔐', 'Parent']] as const;
   return (
     <nav className="bottom-nav">
@@ -83,6 +84,7 @@ export default function App() {
         <Route path="/parent" element={<Parent />} />
         <Route path="/notebook" element={<NotebookBook />} />
         <Route path="/daily" element={<Daily />} />
+        <Route path="/case" element={<DailyCase />} />
         <Route path="/badges" element={<Badges />} />
         <Route path="/certificate/:id" element={<Certificate />} />
         <Route path="/words" element={<Words />} />
