@@ -5,11 +5,12 @@ import { Draw, KCulture, Quiz, Read, Speak, Watch, Write } from './Skills';
 import { Chant, Dance } from './Music';
 import { Notebook } from './Notebook';
 import { Solve } from './Maths';
+import { Mystery } from './Mystery';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const MAP: Record<Exercise['type'], (p: ExProps<any>) => React.JSX.Element> = {
   flashcards: Flashcards, listen: Listen, memory: Memory, spell: Spell, sentence: Sentence, gap: Gap,
-  read: Read, speak: Speak, draw: Draw, chant: Chant, dance: Dance, write: Write, watch: Watch, quiz: Quiz, kculture: KCulture, notebook: Notebook, solve: Solve,
+  read: Read, speak: Speak, draw: Draw, chant: Chant, dance: Dance, write: Write, watch: Watch, quiz: Quiz, kculture: KCulture, notebook: Notebook, solve: Solve, mystery: Mystery,
 };
 
 export function ExerciseView(props: ExProps<Exercise>) {
@@ -23,5 +24,5 @@ export const TYPE_LABEL: Record<Exercise['type'], { emoji: string; name: string 
   read: { emoji: '📖', name: 'Story' }, speak: { emoji: '🎤', name: 'Speak' }, draw: { emoji: '🎨', name: 'Draw' },
   chant: { emoji: '🎵', name: 'Chant' }, dance: { emoji: '💃', name: 'Dance' }, write: { emoji: '✍️', name: 'Write' },
   watch: { emoji: '📺', name: 'Watch' }, quiz: { emoji: '⏱️', name: 'Quiz show' }, kculture: { emoji: '🇰🇷', name: 'K-Culture' }, notebook: { emoji: '📓', name: 'Notebook' },
-  solve: { emoji: '📐', name: 'Maths' },
+  solve: { emoji: '📐', name: 'Maths' }, mystery: { emoji: '🔎', name: 'Mystery' },
 };

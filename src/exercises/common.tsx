@@ -12,6 +12,8 @@ export type ExResult = {
   correct: number; total: number; skill: Skill;
   words?: { id: string; correct: boolean }[];
   metric?: QuestMetric; metricN?: number;
+  /** Extra skills scored by the same task (e.g. a mystery case scores maths + reading). */
+  also?: { skill: Skill; correct: number; total: number }[];
 };
 export type ExProps<T> = { ex: T; onDone: (r: ExResult) => void; name: string; lessonId: string };
 

@@ -4,7 +4,7 @@ import { World, type Episode, type Exercise } from '../src/content/schema';
 
 const files = process.argv.slice(2).length
   ? process.argv.slice(2)
-  : ['world1', 'world2', 'world3', 'world-paris', 'world-math'].map((w) => `src/content/stage1/${w}.json`);
+  : ['world1', 'world2', 'world3', 'world-paris', 'world-math', 'world-mystery'].map((w) => `src/content/stage1/${w}.json`);
 
 const errors: string[] = [];
 const allWords = new Map<string, string>();
@@ -59,6 +59,30 @@ function checkEx(where: string, ex: Exercise) {
         if (n !== it.answer) errors.push(`${where}: solve item ${i} grid has ${n} filled cells but answer is ${it.answer}`);
       }
       if (f?.kind === 'cuboid' && f.cubes && f.a * f.b * f.c !== it.answer) errors.push(`${where}: solve item ${i} has ${f.a * f.b * f.c} cubes but answer is ${it.answer}`);
+    }); break;
+    case 'mystery': ex.steps.forEach((st, i) => {
+      const w = `${where} step ${i}(${st.kind})`;
+      if (st.kind === 'cipher') {
+        if (st.problems.length !== st.word.length) errors.push(`${w}: ${st.problems.length} problems for a ${st.word.length}-letter word`);
+        const nums = st.problems.map((p) => p.answer);
+        // Same answer twice is fine only for the same letter (the code table shows one cell per number).
+        nums.forEach((n, k) => { const j = nums.indexOf(n); if (j !== k && st.word[j] !== st.word[k]) errors.push(`${w}: answer ${n} would open two different letters`); });
+        (st.decoys ?? []).forEach((d) => { if (nums.includes(d)) errors.push(`${w}: decoy ${d} equals a problem answer`); });
+        ans(st.meaning.answer, st.meaning.options.length, `${w} meaning`);
+        st.problems.forEach((p) => ref(p.terms ?? []));
+      } else {
+        ref(st.terms ?? []);
+        if (st.options && !st.options.includes(st.answer)) errors.push(`${w}: answer ${st.answer} is not among options`);
+        if (st.options && new Set(st.options).size !== st.options.length) errors.push(`${w}: duplicate options`);
+      }
+      for (const p of st.kind === 'cipher' ? st.problems : [st]) {
+        const f = p.figure;
+        if (f?.kind === 'cuboid' && f.cubes && f.a * f.b * f.c !== p.answer) errors.push(`${w}: ${f.a * f.b * f.c} cubes but answer is ${p.answer}`);
+        if (f?.kind === 'grid' && p.unit?.includes('²')) {
+          const n = f.cells.join('').split('').filter((c) => c === '#').length;
+          if (n !== p.answer) errors.push(`${w}: grid has ${n} filled cells but answer is ${p.answer}`);
+        }
+      }
     }); break;
     case 'sentence': ex.items.forEach((it, i) => { if (it.sentence.split(/\s+/).length < 2) errors.push(`${where}: sentence ${i} too short`); }); break;
   }

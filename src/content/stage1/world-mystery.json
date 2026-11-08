@@ -1,0 +1,1968 @@
+{
+  "id": "mystery",
+  "n": 6,
+  "bonus": true,
+  "title": "Mystery Woods",
+  "subtitle": "Ciphers, clues and maths in Pine Hollow",
+  "ru": "Тайны леса · английский + математика",
+  "emoji": "🌲",
+  "color": "#3f7d4e",
+  "grammar": [
+    "задачи на части",
+    "S = a · b, P = (a + b) · 2",
+    "V = a · b · c = S · h",
+    "1 дм³ = 1 л"
+  ],
+  "words": [
+    {
+      "id": "journal",
+      "en": "journal",
+      "ru": "дневник, журнал",
+      "emoji": "📔",
+      "level": "flyers"
+    },
+    {
+      "id": "clue",
+      "en": "clue",
+      "ru": "улика, подсказка",
+      "emoji": "🔍",
+      "level": "flyers"
+    },
+    {
+      "id": "owl",
+      "en": "owl",
+      "ru": "сова",
+      "emoji": "🦉",
+      "level": "movers"
+    },
+    {
+      "id": "potion",
+      "en": "potion",
+      "ru": "зелье",
+      "emoji": "🧪",
+      "level": "extra"
+    },
+    {
+      "id": "forest",
+      "en": "forest",
+      "ru": "лес",
+      "emoji": "🌳",
+      "level": "movers"
+    },
+    {
+      "id": "footprint",
+      "en": "footprint",
+      "ru": "след",
+      "emoji": "👣",
+      "level": "extra"
+    },
+    {
+      "id": "coin",
+      "en": "coin",
+      "ru": "монета",
+      "emoji": "🪙",
+      "level": "movers"
+    },
+    {
+      "id": "gold",
+      "en": "gold",
+      "ru": "золото, золотой",
+      "emoji": "🥇",
+      "level": "flyers"
+    },
+    {
+      "id": "hidden",
+      "en": "hidden",
+      "ru": "спрятанный, тайный",
+      "emoji": "🫥",
+      "level": "extra"
+    },
+    {
+      "id": "key",
+      "en": "key",
+      "ru": "ключ",
+      "emoji": "🔑",
+      "level": "movers"
+    },
+    {
+      "id": "shadow",
+      "en": "shadow",
+      "ru": "тень",
+      "emoji": "👤",
+      "level": "flyers"
+    },
+    {
+      "id": "lantern",
+      "en": "lantern",
+      "ru": "фонарь",
+      "emoji": "🏮",
+      "level": "extra"
+    },
+    {
+      "id": "mystery",
+      "en": "mystery",
+      "ru": "тайна, загадка",
+      "emoji": "🕵️",
+      "level": "extra"
+    },
+    {
+      "id": "moon",
+      "en": "moon",
+      "ru": "луна",
+      "emoji": "🌙",
+      "level": "movers"
+    },
+    {
+      "id": "tunnel",
+      "en": "tunnel",
+      "ru": "туннель",
+      "emoji": "🚇",
+      "level": "extra"
+    },
+    {
+      "id": "cave",
+      "en": "cave",
+      "ru": "пещера",
+      "emoji": "⛰️",
+      "level": "movers"
+    },
+    {
+      "id": "chest",
+      "en": "chest",
+      "ru": "сундук",
+      "emoji": "🧰",
+      "level": "extra"
+    },
+    {
+      "id": "treasure",
+      "en": "treasure",
+      "ru": "сокровище",
+      "emoji": "💎",
+      "level": "flyers"
+    },
+    {
+      "id": "secret",
+      "en": "secret",
+      "ru": "секрет, тайный",
+      "emoji": "🤫",
+      "level": "extra"
+    },
+    {
+      "id": "map",
+      "en": "map",
+      "ru": "карта",
+      "emoji": "🗺️",
+      "level": "movers"
+    },
+    {
+      "id": "door",
+      "en": "door",
+      "ru": "дверь",
+      "emoji": "🚪",
+      "level": "starters"
+    },
+    {
+      "id": "room",
+      "en": "room",
+      "ru": "комната",
+      "emoji": "🏘️",
+      "level": "starters"
+    },
+    {
+      "id": "bridge",
+      "en": "bridge",
+      "ru": "мост",
+      "emoji": "🌉",
+      "level": "movers"
+    },
+    {
+      "id": "river",
+      "en": "river",
+      "ru": "река",
+      "emoji": "🏞️",
+      "level": "movers"
+    },
+    {
+      "id": "box",
+      "en": "box",
+      "ru": "коробка",
+      "emoji": "📦",
+      "level": "starters"
+    },
+    {
+      "id": "part",
+      "en": "part",
+      "ru": "часть",
+      "emoji": "🧩",
+      "level": "extra"
+    },
+    {
+      "id": "total",
+      "en": "total",
+      "ru": "всего, целое",
+      "emoji": "🟰",
+      "level": "extra"
+    },
+    {
+      "id": "area",
+      "en": "area",
+      "ru": "площадь",
+      "emoji": "🟩",
+      "level": "extra"
+    },
+    {
+      "id": "perimeter",
+      "en": "perimeter",
+      "ru": "периметр",
+      "emoji": "🔲",
+      "level": "extra"
+    },
+    {
+      "id": "length",
+      "en": "length",
+      "ru": "длина",
+      "emoji": "📏",
+      "level": "extra"
+    },
+    {
+      "id": "width",
+      "en": "width",
+      "ru": "ширина",
+      "emoji": "↔️",
+      "level": "extra"
+    },
+    {
+      "id": "height",
+      "en": "height",
+      "ru": "высота",
+      "emoji": "↕️",
+      "level": "extra"
+    },
+    {
+      "id": "volume",
+      "en": "volume",
+      "ru": "объём",
+      "emoji": "🫙",
+      "level": "extra"
+    },
+    {
+      "id": "cube",
+      "en": "cube",
+      "ru": "куб",
+      "emoji": "🧊",
+      "level": "extra"
+    }
+  ],
+  "weeks": [
+    {
+      "n": 1,
+      "title": "The Secret of Parts · Тайна частей",
+      "episodes": [
+        {
+          "id": "mys-e01",
+          "title": "The Owl's Recipe · Рецепт совы",
+          "emoji": "🦉",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "words": [
+                "journal",
+                "clue",
+                "owl",
+                "potion",
+                "secret",
+                "part"
+              ]
+            },
+            {
+              "type": "mystery",
+              "title": "Case 1: The old journal",
+              "intro": {
+                "en": "Welcome to Pine Hollow, {name}! In Grandpa Otto's attic you find an old journal. On the first page it says: 'The owl knows the way. Follow the clues!'",
+                "ru": "Добро пожаловать в Пайн-Холлоу! На чердаке дедушки Отто ты находишь старый дневник. На первой странице написано: «Сова знает дорогу. Иди по уликам!»",
+                "emoji": "📔"
+              },
+              "steps": [
+                {
+                  "kind": "clue",
+                  "text": [
+                    "Potion for talking to owls:",
+                    "1 part honey and 3 parts water.",
+                    "Make 400 grams of potion."
+                  ],
+                  "q": "Сколько граммов воды нужно для зелья?",
+                  "answer": 300,
+                  "solution": [
+                    "Всего частей: 1 + 3 = 4",
+                    "Одна часть: 400 : 4 = 100 (г)",
+                    "Воды: 100 · 3 = 300 (г)"
+                  ],
+                  "ru": "Зелье для разговора с совами: 1 часть мёда и 3 части воды. Приготовь 400 граммов зелья.",
+                  "emoji": "🧪",
+                  "unit": "г",
+                  "terms": [
+                    "part",
+                    "total"
+                  ],
+                  "figure": {
+                    "kind": "parts",
+                    "rows": [
+                      {
+                        "label": "мёд",
+                        "parts": 1
+                      },
+                      {
+                        "label": "вода",
+                        "parts": 3
+                      }
+                    ],
+                    "total": "400 г"
+                  }
+                },
+                {
+                  "kind": "cipher",
+                  "word": "OWL",
+                  "problems": [
+                    {
+                      "q": "В рецепте 2 части ягод и 3 части сахара, всего 75 г. Сколько граммов в одной части?",
+                      "answer": 15,
+                      "solution": [
+                        "Всего частей: 2 + 3 = 5",
+                        "Одна часть: 75 : 5 = 15 (г)"
+                      ],
+                      "unit": "г",
+                      "terms": [
+                        "part"
+                      ],
+                      "figure": {
+                        "kind": "parts",
+                        "rows": [
+                          {
+                            "label": "ягоды",
+                            "parts": 2
+                          },
+                          {
+                            "label": "сахар",
+                            "parts": 3
+                          }
+                        ],
+                        "total": "75 г"
+                      }
+                    },
+                    {
+                      "q": "48 жёлудей разделили на 2 части и 1 часть. Сколько жёлудей в большей части?",
+                      "answer": 32,
+                      "solution": [
+                        "Всего частей: 2 + 1 = 3",
+                        "Одна часть: 48 : 3 = 16",
+                        "Большая часть: 16 · 2 = 32"
+                      ],
+                      "figure": {
+                        "kind": "parts",
+                        "rows": [
+                          {
+                            "label": "большая",
+                            "parts": 2
+                          },
+                          {
+                            "label": "меньшая",
+                            "parts": 1
+                          }
+                        ],
+                        "total": "48"
+                      }
+                    },
+                    {
+                      "q": "Совёнок съел 1 часть орехов, а мама-сова — 4 части. Всего 60 орехов. Сколько орехов съела мама-сова?",
+                      "answer": 48,
+                      "solution": [
+                        "Всего частей: 1 + 4 = 5",
+                        "Одна часть: 60 : 5 = 12",
+                        "Мама-сова: 12 · 4 = 48"
+                      ],
+                      "figure": {
+                        "kind": "parts",
+                        "rows": [
+                          {
+                            "label": "совёнок",
+                            "parts": 1
+                          },
+                          {
+                            "label": "мама-сова",
+                            "parts": 4
+                          }
+                        ],
+                        "total": "60"
+                      }
+                    }
+                  ],
+                  "decoys": [
+                    12,
+                    20,
+                    36
+                  ],
+                  "meaning": {
+                    "q": "What is an OWL?",
+                    "options": [
+                      "a bird that flies at night 🦉",
+                      "a big old tree 🌲",
+                      "a small river 🏞️"
+                    ],
+                    "answer": 0
+                  }
+                },
+                {
+                  "kind": "clue",
+                  "text": [
+                    "Hoo-hoo! I am Hoot the owl.",
+                    "Grandpa Otto hid his treasure.",
+                    "There are 2 parts gold coins and 5 parts silver coins. There are 21 coins in total."
+                  ],
+                  "q": "Сколько золотых монет?",
+                  "answer": 6,
+                  "solution": [
+                    "Всего частей: 2 + 5 = 7",
+                    "Одна часть: 21 : 7 = 3",
+                    "Золотых: 3 · 2 = 6"
+                  ],
+                  "ru": "Ху-ху! Я сова Хут. Дедушка Отто спрятал сокровище. Золотых монет 2 части, серебряных — 5 частей. Всего 21 монета.",
+                  "emoji": "🦉",
+                  "options": [
+                    3,
+                    6,
+                    9,
+                    15
+                  ],
+                  "terms": [
+                    "part",
+                    "total"
+                  ]
+                }
+              ],
+              "reveal": {
+                "en": "Hoot the owl is your new friend! He gives you an old map of the forest. The adventure begins...",
+                "ru": "Сова Хут — твой новый друг! Он даёт тебе старую карту леса. Приключение начинается…",
+                "emoji": "🗺️"
+              }
+            },
+            {
+              "type": "gap",
+              "title": "Journal words",
+              "items": [
+                {
+                  "text": "I read Grandpa's old ___ every night.",
+                  "options": [
+                    "owl",
+                    "journal",
+                    "potion"
+                  ],
+                  "answer": 1,
+                  "emoji": "📔"
+                },
+                {
+                  "text": "The ___ flies at night and says 'hoo-hoo'.",
+                  "options": [
+                    "owl",
+                    "clue",
+                    "secret"
+                  ],
+                  "answer": 0,
+                  "emoji": "🦉"
+                },
+                {
+                  "text": "Don't tell anyone. It's a ___!",
+                  "options": [
+                    "potion",
+                    "secret",
+                    "journal"
+                  ],
+                  "answer": 1,
+                  "emoji": "🤫"
+                },
+                {
+                  "text": "Mix the ___ in a big pot.",
+                  "options": [
+                    "clue",
+                    "owl",
+                    "potion"
+                  ],
+                  "answer": 2,
+                  "emoji": "🧪"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mys-e02",
+          "title": "Footprints in the Forest · Следы в лесу",
+          "emoji": "👣",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "words": [
+                "forest",
+                "map",
+                "footprint",
+                "coin",
+                "gold",
+                "total"
+              ]
+            },
+            {
+              "type": "mystery",
+              "title": "Case 2: Big footprints",
+              "intro": {
+                "en": "Hoot's map shows a path through the forest. In the mud there are big footprints. They go to an old bridge. Who made them?",
+                "ru": "На карте Хута — тропинка через лес. В грязи огромные следы. Они ведут к старому мосту. Кто их оставил?",
+                "emoji": "👣"
+              },
+              "steps": [
+                {
+                  "kind": "clue",
+                  "text": [
+                    "On the map: the path to the bridge is 3 parts, the path to the river is 2 parts.",
+                    "Together they are 1 000 metres."
+                  ],
+                  "q": "Сколько метров до моста?",
+                  "answer": 600,
+                  "solution": [
+                    "Всего частей: 3 + 2 = 5",
+                    "Одна часть: 1 000 : 5 = 200 (м)",
+                    "До моста: 200 · 3 = 600 (м)"
+                  ],
+                  "ru": "На карте: дорога до моста — 3 части, дорога до реки — 2 части. Вместе 1 000 метров.",
+                  "emoji": "🗺️",
+                  "unit": "м",
+                  "terms": [
+                    "part",
+                    "total"
+                  ],
+                  "figure": {
+                    "kind": "parts",
+                    "rows": [
+                      {
+                        "label": "до моста",
+                        "parts": 3
+                      },
+                      {
+                        "label": "до реки",
+                        "parts": 2
+                      }
+                    ],
+                    "total": "1 000 м"
+                  }
+                },
+                {
+                  "kind": "cipher",
+                  "word": "GOLD",
+                  "problems": [
+                    {
+                      "q": "Для пикника взяли 1 часть сыра и 2 части хлеба, всего 90 г. Сколько граммов сыра?",
+                      "answer": 30,
+                      "solution": [
+                        "Всего частей: 1 + 2 = 3",
+                        "Сыр: 90 : 3 = 30 (г)"
+                      ],
+                      "unit": "г",
+                      "figure": {
+                        "kind": "parts",
+                        "rows": [
+                          {
+                            "label": "сыр",
+                            "parts": 1
+                          },
+                          {
+                            "label": "хлеб",
+                            "parts": 2
+                          }
+                        ],
+                        "total": "90 г"
+                      }
+                    },
+                    {
+                      "q": "В корзине шишки и жёлуди: шишек 5 частей, жёлудей 1 часть, всего 42 штуки. Сколько шишек?",
+                      "answer": 35,
+                      "solution": [
+                        "Всего частей: 5 + 1 = 6",
+                        "Одна часть: 42 : 6 = 7",
+                        "Шишек: 7 · 5 = 35"
+                      ],
+                      "figure": {
+                        "kind": "parts",
+                        "rows": [
+                          {
+                            "label": "шишки",
+                            "parts": 5
+                          },
+                          {
+                            "label": "жёлуди",
+                            "parts": 1
+                          }
+                        ],
+                        "total": "42"
+                      }
+                    },
+                    {
+                      "q": "64 гвоздя разделили на 4 равные части. Сколько гвоздей в одной части?",
+                      "answer": 16,
+                      "solution": [
+                        "Одна часть: 64 : 4 = 16"
+                      ]
+                    },
+                    {
+                      "q": "Тропинка — 3 части, лужайка — 4 части, вместе 56 шагов. На сколько шагов лужайка длиннее тропинки?",
+                      "answer": 8,
+                      "solution": [
+                        "Всего частей: 3 + 4 = 7",
+                        "Одна часть: 56 : 7 = 8",
+                        "Лужайка длиннее на 4 − 3 = 1 часть, то есть на 8 шагов"
+                      ],
+                      "figure": {
+                        "kind": "parts",
+                        "rows": [
+                          {
+                            "label": "тропинка",
+                            "parts": 3
+                          },
+                          {
+                            "label": "лужайка",
+                            "parts": 4
+                          }
+                        ],
+                        "total": "56 шагов"
+                      }
+                    }
+                  ],
+                  "decoys": [
+                    24,
+                    40
+                  ],
+                  "meaning": {
+                    "q": "What is GOLD?",
+                    "options": [
+                      "a yellow metal for coins 🪙",
+                      "a kind of bird 🐦",
+                      "a dark cave 🕳️"
+                    ],
+                    "answer": 0
+                  }
+                },
+                {
+                  "kind": "clue",
+                  "text": [
+                    "The footprints are really big!",
+                    "A big footprint is 3 parts long. Your footprint is 1 part.",
+                    "Together they are 48 cm."
+                  ],
+                  "q": "Какой длины большой след?",
+                  "answer": 36,
+                  "solution": [
+                    "Всего частей: 3 + 1 = 4",
+                    "Одна часть: 48 : 4 = 12 (см)",
+                    "Большой след: 12 · 3 = 36 (см)"
+                  ],
+                  "ru": "Следы огромные! Большой след — 3 части, твой след — 1 часть. Вместе 48 см.",
+                  "emoji": "👣",
+                  "unit": "см",
+                  "figure": {
+                    "kind": "parts",
+                    "rows": [
+                      {
+                        "label": "большой след",
+                        "parts": 3
+                      },
+                      {
+                        "label": "твой след",
+                        "parts": 1
+                      }
+                    ],
+                    "total": "48 см"
+                  }
+                }
+              ],
+              "reveal": {
+                "en": "The footprints belong to a friendly old bear. He guards the bridge. He gives you a gold coin with a strange picture on it: a little door!",
+                "ru": "Следы оставил добрый старый медведь, сторож моста. Он даёт тебе золотую монету со странным рисунком: маленькая дверь!",
+                "emoji": "🪙"
+              }
+            },
+            {
+              "type": "gap",
+              "title": "Journal words",
+              "items": [
+                {
+                  "text": "Look at the ___. Which way is the river?",
+                  "options": [
+                    "coin",
+                    "map",
+                    "forest"
+                  ],
+                  "answer": 1,
+                  "emoji": "🗺️"
+                },
+                {
+                  "text": "There are big ___ in the mud.",
+                  "options": [
+                    "footprints",
+                    "coins",
+                    "maps"
+                  ],
+                  "answer": 0,
+                  "emoji": "👣"
+                },
+                {
+                  "text": "The ___ is full of tall trees.",
+                  "options": [
+                    "gold",
+                    "forest",
+                    "map"
+                  ],
+                  "answer": 1,
+                  "emoji": "🌳"
+                },
+                {
+                  "text": "A ___ coin is yellow and shiny.",
+                  "options": [
+                    "gold",
+                    "forest",
+                    "total"
+                  ],
+                  "answer": 0,
+                  "emoji": "🪙"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "title": "The Hidden Room · Площадь и периметр",
+      "episodes": [
+        {
+          "id": "mys-e03",
+          "title": "The Hidden Room · Тайная комната",
+          "emoji": "🚪",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "words": [
+                "door",
+                "room",
+                "hidden",
+                "key",
+                "area",
+                "perimeter"
+              ]
+            },
+            {
+              "type": "mystery",
+              "title": "Case 3: Behind the bookcase",
+              "intro": {
+                "en": "The gold coin fits a hole in Grandpa's bookcase. Click! A hidden door opens. Behind it there is a dark, dusty room...",
+                "ru": "Золотая монета подходит к отверстию в книжном шкафу дедушки. Щёлк! Открывается потайная дверь. За ней — тёмная пыльная комната…",
+                "emoji": "🚪"
+              },
+              "steps": [
+                {
+                  "kind": "clue",
+                  "text": [
+                    "The hidden room is 5 metres long and 4 metres wide.",
+                    "Grandpa wants a new carpet for the whole floor."
+                  ],
+                  "q": "Какой площади нужен ковёр? (S = a · b)",
+                  "answer": 20,
+                  "solution": [
+                    "S = a · b",
+                    "S = 5 · 4 = 20 (м²)"
+                  ],
+                  "ru": "Тайная комната 5 метров в длину и 4 метра в ширину. Дедушка хочет новый ковёр на весь пол.",
+                  "emoji": "📐",
+                  "unit": "м²",
+                  "terms": [
+                    "area",
+                    "length",
+                    "width"
+                  ],
+                  "figure": {
+                    "kind": "rect",
+                    "a": 5,
+                    "b": 4,
+                    "unit": "м"
+                  }
+                },
+                {
+                  "kind": "cipher",
+                  "word": "KEY",
+                  "problems": [
+                    {
+                      "q": "Найди площадь квадрата со стороной 6 см.",
+                      "answer": 36,
+                      "solution": [
+                        "S = a · a",
+                        "S = 6 · 6 = 36 (см²)"
+                      ],
+                      "unit": "см²",
+                      "terms": [
+                        "area"
+                      ],
+                      "figure": {
+                        "kind": "rect",
+                        "a": 6,
+                        "b": 6,
+                        "unit": "см"
+                      }
+                    },
+                    {
+                      "q": "Найди периметр прямоугольника со сторонами 7 см и 3 см.",
+                      "answer": 20,
+                      "solution": [
+                        "P = (a + b) · 2",
+                        "P = (7 + 3) · 2 = 20 (см)"
+                      ],
+                      "unit": "см",
+                      "terms": [
+                        "perimeter"
+                      ],
+                      "figure": {
+                        "kind": "rect",
+                        "a": 7,
+                        "b": 3,
+                        "unit": "см"
+                      }
+                    },
+                    {
+                      "q": "Найди площадь прямоугольника 8 м на 9 м.",
+                      "answer": 72,
+                      "solution": [
+                        "S = a · b",
+                        "S = 8 · 9 = 72 (м²)"
+                      ],
+                      "unit": "м²",
+                      "terms": [
+                        "area"
+                      ],
+                      "figure": {
+                        "kind": "rect",
+                        "a": 8,
+                        "b": 9,
+                        "unit": "м"
+                      }
+                    }
+                  ],
+                  "decoys": [
+                    21,
+                    45,
+                    16
+                  ],
+                  "meaning": {
+                    "q": "You need a KEY to...",
+                    "options": [
+                      "open a door 🚪",
+                      "eat your lunch 🍽️",
+                      "swim in a river 🏊"
+                    ],
+                    "answer": 0
+                  }
+                },
+                {
+                  "kind": "clue",
+                  "text": [
+                    "On the wall there is a strange picture made of squares.",
+                    "Each square is 1 cm².",
+                    "Find the area and you will know the number for the lock!"
+                  ],
+                  "q": "Какая площадь фигуры?",
+                  "answer": 9,
+                  "solution": [
+                    "Считаем закрашенные клетки по рядам: 2 + 3 + 4 = 9",
+                    "Каждая клетка — 1 см², значит S = 9 см²"
+                  ],
+                  "ru": "На стене странная картинка из клеток. Каждая клетка — 1 см². Найди площадь — и узнаешь число для замка!",
+                  "emoji": "🖼️",
+                  "unit": "см²",
+                  "terms": [
+                    "area"
+                  ],
+                  "figure": {
+                    "kind": "grid",
+                    "cells": [
+                      "##..",
+                      "###.",
+                      "####"
+                    ]
+                  }
+                }
+              ],
+              "reveal": {
+                "en": "The number 9 opens a little safe behind the picture. Inside there is a new journal page: 'The last secret is in the cave by the river.'",
+                "ru": "Число 9 открывает маленький сейф за картиной. Внутри — новая страница дневника: «Последняя тайна — в пещере у реки».",
+                "emoji": "📜"
+              }
+            },
+            {
+              "type": "gap",
+              "title": "Journal words",
+              "items": [
+                {
+                  "text": "The ___ room is behind the bookcase.",
+                  "options": [
+                    "hidden",
+                    "key",
+                    "area"
+                  ],
+                  "answer": 0,
+                  "emoji": "🫥"
+                },
+                {
+                  "text": "I can't open the door without a ___.",
+                  "options": [
+                    "room",
+                    "key",
+                    "perimeter"
+                  ],
+                  "answer": 1,
+                  "emoji": "🔑"
+                },
+                {
+                  "text": "The ___ of the room is 20 square metres.",
+                  "options": [
+                    "area",
+                    "door",
+                    "key"
+                  ],
+                  "answer": 0,
+                  "emoji": "🟩"
+                },
+                {
+                  "text": "Walk around the garden. That is its ___.",
+                  "options": [
+                    "hidden",
+                    "area",
+                    "perimeter"
+                  ],
+                  "answer": 2,
+                  "emoji": "🔲"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mys-e04",
+          "title": "Shadows on the Wall · Тени на стене",
+          "emoji": "🌙",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "words": [
+                "shadow",
+                "lantern",
+                "moon",
+                "mystery",
+                "length",
+                "width"
+              ]
+            },
+            {
+              "type": "mystery",
+              "title": "Case 4: Strange shadows",
+              "intro": {
+                "en": "At night strange shadows dance on the wall of the hidden room. Hoot says: 'Hoo! Bring a lantern, {name}!'",
+                "ru": "Ночью на стене тайной комнаты танцуют странные тени. Хут говорит: «Ху! Принеси фонарь!»",
+                "emoji": "🏮"
+              },
+              "steps": [
+                {
+                  "kind": "clue",
+                  "text": [
+                    "Grandpa's lantern stands on a square table.",
+                    "The perimeter of the table is 32 dm."
+                  ],
+                  "q": "Какая длина стороны стола?",
+                  "answer": 8,
+                  "solution": [
+                    "У квадрата 4 равные стороны",
+                    "a = P : 4 = 32 : 4 = 8 (дм)"
+                  ],
+                  "ru": "Фонарь дедушки стоит на квадратном столе. Периметр стола 32 дм.",
+                  "emoji": "🏮",
+                  "unit": "дм",
+                  "terms": [
+                    "perimeter",
+                    "length"
+                  ]
+                },
+                {
+                  "kind": "cipher",
+                  "word": "MOON",
+                  "problems": [
+                    {
+                      "q": "Найди площадь прямоугольника 3 см на 7 см.",
+                      "answer": 21,
+                      "solution": [
+                        "S = 3 · 7 = 21 (см²)"
+                      ],
+                      "unit": "см²",
+                      "terms": [
+                        "area"
+                      ],
+                      "figure": {
+                        "kind": "rect",
+                        "a": 7,
+                        "b": 3,
+                        "unit": "см"
+                      }
+                    },
+                    {
+                      "q": "Найди периметр квадрата со стороной 5 см.",
+                      "answer": 20,
+                      "solution": [
+                        "P = a · 4",
+                        "P = 5 · 4 = 20 (см)"
+                      ],
+                      "unit": "см",
+                      "terms": [
+                        "perimeter"
+                      ],
+                      "figure": {
+                        "kind": "rect",
+                        "a": 5,
+                        "b": 5,
+                        "unit": "см"
+                      }
+                    },
+                    {
+                      "q": "Найди периметр прямоугольника со сторонами 6 см и 4 см.",
+                      "answer": 20,
+                      "solution": [
+                        "P = (6 + 4) · 2 = 20 (см)",
+                        "Ответ такой же — и буква та же!"
+                      ],
+                      "unit": "см",
+                      "terms": [
+                        "perimeter"
+                      ],
+                      "figure": {
+                        "kind": "rect",
+                        "a": 6,
+                        "b": 4,
+                        "unit": "см"
+                      }
+                    },
+                    {
+                      "q": "Площадь прямоугольника 50 м², длина 10 м. Найди ширину.",
+                      "answer": 5,
+                      "solution": [
+                        "b = S : a",
+                        "b = 50 : 10 = 5 (м)"
+                      ],
+                      "unit": "м",
+                      "terms": [
+                        "area",
+                        "length",
+                        "width"
+                      ]
+                    }
+                  ],
+                  "decoys": [
+                    25,
+                    10,
+                    14
+                  ],
+                  "meaning": {
+                    "q": "Where is the MOON?",
+                    "options": [
+                      "in the sky at night 🌕",
+                      "under the floor 🕳️",
+                      "in the river 🐟"
+                    ],
+                    "answer": 0
+                  }
+                },
+                {
+                  "kind": "clue",
+                  "text": [
+                    "Under the full moon the shadow shows a rectangle on the floor.",
+                    "It is 9 tiles long and 6 tiles wide.",
+                    "'Count the tiles!' says Hoot."
+                  ],
+                  "q": "Сколько плиток в прямоугольнике?",
+                  "answer": 54,
+                  "solution": [
+                    "Плиток: 9 · 6 = 54"
+                  ],
+                  "ru": "При полной луне тень показывает на полу прямоугольник: 9 плиток в длину и 6 в ширину. «Посчитай плитки!» — говорит Хут.",
+                  "emoji": "🌕",
+                  "options": [
+                    15,
+                    30,
+                    45,
+                    54
+                  ],
+                  "terms": [
+                    "length",
+                    "width"
+                  ]
+                }
+              ],
+              "reveal": {
+                "en": "You lift the last of the 54 tiles... and find a tunnel! It goes down, down, down to the cave by the river.",
+                "ru": "Ты поднимаешь последнюю из 54 плиток… а под ней туннель! Он ведёт вниз, к пещере у реки.",
+                "emoji": "🕳️"
+              }
+            },
+            {
+              "type": "gap",
+              "title": "Journal words",
+              "items": [
+                {
+                  "text": "Turn on the ___, it's so dark!",
+                  "options": [
+                    "lantern",
+                    "shadow",
+                    "moon"
+                  ],
+                  "answer": 0,
+                  "emoji": "🏮"
+                },
+                {
+                  "text": "There is a strange ___ on the wall.",
+                  "options": [
+                    "moon",
+                    "shadow",
+                    "width"
+                  ],
+                  "answer": 1,
+                  "emoji": "👤"
+                },
+                {
+                  "text": "The full ___ is big and round tonight.",
+                  "options": [
+                    "moon",
+                    "lantern",
+                    "mystery"
+                  ],
+                  "answer": 0,
+                  "emoji": "🌕"
+                },
+                {
+                  "text": "This is a real ___! Nobody knows the answer.",
+                  "options": [
+                    "shadow",
+                    "length",
+                    "mystery"
+                  ],
+                  "answer": 2,
+                  "emoji": "🕵️"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "title": "The Cave · Объём",
+      "episodes": [
+        {
+          "id": "mys-e05",
+          "title": "The Tunnel · Туннель",
+          "emoji": "🕳️",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "words": [
+                "tunnel",
+                "cave",
+                "chest",
+                "box",
+                "volume",
+                "cube"
+              ]
+            },
+            {
+              "type": "mystery",
+              "title": "Case 5: Boxes in the dark",
+              "intro": {
+                "en": "You climb down into the tunnel with Hoot and your lantern. Drip, drip... The tunnel goes to a cave full of old boxes.",
+                "ru": "Ты спускаешься в туннель с Хутом и фонарём. Кап, кап… Туннель приводит в пещеру, полную старых ящиков.",
+                "emoji": "⛰️"
+              },
+              "steps": [
+                {
+                  "kind": "clue",
+                  "text": [
+                    "The first box is 4 dm long, 3 dm wide and 2 dm high.",
+                    "On the box: 'Find my volume to open me!'"
+                  ],
+                  "q": "Найди объём коробки (V = a · b · c).",
+                  "answer": 24,
+                  "solution": [
+                    "V = a · b · c",
+                    "V = 4 · 3 · 2 = 24 (дм³)"
+                  ],
+                  "ru": "Первая коробка — 4 дм в длину, 3 дм в ширину и 2 дм в высоту. На ней написано: «Найди мой объём, чтобы открыть меня!»",
+                  "emoji": "📦",
+                  "unit": "дм³",
+                  "terms": [
+                    "volume",
+                    "length",
+                    "width",
+                    "height"
+                  ],
+                  "figure": {
+                    "kind": "cuboid",
+                    "a": 4,
+                    "b": 3,
+                    "c": 2,
+                    "unit": "дм"
+                  }
+                },
+                {
+                  "kind": "cipher",
+                  "word": "CAVE",
+                  "problems": [
+                    {
+                      "q": "Найди объём куба с ребром 3 см.",
+                      "answer": 27,
+                      "solution": [
+                        "V = a · a · a",
+                        "V = 3 · 3 · 3 = 27 (см³)"
+                      ],
+                      "unit": "см³",
+                      "terms": [
+                        "cube",
+                        "volume"
+                      ],
+                      "figure": {
+                        "kind": "cuboid",
+                        "a": 3,
+                        "b": 3,
+                        "c": 3,
+                        "unit": "см",
+                        "cubes": true
+                      }
+                    },
+                    {
+                      "q": "Фигура из кубиков: 5 в длину, 2 в ширину, 2 в высоту. Сколько кубиков?",
+                      "answer": 20,
+                      "solution": [
+                        "5 · 2 · 2 = 20 (кубиков)"
+                      ],
+                      "figure": {
+                        "kind": "cuboid",
+                        "a": 5,
+                        "b": 2,
+                        "c": 2,
+                        "unit": "см",
+                        "cubes": true
+                      }
+                    },
+                    {
+                      "q": "Объём ящика 60 дм³, площадь дна 12 дм². Найди высоту ящика.",
+                      "answer": 5,
+                      "solution": [
+                        "V = S · h, значит h = V : S",
+                        "h = 60 : 12 = 5 (дм)"
+                      ],
+                      "unit": "дм",
+                      "terms": [
+                        "volume",
+                        "height"
+                      ]
+                    },
+                    {
+                      "q": "Аквариум 5 дм × 2 дм × 4 дм. Сколько литров воды в нём поместится? (1 дм³ = 1 л)",
+                      "answer": 40,
+                      "solution": [
+                        "V = 5 · 2 · 4 = 40 (дм³)",
+                        "40 дм³ = 40 л"
+                      ],
+                      "unit": "л",
+                      "terms": [
+                        "volume"
+                      ],
+                      "figure": {
+                        "kind": "cuboid",
+                        "a": 5,
+                        "b": 2,
+                        "c": 4,
+                        "unit": "дм"
+                      }
+                    }
+                  ],
+                  "decoys": [
+                    9,
+                    30,
+                    64
+                  ],
+                  "meaning": {
+                    "q": "What is a CAVE?",
+                    "options": [
+                      "a big hole in a mountain ⛰️",
+                      "a little bird 🐤",
+                      "a kind of cake 🍰"
+                    ],
+                    "answer": 0
+                  }
+                },
+                {
+                  "kind": "clue",
+                  "text": [
+                    "In the cave there is an old chest.",
+                    "On it: 'Fill me with gold cubes. I am 3 cubes long, 3 cubes wide and 2 cubes high.'"
+                  ],
+                  "q": "Сколько золотых кубиков поместится в сундук?",
+                  "answer": 18,
+                  "solution": [
+                    "Кубиков: 3 · 3 · 2 = 18"
+                  ],
+                  "ru": "В пещере стоит старый сундук. На нём: «Наполни меня золотыми кубиками. Во мне 3 кубика в длину, 3 в ширину и 2 в высоту».",
+                  "emoji": "🧰",
+                  "terms": [
+                    "volume",
+                    "cube"
+                  ],
+                  "figure": {
+                    "kind": "cuboid",
+                    "a": 3,
+                    "b": 3,
+                    "c": 2,
+                    "unit": "см",
+                    "cubes": true
+                  }
+                }
+              ],
+              "reveal": {
+                "en": "Inside the chest there is no treasure — only a note in Grandpa's writing: 'Well done! Go deeper. My real treasure chest has a lock with numbers.'",
+                "ru": "В сундуке нет сокровища — только записка почерком дедушки: «Молодец! Иди дальше. У моего настоящего сундука замок с цифрами».",
+                "emoji": "📝"
+              }
+            },
+            {
+              "type": "gap",
+              "title": "Journal words",
+              "items": [
+                {
+                  "text": "We walked through a long dark ___.",
+                  "options": [
+                    "tunnel",
+                    "cube",
+                    "chest"
+                  ],
+                  "answer": 0,
+                  "emoji": "🚇"
+                },
+                {
+                  "text": "Bats live in the ___.",
+                  "options": [
+                    "box",
+                    "cave",
+                    "volume"
+                  ],
+                  "answer": 1,
+                  "emoji": "⛰️"
+                },
+                {
+                  "text": "Grandpa's old ___ is full of coins.",
+                  "options": [
+                    "chest",
+                    "tunnel",
+                    "cube"
+                  ],
+                  "answer": 0,
+                  "emoji": "🧰"
+                },
+                {
+                  "text": "A ___ has six equal square faces.",
+                  "options": [
+                    "cave",
+                    "box",
+                    "cube"
+                  ],
+                  "answer": 2,
+                  "emoji": "🧊"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mys-e06",
+          "title": "Grandpa's Treasure · Сокровище дедушки",
+          "emoji": "💎",
+          "kind": "lesson",
+          "exercises": [
+            {
+              "type": "flashcards",
+              "words": [
+                "treasure",
+                "height",
+                "river",
+                "bridge"
+              ]
+            },
+            {
+              "type": "mystery",
+              "title": "Case 6: The lock with numbers",
+              "intro": {
+                "en": "At the end of the cave there is a huge chest with a number lock. Next to it is Grandpa's note: 'Only a true detective can open me.'",
+                "ru": "В конце пещеры стоит огромный сундук с кодовым замком. Рядом записка дедушки: «Открыть меня сможет только настоящий сыщик».",
+                "emoji": "🔒"
+              },
+              "steps": [
+                {
+                  "kind": "clue",
+                  "text": [
+                    "The chest is 6 dm long, 4 dm wide and 5 dm high."
+                  ],
+                  "q": "Найди объём сундука.",
+                  "answer": 120,
+                  "solution": [
+                    "V = a · b · c",
+                    "V = 6 · 4 · 5 = 120 (дм³)"
+                  ],
+                  "ru": "Сундук 6 дм в длину, 4 дм в ширину и 5 дм в высоту.",
+                  "emoji": "🧰",
+                  "unit": "дм³",
+                  "terms": [
+                    "volume",
+                    "length",
+                    "width",
+                    "height"
+                  ],
+                  "figure": {
+                    "kind": "cuboid",
+                    "a": 6,
+                    "b": 4,
+                    "c": 5,
+                    "unit": "дм"
+                  }
+                },
+                {
+                  "kind": "cipher",
+                  "word": "OPEN",
+                  "problems": [
+                    {
+                      "q": "Найди объём куба с ребром 2 дм.",
+                      "answer": 8,
+                      "solution": [
+                        "V = 2 · 2 · 2 = 8 (дм³)"
+                      ],
+                      "unit": "дм³",
+                      "terms": [
+                        "cube",
+                        "volume"
+                      ],
+                      "figure": {
+                        "kind": "cuboid",
+                        "a": 2,
+                        "b": 2,
+                        "c": 2,
+                        "unit": "дм",
+                        "cubes": true
+                      }
+                    },
+                    {
+                      "q": "В коробке 3 слоя кубиков, в каждом слое 5 рядов по 4 кубика. Сколько кубиков?",
+                      "answer": 60,
+                      "solution": [
+                        "В одном слое: 5 · 4 = 20",
+                        "Всего: 20 · 3 = 60"
+                      ],
+                      "figure": {
+                        "kind": "cuboid",
+                        "a": 5,
+                        "b": 4,
+                        "c": 3,
+                        "unit": "см",
+                        "cubes": true
+                      }
+                    },
+                    {
+                      "q": "Комната 6 м в длину, 4 м в ширину, 3 м в высоту. Найди её объём.",
+                      "answer": 72,
+                      "solution": [
+                        "V = 6 · 4 · 3 = 72 (м³)"
+                      ],
+                      "unit": "м³",
+                      "terms": [
+                        "volume"
+                      ],
+                      "figure": {
+                        "kind": "cuboid",
+                        "a": 6,
+                        "b": 4,
+                        "c": 3,
+                        "unit": "м"
+                      }
+                    },
+                    {
+                      "q": "Бассейн 10 м в длину, 5 м в ширину, глубина 2 м. Сколько кубометров воды в полном бассейне?",
+                      "answer": 100,
+                      "solution": [
+                        "V = 10 · 5 · 2 = 100 (м³)"
+                      ],
+                      "unit": "м³",
+                      "terms": [
+                        "volume"
+                      ],
+                      "figure": {
+                        "kind": "cuboid",
+                        "a": 10,
+                        "b": 5,
+                        "c": 2,
+                        "unit": "м"
+                      }
+                    }
+                  ],
+                  "decoys": [
+                    16,
+                    50,
+                    27
+                  ],
+                  "meaning": {
+                    "q": "What does OPEN mean?",
+                    "options": [
+                      "not closed 🔓",
+                      "very cold 🥶",
+                      "very small 🐜"
+                    ],
+                    "answer": 0
+                  }
+                },
+                {
+                  "kind": "clue",
+                  "text": [
+                    "The last number on the lock is the height of a box.",
+                    "'My volume is 48 dm³. My bottom is 4 dm long and 3 dm wide. How high am I?'"
+                  ],
+                  "q": "Какая высота коробки?",
+                  "answer": 4,
+                  "solution": [
+                    "Площадь дна: 4 · 3 = 12 (дм²)",
+                    "h = V : S = 48 : 12 = 4 (дм)"
+                  ],
+                  "ru": "Последняя цифра замка — высота коробки. «Мой объём 48 дм³. Дно 4 дм в длину и 3 дм в ширину. Какая у меня высота?»",
+                  "emoji": "📦",
+                  "unit": "дм",
+                  "terms": [
+                    "volume",
+                    "height"
+                  ]
+                }
+              ],
+              "reveal": {
+                "en": "Click! The chest opens. Inside are Grandpa's photos, his first journal and a letter: 'Dear {name}, the real treasure is curiosity. Keep exploring!' Hoot hoots happily.",
+                "ru": "Щёлк! Сундук открывается. Внутри фотографии дедушки, его первый дневник и письмо: «Дорогая {name}, настоящее сокровище — любопытство. Продолжай исследовать!» Хут радостно ухает.",
+                "emoji": "💌"
+              }
+            },
+            {
+              "type": "gap",
+              "title": "Journal words",
+              "items": [
+                {
+                  "text": "The pirates hid the ___ on an island.",
+                  "options": [
+                    "treasure",
+                    "height",
+                    "bridge"
+                  ],
+                  "answer": 0,
+                  "emoji": "💎"
+                },
+                {
+                  "text": "The ___ of the box is 5 dm.",
+                  "options": [
+                    "river",
+                    "height",
+                    "treasure"
+                  ],
+                  "answer": 1,
+                  "emoji": "↕️"
+                },
+                {
+                  "text": "Walk across the ___ over the river.",
+                  "options": [
+                    "bridge",
+                    "height",
+                    "river"
+                  ],
+                  "answer": 0,
+                  "emoji": "🌉"
+                },
+                {
+                  "text": "The ___ is wide and blue.",
+                  "options": [
+                    "treasure",
+                    "bridge",
+                    "river"
+                  ],
+                  "answer": 2,
+                  "emoji": "🏞️"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "showcase": {
+    "id": "mys-showcase",
+    "title": "The Great Mystery · Большая тайна",
+    "emoji": "🕵️",
+    "kind": "showcase",
+    "exercises": [
+      {
+        "type": "listen",
+        "title": "Journal words: listen!",
+        "items": [
+          {
+            "say": "clue",
+            "options": [
+              {
+                "text": "тень"
+              },
+              {
+                "text": "сова"
+              },
+              {
+                "text": "улика, подсказка"
+              }
+            ],
+            "answer": 2
+          },
+          {
+            "say": "owl",
+            "options": [
+              {
+                "text": "ключ"
+              },
+              {
+                "text": "сокровище"
+              },
+              {
+                "text": "сова"
+              }
+            ],
+            "answer": 2
+          },
+          {
+            "say": "key",
+            "options": [
+              {
+                "text": "пещера"
+              },
+              {
+                "text": "сова"
+              },
+              {
+                "text": "ключ"
+              }
+            ],
+            "answer": 2
+          },
+          {
+            "say": "cave",
+            "options": [
+              {
+                "text": "пещера"
+              },
+              {
+                "text": "сова"
+              },
+              {
+                "text": "ключ"
+              }
+            ],
+            "answer": 0
+          },
+          {
+            "say": "treasure",
+            "options": [
+              {
+                "text": "сокровище"
+              },
+              {
+                "text": "ключ"
+              },
+              {
+                "text": "пещера"
+              }
+            ],
+            "answer": 0
+          },
+          {
+            "say": "shadow",
+            "options": [
+              {
+                "text": "пещера"
+              },
+              {
+                "text": "тень"
+              },
+              {
+                "text": "сокровище"
+              }
+            ],
+            "answer": 1
+          }
+        ]
+      },
+      {
+        "type": "mystery",
+        "title": "The great mystery of Pine Hollow",
+        "intro": {
+          "en": "Today is the Pine Hollow fair. But the prize box has disappeared! Hoot found some strange clues. Solve the great mystery, detective {name}!",
+          "ru": "Сегодня ярмарка в Пайн-Холлоу. Но пропала коробка с призами! Хут нашёл странные улики. Раскрой большую тайну, сыщик!",
+          "emoji": "🎪"
+        },
+        "steps": [
+          {
+            "kind": "clue",
+            "text": [
+              "Fair tickets: 2 parts are for kids, 3 parts are for grown-ups.",
+              "There are 250 tickets in total."
+            ],
+            "q": "Сколько билетов для детей?",
+            "answer": 100,
+            "solution": [
+              "Всего частей: 2 + 3 = 5",
+              "Одна часть: 250 : 5 = 50",
+              "Для детей: 50 · 2 = 100"
+            ],
+            "ru": "Билеты на ярмарку: 2 части — детские, 3 части — для взрослых. Всего 250 билетов.",
+            "emoji": "🎟️",
+            "terms": [
+              "part",
+              "total"
+            ],
+            "figure": {
+              "kind": "parts",
+              "rows": [
+                {
+                  "label": "детские",
+                  "parts": 2
+                },
+                {
+                  "label": "взрослые",
+                  "parts": 3
+                }
+              ],
+              "total": "250"
+            }
+          },
+          {
+            "kind": "cipher",
+            "word": "HOOT",
+            "problems": [
+              {
+                "q": "Найди площадь прямоугольника 7 м на 4 м.",
+                "answer": 28,
+                "solution": [
+                  "S = 7 · 4 = 28 (м²)"
+                ],
+                "unit": "м²",
+                "terms": [
+                  "area"
+                ],
+                "figure": {
+                  "kind": "rect",
+                  "a": 7,
+                  "b": 4,
+                  "unit": "м"
+                }
+              },
+              {
+                "q": "Найди периметр прямоугольника со сторонами 9 см и 3 см.",
+                "answer": 24,
+                "solution": [
+                  "P = (9 + 3) · 2 = 24 (см)"
+                ],
+                "unit": "см",
+                "terms": [
+                  "perimeter"
+                ],
+                "figure": {
+                  "kind": "rect",
+                  "a": 9,
+                  "b": 3,
+                  "unit": "см"
+                }
+              },
+              {
+                "q": "Найди периметр квадрата со стороной 6 см.",
+                "answer": 24,
+                "solution": [
+                  "P = 6 · 4 = 24 (см)"
+                ],
+                "unit": "см",
+                "terms": [
+                  "perimeter"
+                ],
+                "figure": {
+                  "kind": "rect",
+                  "a": 6,
+                  "b": 6,
+                  "unit": "см"
+                }
+              },
+              {
+                "q": "Найди объём коробки 2 дм × 3 дм × 5 дм.",
+                "answer": 30,
+                "solution": [
+                  "V = 2 · 3 · 5 = 30 (дм³)"
+                ],
+                "unit": "дм³",
+                "terms": [
+                  "volume"
+                ],
+                "figure": {
+                  "kind": "cuboid",
+                  "a": 2,
+                  "b": 3,
+                  "c": 5,
+                  "unit": "дм"
+                }
+              }
+            ],
+            "decoys": [
+              21,
+              18,
+              14
+            ],
+            "meaning": {
+              "q": "What is a HOOT?",
+              "options": [
+                "the sound an owl makes 🦉",
+                "a kind of shoe 👟",
+                "a red fruit 🍓"
+              ],
+              "answer": 0
+            }
+          },
+          {
+            "kind": "clue",
+            "text": [
+              "Wet footprints go to the big fair tent.",
+              "The tent is 12 m long and 8 m wide."
+            ],
+            "q": "Найди площадь палатки.",
+            "answer": 96,
+            "solution": [
+              "S = 12 · 8 = 96 (м²)"
+            ],
+            "ru": "Мокрые следы ведут к большой палатке. Палатка 12 м в длину и 8 м в ширину.",
+            "emoji": "⛺",
+            "unit": "м²",
+            "terms": [
+              "area",
+              "length",
+              "width"
+            ],
+            "figure": {
+              "kind": "rect",
+              "a": 12,
+              "b": 8,
+              "unit": "м"
+            }
+          },
+          {
+            "kind": "clue",
+            "text": [
+              "Inside the tent you see the prize box! It is a cube.",
+              "Each edge is 4 dm."
+            ],
+            "q": "Найди объём коробки с призами.",
+            "answer": 64,
+            "solution": [
+              "V = a · a · a",
+              "V = 4 · 4 · 4 = 64 (дм³)"
+            ],
+            "ru": "В палатке ты видишь коробку с призами! Это куб, каждое ребро — 4 дм.",
+            "emoji": "🎁",
+            "unit": "дм³",
+            "terms": [
+              "cube",
+              "volume"
+            ],
+            "figure": {
+              "kind": "cuboid",
+              "a": 4,
+              "b": 4,
+              "c": 4,
+              "unit": "дм"
+            }
+          }
+        ],
+        "reveal": {
+          "en": "It was Hoot! He took the prize box into the tent to keep it safe from the rain. The fair goes on, and the mayor gives you a badge: 'Best Detective of Pine Hollow'.",
+          "ru": "Это был Хут! Он унёс коробку в палатку, чтобы её не намочил дождь. Ярмарка продолжается, а мэр вручает тебе значок «Лучший сыщик Пайн-Холлоу».",
+          "emoji": "🏅"
+        }
+      },
+      {
+        "type": "read",
+        "story": {
+          "title": "My Summer in Pine Hollow",
+          "emoji": "🌲",
+          "paragraphs": [
+            "This summer I stayed with Grandpa Otto in Pine Hollow. It is a small town in a big forest.",
+            "I found Grandpa's old journal in the attic. It was full of secret codes and clues.",
+            "My best friend there was Hoot, a clever owl. Together we found a hidden room, a dark tunnel and a treasure chest.",
+            "The treasure was not gold. It was Grandpa's letter: 'Keep exploring!' Now I have my own journal."
+          ]
+        },
+        "questions": [
+          {
+            "q": "Where is Pine Hollow?",
+            "options": [
+              "in a big forest",
+              "by the sea",
+              "in a big city"
+            ],
+            "answer": 0
+          },
+          {
+            "q": "What was in the journal?",
+            "options": [
+              "photos of cats",
+              "secret codes and clues",
+              "recipes for cakes"
+            ],
+            "answer": 1
+          },
+          {
+            "q": "Who was Hoot?",
+            "options": [
+              "a bear",
+              "a clever owl",
+              "Grandpa's dog"
+            ],
+            "answer": 1
+          },
+          {
+            "q": "What was the treasure?",
+            "options": [
+              "gold coins",
+              "a new bike",
+              "Grandpa's letter"
+            ],
+            "answer": 2
+          }
+        ]
+      }
+    ]
+  }
+}

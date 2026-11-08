@@ -46,7 +46,7 @@ export function Solve({ ex, onDone, name }: ExProps<Of<'solve'>>) {
       if (/^[0-9]$/.test(e.key)) setInput((s) => (s.length < 9 ? s + e.key : s));
       else if (e.key === ',' || e.key === '.') setInput((s) => (s.includes(',') ? s : s + ','));
       else if (e.key === 'Backspace') setInput((s) => s.slice(0, -1));
-      else if (e.key === 'Enter') check(input);
+      else if (e.key === 'Enter') { e.preventDefault(); check(input); } // no default: the same Enter must not also press the Continue button that appears
     };
     window.addEventListener('keydown', h);
     return () => window.removeEventListener('keydown', h);
@@ -95,7 +95,7 @@ export function Solve({ ex, onDone, name }: ExProps<Of<'solve'>>) {
   );
 }
 
-function Terms({ ids }: { ids: string[] }) {
+export function Terms({ ids }: { ids: string[] }) {
   return (
     <div className="row wrap" style={{ gap: 6 }} data-no-tr="recall">
       {ids.map((id) => {
@@ -110,7 +110,7 @@ function Terms({ ids }: { ids: string[] }) {
   );
 }
 
-function NumPad({ value, unit, shake, locked, onChange, onCheck }: {
+export function NumPad({ value, unit, shake, locked, onChange, onCheck }: {
   value: string; unit?: string; shake: number; locked: boolean; onChange: (v: string) => void; onCheck: () => void;
 }) {
   const press = (k: string) => {
@@ -140,7 +140,7 @@ function NumPad({ value, unit, shake, locked, onChange, onCheck }: {
   );
 }
 
-function Solution({ steps, answer }: { steps: string[]; answer: string }) {
+export function Solution({ steps, answer }: { steps: string[]; answer: string }) {
   return (
     <div className="card tint-violet col" style={{ gap: 6 }}>
       <strong>📝 Решение</strong>

@@ -47,6 +47,25 @@ export type Figure = z.infer<typeof Figure>;
 
 const base = { title: z.string().optional() };
 
+/** A maths problem inside a mystery step (same fields as a `solve` item, without choices). */
+const MysteryProblem = z.object({
+  q: z.string().min(1), answer: z.number(), unit: z.string().optional(),
+  solution: z.array(z.string()).min(1), terms: z.array(z.string()).optional(), figure: Figure.optional(),
+});
+
+/** One step of a mystery case. */
+export const MysteryStep = z.discriminatedUnion('kind', [
+  // Cipher: each problem's answer opens one letter of `word` (problem i → word[i]) via a code table;
+  // `decoys` are extra numbers in the table; `meaning` asks what the decoded English word/phrase means.
+  z.object({ kind: z.literal('cipher'), word: z.string().regex(/^[A-Z]+$/).min(2).max(8),
+    problems: z.array(MysteryProblem).min(2).max(8), decoys: z.array(z.number()).max(6).optional(), meaning: Question }),
+  // Clue: a short English note with numbers (reading), then a problem about it (numeric answer or choices).
+  z.object({ kind: z.literal('clue'), emoji: z.string().optional(), text: z.array(z.string()).min(1), ru: z.string().optional(),
+    q: z.string().min(1), answer: z.number(), unit: z.string().optional(), options: z.array(z.number()).min(2).max(4).optional(),
+    solution: z.array(z.string()).min(1), terms: z.array(z.string()).optional(), figure: Figure.optional() }),
+]);
+export type MysteryStep = z.infer<typeof MysteryStep>;
+
 export const Exercise = z.discriminatedUnion('type', [
   // Learn new words: picture + British voice. `words` are word ids.
   z.object({ ...base, type: z.literal('flashcards'), words: z.array(z.string()).min(2) }),
@@ -107,6 +126,11 @@ export const Exercise = z.discriminatedUnion('type', [
     options: z.array(z.number()).min(2).max(4).optional(),
     solution: z.array(z.string()).min(1), terms: z.array(z.string()).optional(), figure: Figure.optional(),
   })).min(1) }),
+  // Mystery case (English + maths): intro page of the old journal → cipher / clue steps → "case closed" page.
+  z.object({ ...base, type: z.literal('mystery'),
+    intro: z.object({ en: z.string(), ru: z.string().optional(), emoji: z.string() }),
+    steps: z.array(MysteryStep).min(1).max(5),
+    reveal: z.object({ en: z.string(), ru: z.string().optional(), emoji: z.string().optional() }) }),
 ]);
 export type Exercise = z.infer<typeof Exercise>;
 export type ExerciseType = Exercise['type'];

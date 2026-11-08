@@ -6,7 +6,8 @@ import { EPISODES, EPISODE_ORDER } from '../content';
 import type { Episode } from '../content/schema';
 import { ExerciseView, TYPE_LABEL } from '../exercises';
 import type { ExResult } from '../exercises/common';
-import { useGame, type EpisodeResult, type FinishOutcome } from '../game/store';
+import { useGame, type FinishOutcome } from '../game/store';
+import { tallyResults } from '../game/tally';
 import { sfx } from '../lib/sfx';
 import { stopSpeaking } from '../lib/tts';
 import Avatar from '../components/Avatar';
@@ -83,17 +84,7 @@ export function LessonPlayer({ episode, id, intro, onFinished }: PlayerProps) {
       setK(k + 1); setReview(null); window.scrollTo({ top: 0 }); return;
     }
     saveProgress(id, null);
-    const all = acc.current;
-    const result: EpisodeResult = {
-      correct: all.reduce((s, x) => s + x.correct, 0),
-      total: all.reduce((s, x) => s + x.total, 0),
-      skills: {}, words: all.flatMap((x) => x.words ?? []), metrics: {},
-    };
-    for (const x of all) {
-      const sk = result.skills[x.skill] ?? { c: 0, t: 0 };
-      result.skills[x.skill] = { c: sk.c + x.correct, t: sk.t + x.total };
-      if (x.metric) result.metrics[x.metric] = (result.metrics[x.metric] ?? 0) + (x.metricN ?? 1);
-    }
+    const result = tallyResults(acc.current);
     const out = finishEpisode(id, episode.kind, result);
     const bonus = onFinished?.(out) ?? 0;
     setOutcome({ ...out, hearts: out.hearts + bonus, correct: result.correct, total: result.total });
